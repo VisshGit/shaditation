@@ -34,12 +34,11 @@ export default function ScratchReveal() {
           style={{ margin: 0, lineHeight: 1.15 }}
         >
           Scratch to Reveal
+          <br>
+          </br>
+          <br>
+          </br>
         </h2>
-
-        <br>
-        </br>
-        <br>
-        </br>
       </div>
 
       <div className="flex justify-center">
@@ -80,7 +79,10 @@ export default function ScratchReveal() {
               </div>
             </div>
 
-            <ScratchCanvas onReveal={() => setRevealed(true)} />
+            {/* touch-none applies only to the scratch layer, not the page. */}
+            <div className="absolute inset-0 z-30 touch-none select-none">
+              <ScratchCanvas onReveal={() => setRevealed(true)} />
+            </div>
 
             {revealed && (
               <div className="pointer-events-none absolute inset-0 z-40 overflow-hidden">
