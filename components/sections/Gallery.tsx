@@ -1,4 +1,14 @@
+import Image from "next/image";
 import Container from "@/components/ui/Container";
+
+const images = [
+  { src: "/images/image1.jpg", alt: "Wedding memory 1", height: "h-80" },
+  { src: "/images/image2.jpg", alt: "Wedding memory 2", height: "h-[420px]" },
+  { src: "/images/image3.jpg", alt: "Wedding memory 3", height: "h-80" },
+  { src: "/images/image4.jpg", alt: "Wedding memory 4", height: "h-[420px]" },
+  { src: "/images/image5.jpg", alt: "Wedding memory 5", height: "h-80" },
+  { src: "/images/image6.jpg", alt: "Wedding memory 6", height: "h-[420px]" },
+];
 
 export default function Gallery() {
   return (
@@ -12,44 +22,32 @@ export default function Gallery() {
     >
       <Container>
         <div className="text-center">
-          <p
-            className="text-sm uppercase tracking-[6px] text-amber-700"
-            style={{ margin: 0 }}
-          >
+          <p className="m-0 text-sm uppercase tracking-[6px] text-amber-700">
             Memories
           </p>
 
-          <div
-            className="h-px w-20 bg-amber-700/50"
-            style={{ margin: "12px auto 36px" }}
-          />
+          <div className="mx-auto mt-3 mb-9 h-px w-20 bg-amber-700/50" />
 
-          <h2
-            className="font-heading text-5xl"
-            style={{
-              margin: 0,
-              lineHeight: 1.15,
-            }}
-          >
+          <h2 className="m-0 font-heading text-5xl leading-tight">
             Our Gallery
           </h2>
         </div>
 
-        <div
-          className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-3"
-          style={{ marginTop: "64px" }}
-        >
-          <div className="h-80 rounded-3xl bg-[#f5e6c8] shadow-lg"></div>
-
-          <div className="h-[420px] rounded-3xl bg-[#ead8b8] shadow-lg"></div>
-
-          <div className="h-80 rounded-3xl bg-[#f5e6c8] shadow-lg"></div>
-
-          <div className="h-[420px] rounded-3xl bg-[#ead8b8] shadow-lg"></div>
-
-          <div className="h-80 rounded-3xl bg-[#f5e6c8] shadow-lg"></div>
-
-          <div className="h-[420px] rounded-3xl bg-[#ead8b8] shadow-lg"></div>
+        <div className="mx-auto mt-16 grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
+          {images.map((image) => (
+            <div
+              key={image.src}
+              className={`relative overflow-hidden rounded-3xl shadow-lg ${image.height}`}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+                className="object-cover transition duration-500 hover:scale-105"
+              />
+            </div>
+          ))}
         </div>
       </Container>
     </section>
