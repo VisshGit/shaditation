@@ -26,11 +26,14 @@ export default function Gallery() {
             Memories
           </p>
 
-          <div className="mx-auto mt-3 mb-9 h-px w-20 bg-amber-700/50" />
+          <div className="mx-auto mt-3 h-px w-20 bg-amber-700/50" />
 
-          <h2 className="m-0 font-heading text-5xl leading-tight">
+          <h2 className="mt-9 font-heading text-5xl leading-tight">
             Our Gallery
           </h2>
+
+          <br />
+          <br />
         </div>
 
         <div className="mx-auto mt-16 grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-3">
