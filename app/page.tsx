@@ -25,12 +25,11 @@ export default function Home() {
         <div style={{ marginTop: "64px" }}>
           <ScratchReveal />
         </div>
+        
         <div style={{ marginTop: "64px" }}>
           <Gallery />
         </div>
         
-      
-
         <div style={{ marginTop: "64px" }}>
           <Story />
         </div>
