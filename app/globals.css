@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 
 :root {
@@ -521,7 +520,7 @@ h6 {
     0 12px 35px rgba(0, 0, 0, 0.58),
     0 0 28px rgba(246, 197, 75, 0.2);
   animation: gate-button-breathe 3s ease-in-out infinite;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .gate-button::before {
@@ -567,13 +566,7 @@ h6 {
 }
 
 .gate-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow:
-    inset 0 0 0 5px rgba(0, 0, 0, 0.36),
-    inset 0 0 25px rgba(247, 211, 112, 0.16),
-    0 0 0 6px rgba(246, 215, 124, 0.15),
-    0 16px 42px rgba(0, 0, 0, 0.64),
-    0 0 36px rgba(246, 197, 75, 0.33);
+  transform: scale(1.05);
 }
 
 .gate-button:focus-visible {
