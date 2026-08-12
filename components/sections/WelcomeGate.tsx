@@ -82,8 +82,10 @@ export default function WelcomeGate({ children }: WelcomeGateProps) {
               onClick={openGate}
               className="gate-button"
               disabled={isOpening}
+              aria-label="Open the wedding invitation"
             >
-              Tap to Open
+              <span className="gate-button-monogram">V&amp;V</span>
+              <span className="gate-button-label">Tap to Open</span>
             </button>
           </div>
         </div>
