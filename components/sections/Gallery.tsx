@@ -2,12 +2,12 @@ import Image from "next/image";
 import Container from "@/components/ui/Container";
 
 const images = [
-  { src: "/images/image1.jpg", alt: "Wedding memory 1", height: "h-80" },
-  { src: "/images/image2.jpg", alt: "Wedding memory 2", height: "h-[420px]" },
-  { src: "/images/image3.jpg", alt: "Wedding memory 3", height: "h-80" },
-  { src: "/images/image4.jpg", alt: "Wedding memory 4", height: "h-[420px]" },
-  { src: "/images/image5.jpg", alt: "Wedding memory 5", height: "h-80" },
-  { src: "/images/image6.jpg", alt: "Wedding memory 6", height: "h-[420px]" },
+  { src: "/images/image1.jpeg", alt: "Wedding memory 1", height: "h-80" },
+  { src: "/images/image2.jpeg", alt: "Wedding memory 2", height: "h-[420px]" },
+  { src: "/images/image3.jpeg", alt: "Wedding memory 3", height: "h-80" },
+  { src: "/images/image4.jpeg", alt: "Wedding memory 4", height: "h-[420px]" },
+  { src: "/images/image5.jpeg", alt: "Wedding memory 5", height: "h-80" },
+  { src: "/images/image6.jpeg", alt: "Wedding memory 6", height: "h-[420px]" },
 ];
 
 export default function Gallery() {
