@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Container from "@/components/ui/Container";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const weddingDate = new Date("2027-01-31T19:00:00+05:30").getTime();
 
@@ -65,48 +66,50 @@ export default function Countdown() {
   }, []);
 
   return (
-    <section
-      className="flex items-center justify-center bg-[#fdf8f3]"
-      style={{
-        marginTop: "120px",
-        paddingTop: "160px",
-        paddingBottom: "160px",
-      }}
-    >
-      <Container>
-        <div className="flex justify-center">
-          <div className="w-full max-w-4xl text-center">
-            <p
-              className="text-sm uppercase tracking-[6px] text-amber-700"
-              style={{ margin: 0 }}
-            >
-              Counting Down to Forever
-            </p>
+    <ScrollReveal>
+      <section
+        className="flex items-center justify-center bg-[#fdf8f3]"
+        style={{
+          marginTop: "120px",
+          paddingTop: "160px",
+          paddingBottom: "160px",
+        }}
+      >
+        <Container>
+          <div className="flex justify-center">
+            <div className="w-full max-w-4xl text-center">
+              <p
+                className="text-sm uppercase tracking-[6px] text-amber-700"
+                style={{ margin: 0 }}
+              >
+                Counting Down to Forever
+              </p>
 
-            <div
-              className="h-px w-20 bg-amber-700/50"
-              style={{ margin: "12px auto 36px" }}
-            />
+              <div
+                className="h-px w-20 bg-amber-700/50"
+                style={{ margin: "12px auto 36px" }}
+              />
 
-            <h2
-              className="font-heading text-4xl md:text-5xl"
-              style={{ margin: 0, lineHeight: 1.15 }}
-            >
-              The Celebration Begins Soon
-            </h2>
+              <h2
+                className="font-heading text-4xl md:text-5xl"
+                style={{ margin: 0, lineHeight: 1.15 }}
+              >
+                The Celebration Begins Soon
+              </h2>
 
-            <div
-              className="flex flex-nowrap justify-center gap-2 sm:gap-4 md:gap-8"
-              style={{ marginTop: "64px" }}
-            >
-              <CountdownBox label="Days" value={timeLeft?.days} />
-              <CountdownBox label="Hours" value={timeLeft?.hours} />
-              <CountdownBox label="Minutes" value={timeLeft?.minutes} />
-              <CountdownBox label="Seconds" value={timeLeft?.seconds} />
+              <div
+                className="flex flex-nowrap justify-center gap-2 sm:gap-4 md:gap-8"
+                style={{ marginTop: "64px" }}
+              >
+                <CountdownBox label="Days" value={timeLeft?.days} />
+                <CountdownBox label="Hours" value={timeLeft?.hours} />
+                <CountdownBox label="Minutes" value={timeLeft?.minutes} />
+                <CountdownBox label="Seconds" value={timeLeft?.seconds} />
+              </div>
             </div>
           </div>
-        </div>
-      </Container>
-    </section>
+        </Container>
+      </section>
+    </ScrollReveal>
   );
 }
