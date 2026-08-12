@@ -27,7 +27,7 @@ export default function Gallery() {
               className="text-sm uppercase tracking-[6px] text-amber-700"
               style={{ margin: 0 }}
             >
-              Our Story
+              Memories
             </p>
 
             <div
@@ -42,7 +42,7 @@ export default function Gallery() {
                 lineHeight: 1.15,
               }}
             >
-              A Beautiful Journey
+              Our Gallery
             </h2>
 
           <br />
