@@ -21,16 +21,29 @@ export default function Gallery() {
       }}
     >
       <Container>
-        <div className="text-center">
-          <p className="m-0 text-sm uppercase tracking-[6px] text-amber-700">
-            Memories
-          </p>
+        <div className="flex justify-center">
+          <div className="w-full max-w-3xl text-center">
+            <p
+              className="text-sm uppercase tracking-[6px] text-amber-700"
+              style={{ margin: 0 }}
+            >
+              Our Story
+            </p>
 
-          <div className="mx-auto mt-3 h-px w-20 bg-amber-700/50" />
+            <div
+              className="h-px w-20 bg-amber-700/50"
+              style={{ margin: "12px auto 36px" }}
+            />
 
-          <h2 className="mt-9 font-heading text-5xl leading-tight">
-            Our Gallery
-          </h2>
+            <h2
+              className="font-heading text-5xl"
+              style={{
+                margin: 0,
+                lineHeight: 1.15,
+              }}
+            >
+              A Beautiful Journey
+            </h2>
 
           <br />
           <br />
