@@ -1029,3 +1029,26 @@ h6 {
 .countdown-number {
   animation: countdown-flip 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
+/* Premium Scroll Reveal */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition:
+    opacity 800ms ease,
+    transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.scroll-reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
