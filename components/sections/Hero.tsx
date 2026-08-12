@@ -67,6 +67,10 @@ export default function Hero() {
             <div className="mx-auto max-w-3xl">
               <p className="mb-5 px-4 text-xs uppercase tracking-[4px] text-amber-700 sm:text-sm sm:tracking-[8px]">
                 Together With Their Families
+                <br>
+                </br>
+                <br>
+                </br>
               </p>
 
               <h1 className="mx-auto mb-6 max-w-[calc(100vw-2rem)] whitespace-nowrap font-heading text-[2.35rem] font-semibold leading-[1.05] tracking-normal sm:text-5xl sm:tracking-wide md:text-8xl">
@@ -76,6 +80,10 @@ export default function Hero() {
               </h1>
 
               <p className="mx-auto mb-10 max-w-[340px] px-3 text-base leading-7 text-gray-700 sm:max-w-none sm:px-0 sm:text-lg sm:leading-8">
+                 <br>
+                </br>
+                <br>
+                </br>
                 Request the pleasure of your company
                 <br />
                 at the celebration of their marriage.
