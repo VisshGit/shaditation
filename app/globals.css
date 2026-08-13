@@ -242,7 +242,7 @@ h6 {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #2b1d0e;
+  background: var(--foreground);
   perspective: 1400px;
 }
 
