@@ -15,12 +15,12 @@ export default function Home() {
     <Layout>
       <WelcomeGate>
         <main
-          style={{
-            backgroundColor: "#efe4d4",
-            paddingTop: "48px",
-            paddingBottom: "48px",
-          }}
-        >
+  style={{
+    backgroundColor: "var(--background)",
+    paddingTop: "48px",
+    paddingBottom: "48px",
+  }}
+>
           <Hero />
 
           <div style={{ marginTop: "64px" }}>
