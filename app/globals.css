@@ -345,7 +345,7 @@ h6 {
   width: 8px;
   height: 8px;
   border-radius: 999px;
-  background: #f6d77c;
+  background: var(--gold-light);
   box-shadow: 0 0 18px rgba(246, 215, 124, 0.9);
 }
 
