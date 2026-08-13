@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cinzel, Poppins, Great_Vibes } from "next/font/google";
 import "./globals.css";
+import ThemeProvider from "@/components/theme/ThemeProvider";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -32,12 +33,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-  lang="en"
-  className={`${cinzel.variable} ${poppins.variable} ${greatVibes.variable} h-full antialiased`}
->
-      <body className="min-h-screen bg-[#fdf8f3]">
-  {children}
-</body>
+      lang="en"
+      className={`${cinzel.variable} ${poppins.variable} ${greatVibes.variable} h-full antialiased`}
+    >
+      <body className="min-h-screen">
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -26,12 +26,13 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#fdf8f3]">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[var(--background)]">
       <BackgroundMusic />
 
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-amber-200/20 blur-3xl" />
-        <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-orange-200/20 blur-3xl" />
+        <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-[var(--secondary)]/20 blur-3xl" />
+
+<div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-[var(--primary)]/10 blur-3xl" />
       </div>
 
       {showSparks && (
@@ -65,7 +66,7 @@ export default function Hero() {
         <Container>
           <div className="flex min-h-screen items-center justify-center text-center">
             <div className="mx-auto max-w-3xl -translate-y-[110px] sm:translate-y-0">
-              <p className="mb-5 px-4 text-xs uppercase tracking-[4px] text-amber-700 sm:text-sm sm:tracking-[8px]">
+              <p className="mb-5 px-4 text-xs uppercase tracking-[4px] text-[var(--primary)] sm:text-sm sm:tracking-[8px]">
                 Together With Their Families
                 <br>
               </br>
@@ -83,7 +84,9 @@ export default function Hero() {
 
               <h1 className="mx-auto mb-6 max-w-[calc(100vw-2rem)] whitespace-nowrap font-heading text-[2.35rem] font-semibold leading-[1.05] tracking-normal sm:text-5xl sm:tracking-wide md:text-8xl">
                 Vishal{" "}
-                <span className="mx-1.5 text-amber-700 sm:mx-3">&</span>{" "}
+                <span className="mx-1.5 text-[var(--primary)] sm:mx-3">
+  &
+</span>{" "}
                 Varsha
               </h1>
               <br>
@@ -95,9 +98,9 @@ export default function Hero() {
               </p>
 
               <div className="mb-10 flex items-center justify-center gap-4">
-                <span className="h-px w-20 bg-amber-700" />
-                <span className="text-xl text-amber-700">✦</span>
-                <span className="h-px w-20 bg-amber-700" />
+                <span className="h-px w-20 bg-[var(--primary)]" />
+                <span className="text-xl text-[var(--primary)]">✦</span>
+                <span className="h-px w-20 bg-[var(--primary)]" />
               </div>
             </div>
           </div>

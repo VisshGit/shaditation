@@ -1,11 +1,28 @@
 import Container from "@/components/ui/Container";
 import ScrollReveal from "../ScrollReveal";
 
+const events = [
+  {
+    type: "Ceremony",
+    title: "Barat",
+    date: "Sunday, 31 January 2027",
+    time: "11:00 AM onwards",
+    venue: "Royal Palace Venue",
+  },
+  {
+    type: "Celebration",
+    title: "Reception",
+    date: "Wednesday, 3 February 2027",
+    time: "8:00 PM onwards",
+    venue: "Grand Celebration Hall",
+  },
+];
+
 export default function Events() {
   return (
     <ScrollReveal>
       <section
-        className="flex items-center justify-center bg-[#fdf8f3]"
+        className="flex items-center justify-center bg-[var(--background)]"
         style={{
           marginTop: "120px",
           paddingTop: "160px",
@@ -14,21 +31,25 @@ export default function Events() {
       >
         <Container>
           <div className="flex justify-center">
-            <div className="w-full max-w-4xl text-center">
+            <div className="w-full max-w-5xl px-4 text-center sm:px-0">
               <p
-                className="text-sm uppercase tracking-[6px] text-amber-700"
+                className="text-xs uppercase tracking-[5px] text-[var(--primary)] sm:text-sm sm:tracking-[6px]"
                 style={{ margin: 0 }}
               >
                 Wedding Events
               </p>
 
               <div
-                className="h-px w-20 bg-amber-700/50"
-                style={{ margin: "12px auto 36px" }}
-              />
+                className="mx-auto flex items-center justify-center gap-3"
+                style={{ margin: "18px auto 34px" }}
+              >
+                <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
+                <span className="text-sm text-[var(--primary)]">✦</span>
+                <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
+              </div>
 
               <h2
-                className="font-heading text-5xl"
+                className="font-heading text-4xl text-[var(--foreground)] sm:text-5xl md:text-6xl"
                 style={{
                   margin: 0,
                   lineHeight: 1.15,
@@ -38,42 +59,42 @@ export default function Events() {
               </h2>
 
               <div
-                className="grid gap-8 md:grid-cols-2"
+                className="grid gap-6 md:grid-cols-2 md:gap-8"
                 style={{ marginTop: "64px" }}
               >
-                <div className="rounded-3xl border border-amber-700/15 bg-white p-10 text-center shadow-[0_12px_30px_rgba(82,48,14,0.08)]">
-                  <p className="mb-3 text-xs uppercase tracking-[4px] text-amber-700">
-                    Ceremony
-                  </p>
+                {events.map((event) => (
+                  <div
+                    key={event.title}
+                    aria-label="Wedding event card"
+                    className="group relative overflow-hidden rounded-3xl border border-[var(--primary)]/15 bg-white px-7 py-10 text-center shadow-[0_15px_40px_rgba(43,29,14,0.07)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(43,29,14,0.11)] sm:px-10"
+                  >
+                    <div className="mx-auto mb-7 flex items-center justify-center gap-3">
+                      <span className="h-px w-10 bg-[var(--primary)]/30" />
+                      <span className="text-sm text-[var(--primary)]">
+                        ✦
+                      </span>
+                      <span className="h-px w-10 bg-[var(--primary)]/30" />
+                    </div>
 
-                  <h3 className="font-heading mb-6 text-3xl">Barat</h3>
+                    <p className="mb-3 text-xs uppercase tracking-[4px] text-[var(--primary)]">
+                      {event.type}
+                    </p>
 
-                  <p className="leading-8 text-gray-600">
-                    Sunday, 31 January 2027
-                    <br />
-                    11:00 AM onwards
-                    <br />
-                    Royal Palace Venue
-                  </p>
-                </div>
+                    <h3 className="mb-6 font-heading text-3xl text-[var(--foreground)] sm:text-4xl">
+                      {event.title}
+                    </h3>
 
-                <div className="rounded-3xl border border-amber-700/15 bg-white p-10 text-center shadow-[0_12px_30px_rgba(82,48,14,0.08)]">
-                  <p className="mb-3 text-xs uppercase tracking-[4px] text-amber-700">
-                    Celebration
-                  </p>
+                    <div className="mx-auto mb-7 h-px w-12 bg-[var(--primary)]/25" />
 
-                  <h3 className="font-heading mb-6 text-3xl">
-                    Reception
-                  </h3>
-
-                  <p className="leading-8 text-gray-600">
-                    Wednesday, 3 February 2027
-                    <br />
-                    8:00 PM onwards
-                    <br />
-                    Grand Celebration Hall
-                  </p>
-                </div>
+                    <p className="text-sm leading-8 text-gray-600 sm:text-base">
+                      {event.date}
+                      <br />
+                      {event.time}
+                      <br />
+                      {event.venue}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

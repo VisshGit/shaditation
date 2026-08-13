@@ -1,117 +1,225 @@
-import Container from "@/components/ui/Container";
+"use client";
+
+import { FormEvent } from "react";
+import Section from "@/components/ui/Section";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function RSVP() {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    alert("Thank you! Your RSVP has been received.");
+  };
+
   return (
-    <section
-      className="flex items-center justify-center bg-white"
-      style={{
-        marginTop: "120px",
-        paddingTop: "160px",
-        paddingBottom: "160px",
-      }}
-    >
-      <Container>
-        <div className="mx-auto max-w-3xl text-center">
-          <p
-            className="text-sm uppercase tracking-[6px] text-amber-700"
-            style={{ margin: 0 }}
-          >
-            RSVP
-          </p>
+    <ScrollReveal>
+      <Section className="bg-[var(--background)] !pt-[120px] !pb-[120px] md:!pt-[160px] md:!pb-[160px]">
+        <div className="flex w-full justify-center">
+          <div className="w-full max-w-2xl px-4 text-center sm:px-6">
 
-          <div
-            className="h-px w-20 bg-amber-700/50"
-            style={{ margin: "12px auto 36px" }}
-          />
+            {/* HEADING */}
 
-          <h2
-            className="font-heading text-4xl md:text-6xl"
-            style={{
-              margin: 0,
-              lineHeight: 1.15,
-            }}
-          >
-            Will You Join Us?
-          </h2>
+            <div className="flex flex-col items-center">
+              <p className="text-xs uppercase tracking-[5px] text-[var(--accent)] sm:text-sm sm:tracking-[7px]">
+                We Would Love To Hear From You
+                
+              </p><br>
+              </br>
 
-          <p
-            className="mx-auto max-w-xl text-gray-600"
-            style={{
-              marginTop: "24px",
-              lineHeight: 1.8,
-            }}
-          >
-            Your presence would mean the world to us. Kindly share your
-            response below.
-          </p>
+              <div className="mt-5 h-px w-20 bg-[var(--primary)]/60" />
 
-          <form
-            className="rounded-[2rem] border border-amber-700/15 bg-[#fdf8f3] text-left shadow-[0_18px_45px_rgba(82,48,14,0.1)]"
-            style={{
-              marginTop: "56px",
-              padding: "40px",
-            }}
-          >
-            <div className="grid gap-6 md:grid-cols-2">
+              <h2 className="mt-6 font-heading text-5xl leading-tight text-[var(--foreground)] sm:text-6xl md:text-7xl">
+                
+                <br>
+              </br>
+              RSVP
+              </h2>
+
+              <div className="mt-6 h-px w-14 bg-[var(--primary)]/40" />
+            </div>
+
+            {/* DESCRIPTION */}
+            <br>
+              </br>
+
+            <p className="mx-auto mt-7 max-w-xl text-center text-sm leading-7 text-[var(--foreground)]/60 sm:text-base sm:leading-8">
+              Your presence would mean the world to us.
+              <br />
+              Kindly let us know if you will be joining our celebration.
+            </p>
+
+            {/* FORM */}
+
+            <form
+              onSubmit={handleSubmit}
+              className="mx-auto mt-12 w-full max-w-2xl text-left"
+            >
+              {/* NAME */}
+              <br>
+              </br>
+
               <div>
-                <label className="mb-2 block text-xs uppercase tracking-[3px] text-amber-800">
-                  Your Name
+                <label
+                  htmlFor="name"
+                  className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                >
+                  Your Name <span className="text-red-500">*</span>
                 </label>
 
                 <input
+                  id="name"
+                  name="name"
                   type="text"
+                  required
                   placeholder="Enter your name"
-                  className="w-full rounded-xl border border-amber-700/15 bg-white px-5 py-4 text-gray-700 outline-none transition placeholder:text-gray-400 focus:border-amber-700 focus:ring-2 focus:ring-amber-700/10"
+                  className="w-full rounded-xl border border-[var(--primary)]/25 bg-[var(--secondary)]/45 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 placeholder:text-[var(--foreground)]/35 focus:border-[var(--primary)]/60 focus:bg-[var(--secondary)]/65 focus:ring-2 focus:ring-[var(--primary)]/10"
                 />
               </div>
 
-              <div>
-                <label className="mb-2 block text-xs uppercase tracking-[3px] text-amber-800">
+              {/* EMAIL */}
+              <br>
+              </br>
+
+              <div className="mt-7">
+                <label
+                  htmlFor="email"
+                  className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                >
                   Email Address
+                  <span className="ml-2 normal-case tracking-normal text-[var(--foreground)]/40">
+                    (Optional)
+                  </span>
                 </label>
 
                 <input
+                  id="email"
+                  name="email"
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full rounded-xl border border-amber-700/15 bg-white px-5 py-4 text-gray-700 outline-none transition placeholder:text-gray-400 focus:border-amber-700 focus:ring-2 focus:ring-amber-700/10"
+                  className="w-full rounded-xl border border-[var(--primary)]/25 bg-[var(--secondary)]/45 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 placeholder:text-[var(--foreground)]/35 focus:border-[var(--primary)]/60 focus:bg-[var(--secondary)]/65 focus:ring-2 focus:ring-[var(--primary)]/10"
                 />
               </div>
-            </div>
 
-            <div style={{ marginTop: "24px" }}>
-              <label className="mb-2 block text-xs uppercase tracking-[3px] text-amber-800">
-                Your Response
-              </label>
+              {/* RESPONSE */}
+              <br>
+              </br>
 
-              <select className="w-full rounded-xl border border-amber-700/15 bg-white px-5 py-4 text-gray-700 outline-none transition focus:border-amber-700 focus:ring-2 focus:ring-amber-700/10">
-                <option>Will you attend?</option>
-                <option>Joyfully accept</option>
-                <option>Regretfully decline</option>
-              </select>
-            </div>
+              <div className="mt-7">
+                <label
+                  htmlFor="response"
+                  className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                >
+                  Your Response <span className="text-red-500">*</span>
+                </label>
 
-            <div style={{ marginTop: "24px" }}>
-              <label className="mb-2 block text-xs uppercase tracking-[3px] text-amber-800">
-                A Message for the Couple
-              </label>
+                <select
+                  id="response"
+                  name="response"
+                  defaultValue=""
+                  required
+                  className="w-full rounded-xl border border-[var(--primary)]/25 bg-[var(--secondary)]/45 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 focus:border-[var(--primary)]/60 focus:bg-[var(--secondary)]/65 focus:ring-2 focus:ring-[var(--primary)]/10"
+                >
+                  <option value="" disabled>
+                    Will you attend?
+                  </option>
 
-              <textarea
-                placeholder="Share your wishes..."
-                rows={5}
-                className="w-full resize-none rounded-xl border border-amber-700/15 bg-white px-5 py-4 text-gray-700 outline-none transition placeholder:text-gray-400 focus:border-amber-700 focus:ring-2 focus:ring-amber-700/10"
-              />
-            </div>
+                  <option value="accept">
+                    Joyfully accept
+                  </option>
 
-            <button
-              type="submit"
-              className="w-full rounded-full bg-[#a96916] py-4 font-medium tracking-wide text-white shadow-lg shadow-amber-800/20 transition hover:bg-[#8b5a12]"
-              style={{ marginTop: "32px" }}
-            >
-              Send RSVP
-            </button>
-          </form>
+                  <option value="decline">
+                    Regretfully decline
+                  </option>
+                </select>
+              </div>
+
+              {/* NUMBER OF MEMBERS */}
+              <br>
+              </br>
+
+              <div className="mt-7">
+                <label
+                  htmlFor="guests"
+                  className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                >
+                  How Many Members Are Joining?{" "}
+                  <span className="text-red-500">*</span>
+                </label>
+
+                <select
+                  id="guests"
+                  name="guests"
+                  defaultValue=""
+                  required
+                  className="w-full rounded-xl border border-[var(--primary)]/25 bg-[var(--secondary)]/45 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 focus:border-[var(--primary)]/60 focus:bg-[var(--secondary)]/65 focus:ring-2 focus:ring-[var(--primary)]/10"
+                >
+                  <option value="" disabled>
+                    Select number of members
+                  </option>
+
+                  <option value="1">1 Member</option>
+                  <option value="2">2 Members</option>
+                  <option value="3">3 Members</option>
+                  <option value="4">4 Members</option>
+                  <option value="5">5 Members</option>
+                  <option value="6">6 Members</option>
+                  <option value="7">7 Members</option>
+                  <option value="8">8 Members</option>
+                  <option value="9">9 Members</option>
+                  <option value="10">10 Members</option>
+                  <option value="10+">10+ Members</option>
+                </select>
+              </div>
+
+              {/* MESSAGE */}
+              <br>
+              </br>
+
+              <div className="mt-7">
+                <label
+                  htmlFor="message"
+                  className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                >
+                  A Message for the Couple
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={5}
+                  placeholder="Share your wishes..."
+                  className="w-full resize-none rounded-xl border border-[var(--primary)]/25 bg-[var(--secondary)]/45 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 placeholder:text-[var(--foreground)]/35 focus:border-[var(--primary)]/60 focus:bg-[var(--secondary)]/65 focus:ring-2 focus:ring-[var(--primary)]/10"
+                />
+              </div>
+              <br>
+              </br>
+              <br>
+              </br>
+
+              {/* LUXURY RSVP BUTTON */}
+
+              <div className="mt-14 flex justify-center">
+                <button
+                  type="submit"
+                  className="rsvp-luxury-button group"
+                >
+                  <span className="rsvp-button-glow" />
+
+                  <span className="rsvp-button-inner">
+                    <span className="rsvp-button-icon">✦</span>
+
+                    <span className="rsvp-button-text">
+                      Send RSVP
+                    </span>
+
+                    <span className="rsvp-button-icon">✦</span>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-      </Container>
-    </section>
+      </Section>
+    </ScrollReveal>
   );
 }

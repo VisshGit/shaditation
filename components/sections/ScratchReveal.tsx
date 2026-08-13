@@ -17,26 +17,27 @@ export default function ScratchReveal() {
 
   return (
     <ScrollReveal>
-      <Section className="bg-[#faf7f2] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
+      <Section className="bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
         <div className="mb-12 flex flex-col items-center text-center">
           <p
-            className="text-sm uppercase tracking-[6px] text-amber-700"
+            className="text-sm uppercase tracking-[6px] text-[var(--primary)]"
             style={{ margin: 0 }}
           >
             A Special Surprise
           </p>
 
           <div
-            className="h-px w-20 bg-amber-700/50"
+            className="h-px w-20 bg-[var(--primary)]/50"
             style={{ margin: "12px auto 36px" }}
           />
 
           <h2
-            className="font-heading text-5xl text-[#2d1d15]"
+            className="font-heading text-5xl text-[var(--foreground)]"
             style={{ margin: 0, lineHeight: 1.15 }}
           >
             Scratch to Reveal The Date
             <br />
+
             <br />
           </h2>
         </div>

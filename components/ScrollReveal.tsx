@@ -2,18 +2,18 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface ScrollRevealProps {
+type ScrollRevealProps = {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-}
+};
 
 export default function ScrollReveal({
   children,
   className = "",
   delay = 0,
 }: ScrollRevealProps) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -21,25 +21,25 @@ export default function ScrollReveal({
 
     if (!element) return;
 
-    const prefersReducedMotion = window.matchMedia(
+    const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (prefersReducedMotion) {
+    if (reducedMotion) {
       setVisible(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.unobserve(entry.target);
-        }
+        if (!entry.isIntersecting) return;
+
+        setVisible(true);
+        observer.unobserve(entry.target);
       },
       {
         threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px",
+        rootMargin: "0px 0px -8% 0px",
       }
     );
 
@@ -51,10 +51,16 @@ export default function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={`scroll-reveal ${visible ? "scroll-reveal-visible" : ""} ${className}`}
+      className={[
+        "scroll-reveal",
+        visible ? "scroll-reveal-visible" : "",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
       style={{
-        transitionDelay: visible ? `${delay}ms` : "0ms",
-      }}
+        "--reveal-delay": `${delay}ms`,
+      } as React.CSSProperties}
     >
       {children}
     </div>
