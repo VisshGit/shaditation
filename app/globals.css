@@ -596,7 +596,7 @@ h6 {
   border: 2px solid #f6d77c;
   border-radius: 50%;
 
-  background: #2b1d0e;
+  background: var(--foreground);
 
   box-shadow: 0 0 14px rgba(246, 215, 124, 0.7);
 }
