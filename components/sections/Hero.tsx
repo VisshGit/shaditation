@@ -91,11 +91,16 @@ export default function Hero() {
         </Container>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-        <p className="text-xs uppercase tracking-[5px] text-gray-500">
-          Scroll
-        </p>
-      </div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-44 left-0 right-0 flex justify-center text-center sm:bottom-52">
+  <div className="scroll-indicator">
+    <span className="text-xs uppercase tracking-[5px] text-gray-500">
+      SCROLL
+    </span>
+
+    <div className="scroll-line" />
+  </div>
+</div>
     </section>
   );
 }

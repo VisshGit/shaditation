@@ -35,7 +35,7 @@ export default function ScratchReveal() {
             className="font-heading text-5xl text-[#2d1d15]"
             style={{ margin: 0, lineHeight: 1.15 }}
           >
-            Scratch to Reveal
+            Scratch to Reveal The Date
             <br />
             <br />
           </h2>
