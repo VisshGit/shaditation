@@ -71,6 +71,14 @@ export default function Hero() {
               </br>
                 <br>
               </br>
+                <br>
+              </br>
+                <br>
+              </br>
+                <br>
+              </br>
+                <br>
+              </br>
               </p>
 
               <h1 className="mx-auto mb-6 max-w-[calc(100vw-2rem)] whitespace-nowrap font-heading text-[2.35rem] font-semibold leading-[1.05] tracking-normal sm:text-5xl sm:tracking-wide md:text-8xl">
