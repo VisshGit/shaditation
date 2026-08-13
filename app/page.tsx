@@ -35,12 +35,14 @@ export default function Home() {
             <Story />
           </div>
 
-          <div style={{ marginTop: "64px" }}>
-            <Events />
-          </div>
-
+          {/* Gallery */}
           <div style={{ marginTop: "64px" }}>
             <Gallery />
+          </div>
+
+          {/* Wedding Celebrations */}
+          <div style={{ marginTop: "64px" }}>
+            <Events />
           </div>
 
           <div style={{ marginTop: "64px" }}>
