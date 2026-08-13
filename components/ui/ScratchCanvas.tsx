@@ -23,6 +23,7 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
 
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
+    canvas.style.touchAction = "none";
 
     const gradient = ctx.createLinearGradient(
       0,
@@ -41,6 +42,7 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
 
     let isDrawing = false;
     let isRevealed = false;
+    let activePointerId: number | null = null;
     let lastPoint: { x: number; y: number } | null = null;
 
     const columns = 40;
@@ -82,6 +84,8 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
       if (isRevealed) return;
 
       isRevealed = true;
+      isDrawing = false;
+      activePointerId = null;
       canvas.style.pointerEvents = "none";
       canvas.style.transition = "opacity 900ms ease-in-out";
 
@@ -106,7 +110,7 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
       }
     };
 
-    const getPoint = (event: MouseEvent) => {
+    const getPoint = (event: PointerEvent) => {
       const rect = canvas.getBoundingClientRect();
 
       return {
@@ -115,17 +119,45 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
       };
     };
 
-    const handleMouseDown = (event: MouseEvent) => {
-      if (isRevealed) return;
+    const stopDrawing = (pointerId?: number) => {
+      if (pointerId !== undefined && activePointerId !== pointerId) return;
 
+      if (
+        activePointerId !== null &&
+        canvas.hasPointerCapture(activePointerId)
+      ) {
+        canvas.releasePointerCapture(activePointerId);
+      }
+
+      isDrawing = false;
+      activePointerId = null;
+      lastPoint = null;
+    };
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (isRevealed || (event.pointerType === "mouse" && event.button !== 0)) {
+        return;
+      }
+
+      event.preventDefault();
       isDrawing = true;
+      activePointerId = event.pointerId;
+      canvas.setPointerCapture(event.pointerId);
       lastPoint = getPoint(event);
       scratchAt(lastPoint.x, lastPoint.y);
     };
 
-    const handleMouseMove = (event: MouseEvent) => {
-      if (!isDrawing || !lastPoint || isRevealed) return;
+    const handlePointerMove = (event: PointerEvent) => {
+      if (
+        !isDrawing ||
+        !lastPoint ||
+        isRevealed ||
+        activePointerId !== event.pointerId
+      ) {
+        return;
+      }
 
+      event.preventDefault();
       const currentPoint = getPoint(event);
       const dx = currentPoint.x - lastPoint.x;
       const dy = currentPoint.y - lastPoint.y;
@@ -141,26 +173,27 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
       lastPoint = currentPoint;
     };
 
-    const handleMouseUp = () => {
-      isDrawing = false;
-      lastPoint = null;
+    const handlePointerUp = (event: PointerEvent) => {
+      stopDrawing(event.pointerId);
     };
 
-    canvas.addEventListener("mousedown", handleMouseDown);
-    canvas.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseup", handleMouseUp);
+    canvas.addEventListener("pointerdown", handlePointerDown);
+    canvas.addEventListener("pointermove", handlePointerMove);
+    canvas.addEventListener("pointerup", handlePointerUp);
+    canvas.addEventListener("pointercancel", handlePointerUp);
 
     return () => {
-      canvas.removeEventListener("mousedown", handleMouseDown);
-      canvas.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseup", handleMouseUp);
+      canvas.removeEventListener("pointerdown", handlePointerDown);
+      canvas.removeEventListener("pointermove", handlePointerMove);
+      canvas.removeEventListener("pointerup", handlePointerUp);
+      canvas.removeEventListener("pointercancel", handlePointerUp);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 h-full w-full rounded-3xl"
+      className="absolute inset-0 h-full w-full touch-none rounded-3xl"
     />
   );
 }

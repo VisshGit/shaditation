@@ -1,7 +1,9 @@
 import Container from "@/components/ui/Container";
+import ScrollReveal from "../ScrollReveal";
 
 export default function Venue() {
   return (
+    <ScrollReveal>
     <section
       className="bg-[#fdf8f3]"
       style={{
@@ -66,5 +68,6 @@ export default function Venue() {
         </div>
       </Container>
     </section>
+    </ScrollReveal>
   );
 }

@@ -1,7 +1,9 @@
 import Container from "@/components/ui/Container";
+import ScrollReveal from "../ScrollReveal";
 
 export default function RSVP() {
   return (
+    <ScrollReveal>
     <section
       className="flex items-center justify-center bg-white"
       style={{
@@ -113,5 +115,6 @@ export default function RSVP() {
         </div>
       </Container>
     </section>
+    </ScrollReveal>
   );
 }

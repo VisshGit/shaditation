@@ -28,13 +28,18 @@ export default function Hero() {
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#fdf8f3]">
       <BackgroundMusic />
+
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-amber-200/20 blur-3xl" />
         <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-orange-200/20 blur-3xl" />
       </div>
 
       {showSparks && (
-        <div className={`hero-fire-sparks ${fadeSparks ? "hero-fire-sparks-fade" : ""}`}>
+        <div
+          className={`hero-fire-sparks ${
+            fadeSparks ? "hero-fire-sparks-fade" : ""
+          }`}
+        >
           {fireSparks.map((spark, index) => (
             <span
               key={index}
@@ -60,15 +65,17 @@ export default function Hero() {
         <Container>
           <div className="flex min-h-screen items-center justify-center text-center">
             <div className="mx-auto max-w-3xl">
-              <p className="mb-5 text-sm uppercase tracking-[8px] text-amber-700">
+              <p className="mb-5 px-4 text-xs uppercase tracking-[4px] text-amber-700 sm:text-sm sm:tracking-[8px]">
                 Together With Their Families
               </p>
 
-              <h1 className="mb-6 whitespace-nowrap font-heading text-5xl font-semibold leading-tight tracking-wide md:text-8xl">
-                Vishal <span className="mx-3 text-amber-700">&</span> Varsha
+              <h1 className="mx-auto mb-6 max-w-[calc(100vw-2rem)] whitespace-nowrap font-heading text-[2.35rem] font-semibold leading-[1.05] tracking-normal sm:text-5xl sm:tracking-wide md:text-8xl">
+                Vishal{" "}
+                <span className="mx-1.5 text-amber-700 sm:mx-3">&</span>{" "}
+                Varsha
               </h1>
 
-              <p className="mb-10 text-lg leading-8 text-gray-700">
+              <p className="mx-auto mb-10 max-w-[340px] px-3 text-base leading-7 text-gray-700 sm:max-w-none sm:px-0 sm:text-lg sm:leading-8">
                 Request the pleasure of your company
                 <br />
                 at the celebration of their marriage.
@@ -85,7 +92,9 @@ export default function Hero() {
       </div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-center">
-        <p className="text-xs uppercase tracking-[5px] text-gray-500">Scroll</p>
+        <p className="text-xs uppercase tracking-[5px] text-gray-500">
+          Scroll
+        </p>
       </div>
     </section>
   );
