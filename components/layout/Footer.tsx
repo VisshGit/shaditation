@@ -27,7 +27,7 @@ export default function Footer() {
 
 
           <p className="text-sm text-gray-300">
-            © 2026 Wedding Invitation. All Rights Reserved.
+            © 2026 Shaditation. All Rights Reserved.
           </p>
 
 
