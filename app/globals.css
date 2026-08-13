@@ -304,7 +304,7 @@ h6 {
 
 .gate-eyebrow {
   margin: 0 0 28px;
-  color: #f6d77c;
+  color: var(--gold-light);
   font-size: 0.75rem;
   letter-spacing: 0.5em;
   text-transform: uppercase;
