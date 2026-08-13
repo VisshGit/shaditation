@@ -1,69 +1,111 @@
-
 import Container from "@/components/ui/Container";
 import ScrollReveal from "../ScrollReveal";
 
 export default function Closing() {
   return (
-    <ScrollReveal>
-      <section
-        className="flex items-center justify-center bg-white"
+    <section
+      className="relative overflow-hidden"
+      style={{
+        background: "#fdf8f3",
+        color: "#5b4636",
+        paddingTop: "120px",
+        paddingBottom: "0",
+      }}
+    >
+      {/* Top decorative line */}
+      <div className="flex justify-center px-6">
+        <div
+          className="w-full max-w-[540px]"
+          style={{ height: "38px" }}
+        >
+          <svg
+            viewBox="0 0 540 38"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M5 19 C75 4, 115 34, 180 19 S300 4, 365 19 S465 34, 535 19"
+              fill="none"
+              stroke="#c9a45c"
+              strokeWidth="1.2"
+            />
+
+            <circle cx="75" cy="14" r="2" fill="#c9a45c" />
+            <circle cx="145" cy="23" r="1.5" fill="#c9a45c" />
+            <circle cx="270" cy="13" r="2" fill="#c9a45c" />
+            <circle cx="385" cy="24" r="1.5" fill="#c9a45c" />
+            <circle cx="465" cy="13" r="2" fill="#c9a45c" />
+          </svg>
+        </div>
+      </div>
+
+      {/* CENTER CONTENT */}
+      <div
+        className="flex flex-col items-center justify-center text-center px-6"
         style={{
-          paddingTop: "180px",
-          paddingBottom: "180px",
+          paddingTop: "55px",
+          paddingBottom: "55px",
         }}
       >
-        <Container>
-          <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+        <p
+          style={{
+            margin: 0,
+            fontFamily: "var(--font-script), cursive",
+            fontSize: "clamp(30px, 5vw, 48px)",
+            lineHeight: 1.3,
+            color: "#b58a3c",
+            fontWeight: 500,
+          }}
+        >
+          We can't wait to celebrate with you!
+        </p>
 
-            {/* Main Blessing */}
-            <p
-              className="max-w-xl font-serif text-lg italic leading-[2] text-neutral-600 sm:text-xl md:text-2xl"
-              style={{
-                letterSpacing: "0.01em",
-              }}
-            >
-              May the years ahead be filled with love, laughter,
-              and countless beautiful moments.
-            </p>
+        <p
+          style={{
+            margin: "22px 0 0",
+            fontFamily: "var(--font-heading), serif",
+            fontSize: "16px",
+            letterSpacing: "0.12em",
+            color: "#6b5140",
+            textTransform: "uppercase",
+          }}
+        >
+        </p>
+      </div>
 
-            {/* Emotional Message */}
-            <p
-              className="mt-12 max-w-md text-sm leading-[2] text-neutral-400 sm:text-base"
-            >
-                <br>
-                </br>
-                
-              Thank you for being a part of our beautiful beginning.
-            </p>
+      {/* Bottom decorative line */}
+      <div className="flex justify-center px-6">
+        <div
+          className="w-full max-w-[540px]"
+          style={{ height: "38px" }}
+        >
+          <svg
+            viewBox="0 0 540 38"
+            width="100%"
+            height="100%"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M5 19 C75 34, 115 4, 180 19 S300 34, 365 19 S465 4, 535 19"
+              fill="none"
+              stroke="#c9a45c"
+              strokeWidth="1.2"
+            />
 
-            {/* Closing */}
-            <p
-              className="mt-14 text-xs uppercase tracking-[0.35em] text-neutral-400 sm:text-sm"
-            ><br>
-                </br>
-                <br>
-                </br>
-                <br>
-                </br>
-                <br>
-                </br>
-              With Love & Gratitude
-            </p>
+            <circle cx="75" cy="24" r="2" fill="#c9a45c" />
+            <circle cx="145" cy="15" r="1.5" fill="#c9a45c" />
+            <circle cx="270" cy="25" r="2" fill="#c9a45c" />
+            <circle cx="385" cy="14" r="1.5" fill="#c9a45c" />
+            <circle cx="465" cy="25" r="2" fill="#c9a45c" />
+          </svg>
+        </div>
+      </div>
 
-            {/* Decorative Element */}
-            <div
-              className="mt-12 flex items-center gap-3"
-              aria-hidden="true"
-            ><br>
-                </br>
-              <span className="h-px w-50 bg-neutral-300" />
-              <span className="text-xs text-neutral-400">✦</span>
-              <span className="h-px w-50 bg-neutral-300" />
-            </div>
-
-          </div>
-        </Container>
-      </section>
-    </ScrollReveal>
+     <br></br>
+     <br></br>
+     <br></br>
+     <br></br>
+    </section>
   );
 }
