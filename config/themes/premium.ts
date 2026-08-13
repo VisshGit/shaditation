@@ -1,337 +1,148 @@
 export const premiumThemes = {
   champagne: {
+    id: "premium-champagne",
     name: "Champagne",
+    category: "premium",
 
     colors: {
-      background: "#faf7f1",
-      foreground: "#2c241b",
-
+      background: "#f8f3ea",
+      foreground: "#2d241b",
       primary: "#c5a15b",
-      secondary: "#eee1c4",
-      accent: "#8f6b32",
+      secondary: "#eee1c7",
+      accent: "#9a7440",
 
-      goldLight: "#f2d58c",
-      goldSoft: "#f7e8bf",
+      goldLight: "#f4d99a",
+      goldSoft: "#f8e9c5",
 
-      surface: "#ffffff",
-      surfaceSoft: "#f6f0e3",
+      surface: "#fffdf8",
+      surfaceSoft: "#f7f0e3",
 
       border: "rgba(197, 161, 91, 0.28)",
 
-      muted: "#817464",
-      mutedLight: "#b6aa99",
-
-      white: "#ffffff",
-      black: "#000000",
+      muted: "#817465",
+      mutedLight: "#b5a696",
     },
 
-    fonts: {
-      heading: "cinzel",
-      body: "poppins",
-      script: "great-vibes",
+    typography: {
+      heading: "Cinzel",
+      body: "Poppins",
     },
 
     style: {
-      radius: "1.25rem",
-      shadow: "premium",
-    },
-
-    gate: {
-      variant: "champagne",
-    },
-
-    decorations: {
-      hero: {
-        left: "",
-        right: "",
-      },
-
-      countdown: {
-        left: "",
-        right: "",
-      },
-
-      story: {
-        left: "",
-        right: "",
-      },
-
-      gallery: {
-        left: "",
-        right: "",
-      },
-
-      events: {
-        left: "",
-        right: "",
-      },
-
-      venue: {
-        left: "",
-        right: "",
-      },
-
-      rsvp: {
-        left: "",
-        right: "",
-      },
-
-      closing: {
-        left: "",
-        right: "",
-      },
+      radius: "large",
+      shadow: "elegant",
+      decoration: "champagne",
     },
   },
 
   royal: {
+    id: "premium-royal",
     name: "Royal",
+    category: "premium",
 
     colors: {
-      background: "#faf7f1",
+      background: "#f7f1e8",
       foreground: "#24180f",
+      primary: "#b58a35",
+      secondary: "#ead9b4",
+      accent: "#6e3d24",
 
-      primary: "#b68d40",
-      secondary: "#ead9b5",
-      accent: "#704b1d",
+      goldLight: "#f2d27a",
+      goldSoft: "#f7e6ad",
 
-      goldLight: "#f6d77c",
-      goldSoft: "#f8e8b5",
+      surface: "#fffdf8",
+      surfaceSoft: "#f5ecdc",
 
-      surface: "#ffffff",
-      surfaceSoft: "#f7efe1",
+      border: "rgba(181, 138, 53, 0.3)",
 
-      border: "rgba(182, 141, 64, 0.28)",
-
-      muted: "#806d58",
-      mutedLight: "#b6a38d",
-
-      white: "#ffffff",
-      black: "#000000",
+      muted: "#7c6a59",
+      mutedLight: "#ad9b89",
     },
 
-    fonts: {
-      heading: "cinzel",
-      body: "poppins",
-      script: "great-vibes",
+    typography: {
+      heading: "Cinzel",
+      body: "Poppins",
     },
 
     style: {
-      radius: "1.5rem",
-      shadow: "premium",
-    },
-
-    gate: {
-      variant: "royal",
-    },
-
-    decorations: {
-      hero: {
-        left: "",
-        right: "",
-      },
-
-      countdown: {
-        left: "",
-        right: "",
-      },
-
-      story: {
-        left: "",
-        right: "",
-      },
-
-      gallery: {
-        left: "",
-        right: "",
-      },
-
-      events: {
-        left: "",
-        right: "",
-      },
-
-      venue: {
-        left: "",
-        right: "",
-      },
-
-      rsvp: {
-        left: "",
-        right: "",
-      },
-
-      closing: {
-        left: "",
-        right: "",
-      },
+      radius: "medium",
+      shadow: "deep",
+      decoration: "royal",
     },
   },
 
   emerald: {
+    id: "premium-emerald",
     name: "Emerald",
+    category: "premium",
 
     colors: {
-      background: "#f5f8f3",
-      foreground: "#17251c",
+      background: "#f3f5ef",
+      foreground: "#18231d",
+      primary: "#9b7a3e",
+      secondary: "#dfe7dc",
+      accent: "#315b49",
 
-      primary: "#567d61",
-      secondary: "#dce8df",
-      accent: "#31563d",
+      goldLight: "#e0c77f",
+      goldSoft: "#efe2b8",
 
-      goldLight: "#d7bd72",
-      goldSoft: "#eee1b7",
+      surface: "#fbfcf8",
+      surfaceSoft: "#edf2eb",
 
-      surface: "#ffffff",
-      surfaceSoft: "#edf4ef",
+      border: "rgba(49, 91, 73, 0.2)",
 
-      border: "rgba(86, 125, 97, 0.28)",
-
-      muted: "#69796e",
-      mutedLight: "#aab8ae",
-
-      white: "#ffffff",
-      black: "#000000",
+      muted: "#66756c",
+      mutedLight: "#9daaa2",
     },
 
-    fonts: {
-      heading: "cinzel",
-      body: "poppins",
-      script: "great-vibes",
+    typography: {
+      heading: "Cinzel",
+      body: "Poppins",
     },
 
     style: {
-      radius: "1.25rem",
-      shadow: "premium",
-    },
-
-    gate: {
-      variant: "emerald",
-    },
-
-    decorations: {
-      hero: {
-        left: "",
-        right: "",
-      },
-
-      countdown: {
-        left: "",
-        right: "",
-      },
-
-      story: {
-        left: "",
-        right: "",
-      },
-
-      gallery: {
-        left: "",
-        right: "",
-      },
-
-      events: {
-        left: "",
-        right: "",
-      },
-
-      venue: {
-        left: "",
-        right: "",
-      },
-
-      rsvp: {
-        left: "",
-        right: "",
-      },
-
-      closing: {
-        left: "",
-        right: "",
-      },
+      radius: "large",
+      shadow: "soft",
+      decoration: "botanical",
     },
   },
 
   midnight: {
+    id: "premium-midnight",
     name: "Midnight",
+    category: "premium",
 
     colors: {
-      background: "#10141d",
-      foreground: "#f5eee2",
+      background: "#17161a",
+      foreground: "#f7f0e3",
+      primary: "#c9a45d",
+      secondary: "#302b2a",
+      accent: "#8e6c3c",
 
-      primary: "#d2aa5c",
-      secondary: "#2a303d",
-      accent: "#8f6d36",
+      goldLight: "#f3d68a",
+      goldSoft: "#e9d5a4",
 
-      goldLight: "#f2d27e",
-      goldSoft: "#f5e5b4",
+      surface: "#211f21",
+      surfaceSoft: "#292629",
 
-      surface: "#181e29",
-      surfaceSoft: "#202735",
+      border: "rgba(201, 164, 93, 0.28)",
 
-      border: "rgba(210, 170, 92, 0.28)",
-
-      muted: "#a7a6a1",
-      mutedLight: "#777a82",
-
-      white: "#ffffff",
-      black: "#000000",
+      muted: "#b0a69a",
+      mutedLight: "#81786e",
     },
 
-    fonts: {
-      heading: "cinzel",
-      body: "poppins",
-      script: "great-vibes",
+    typography: {
+      heading: "Cinzel",
+      body: "Poppins",
     },
 
     style: {
-      radius: "1.25rem",
-      shadow: "premium",
-    },
-
-    gate: {
-      variant: "midnight",
-    },
-
-    decorations: {
-      hero: {
-        left: "",
-        right: "",
-      },
-
-      countdown: {
-        left: "",
-        right: "",
-      },
-
-      story: {
-        left: "",
-        right: "",
-      },
-
-      gallery: {
-        left: "",
-        right: "",
-      },
-
-      events: {
-        left: "",
-        right: "",
-      },
-
-      venue: {
-        left: "",
-        right: "",
-      },
-
-      rsvp: {
-        left: "",
-        right: "",
-      },
-
-      closing: {
-        left: "",
-        right: "",
-      },
+      radius: "medium",
+      shadow: "dramatic",
+      decoration: "midnight",
     },
   },
 } as const;
+
+export type PremiumTheme =
+  (typeof premiumThemes)[keyof typeof premiumThemes];

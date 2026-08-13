@@ -10,7 +10,7 @@ export default function Button({
   return (
     <button
       onClick={onClick}
-      className="rounded-full bg-amber-700 px-10 py-4 text-sm font-medium uppercase tracking-wide text-white transition-all duration-300 hover:scale-105 hover:bg-amber-800"
+      className="rounded-full border border-amber-700 bg-transparent px-10 py-4 text-sm uppercase tracking-[3px] text-amber-700 transition-all duration-500 hover:bg-amber-700 hover:text-white"
     >
       {children}
     </button>

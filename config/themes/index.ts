@@ -3,35 +3,94 @@ import { premiumThemes } from "./premium";
 import { luxuryThemes } from "./luxury";
 
 export const themes = {
+  basic: basicThemes,
+  premium: premiumThemes,
+  luxury: luxuryThemes,
+} as const;
+
+export const allThemes = {
   ...basicThemes,
   ...premiumThemes,
   ...luxuryThemes,
 } as const;
 
-/*
-  =====================================================
-  DEVELOPER ONLY THEME SWITCH
-  =====================================================
+export type ThemeId = keyof typeof allThemes;
+export type ThemeCategory = keyof typeof themes;
 
-  Client theme switching is intentionally disabled.
+export {
+  basicThemes,
+  premiumThemes,
+  luxuryThemes,
+};
 
-  Change the theme here:
+/* =========================================================
+   APPLY THEME
+========================================================= */
 
-  "classic"
-  "blush"
-  "ivory"
-  "champagne"
-  "royal"
-  "emerald"
-  "midnight"
-  "imperial"
-  "noir"
-  "palace"
-*/
+export function applyTheme(themeId: ThemeId) {
+  const theme = allThemes[themeId];
 
-export const ACTIVE_THEME = "noir" as keyof typeof themes;
+  if (!theme) return;
 
-export const activeTheme = themes[ACTIVE_THEME];
+  const root = document.documentElement;
 
-export type ThemeName = keyof typeof themes;
-export type ThemeConfig = (typeof themes)[ThemeName];
+  root.style.setProperty(
+    "--background",
+    theme.colors.background
+  );
+
+  root.style.setProperty(
+    "--foreground",
+    theme.colors.foreground
+  );
+
+  root.style.setProperty(
+    "--primary",
+    theme.colors.primary
+  );
+
+  root.style.setProperty(
+    "--secondary",
+    theme.colors.secondary
+  );
+
+  root.style.setProperty(
+    "--accent",
+    theme.colors.accent
+  );
+
+  root.style.setProperty(
+    "--gold-light",
+    theme.colors.goldLight
+  );
+
+  root.style.setProperty(
+    "--gold-soft",
+    theme.colors.goldSoft
+  );
+
+  root.style.setProperty(
+    "--surface",
+    theme.colors.surface
+  );
+
+  root.style.setProperty(
+    "--surface-soft",
+    theme.colors.surfaceSoft
+  );
+
+  root.style.setProperty(
+    "--border",
+    theme.colors.border
+  );
+
+  root.style.setProperty(
+    "--muted",
+    theme.colors.muted
+  );
+
+  root.style.setProperty(
+    "--muted-light",
+    theme.colors.mutedLight
+  );
+}

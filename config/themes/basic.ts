@@ -1,11 +1,12 @@
 export const basicThemes = {
   classic: {
+    id: "basic-classic",
     name: "Classic",
+    category: "basic",
 
     colors: {
       background: "#fdf8f3",
       foreground: "#2b1d0e",
-
       primary: "#b68d40",
       secondary: "#f5e6c8",
       accent: "#8b5e34",
@@ -20,234 +21,92 @@ export const basicThemes = {
 
       muted: "#8f7565",
       mutedLight: "#b9a99c",
-
-      white: "#ffffff",
-      black: "#000000",
     },
 
-    fonts: {
-      heading: "cinzel",
-      body: "poppins",
-      script: "great-vibes",
+    typography: {
+      heading: "Cinzel",
+      body: "Poppins",
     },
 
     style: {
-      radius: "1rem",
+      radius: "medium",
       shadow: "soft",
-    },
-
-    gate: {
-      variant: "classic",
-    },
-
-    decorations: {
-      hero: {
-        left: "",
-        right: "",
-      },
-
-      countdown: {
-        left: "",
-        right: "",
-      },
-
-      story: {
-        left: "",
-        right: "",
-      },
-
-      gallery: {
-        left: "",
-        right: "",
-      },
-
-      events: {
-        left: "",
-        right: "",
-      },
-
-      venue: {
-        left: "",
-        right: "",
-      },
-
-      rsvp: {
-        left: "",
-        right: "",
-      },
-
-      closing: {
-        left: "",
-        right: "",
-      },
+      decoration: "classic",
     },
   },
 
   blush: {
+    id: "basic-blush",
     name: "Blush",
+    category: "basic",
 
     colors: {
       background: "#fff8f7",
-      foreground: "#351f24",
+      foreground: "#3b2929",
+      primary: "#c98f8f",
+      secondary: "#f4dddd",
+      accent: "#a96868",
 
-      primary: "#c58b91",
-      secondary: "#f4dfe2",
-      accent: "#9f5f68",
-
-      goldLight: "#f2c6c9",
-      goldSoft: "#f8e4e5",
+      goldLight: "#e5b9a6",
+      goldSoft: "#f6d9cd",
 
       surface: "#ffffff",
-      surfaceSoft: "#fff1f2",
+      surfaceSoft: "#fdf0ef",
 
-      border: "rgba(197, 139, 145, 0.25)",
+      border: "rgba(169, 104, 104, 0.22)",
 
-      muted: "#92777c",
-      mutedLight: "#bea9ad",
-
-      white: "#ffffff",
-      black: "#000000",
+      muted: "#8f7474",
+      mutedLight: "#bba5a5",
     },
 
-    fonts: {
-      heading: "cinzel",
-      body: "poppins",
-      script: "great-vibes",
+    typography: {
+      heading: "Cinzel",
+      body: "Poppins",
     },
 
     style: {
-      radius: "1rem",
+      radius: "medium",
       shadow: "soft",
-    },
-
-    gate: {
-      variant: "blush",
-    },
-
-    decorations: {
-      hero: {
-        left: "",
-        right: "",
-      },
-
-      countdown: {
-        left: "",
-        right: "",
-      },
-
-      story: {
-        left: "",
-        right: "",
-      },
-
-      gallery: {
-        left: "",
-        right: "",
-      },
-
-      events: {
-        left: "",
-        right: "",
-      },
-
-      venue: {
-        left: "",
-        right: "",
-      },
-
-      rsvp: {
-        left: "",
-        right: "",
-      },
-
-      closing: {
-        left: "",
-        right: "",
-      },
+      decoration: "romantic",
     },
   },
 
   ivory: {
+    id: "basic-ivory",
     name: "Ivory",
+    category: "basic",
 
     colors: {
-      background: "#faf8f1",
-      foreground: "#29251f",
+      background: "#fbf7ef",
+      foreground: "#30291f",
+      primary: "#a88b62",
+      secondary: "#eee4d1",
+      accent: "#806747",
 
-      primary: "#b69b63",
-      secondary: "#eee6d3",
-      accent: "#806b42",
+      goldLight: "#d8bd86",
+      goldSoft: "#efe0bc",
 
-      goldLight: "#e5cb8c",
-      goldSoft: "#f3e7c4",
+      surface: "#fffdf9",
+      surfaceSoft: "#f7f0e4",
 
-      surface: "#ffffff",
-      surfaceSoft: "#f7f2e6",
+      border: "rgba(128, 103, 71, 0.2)",
 
-      border: "rgba(182, 155, 99, 0.25)",
-
-      muted: "#81786b",
-      mutedLight: "#b5ada0",
-
-      white: "#ffffff",
-      black: "#000000",
+      muted: "#82786b",
+      mutedLight: "#aaa094",
     },
 
-    fonts: {
-      heading: "cinzel",
-      body: "poppins",
-      script: "great-vibes",
+    typography: {
+      heading: "Cinzel",
+      body: "Poppins",
     },
 
     style: {
-      radius: "0.75rem",
+      radius: "small",
       shadow: "soft",
-    },
-
-    gate: {
-      variant: "ivory",
-    },
-
-    decorations: {
-      hero: {
-        left: "",
-        right: "",
-      },
-
-      countdown: {
-        left: "",
-        right: "",
-      },
-
-      story: {
-        left: "",
-        right: "",
-      },
-
-      gallery: {
-        left: "",
-        right: "",
-      },
-
-      events: {
-        left: "",
-        right: "",
-      },
-
-      venue: {
-        left: "",
-        right: "",
-      },
-
-      rsvp: {
-        left: "",
-        right: "",
-      },
-
-      closing: {
-        left: "",
-        right: "",
-      },
+      decoration: "minimal",
     },
   },
 } as const;
+
+export type BasicTheme =
+  (typeof basicThemes)[keyof typeof basicThemes];
