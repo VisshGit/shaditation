@@ -360,6 +360,10 @@ h6 {
    GATE BUTTON
 ========================================================= */
 
+/* =========================================================
+   GATE BUTTON
+========================================================= */
+
 .gate-button {
   position: relative;
   isolation: isolate;
@@ -372,7 +376,12 @@ h6 {
 
   overflow: hidden;
 
-  border: 1px solid rgba(250, 221, 143, 0.86);
+  border: 1px solid color-mix(
+    in srgb,
+    var(--gold-light) 86%,
+    transparent
+  );
+
   border-radius: 50%;
 
   background:
@@ -393,7 +402,8 @@ h6 {
       #050505 100%
     );
 
-  color: #f7dc8a;
+  color: var(--gold-light);
+
   cursor: pointer;
   padding: 0;
 
@@ -416,7 +426,12 @@ h6 {
   z-index: -1;
   inset: 9px;
 
-  border: 1px solid rgba(246, 215, 124, 0.36);
+  border: 1px solid color-mix(
+    in srgb,
+    var(--gold-light) 36%,
+    transparent
+  );
+
   border-radius: inherit;
 
   content: "";
@@ -449,13 +464,19 @@ h6 {
   font-weight: 400;
   letter-spacing: 0.02em;
   line-height: 0.9;
+
   text-shadow:
     0 1px 0 #6a4811,
     0 0 17px rgba(255, 219, 123, 0.28);
 }
 
 .gate-button-label {
-  color: rgba(255, 239, 183, 0.9);
+  color: color-mix(
+    in srgb,
+    var(--gold-soft) 90%,
+    transparent
+  );
+
   font-size: 0.57rem;
   font-weight: 700;
   letter-spacing: 0.27em;
@@ -476,7 +497,7 @@ h6 {
 }
 
 .gate-button:focus-visible {
-  outline: 2px solid #fff0bc;
+  outline: 2px solid var(--gold-soft);
   outline-offset: 6px;
 }
 
