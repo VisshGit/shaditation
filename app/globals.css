@@ -334,7 +334,11 @@ h6 {
 .gate-divider span {
   width: 76px;
   height: 1px;
-  background: rgba(246, 215, 124, 0.55);
+  background: color-mix(
+  in srgb,
+  var(--gold-light) 55%,
+  transparent
+);
 }
 
 .gate-divider i {
