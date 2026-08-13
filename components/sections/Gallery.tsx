@@ -1,6 +1,15 @@
 import Container from "@/components/ui/Container";
 import ScrollReveal from "@/components/ScrollReveal";
 
+const photos = [
+  "/images/image1.jpeg",
+  "/images/image2.jpeg",
+  "/images/image3.jpeg",
+  "/images/image4.jpeg",
+  "/images/image5.jpeg",
+  "/images/image6.jpeg",
+];
+
 export default function Gallery() {
   return (
     <ScrollReveal>
@@ -43,17 +52,20 @@ export default function Gallery() {
             className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 md:grid-cols-3"
             style={{ marginTop: "64px" }}
           >
-            <div className="h-80 rounded-3xl bg-[#f5e6c8] shadow-lg"></div>
-
-            <div className="h-[420px] rounded-3xl bg-[#ead8b8] shadow-lg"></div>
-
-            <div className="h-80 rounded-3xl bg-[#f5e6c8] shadow-lg"></div>
-
-            <div className="h-[420px] rounded-3xl bg-[#ead8b8] shadow-lg"></div>
-
-            <div className="h-80 rounded-3xl bg-[#f5e6c8] shadow-lg"></div>
-
-            <div className="h-[420px] rounded-3xl bg-[#ead8b8] shadow-lg"></div>
+            {photos.map((photo, index) => (
+              <div
+                key={photo}
+                className={`overflow-hidden rounded-3xl shadow-lg ${
+                  index % 2 === 1 ? "h-[420px]" : "h-80"
+                }`}
+              >
+                <img
+                  src={photo}
+                  alt={`Wedding memory ${index + 1}`}
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                />
+              </div>
+            ))}
           </div>
         </Container>
       </section>
