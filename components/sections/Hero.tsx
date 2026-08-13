@@ -64,7 +64,7 @@ export default function Hero() {
       <div className="relative z-10">
         <Container>
           <div className="flex min-h-screen items-center justify-center text-center">
-            <div className="mx-auto max-w-3xl">
+            <div className="mx-auto max-w-3xl -translate-y-[110px] sm:translate-y-0">
               <p className="mb-5 px-4 text-xs uppercase tracking-[4px] text-amber-700 sm:text-sm sm:tracking-[8px]">
                 Together With Their Families
               </p>
