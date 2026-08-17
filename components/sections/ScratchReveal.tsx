@@ -41,38 +41,39 @@ export default function ScratchReveal() {
           </h2>
         </div>
 
-        <div className="flex justify-center">
-          <div className="w-full max-w-2xl rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_25px_55px_rgba(111,70,13,0.28)]">
-            <div className="relative h-80 overflow-hidden rounded-[1.85rem] border border-white/20 md:h-96">
+        {/* Scratch Card */}
+        <div className="flex justify-center px-0">
+          <div className="w-[calc(100%-2rem)] max-w-2xl rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_25px_55px_rgba(111,70,13,0.28)] md:w-full">
+            <div className="relative h-64 overflow-hidden rounded-[1.85rem] border border-white/20 sm:h-72 md:h-96">
               <div className="absolute inset-0">
                 <Image
                   src="/images/card.png"
                   alt="Wedding date reveal"
                   fill
                   priority
-                  sizes="(max-width: 768px) 100vw, 672px"
+                  sizes="(max-width: 768px) calc(100vw - 2rem), 672px"
                   className="object-cover"
                 />
 
                 <div className="absolute inset-0 bg-[#2b1d0e]/45" />
 
-                <div className="absolute inset-0 flex items-center justify-center p-6">
-                  <div className="px-7 py-8 text-center md:px-12">
-                    <p className="text-xs uppercase tracking-[6px] text-white/80">
+                <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
+                  <div className="px-3 py-4 text-center sm:px-7 sm:py-8 md:px-12">
+                    <p className="text-[10px] uppercase tracking-[4px] text-white/80 sm:text-xs sm:tracking-[6px]">
                       Save the Date
                     </p>
 
-                    <div className="my-5 flex items-center justify-center gap-4">
-                      <span className="h-px w-12 bg-amber-200/70" />
+                    <div className="my-4 flex items-center justify-center gap-3 sm:my-5 sm:gap-4">
+                      <span className="h-px w-8 bg-amber-200/70 sm:w-12" />
                       <span className="h-1.5 w-1.5 rounded-full bg-amber-200" />
-                      <span className="h-px w-12 bg-amber-200/70" />
+                      <span className="h-px w-8 bg-amber-200/70 sm:w-12" />
                     </div>
 
-                    <h3 className="font-heading text-4xl text-white md:text-6xl">
+                    <h3 className="font-heading text-3xl text-white sm:text-4xl md:text-6xl">
                       31 JAN 2027
                     </h3>
 
-                    <p className="mt-4 text-sm uppercase tracking-[3px] text-amber-100">
+                    <p className="mt-3 text-[11px] uppercase tracking-[2px] text-amber-100 sm:mt-4 sm:text-sm sm:tracking-[3px]">
                       Sunday · 7:00 PM
                     </p>
                   </div>
@@ -100,6 +101,7 @@ export default function ScratchReveal() {
 
                   <span className="party-pop party-pop-left">🎉</span>
                   <span className="party-pop party-pop-right">🎉</span>
+
                   <span className="big-sparkle big-sparkle-one">✦</span>
                   <span className="big-sparkle big-sparkle-two">✦</span>
                   <span className="big-sparkle big-sparkle-three">✦</span>
