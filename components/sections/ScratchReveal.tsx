@@ -70,11 +70,13 @@ export default function ScratchReveal() {
                     </div>
 
                     <h3 className="font-heading text-3xl text-white sm:text-4xl md:text-6xl">
+                      <br>
+                      </br>
                       31 JAN 2027
                     </h3>
 
                     <p className="mt-3 text-[11px] uppercase tracking-[2px] text-amber-100 sm:mt-4 sm:text-sm sm:tracking-[3px]">
-                      Sunday · 7:00 PM
+                     
                     </p>
                   </div>
                 </div>
