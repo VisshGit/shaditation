@@ -26,6 +26,7 @@
   --white: #ffffff;
   --black: #000000;
 }
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -335,10 +336,10 @@ h6 {
   width: 76px;
   height: 1px;
   background: color-mix(
-  in srgb,
-  var(--gold-light) 55%,
-  transparent
-);
+    in srgb,
+    var(--gold-light) 55%,
+    transparent
+  );
 }
 
 .gate-divider i {
@@ -355,10 +356,6 @@ h6 {
   font-size: 1rem;
   line-height: 1.9;
 }
-
-/* =========================================================
-   GATE BUTTON
-========================================================= */
 
 /* =========================================================
    GATE BUTTON
@@ -416,9 +413,7 @@ h6 {
 
   animation: gate-button-breathe 3s ease-in-out infinite;
 
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
 .gate-button::before {
@@ -485,15 +480,9 @@ h6 {
   text-transform: uppercase;
 }
 
+/* Hover only zooms */
 .gate-button:hover:not(:disabled) {
-  transform: translateY(-3px);
-
-  box-shadow:
-    inset 0 0 0 5px rgba(0, 0, 0, 0.36),
-    inset 0 0 25px rgba(247, 211, 112, 0.16),
-    0 0 0 6px rgba(246, 215, 124, 0.15),
-    0 16px 42px rgba(0, 0, 0, 0.64),
-    0 0 36px rgba(246, 197, 75, 0.33);
+  transform: scale(1.05);
 }
 
 .gate-button:focus-visible {
