@@ -70,8 +70,6 @@ export default function ScratchReveal() {
                     </div>
 
                     <h3 className="font-heading text-3xl text-white sm:text-4xl md:text-6xl">
-                      <br>
-                      </br>
                       31 JAN 2027
                     </h3>
 
