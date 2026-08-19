@@ -10,7 +10,7 @@ export default function ThemeProvider({
 }) {
   useLayoutEffect(() => {
     const root = document.documentElement;
-    const { colors, fonts, style } = activeTheme;
+    const { colors, typography, style } = activeTheme;
 
     /* =========================
        THEME COLORS
@@ -72,39 +72,34 @@ export default function ThemeProvider({
     );
 
     /* =========================
-       THEME FONTS
-    ========================= */
+   THEME FONTS
+========================= */
 
-    root.style.setProperty(
-      "--theme-heading",
-      fonts.heading
-    );
+root.style.setProperty(
+  "--theme-heading",
+  typography.heading
+);
 
-    root.style.setProperty(
-      "--theme-body",
-      fonts.body
-    );
+root.style.setProperty(
+  "--theme-body",
+  typography.body
+);
 
-    if ("script" in fonts) {
+    if ("script" in typography) {
       root.style.setProperty(
         "--theme-script",
-        fonts.script as string
+        typography.script as string
       );
     }
 
-    /* =========================
-       GATE THEME
-    ========================= */
+   /* =========================
+   GATE THEME
+========================= */
 
-    const gateVariant =
-      "gate" in activeTheme
-        ? (activeTheme.gate as { variant?: string })?.variant
-        : undefined;
-
-    root.style.setProperty(
-      "--gate-variant",
-      gateVariant ?? "classic"
-    );
+root.style.setProperty(
+  "--gate-variant",
+  "classic"
+);
   }, []);
 
   return <>{children}</>;

@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect, useState } from "react";
-import { activeTheme } from "@/config/themes";
+
 
 type WelcomeGateProps = {
   children: ReactNode;
@@ -36,10 +36,7 @@ export default function WelcomeGate({
    * Client wedding data remains completely separate.
    */
 
-  const gateVariant =
-    "gate" in activeTheme && activeTheme.gate
-      ? activeTheme.gate.variant
-      : "classic";
+  const gateVariant = "classic";
 
   /*
    * =====================================================

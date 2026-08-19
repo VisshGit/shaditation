@@ -94,3 +94,9 @@ export function applyTheme(themeId: ThemeId) {
     theme.colors.mutedLight
   );
 }
+// =========================================================
+// ACTIVE THEME
+// Developer-controlled theme selection
+// =========================================================
+
+export const activeTheme = allThemes.classic;
