@@ -103,4 +103,4 @@ export function applyTheme(themeId: ThemeId) {
 // Developer-controlled theme selection
 // =========================================================
 
-export const activeTheme = allThemes.classic;
+export const activeTheme = allThemes.noir;
