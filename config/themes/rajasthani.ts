@@ -1,74 +1,40 @@
-const rajasthaniTheme = {
-  name: "rajasthani",
+export const rajasthaniThemes = {
+  "royal-rajasthani": {
+    id: "luxury-royal-rajasthani",
+    name: "Royal Rajasthani",
+    category: "luxury",
 
-  colors: {
-    background: "#fdf8f3",
-    foreground: "#2b1d0e",
-    primary: "#b68d40",
-    secondary: "#f5e6c8",
-    accent: "#8b5e34",
-  },
+    colors: {
+      background: "#fdf8f3",
+      foreground: "#2b1d0e",
+      primary: "#b68d40",
+      secondary: "#f5e6c8",
+      accent: "#8b5e34",
 
-  fonts: {
-    heading: "var(--font-cinzel)",
-    body: "var(--font-poppins)",
-    script: "var(--font-script)",
-  },
+      goldLight: "#f6d77c",
+      goldSoft: "#f8e8b5",
 
-  background: {
-    image: "",
-    opacity: 0.12,
-    blur: 0,
-  },
+      surface: "#ffffff",
+      surfaceSoft: "#faf3e8",
 
-  decorations: {
-    hero: {
-      left: "",
-      right: "",
+      border: "rgba(182, 141, 64, 0.25)",
+
+      muted: "#8f7565",
+      mutedLight: "#b9a99c",
     },
 
-    countdown: {
-      left: "",
-      right: "",
+    typography: {
+      heading: "Cinzel",
+      body: "Poppins",
     },
 
-    story: {
-      left: "",
-      right: "",
-    },
-
-    gallery: {
-      left: "",
-      right: "",
-    },
-
-    events: {
-      left: "",
-      right: "",
-    },
-
-    venue: {
-      left: "",
-      right: "",
-    },
-
-    rsvp: {
-      left: "",
-      right: "",
-    },
-
-    closing: {
-      left: "/images/closing-fort.png",
-      right: "",
+    style: {
+      radius: "large",
+      shadow: "royal",
+      decoration: "rajasthani",
     },
   },
+} as const;
 
-  motion: {
-    decorationFloat: "16s",
-    backgroundFloat: "24s",
-    entrance: "3.5s",
-    hover: "1.8s",
-  },
-};
-
-export default rajasthaniTheme;
+export type RajasthaniTheme =
+  (typeof rajasthaniThemes)[keyof typeof rajasthaniThemes];

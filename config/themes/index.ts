@@ -1,17 +1,20 @@
 import { basicThemes } from "./basic";
 import { premiumThemes } from "./premium";
 import { luxuryThemes } from "./luxury";
+import { rajasthaniThemes } from "./rajasthani";
 
 export const themes = {
   basic: basicThemes,
   premium: premiumThemes,
   luxury: luxuryThemes,
+  rajasthani: rajasthaniThemes,
 } as const;
 
 export const allThemes = {
   ...basicThemes,
   ...premiumThemes,
   ...luxuryThemes,
+  ...rajasthaniThemes,
 } as const;
 
 export type ThemeId = keyof typeof allThemes;
@@ -21,6 +24,7 @@ export {
   basicThemes,
   premiumThemes,
   luxuryThemes,
+  rajasthaniThemes,
 };
 
 /* =========================================================
