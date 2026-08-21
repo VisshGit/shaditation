@@ -111,39 +111,41 @@ export default function WelcomeGate({
             `}
           >
             <button
-              type="button"
-              onClick={openGate}
-              disabled={isOpening}
-              aria-label="Open the wedding invitation"
-              className="
-                group
-                relative
-                flex
-                h-[220px]
-                w-[220px]
-                items-center
-                justify-center
-                bg-transparent
-                p-0
-                transition-all
-                duration-700
-                hover:scale-105
-                focus:outline-none
-              "
-            >
-              <img
-                src="/themes/rajasthani/ganpati.PNG"
-                alt="Ganpati"
-                className="
-                  h-full
-                  w-full
-                  object-contain
-                  opacity-95
-                  drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]
-                "
-                draggable={false}
-              />
-            </button>
+  type="button"
+  onClick={openGate}
+  disabled={isOpening}
+  aria-label="Open the wedding invitation"
+  className="
+    group
+    relative
+    z-30
+    flex
+    h-[220px]
+    w-[220px]
+    items-center
+    justify-center
+    bg-transparent
+    p-0
+    transition-transform
+    duration-700
+    hover:scale-105
+    focus:outline-none
+  "
+>
+  <img
+    src="/themes/rajasthani/ganpati.png"
+    alt="Ganpati"
+    className="
+      block
+      h-full
+      w-full
+      object-contain
+      opacity-100
+      drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]
+    "
+    draggable={false}
+  />
+</button>
           </div>
 
           {/* SOFT CENTER BLUR */}
