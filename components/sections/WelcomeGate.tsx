@@ -66,11 +66,11 @@ export default function WelcomeGate({
             `}
           >
             <img
-              src={leftImage}
-              alt=""
-              className="h-full w-full object-cover"
-              draggable={false}
-            />
+  src={leftImage}
+  alt=""
+  className="h-full w-full object-cover object-[right_center] sm:object-center"
+  draggable={false}
+/>
           </div>
 
           {/* RIGHT GATE */}
@@ -86,11 +86,11 @@ export default function WelcomeGate({
             `}
           >
             <img
-              src={rightImage}
-              alt=""
-              className="h-full w-full object-cover"
-              draggable={false}
-            />
+  src={rightImage}
+  alt=""
+  className="h-full w-full object-cover object-[left_center] sm:object-center"
+  draggable={false}
+/>
           </div>
 
           {/* CENTER GANPATI OPEN BUTTON */}
@@ -132,7 +132,7 @@ export default function WelcomeGate({
               "
             >
               <img
-                src="/themes/rajasthani/ganpati.png"
+                src="/themes/rajasthani/ganpati.PNG"
                 alt="Ganpati"
                 className="
                   h-full
