@@ -65,7 +65,7 @@ export default function Hero() {
             className="pointer-events-none absolute inset-0 scale-[1.04] bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('/themes/rajasthani/hero-bg.png')",
+                "url('/themes/rajasthani/hero-bg.PNG')",
               filter: "blur(4px)",
             }}
           />
