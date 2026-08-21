@@ -54,7 +54,7 @@ export default function Hero() {
   }, [isRajasthani]);
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[var(--background)]">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
       <BackgroundMusic />
 
       {/* =====================================================
@@ -149,7 +149,7 @@ export default function Hero() {
           HERO CONTENT
       ===================================================== */}
 
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 w-full min-w-0">
         <Container>
           <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
             <div className="relative mx-auto w-full max-w-4xl translate-y-[10px] px-3 sm:translate-y-0 sm:px-0">
@@ -196,9 +196,11 @@ export default function Hero() {
                     mb-12
                     flex
                     w-full
+                    min-w-0
                     items-center
                     justify-center
                     gap-3
+                    overflow-hidden
                     whitespace-nowrap
                     font-heading
                     text-[2.2rem]
@@ -217,7 +219,7 @@ export default function Hero() {
 
                     drop-shadow-[0_3px_12px_rgba(0,0,0,0.65)]
 
-                    animate-[gold-shine_4s_ease-in-out_infinite]
+                    animate-[gold-shine_9s_ease-in-out_infinite]
 
                     sm:mb-14
                     sm:gap-5
