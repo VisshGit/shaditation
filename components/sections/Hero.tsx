@@ -152,7 +152,7 @@ export default function Hero() {
       <div className="relative z-10 w-full">
         <Container>
           <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
-            <div className="relative mx-auto w-full max-w-4xl translate-y-[20px] sm:translate-y-0">
+            <div className="relative mx-auto w-full max-w-4xl translate-y-[10px] px-3 sm:translate-y-0 sm:px-0">
 
               {/* Dark backdrop */}
               <div
@@ -162,30 +162,125 @@ export default function Hero() {
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
 
-                {/* Together */}
-                <p className="mb-8 text-center text-[11px] font-medium uppercase tracking-[3px] text-[var(--foreground)] drop-shadow-[0_2px_6px_rgba(255,255,255,0.35)] sm:mb-10 sm:text-sm sm:tracking-[7px]">
+                {/* =====================================================
+                    TOGETHER
+                ===================================================== */}
+
+                <p
+                  className="
+                    mb-16
+                    max-w-[320px]
+                    text-center
+                    text-[10px]
+                    font-medium
+                    uppercase
+                    leading-5
+                    tracking-[3px]
+                    text-[var(--foreground)]
+                    drop-shadow-[0_2px_6px_rgba(255,255,255,0.35)]
+                    sm:mb-16
+                    sm:max-w-none
+                    sm:text-sm
+                    sm:tracking-[7px]
+                  "
+                >
                   Together With Their Families
                 </p>
+                <br>
+                  </br>
+                  <br>
+                  </br>
 
-                {/* Names */}
-                <h1 className="mb-7 flex w-full items-center justify-center gap-2 whitespace-nowrap font-heading text-[2.25rem] font-semibold leading-none tracking-normal text-[var(--primary)] drop-shadow-[0_3px_12px_rgba(0,0,0,0.65)] sm:mb-8 sm:gap-4 sm:text-6xl md:text-8xl">
+                {/* =====================================================
+                    NAMES
+                ===================================================== */}
+
+                <h1
+                  className="
+                    mb-14
+                    flex
+                    w-full
+                    items-center
+                    justify-center
+                    gap-2
+                    whitespace-nowrap
+                    font-heading
+                    text-[2.2rem]
+                    font-semibold
+                    leading-[1.15]
+                    tracking-normal
+
+                    bg-gradient-to-r
+                    from-[#8f641d]
+                    via-[#fff1a8]
+                    via-[45%]
+                    to-[#b98224]
+                    bg-[length:220%_100%]
+                    bg-clip-text
+                    text-transparent
+
+                    drop-shadow-[0_3px_12px_rgba(0,0,0,0.65)]
+
+                    animate-[gold-shine_4s_ease-in-out_infinite]
+
+                    sm:mb-16
+                    sm:gap-4
+                    sm:text-6xl
+                    md:text-8xl
+                  "
+                >
+                  
+              
                   <span>Vishal</span>
 
-                  <span className="text-[var(--primary)] drop-shadow-[0_3px_10px_rgba(0,0,0,0.7)]">
+                  <span
+                    className="
+                      bg-gradient-to-r
+                      from-[#9b6b1f]
+                      via-[#fff4b0]
+                      to-[#c28a2b]
+                      bg-clip-text
+                      text-transparent
+                      drop-shadow-[0_3px_10px_rgba(0,0,0,0.7)]
+                    "
+                  >
                     &
                   </span>
 
                   <span>Varsha</span>
                 </h1>
 
-                {/* Invitation text */}
-                <p className="mb-8 max-w-[360px] text-center text-sm leading-7 text-[var(--white)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:mb-10 sm:max-w-xl sm:text-lg sm:leading-8">
+                {/* =====================================================
+                    INVITATION TEXT
+                ===================================================== */}
+                  <br>
+                  </br>
+                  <br>
+                  </br>
+                <p
+                  className="
+                    mb-12
+                    max-w-[330px]
+                    text-center
+                    text-sm
+                    leading-8
+                    text-[var(--white)]
+                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]
+                    sm:mb-14
+                    sm:max-w-xl
+                    sm:text-lg
+                    sm:leading-9
+                  "
+                >
                   Request the pleasure of your company
                   <br />
                   at the celebration of their marriage.
                 </p>
 
-                {/* Decorative divider */}
+                {/* =====================================================
+                    DECORATIVE DIVIDER
+                ===================================================== */}
+
                 <div className="flex items-center justify-center gap-4 sm:gap-5">
                   <span className="h-px w-14 bg-[var(--primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
 
@@ -195,7 +290,6 @@ export default function Hero() {
 
                   <span className="h-px w-14 bg-[var(--primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
                 </div>
-
               </div>
             </div>
           </div>
