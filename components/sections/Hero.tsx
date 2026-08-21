@@ -170,35 +170,35 @@ export default function Hero() {
                 <br />
 
                 {/* Names */}
-                <h1 className="mb-7 flex w-full items-center justify-center gap-2 whitespace-nowrap font-heading text-[2.25rem] font-semibold leading-none tracking-normal sm:mb-8 sm:gap-4 sm:text-6xl md:text-8xl">
-                  <span>Vishal</span>
+                <h1 className="mb-7 flex w-full items-center justify-center gap-2 whitespace-nowrap font-heading text-[2.25rem] font-semibold leading-none tracking-normal text-[#f1c96b] drop-shadow-[0_3px_12px_rgba(0,0,0,0.65)] sm:mb-8 sm:gap-4 sm:text-6xl md:text-8xl">
+                <span>Vishal</span>
 
-                  <span className="text-[var(--primary)]">
+                 <span className="text-[#d9a441] drop-shadow-[0_3px_10px_rgba(0,0,0,0.7)]">
                     &
-                  </span>
+                   </span>
 
-                  <span>Varsha</span>
+                 <span>Varsha</span>
                 </h1>
                 <br />
                 <br />
 
                 {/* Invitation text */}
-                <p className="mb-8 max-w-[360px] text-center text-sm leading-7 text-white sm:mb-10 sm:max-w-xl sm:text-lg sm:leading-8">
-                  Request the pleasure of your company
-                  <br />
-                  at the celebration of their marriage.
-                </p>
+                <p className="mb-8 max-w-[360px] text-center text-sm leading-7 text-[#eeeeea] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:mb-10 sm:max-w-xl sm:text-lg sm:leading-8">
+  Request the pleasure of your company
+  <br />
+  at the celebration of their marriage.
+</p>
 
                 {/* Decorative divider */}
                 <div className="flex items-center justify-center gap-4 sm:gap-5">
-                  <span className="h-px w-14 bg-white sm:w-20" />
+  <span className="h-px w-14 bg-[#d8d8d2] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
 
-                  <span className="text-lg text-white sm:text-xl">
-                    ✦
-                  </span>
+  <span className="text-lg text-[#f1f1ed] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:text-xl">
+    ✦
+  </span>
 
-                  <span className="h-px w-14 bg-white sm:w-20" />
-                </div>
+  <span className="h-px w-14 bg-[#d8d8d2] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
+</div>
 
               </div>
             </div>
