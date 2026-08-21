@@ -17,15 +17,17 @@ export default function WelcomeGate({
   const [isOpened, setIsOpened] = useState(false);
 
   const openGate = () => {
-    if (isOpening || isOpened) return;
+  if (isOpening || isOpened) return;
 
-    setIsOpening(true);
+  // Start wedding music from the user's tap
+  window.dispatchEvent(new Event("start-wedding-music"));
 
-    // Give the gate animation time to complete
-    window.setTimeout(() => {
-      setIsOpened(true);
-    }, 3200);
-  };
+  setIsOpening(true);
+
+  window.setTimeout(() => {
+    setIsOpened(true);
+  }, 3200);
+};
 
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden">

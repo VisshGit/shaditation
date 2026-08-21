@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Container from "@/components/ui/Container";
 import BackgroundMusic from "@/components/ui/BackgroundMusic";
+import { activeTheme } from "@/config/themes";
 
 const fireSparks = Array.from({ length: 34 }, (_, index) => ({
   left: `${((index * 17 + 3) % 96) + 2}%`,
@@ -27,10 +28,11 @@ export default function Hero() {
   const [showSparks, setShowSparks] = useState(false);
   const [fadeEffects, setFadeEffects] = useState(false);
 
-  const activeTheme = "rajasthani";
-  const isRajasthani = activeTheme === "rajasthani";
+  const isRajasthani = activeTheme === "royal-rajasthani";
 
   useEffect(() => {
+    if (!isRajasthani) return;
+
     const sparksTimer = window.setTimeout(() => {
       setShowSparks(true);
     }, 3500);
@@ -49,7 +51,7 @@ export default function Hero() {
       window.clearTimeout(fadeTimer);
       window.clearTimeout(removeTimer);
     };
-  }, []);
+  }, [isRajasthani]);
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[var(--background)]">
@@ -75,7 +77,7 @@ export default function Hero() {
       )}
 
       {/* =====================================================
-          BACKGROUND LIGHTS
+          THEME BACKGROUND LIGHTS
       ===================================================== */}
 
       <div className="pointer-events-none absolute inset-0">
@@ -150,11 +152,9 @@ export default function Hero() {
       <div className="relative z-10 w-full">
         <Container>
           <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
-
-            {/* Text composition */}
             <div className="relative mx-auto w-full max-w-4xl translate-y-[20px] sm:translate-y-0">
 
-              {/* Dark blurred text backdrop */}
+              {/* Dark backdrop */}
               <div
                 className="pointer-events-none absolute left-1/2 top-1/2 h-[360px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
                 aria-hidden="true"
@@ -163,42 +163,38 @@ export default function Hero() {
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
 
                 {/* Together */}
-                <p className="mb-8 text-center text-[11px] font-medium uppercase tracking-[3px] text-[#2b1d0e] sm:mb-10 sm:text-sm sm:tracking-[7px]">
+                <p className="mb-8 text-center text-[11px] font-medium uppercase tracking-[3px] text-[var(--foreground)] drop-shadow-[0_2px_6px_rgba(255,255,255,0.35)] sm:mb-10 sm:text-sm sm:tracking-[7px]">
                   Together With Their Families
                 </p>
-                <br />
-                <br />
 
                 {/* Names */}
-                <h1 className="mb-7 flex w-full items-center justify-center gap-2 whitespace-nowrap font-heading text-[2.25rem] font-semibold leading-none tracking-normal text-[#f1c96b] drop-shadow-[0_3px_12px_rgba(0,0,0,0.65)] sm:mb-8 sm:gap-4 sm:text-6xl md:text-8xl">
-                <span>Vishal</span>
+                <h1 className="mb-7 flex w-full items-center justify-center gap-2 whitespace-nowrap font-heading text-[2.25rem] font-semibold leading-none tracking-normal text-[var(--primary)] drop-shadow-[0_3px_12px_rgba(0,0,0,0.65)] sm:mb-8 sm:gap-4 sm:text-6xl md:text-8xl">
+                  <span>Vishal</span>
 
-                 <span className="text-[#d9a441] drop-shadow-[0_3px_10px_rgba(0,0,0,0.7)]">
+                  <span className="text-[var(--primary)] drop-shadow-[0_3px_10px_rgba(0,0,0,0.7)]">
                     &
-                   </span>
+                  </span>
 
-                 <span>Varsha</span>
+                  <span>Varsha</span>
                 </h1>
-                <br />
-                <br />
 
                 {/* Invitation text */}
-                <p className="mb-8 max-w-[360px] text-center text-sm leading-7 text-[#eeeeea] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:mb-10 sm:max-w-xl sm:text-lg sm:leading-8">
-  Request the pleasure of your company
-  <br />
-  at the celebration of their marriage.
-</p>
+                <p className="mb-8 max-w-[360px] text-center text-sm leading-7 text-[var(--white)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:mb-10 sm:max-w-xl sm:text-lg sm:leading-8">
+                  Request the pleasure of your company
+                  <br />
+                  at the celebration of their marriage.
+                </p>
 
                 {/* Decorative divider */}
                 <div className="flex items-center justify-center gap-4 sm:gap-5">
-  <span className="h-px w-14 bg-[#d8d8d2] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
+                  <span className="h-px w-14 bg-[var(--primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
 
-  <span className="text-lg text-[#f1f1ed] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:text-xl">
-    ✦
-  </span>
+                  <span className="text-lg text-[var(--primary)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:text-xl">
+                    ✦
+                  </span>
 
-  <span className="h-px w-14 bg-[#d8d8d2] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
-</div>
+                  <span className="h-px w-14 bg-[var(--primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
+                </div>
 
               </div>
             </div>
@@ -207,16 +203,16 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          SINGLE WEBSITE SCROLL INDICATOR
+          SCROLL INDICATOR
       ===================================================== */}
 
       <div className="absolute bottom-20 left-0 right-0 z-20 flex justify-center text-center">
         <div className="scroll-indicator">
-          <span className="text-xs uppercase tracking-[5px] text-[#2b1d0e]">
+          <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
             SCROLL
           </span>
 
-          <div className="scroll-line text-[#2b1d0e]" />
+          <div className="scroll-line text-[var(--foreground)]" />
         </div>
       </div>
     </section>
