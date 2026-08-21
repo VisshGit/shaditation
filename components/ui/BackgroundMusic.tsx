@@ -59,13 +59,36 @@ export default function BackgroundMusic() {
       type="button"
       onClick={toggleMusic}
       aria-label={
-        isPlaying
-          ? "Pause background music"
-          : "Play background music"
+        isPlaying ? "Mute wedding music" : "Play wedding music"
       }
-      className="fixed bottom-5 left-5 z-[90] grid h-11 w-11 place-items-center rounded-full border border-amber-100/70 bg-[#2d1d15]/90 text-lg text-[#f8d98a] shadow-lg backdrop-blur transition hover:scale-105 hover:bg-[#4b2e1c] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400"
+      title={isPlaying ? "Mute music" : "Play music"}
+      className="
+        fixed
+        bottom-[calc(1rem+env(safe-area-inset-bottom))]
+        left-4
+        z-[90]
+        grid
+        h-11
+        w-11
+        place-items-center
+        rounded-full
+        border
+        border-amber-100/70
+        bg-[#2d1d15]/90
+        text-lg
+        text-[#f8d98a]
+        shadow-lg
+        backdrop-blur-md
+        transition-transform
+        duration-300
+        hover:scale-105
+        focus:outline-none
+        focus-visible:ring-2
+        focus-visible:ring-amber-400
+        active:scale-95
+      "
     >
-      {isPlaying ? "❚❚" : "♫"}
+      {isPlaying ? "🔊" : "🔇"}
     </button>
   );
 }
