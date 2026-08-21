@@ -51,7 +51,7 @@ export type ThemeCategory = keyof typeof themes;
    Change theme ONLY here
 ========================================================= */
 
-export const activeTheme: ThemeId = "royal-rajasthani";
+export const activeTheme: ThemeId = "noir";
 
 /* =========================================================
    APPLY THEME
