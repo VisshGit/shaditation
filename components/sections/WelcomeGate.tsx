@@ -30,7 +30,7 @@ export default function WelcomeGate({
 };
 
   return (
-    <main className="relative min-h-screen w-full overflow-x-hidden">
+    <main className="relative min-h-screen w-full overflow-x-clip">
       {/* =====================================================
           WEBSITE CONTENT
       ===================================================== */}

@@ -38,8 +38,8 @@ export default function ScrollReveal({
         observer.unobserve(entry.target);
       },
       {
-        threshold: 0.12,
-        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.08,
+        rootMargin: "0px 0px -5% 0px",
       }
     );
 
@@ -51,16 +51,14 @@ export default function ScrollReveal({
   return (
     <div
       ref={ref}
-      className={[
-        "scroll-reveal",
-        visible ? "scroll-reveal-visible" : "",
-        className,
-      ]
-        .filter(Boolean)
-        .join(" ")}
-      style={{
-        "--reveal-delay": `${delay}ms`,
-      } as React.CSSProperties}
+      className={`scroll-reveal ${
+        visible ? "scroll-reveal-visible" : ""
+      } ${className}`}
+      style={
+        {
+          "--reveal-delay": `${delay}ms`,
+        } as React.CSSProperties
+      }
     >
       {children}
     </div>
