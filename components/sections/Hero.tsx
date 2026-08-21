@@ -152,7 +152,7 @@ export default function Hero() {
           <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
 
             {/* Text composition */}
-            <div className="relative mx-auto w-full max-w-4xl -translate-y-[70px] sm:translate-y-0">
+            <div className="relative mx-auto w-full max-w-4xl translate-y-[20px] sm:translate-y-0">
 
               {/* Dark blurred text backdrop */}
               <div
