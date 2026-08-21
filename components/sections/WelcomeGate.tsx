@@ -4,14 +4,14 @@ import { ReactNode, useState } from "react";
 
 type WelcomeGateProps = {
   children: ReactNode;
-  leftImage: string;
-  rightImage: string;
+  leftImage?: string;
+  rightImage?: string;
 };
 
 export default function WelcomeGate({
   children,
-  leftImage,
-  rightImage,
+  leftImage = "/images/gate-left.jpg",
+  rightImage = "/images/gate-right.jpg",
 }: WelcomeGateProps) {
   const [isOpening, setIsOpening] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
@@ -53,9 +53,7 @@ export default function WelcomeGate({
             isOpening ? "pointer-events-none" : ""
           }`}
         >
-          {/* =================================================
-              LEFT GATE
-          ================================================= */}
+          {/* LEFT GATE */}
 
           <div
             className={`
@@ -64,11 +62,7 @@ export default function WelcomeGate({
               transition-transform
               duration-[3000ms]
               ease-[cubic-bezier(0.77,0,0.18,1)]
-              ${
-                isOpening
-                  ? "-translate-x-full"
-                  : "translate-x-0"
-              }
+              ${isOpening ? "-translate-x-full" : "translate-x-0"}
             `}
           >
             <img
@@ -79,9 +73,7 @@ export default function WelcomeGate({
             />
           </div>
 
-          {/* =================================================
-              RIGHT GATE
-          ================================================= */}
+          {/* RIGHT GATE */}
 
           <div
             className={`
@@ -90,11 +82,7 @@ export default function WelcomeGate({
               transition-transform
               duration-[3000ms]
               ease-[cubic-bezier(0.77,0,0.18,1)]
-              ${
-                isOpening
-                  ? "translate-x-full"
-                  : "translate-x-0"
-              }
+              ${isOpening ? "translate-x-full" : "translate-x-0"}
             `}
           >
             <img
@@ -105,9 +93,7 @@ export default function WelcomeGate({
             />
           </div>
 
-          {/* =================================================
-              CENTER OPEN BUTTON
-          ================================================= */}
+          {/* CENTER GANPATI OPEN BUTTON */}
 
           <div
             className={`
@@ -125,60 +111,58 @@ export default function WelcomeGate({
             `}
           >
             <button
-  type="button"
-  onClick={openGate}
-  disabled={isOpening}
-  aria-label="Open the wedding invitation"
-  className="
-    group
-    relative
-    flex
-    h-[220px]
-    w-[220px]
-    items-center
-    justify-center
-    bg-transparent
-    p-0
-    transition-all
-    duration-700
-    hover:scale-105
-    focus:outline-none
-  "
->
-  <img
-    src="/themes/rajasthani/ganpati.png"
-    alt="Ganpati"
-    className="
-      h-full
-      w-full
-      object-contain
-      opacity-95
-      drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]
-    "
-    draggable={false}
-  />
-</button>
+              type="button"
+              onClick={openGate}
+              disabled={isOpening}
+              aria-label="Open the wedding invitation"
+              className="
+                group
+                relative
+                flex
+                h-[220px]
+                w-[220px]
+                items-center
+                justify-center
+                bg-transparent
+                p-0
+                transition-all
+                duration-700
+                hover:scale-105
+                focus:outline-none
+              "
+            >
+              <img
+                src="/themes/rajasthani/ganpati.png"
+                alt="Ganpati"
+                className="
+                  h-full
+                  w-full
+                  object-contain
+                  opacity-95
+                  drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]
+                "
+                draggable={false}
+              />
+            </button>
           </div>
 
-          {/* =================================================
-              SOFT CENTER BLUR
-          ================================================= */}
+          {/* SOFT CENTER BLUR */}
 
           <div
-  className={`
-    pointer-events-none
-    absolute inset-0
-    z-10
-    bg-black/5
-    transition-opacity
-    duration-[3000ms]
-    ${
-      isOpening
-        ? "opacity-0"
-        : "opacity-100"
-    }
-  `}
-/>
+            className={`
+              pointer-events-none
+              absolute inset-0
+              z-10
+              bg-black/5
+              transition-opacity
+              duration-[3000ms]
+              ${
+                isOpening
+                  ? "opacity-0"
+                  : "opacity-100"
+              }
+            `}
+          />
         </div>
       )}
     </main>
