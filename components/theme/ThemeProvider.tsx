@@ -1,7 +1,7 @@
 "use client";
 
 import { useLayoutEffect } from "react";
-import { activeTheme } from "@/config/themes";
+import { activeTheme, allThemes } from "@/config/themes";
 
 export default function ThemeProvider({
   children,
@@ -10,7 +10,13 @@ export default function ThemeProvider({
 }) {
   useLayoutEffect(() => {
     const root = document.documentElement;
-    const { colors, typography, style } = activeTheme;
+
+    // Active theme ID se actual theme object
+    const theme = allThemes[activeTheme];
+
+    if (!theme) return;
+
+    const { colors, typography, style } = theme;
 
     /* =========================
        THEME COLORS
@@ -18,7 +24,6 @@ export default function ThemeProvider({
 
     root.style.setProperty("--background", colors.background);
     root.style.setProperty("--foreground", colors.foreground);
-
     root.style.setProperty("--primary", colors.primary);
     root.style.setProperty("--secondary", colors.secondary);
     root.style.setProperty("--accent", colors.accent);
@@ -72,18 +77,18 @@ export default function ThemeProvider({
     );
 
     /* =========================
-   THEME FONTS
-========================= */
+       THEME FONTS
+    ========================= */
 
-root.style.setProperty(
-  "--theme-heading",
-  typography.heading
-);
+    root.style.setProperty(
+      "--theme-heading",
+      typography.heading
+    );
 
-root.style.setProperty(
-  "--theme-body",
-  typography.body
-);
+    root.style.setProperty(
+      "--theme-body",
+      typography.body
+    );
 
     if ("script" in typography) {
       root.style.setProperty(
@@ -92,14 +97,14 @@ root.style.setProperty(
       );
     }
 
-   /* =========================
-   GATE THEME
-========================= */
+    /* =========================
+       GATE THEME
+    ========================= */
 
-root.style.setProperty(
-  "--gate-variant",
-  "classic"
-);
+    root.style.setProperty(
+      "--gate-variant",
+      "classic"
+    );
   }, []);
 
   return <>{children}</>;

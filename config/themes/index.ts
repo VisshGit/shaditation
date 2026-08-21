@@ -38,13 +38,20 @@ export const allThemes = {
   ...luxuryThemes,
   ...rajasthaniThemes,
 } as const;
+
 /* =========================================================
    TYPES
 ========================================================= */
 
 export type ThemeId = keyof typeof allThemes;
-
 export type ThemeCategory = keyof typeof themes;
+
+/* =========================================================
+   ACTIVE THEME
+   Change theme ONLY here
+========================================================= */
+
+export const activeTheme: ThemeId = "royal-rajasthani";
 
 /* =========================================================
    APPLY THEME
@@ -70,9 +77,3 @@ export function applyTheme(themeId: ThemeId) {
   root.style.setProperty("--muted", theme.colors.muted);
   root.style.setProperty("--muted-light", theme.colors.mutedLight);
 }
-
-/* =========================================================
-   ACTIVE THEME
-========================================================= */
-
-export const activeTheme = allThemes.noir;
