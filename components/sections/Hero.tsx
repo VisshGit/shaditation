@@ -168,7 +168,7 @@ export default function Hero() {
 
                 <p
                   className="
-                    mb-16
+                    mb-12
                     max-w-[320px]
                     text-center
                     text-[10px]
@@ -178,7 +178,7 @@ export default function Hero() {
                     tracking-[3px]
                     text-[var(--foreground)]
                     drop-shadow-[0_2px_6px_rgba(255,255,255,0.35)]
-                    sm:mb-16
+                    sm:mb-14
                     sm:max-w-none
                     sm:text-sm
                     sm:tracking-[7px]
@@ -186,10 +186,6 @@ export default function Hero() {
                 >
                   Together With Their Families
                 </p>
-                <br>
-                  </br>
-                  <br>
-                  </br>
 
                 {/* =====================================================
                     NAMES
@@ -197,12 +193,12 @@ export default function Hero() {
 
                 <h1
                   className="
-                    mb-14
+                    mb-12
                     flex
                     w-full
                     items-center
                     justify-center
-                    gap-2
+                    gap-3
                     whitespace-nowrap
                     font-heading
                     text-[2.2rem]
@@ -223,14 +219,12 @@ export default function Hero() {
 
                     animate-[gold-shine_4s_ease-in-out_infinite]
 
-                    sm:mb-16
-                    sm:gap-4
+                    sm:mb-14
+                    sm:gap-5
                     sm:text-6xl
                     md:text-8xl
                   "
                 >
-                  
-              
                   <span>Vishal</span>
 
                   <span
@@ -253,20 +247,17 @@ export default function Hero() {
                 {/* =====================================================
                     INVITATION TEXT
                 ===================================================== */}
-                  <br>
-                  </br>
-                  <br>
-                  </br>
+
                 <p
                   className="
-                    mb-12
+                    mb-10
                     max-w-[330px]
                     text-center
                     text-sm
                     leading-8
                     text-[var(--white)]
                     drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]
-                    sm:mb-14
+                    sm:mb-12
                     sm:max-w-xl
                     sm:text-lg
                     sm:leading-9
