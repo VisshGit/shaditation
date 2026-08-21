@@ -50,7 +50,9 @@ export const gateVariants = {
   },
 
   "royal-rajasthani": {
-  category: "luxury",
-  variant: "royal-rajasthani",
-},
+    category: "rajasthani",
+    variant: "royal-rajasthani",
+  },
 } as const;
+
+export type GateVariant = (typeof gateVariants)[keyof typeof gateVariants];

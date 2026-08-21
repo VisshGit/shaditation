@@ -34,9 +34,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${poppins.variable} ${greatVibes.variable} h-full antialiased`}
+      className={`${cinzel.variable} ${poppins.variable} ${greatVibes.variable}`}
     >
-      <body className="min-h-screen">
+      <body className="min-h-screen w-full overflow-x-hidden">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
