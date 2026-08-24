@@ -77,7 +77,7 @@ export default function Countdown() {
 
           // 👇 APNI IMAGE KA PATH YAHAAN SET KARNA
           backgroundImage:
-            "url('/images/countdown.jpg')",
+            "url('/images/cdbg.PNG')",
 
           backgroundAttachment: "fixed",
         }}
