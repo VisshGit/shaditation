@@ -45,7 +45,7 @@ html {
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 body {
   width: 100%;
@@ -58,7 +58,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
-  -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: auto;
 }
 #__next {
