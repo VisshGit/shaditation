@@ -45,7 +45,7 @@ html {
   padding: 0;
   overflow-x: hidden;
   overflow-y: auto;
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 body {
   width: 100%;
