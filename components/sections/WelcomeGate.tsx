@@ -27,7 +27,7 @@ export default function WelcomeGate({
     // Remove gate after the opening animation finishes
     window.setTimeout(() => {
       setIsOpened(true);
-    }, 3200);
+    }, 3000);
   };
 
   return (
