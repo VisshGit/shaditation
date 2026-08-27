@@ -37,14 +37,14 @@ export default function WelcomeGate({
       ===================================================== */}
 
       <div
-        className={`w-full min-h-screen transition-all duration-[3000ms] ease-in-out ${
-          isOpening
-            ? "scale-[1.01] opacity-100 blur-0"
-            : "scale-100 opacity-0 blur-[14px]"
-        }`}
-      >
-        {children}
-      </div>
+  className={`w-full min-h-screen transition-all duration-[3000ms] ease-in-out ${
+    isOpening
+      ? "scale-[1.01] opacity-100 blur-0"
+      : "scale-100 opacity-100 blur-[14px]"
+  }`}
+>
+  {children}
+</div>
 
       {/* =====================================================
           WELCOME GATE
