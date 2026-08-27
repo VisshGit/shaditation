@@ -24,27 +24,37 @@ export default function WelcomeGate({
 
     setIsOpening(true);
 
-    // Remove gate after the opening animation finishes
+    // Remove gate exactly after the gate animation finishes
     window.setTimeout(() => {
       setIsOpened(true);
     }, 3000);
   };
 
   return (
-    <main className="relative min-h-screen w-full overflow-x-clip">
+    <div className="relative min-h-screen w-full overflow-x-clip">
       {/* =====================================================
           WEBSITE CONTENT
       ===================================================== */}
 
       <div
-  className={`w-full min-h-screen transition-all duration-[3000ms] ease-in-out ${
-    isOpening
-      ? "scale-[1.01] opacity-100 blur-0"
-      : "scale-100 opacity-100 blur-[14px]"
-  }`}
->
-  {children}
-</div>
+        className={`
+          relative
+          z-0
+          min-h-screen
+          w-full
+          transform-gpu
+          transition-all
+          duration-[3000ms]
+          ease-in-out
+          ${
+            isOpening
+              ? "scale-[1.01] opacity-100 blur-0"
+              : "scale-100 opacity-100 blur-[14px]"
+          }
+        `}
+      >
+        {children}
+      </div>
 
       {/* =====================================================
           WELCOME GATE
@@ -52,23 +62,54 @@ export default function WelcomeGate({
 
       {!isOpened && (
         <div
-          className={`fixed inset-0 z-[9999] h-[100dvh] w-full overflow-hidden bg-black ${
-            isOpening ? "pointer-events-none" : "pointer-events-auto"
-          }`}
+          className={`
+            fixed
+            inset-0
+            z-[9999]
+            h-[100dvh]
+            w-full
+            overflow-hidden
+            bg-black
+            ${
+              isOpening
+                ? "pointer-events-none"
+                : "pointer-events-auto"
+            }
+          `}
         >
           {/* =================================================
               LEFT GATE
           ================================================= */}
 
           <div
-            className={`absolute inset-y-0 left-0 w-1/2 overflow-hidden transition-transform duration-[3000ms] ease-[cubic-bezier(0.77,0,0.18,1)] ${
-              isOpening ? "-translate-x-full" : "translate-x-0"
-            }`}
+            className={`
+              absolute
+              inset-y-0
+              left-0
+              w-1/2
+              overflow-hidden
+              transition-transform
+              duration-[3000ms]
+              ease-[cubic-bezier(0.77,0,0.18,1)]
+              ${
+                isOpening
+                  ? "-translate-x-full"
+                  : "translate-x-0"
+              }
+            `}
           >
             <img
               src={leftImage}
               alt=""
-              className="block h-full w-full select-none object-cover object-[right_center] sm:object-center"
+              className="
+                block
+                h-full
+                w-full
+                select-none
+                object-cover
+                object-[right_center]
+                sm:object-center
+              "
               draggable={false}
             />
           </div>
@@ -78,14 +119,34 @@ export default function WelcomeGate({
           ================================================= */}
 
           <div
-            className={`absolute inset-y-0 right-0 w-1/2 overflow-hidden transition-transform duration-[3000ms] ease-[cubic-bezier(0.77,0,0.18,1)] ${
-              isOpening ? "translate-x-full" : "translate-x-0"
-            }`}
+            className={`
+              absolute
+              inset-y-0
+              right-0
+              w-1/2
+              overflow-hidden
+              transition-transform
+              duration-[3000ms]
+              ease-[cubic-bezier(0.77,0,0.18,1)]
+              ${
+                isOpening
+                  ? "translate-x-full"
+                  : "translate-x-0"
+              }
+            `}
           >
             <img
               src={rightImage}
               alt=""
-              className="block h-full w-full select-none object-cover object-[left_center] sm:object-center"
+              className="
+                block
+                h-full
+                w-full
+                select-none
+                object-cover
+                object-[left_center]
+                sm:object-center
+              "
               draggable={false}
             />
           </div>
@@ -95,9 +156,22 @@ export default function WelcomeGate({
           ================================================= */}
 
           <div
-            className={`absolute inset-0 z-20 flex items-center justify-center transition-all duration-[1400ms] ease-out ${
-              isOpening ? "scale-90 opacity-0" : "scale-100 opacity-100"
-            }`}
+            className={`
+              absolute
+              inset-0
+              z-20
+              flex
+              items-center
+              justify-center
+              transition-all
+              duration-[1400ms]
+              ease-out
+              ${
+                isOpening
+                  ? "scale-90 opacity-0"
+                  : "scale-100 opacity-100"
+              }
+            `}
           >
             <button
               type="button"
@@ -157,6 +231,6 @@ export default function WelcomeGate({
           />
         </div>
       )}
-    </main>
+    </div>
   );
 }
