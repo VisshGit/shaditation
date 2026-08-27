@@ -4,37 +4,36 @@ import { useEffect, useRef, useState } from "react";
 
 export default function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const startMusic = async () => {
     if (!audioRef.current) {
       const audio = new Audio("/music/wedding-music.mp3");
+
       audio.loop = true;
       audio.volume = 0.35;
       audioRef.current = audio;
     }
 
     try {
+      audioRef.current.muted = false;
       await audioRef.current.play();
+
       setIsPlaying(true);
+      setIsMuted(false);
     } catch (error) {
       console.error("Wedding music could not start:", error);
     }
   };
 
-  const toggleMusic = async () => {
-    if (!audioRef.current) {
-      await startMusic();
-      return;
-    }
+  const toggleMute = () => {
+    if (!audioRef.current) return;
 
-    if (audioRef.current.paused) {
-      await audioRef.current.play();
-      setIsPlaying(true);
-    } else {
-      audioRef.current.pause();
-      setIsPlaying(false);
-    }
+    const nextMutedState = !audioRef.current.muted;
+
+    audioRef.current.muted = nextMutedState;
+    setIsMuted(nextMutedState);
   };
 
   useEffect(() => {
@@ -57,11 +56,9 @@ export default function BackgroundMusic() {
   return (
     <button
       type="button"
-      onClick={toggleMusic}
-      aria-label={
-        isPlaying ? "Mute wedding music" : "Play wedding music"
-      }
-      title={isPlaying ? "Mute music" : "Play music"}
+      onClick={toggleMute}
+      aria-label={isMuted ? "Unmute wedding music" : "Mute wedding music"}
+      title={isMuted ? "Unmute music" : "Mute music"}
       className="
         fixed
         bottom-[calc(1rem+env(safe-area-inset-bottom))]
@@ -88,7 +85,7 @@ export default function BackgroundMusic() {
         active:scale-95
       "
     >
-      {isPlaying ? "🔊" : "🔇"}
+      {isPlaying && !isMuted ? "🔊" : "🔇"}
     </button>
   );
 }
