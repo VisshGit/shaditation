@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 type WelcomeGateProps = {
   children: ReactNode;
@@ -22,27 +22,31 @@ export default function WelcomeGate({
     // Start wedding music from the user's tap
     window.dispatchEvent(new Event("start-wedding-music"));
 
+    // Start gate animation
     setIsOpening(true);
-
-    // Remove gate exactly after the gate animation finishes
-    window.setTimeout(() => {
-      setIsOpened(true);
-    }, 3000);
   };
 
+  useEffect(() => {
+    if (!isOpening) return;
+
+    // Gate animation = 3000ms
+    const timer = window.setTimeout(() => {
+      setIsOpened(true);
+    }, 3000);
+
+    return () => window.clearTimeout(timer);
+  }, [isOpening]);
+
   return (
-    <div className="relative min-h-screen w-full overflow-x-clip">
+    <main className="relative min-h-screen w-full overflow-x-clip">
       {/* =====================================================
           WEBSITE CONTENT
       ===================================================== */}
 
       <div
         className={`
-          relative
-          z-0
           min-h-screen
           w-full
-          transform-gpu
           transition-all
           duration-[3000ms]
           ease-in-out
@@ -77,9 +81,7 @@ export default function WelcomeGate({
             }
           `}
         >
-          {/* =================================================
-              LEFT GATE
-          ================================================= */}
+          {/* LEFT GATE */}
 
           <div
             className={`
@@ -101,22 +103,12 @@ export default function WelcomeGate({
             <img
               src={leftImage}
               alt=""
-              className="
-                block
-                h-full
-                w-full
-                select-none
-                object-cover
-                object-[right_center]
-                sm:object-center
-              "
+              className="block h-full w-full select-none object-cover object-[right_center] sm:object-center"
               draggable={false}
             />
           </div>
 
-          {/* =================================================
-              RIGHT GATE
-          ================================================= */}
+          {/* RIGHT GATE */}
 
           <div
             className={`
@@ -138,22 +130,12 @@ export default function WelcomeGate({
             <img
               src={rightImage}
               alt=""
-              className="
-                block
-                h-full
-                w-full
-                select-none
-                object-cover
-                object-[left_center]
-                sm:object-center
-              "
+              className="block h-full w-full select-none object-cover object-[left_center] sm:object-center"
               draggable={false}
             />
           </div>
 
-          {/* =================================================
-              CENTER GANPATI OPEN BUTTON
-          ================================================= */}
+          {/* CENTER GANPATI */}
 
           <div
             className={`
@@ -216,9 +198,7 @@ export default function WelcomeGate({
             </button>
           </div>
 
-          {/* =================================================
-              SOFT CENTER OVERLAY
-          ================================================= */}
+          {/* SOFT CENTER OVERLAY */}
 
           <div
             className="
@@ -231,6 +211,6 @@ export default function WelcomeGate({
           />
         </div>
       )}
-    </div>
+    </main>
   );
 }
