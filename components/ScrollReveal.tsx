@@ -38,8 +38,8 @@ export default function ScrollReveal({
         observer.unobserve(entry.target);
       },
       {
-        threshold: 0.08,
-        rootMargin: "0px 0px -5% 0px",
+        threshold: 0.01,
+        rootMargin: "0px 0px -10% 0px",
       }
     );
 
