@@ -662,23 +662,18 @@ img {
 }
 
 /* =========================================================
-   SCROLL REVEAL
-   Lightweight + GPU-friendly
-   ========================================================= */
+SCROLL REVEAL
+========================================================= */
 
 .scroll-reveal {
   opacity: 0;
-
-  transform: translate3d(0, 20px, 0);
-
+  transform: translate3d(0, 18px, 0);
   transition:
-    opacity 650ms ease-out,
-    transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
-
+    opacity 600ms ease,
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--reveal-delay, 0ms);
-
+  will-change: opacity, transform;
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 .scroll-reveal-visible {
@@ -686,6 +681,13 @@ img {
   transform: translate3d(0, 0, 0);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 /* =========================================================
    HERO SCROLL INDICATOR
    ========================================================= */
