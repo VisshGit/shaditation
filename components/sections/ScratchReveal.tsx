@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from "react";
@@ -85,11 +86,13 @@ export default function ScratchReveal() {
               </div>
 
               {/* Scratch Layer */}
-              <div className="absolute inset-0 z-30 select-none">
-                <ScratchCanvas
-                  onReveal={() => setRevealed(true)}
-                />
-              </div>
+              {!revealed && (
+                <div className="absolute inset-0 z-30 select-none">
+                  <ScratchCanvas
+                    onReveal={() => setRevealed(true)}
+                  />
+                </div>
+              )}
 
               {/* Reveal Effects */}
               {revealed && (
