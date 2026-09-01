@@ -60,28 +60,29 @@ export default function BackgroundMusic() {
       aria-label={isMuted ? "Unmute wedding music" : "Mute wedding music"}
       title={isMuted ? "Unmute music" : "Mute music"}
       className="
-        fixed
-        bottom-[calc(1rem+env(safe-area-inset-bottom))]
-        left-4
-        z-[90]
-        grid
-        h-11
-        w-11
-        place-items-center
-        rounded-full
-        border
-        border-amber-100/70
-        bg-[#2d1d15]/90
-        text-lg
-        text-[#f8d98a]
-        shadow-lg
-        backdrop-blur-md
-        transition-transform
-        duration-300
-        hover:scale-105
-        focus:outline-none
-        focus-visible:ring-2
-        focus-visible:ring-amber-400
+  fixed
+  bottom-[calc(1rem+env(safe-area-inset-bottom))]
+  left-4
+  z-[9990]
+  grid
+  h-11
+  w-11
+  place-items-center
+  rounded-full
+  border
+  border-amber-100/70
+  bg-[#2d1d15]/90
+  text-lg
+  text-[#f8d98a]
+  shadow-lg
+  backdrop-blur-md
+  transition-transform
+  duration-300
+  hover:scale-105
+  active:scale-95
+  focus:outline-none
+  focus-visible:ring-2
+  focus-visible:ring-amber-400
         active:scale-95
       "
     >
