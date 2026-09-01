@@ -30,10 +30,10 @@ export default function BackgroundMusic() {
   const toggleMute = () => {
     if (!audioRef.current) return;
 
-    const nextMutedState = !audioRef.current.muted;
+    const muted = !audioRef.current.muted;
 
-    audioRef.current.muted = nextMutedState;
-    setIsMuted(nextMutedState);
+    audioRef.current.muted = muted;
+    setIsMuted(muted);
   };
 
   useEffect(() => {
@@ -57,45 +57,33 @@ export default function BackgroundMusic() {
     <button
       type="button"
       onClick={toggleMute}
-      disabled={!isPlaying}
-      aria-label={
-        isMuted ? "Unmute wedding music" : "Mute wedding music"
-      }
+      aria-label={isMuted ? "Unmute wedding music" : "Mute wedding music"}
       title={isMuted ? "Unmute music" : "Mute music"}
       className="
         fixed
+        bottom-[max(16px,env(safe-area-inset-bottom))]
         left-4
-        bottom-4
         z-[99999]
-
-        grid
-        h-11
-        w-11
-        place-items-center
-
+        flex
+        h-12
+        w-12
+        items-center
+        justify-center
         rounded-full
         border
         border-amber-100/70
-        bg-[#2d1d15]/90
-
+        bg-[#2d1d15]/95
         text-lg
         text-[#f8d98a]
-
-        shadow-lg
+        shadow-xl
         backdrop-blur-md
-
         transition-transform
         duration-300
-
         hover:scale-105
         active:scale-95
-
         focus:outline-none
         focus-visible:ring-2
         focus-visible:ring-amber-400
-
-        disabled:pointer-events-none
-        disabled:opacity-0
       "
     >
       {isPlaying && !isMuted ? "🔊" : "🔇"}
