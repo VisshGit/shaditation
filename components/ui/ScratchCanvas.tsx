@@ -22,14 +22,16 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d", {
-      alpha: true,
-      desynchronized: true,
-    });
+    const ctx = canvas.getContext("2d");
 
     if (!ctx) return;
+
+    // ---------------------------------------------------------
+    // CANVAS SIZE
+    // ---------------------------------------------------------
 
     const rect = canvas.getBoundingClientRect();
 
@@ -39,7 +41,9 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
     canvas.width = width;
     canvas.height = height;
 
-    // Prevent browser scrolling while scratching.
+    // IMPORTANT:
+    // Only the canvas disables browser touch scrolling.
+    // The rest of the page remains normally scrollable.
     canvas.style.touchAction = "none";
 
     // ---------------------------------------------------------
@@ -69,11 +73,7 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
     let isDrawing = false;
     let isRevealed = false;
     let activePointerId: number | null = null;
-
     let lastPoint: Point | null = null;
-    let pendingPoint: Point | null = null;
-
-    let frameRequested = false;
     let revealTimeout: number | null = null;
 
     // ---------------------------------------------------------
@@ -86,11 +86,11 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
 
     const scratchedCells = new Set<string>();
 
-    const cellWidth = canvas.width / columns;
-    const cellHeight = canvas.height / rows;
-
     const brushSize = 28;
     const brushSizeSquared = brushSize * brushSize;
+
+    const cellWidth = canvas.width / columns;
+    const cellHeight = canvas.height / rows;
 
     const markScratchedArea = (x: number, y: number) => {
       const startColumn = Math.max(
@@ -143,11 +143,10 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
       isRevealed = true;
       isDrawing = false;
       activePointerId = null;
-      pendingPoint = null;
       lastPoint = null;
 
       canvas.style.pointerEvents = "none";
-      canvas.style.transition = "opacity 900ms ease";
+      canvas.style.transition = "opacity 700ms ease-out";
 
       requestAnimationFrame(() => {
         canvas.style.opacity = "0";
@@ -155,11 +154,11 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
 
       revealTimeout = window.setTimeout(() => {
         onRevealRef.current?.();
-      }, 700);
+      }, 650);
     };
 
     // ---------------------------------------------------------
-    // SCRATCH
+    // SCRATCH AT POINT
     // ---------------------------------------------------------
 
     const scratchAt = (x: number, y: number) => {
@@ -171,7 +170,10 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
 
       markScratchedArea(x, y);
 
-      if (scratchedCells.size / totalCells >= 0.4) {
+      const percentage =
+        scratchedCells.size / totalCells;
+
+      if (percentage >= 0.4) {
         revealCard();
       }
     };
@@ -180,7 +182,10 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
     // SCRATCH BETWEEN POINTS
     // ---------------------------------------------------------
 
-    const scratchBetween = (from: Point, to: Point) => {
+    const scratchBetween = (
+      from: Point,
+      to: Point
+    ) => {
       const dx = to.x - from.x;
       const dy = to.y - from.y;
 
@@ -191,19 +196,19 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
         return;
       }
 
-      // Keep the number of draw operations controlled.
+      // Maximum 16 operations per pointer event.
       const steps = Math.min(
-        12,
-        Math.max(1, Math.ceil(distance / 14))
+        16,
+        Math.max(1, Math.ceil(distance / 10))
       );
 
-      for (let step = 1; step <= steps; step += 1) {
-        const progress = step / steps;
+      for (let i = 1; i <= steps; i += 1) {
+        const progress = i / steps;
 
-        scratchAt(
-          from.x + dx * progress,
-          from.y + dy * progress
-        );
+        const x = from.x + dx * progress;
+        const y = from.y + dy * progress;
+
+        scratchAt(x, y);
 
         if (isRevealed) return;
       }
@@ -213,77 +218,25 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
     // POINTER POSITION
     // ---------------------------------------------------------
 
-    const getPoint = (event: PointerEvent): Point => {
+    const getPoint = (
+      event: PointerEvent
+    ): Point => {
+      const currentRect =
+        canvas.getBoundingClientRect();
+
       return {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top,
+        x: event.clientX - currentRect.left,
+        y: event.clientY - currentRect.top,
       };
-    };
-
-    // ---------------------------------------------------------
-    // RAF SCRATCH LOOP
-    // ---------------------------------------------------------
-
-    const processScratch = () => {
-      frameRequested = false;
-
-      if (
-        !isDrawing ||
-        isRevealed ||
-        !pendingPoint
-      ) {
-        return;
-      }
-
-      const currentPoint = pendingPoint;
-      pendingPoint = null;
-
-      if (lastPoint) {
-        scratchBetween(lastPoint, currentPoint);
-      } else {
-        scratchAt(currentPoint.x, currentPoint.y);
-      }
-
-      lastPoint = currentPoint;
-    };
-
-    const requestScratchFrame = () => {
-      if (frameRequested) return;
-
-      frameRequested = true;
-      requestAnimationFrame(processScratch);
-    };
-
-    // ---------------------------------------------------------
-    // STOP DRAWING
-    // ---------------------------------------------------------
-
-    const stopDrawing = (pointerId?: number) => {
-      if (
-        pointerId !== undefined &&
-        activePointerId !== pointerId
-      ) {
-        return;
-      }
-
-      if (
-        activePointerId !== null &&
-        canvas.hasPointerCapture(activePointerId)
-      ) {
-        canvas.releasePointerCapture(activePointerId);
-      }
-
-      isDrawing = false;
-      activePointerId = null;
-      lastPoint = null;
-      pendingPoint = null;
     };
 
     // ---------------------------------------------------------
     // POINTER DOWN
     // ---------------------------------------------------------
 
-    const handlePointerDown = (event: PointerEvent) => {
+    const handlePointerDown = (
+      event: PointerEvent
+    ) => {
       if (isRevealed) return;
 
       if (
@@ -293,46 +246,100 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
         return;
       }
 
+      // Prevent browser gesture/scroll.
       event.preventDefault();
 
       isDrawing = true;
       activePointerId = event.pointerId;
 
-      canvas.setPointerCapture(event.pointerId);
+      try {
+        canvas.setPointerCapture(event.pointerId);
+      } catch {
+        // Some browsers may reject capture.
+      }
 
       const point = getPoint(event);
 
       lastPoint = point;
-      pendingPoint = point;
 
-      requestScratchFrame();
+      scratchAt(point.x, point.y);
     };
 
     // ---------------------------------------------------------
     // POINTER MOVE
     // ---------------------------------------------------------
 
-    const handlePointerMove = (event: PointerEvent) => {
+    const handlePointerMove = (
+      event: PointerEvent
+    ) => {
       if (
         !isDrawing ||
         isRevealed ||
-        activePointerId !== event.pointerId
+        activePointerId !== event.pointerId ||
+        !lastPoint
       ) {
         return;
       }
 
       event.preventDefault();
 
-      pendingPoint = getPoint(event);
+      const currentPoint = getPoint(event);
 
-      requestScratchFrame();
+      scratchBetween(
+        lastPoint,
+        currentPoint
+      );
+
+      lastPoint = currentPoint;
+    };
+
+    // ---------------------------------------------------------
+    // STOP DRAWING
+    // ---------------------------------------------------------
+
+    const stopDrawing = (
+      pointerId?: number
+    ) => {
+      if (
+        pointerId !== undefined &&
+        activePointerId !== pointerId
+      ) {
+        return;
+      }
+
+      if (
+        activePointerId !== null &&
+        canvas.hasPointerCapture(
+          activePointerId
+        )
+      ) {
+        try {
+          canvas.releasePointerCapture(
+            activePointerId
+          );
+        } catch {
+          // Ignore release errors.
+        }
+      }
+
+      isDrawing = false;
+      activePointerId = null;
+      lastPoint = null;
     };
 
     // ---------------------------------------------------------
     // POINTER END
     // ---------------------------------------------------------
 
-    const handlePointerUp = (event: PointerEvent) => {
+    const handlePointerUp = (
+      event: PointerEvent
+    ) => {
+      stopDrawing(event.pointerId);
+    };
+
+    const handlePointerCancel = (
+      event: PointerEvent
+    ) => {
       stopDrawing(event.pointerId);
     };
 
@@ -359,7 +366,7 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
 
     canvas.addEventListener(
       "pointercancel",
-      handlePointerUp
+      handlePointerCancel
     );
 
     canvas.addEventListener(
@@ -391,7 +398,7 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
 
       canvas.removeEventListener(
         "pointercancel",
-        handlePointerUp
+        handlePointerCancel
       );
 
       if (revealTimeout !== null) {
@@ -417,6 +424,7 @@ export default function ScratchCanvas({ onReveal }: ScratchCanvasProps) {
         select-none
         rounded-3xl
       "
+      aria-label="Scratch to reveal the wedding date"
     />
   );
 }
