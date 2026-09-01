@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+
   const [isMuted, setIsMuted] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -13,6 +14,7 @@ export default function BackgroundMusic() {
 
       audio.loop = true;
       audio.volume = 0.35;
+
       audioRef.current = audio;
     }
 
@@ -30,10 +32,10 @@ export default function BackgroundMusic() {
   const toggleMute = () => {
     if (!audioRef.current) return;
 
-    const muted = !audioRef.current.muted;
+    const nextMuted = !audioRef.current.muted;
 
-    audioRef.current.muted = muted;
-    setIsMuted(muted);
+    audioRef.current.muted = nextMuted;
+    setIsMuted(nextMuted);
   };
 
   useEffect(() => {
@@ -53,6 +55,11 @@ export default function BackgroundMusic() {
     };
   }, []);
 
+  // Gate open hone se pehle button hidden rahega
+  if (!isPlaying) {
+    return null;
+  }
+
   return (
     <button
       type="button"
@@ -61,8 +68,8 @@ export default function BackgroundMusic() {
       title={isMuted ? "Unmute music" : "Mute music"}
       className="
         fixed
-        bottom-[max(16px,env(safe-area-inset-bottom))]
-        left-4
+        bottom-5
+        left-5
         z-[99999]
         flex
         h-12
@@ -86,7 +93,7 @@ export default function BackgroundMusic() {
         focus-visible:ring-amber-400
       "
     >
-      {isPlaying && !isMuted ? "🔊" : "🔇"}
+      {isMuted ? "🔇" : "🔊"}
     </button>
   );
 }
