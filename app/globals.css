@@ -59,6 +59,7 @@ body {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -532,26 +533,8 @@ h6 {
 }
 
 /* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .welcome-gate-side {
-    transition: none;
-  }
-
-  .welcome-gate-button {
-    transition: none;
-  }
-
-  .welcome-gate-spark {
-    animation: none;
-  }
-}
-
-/* =========================================================
    RAJASTHANI ROSE PETAL RAIN
-   ========================================================= */
+========================================================= */
 
 .hero-rose-petals {
   pointer-events: none;
@@ -622,6 +605,7 @@ h6 {
       scale(1);
   }
 }
+
 /* =========================================================
    HERO SPARKS
 ========================================================= */
@@ -673,6 +657,7 @@ h6 {
 
 /* =========================================================
    HERO FIRE SPARKS
+   Enhanced premium entry effect
 ========================================================= */
 
 .hero-fire-sparks {
@@ -696,26 +681,33 @@ h6 {
 .hero-fire-spark {
   position: absolute;
 
-  bottom: -16px;
+  bottom: -18px;
 
   border-radius: 9999px;
 
   background: radial-gradient(
     circle,
-    #fff8cc 0%,
-    #ffc14d 35%,
-    #d8650c 72%,
-    transparent 74%
+    #fffbe0 0%,
+    #ffe08a 20%,
+    #ffc14d 42%,
+    #e97816 68%,
+    transparent 76%
   );
 
   box-shadow:
-    0 0 8px 2px rgba(244, 144, 36, 0.55);
+    0 0 6px 2px rgba(255, 214, 104, 0.8),
+    0 0 14px 4px rgba(255, 160, 40, 0.6),
+    0 0 26px 7px rgba(232, 105, 15, 0.28);
 
-  animation-name: hero-fire-spark-rise;
-
+  animation-duration: 2.7s;
   animation-timing-function: ease-out;
-
   animation-iteration-count: infinite;
+
+  will-change: transform, opacity;
+}
+
+.hero-fire-spark-0 {
+  animation-name: hero-fire-spark-rise;
 }
 
 .hero-fire-spark-1 {
@@ -724,6 +716,18 @@ h6 {
 
 .hero-fire-spark-2 {
   animation-name: hero-fire-spark-rise-right;
+}
+
+.hero-fire-spark:nth-child(3n) {
+  animation-duration: 2.4s;
+}
+
+.hero-fire-spark:nth-child(3n + 1) {
+  animation-duration: 2.8s;
+}
+
+.hero-fire-spark:nth-child(4n) {
+  filter: brightness(1.15);
 }
 
 .hero-fire-heart {
@@ -741,7 +745,8 @@ h6 {
   line-height: 1;
 
   text-shadow:
-    0 0 8px rgba(255, 190, 67, 0.7);
+    0 0 8px rgba(255, 190, 67, 0.7),
+    0 0 16px rgba(255, 157, 38, 0.35);
 }
 
 /* =========================================================
@@ -1159,27 +1164,35 @@ h6 {
   }
 }
 
+/* =========================================================
+   HERO FIRE SPARK KEYFRAMES
+========================================================= */
+
 @keyframes hero-fire-spark-rise {
   0% {
     transform:
       translate3d(0, 0, 0)
-      scale(0.35);
+      scale(0.25);
 
     opacity: 0;
   }
 
-  12% {
+  10% {
+    opacity: 0.95;
+  }
+
+  32% {
     opacity: 0.9;
   }
 
-  75% {
-    opacity: 0.6;
+  68% {
+    opacity: 0.65;
   }
 
   100% {
     transform:
-      translate3d(0, -62vh, 0)
-      scale(0.8);
+      translate3d(0, -68vh, 0)
+      scale(0.75);
 
     opacity: 0;
   }
@@ -1189,23 +1202,27 @@ h6 {
   0% {
     transform:
       translate3d(0, 0, 0)
-      scale(0.35);
+      scale(0.25);
 
     opacity: 0;
   }
 
-  12% {
-    opacity: 0.9;
+  10% {
+    opacity: 0.95;
   }
 
-  75% {
+  32% {
+    opacity: 0.85;
+  }
+
+  68% {
     opacity: 0.6;
   }
 
   100% {
     transform:
-      translate3d(-52px, -58vh, 0)
-      scale(0.8);
+      translate3d(-75px, -64vh, 0)
+      scale(0.72);
 
     opacity: 0;
   }
@@ -1215,27 +1232,35 @@ h6 {
   0% {
     transform:
       translate3d(0, 0, 0)
-      scale(0.35);
+      scale(0.25);
 
     opacity: 0;
   }
 
-  12% {
-    opacity: 0.9;
+  10% {
+    opacity: 0.95;
   }
 
-  75% {
-    opacity: 0.6;
+  32% {
+    opacity: 0.88;
+  }
+
+  68% {
+    opacity: 0.62;
   }
 
   100% {
     transform:
-      translate3d(52px, -66vh, 0)
-      scale(0.8);
+      translate3d(75px, -70vh, 0)
+      scale(0.75);
 
     opacity: 0;
   }
 }
+
+/* =========================================================
+   COUNTDOWN ANIMATION
+========================================================= */
 
 @keyframes countdown-flip {
   0% {
@@ -1269,6 +1294,10 @@ h6 {
       scale(1);
   }
 }
+
+/* =========================================================
+   SCROLL ANIMATIONS
+========================================================= */
 
 @keyframes scrollFloat {
   0%,
@@ -1320,10 +1349,42 @@ h6 {
 }
 
 /* =========================================================
+   MOBILE SCROLL
+========================================================= */
+
+@media (max-width: 640px) {
+  html,
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: auto;
+  }
+
+  .hero-fire-spark {
+    box-shadow:
+      0 0 5px 2px rgba(255, 214, 104, 0.75),
+      0 0 12px 3px rgba(255, 160, 40, 0.5),
+      0 0 20px 5px rgba(232, 105, 15, 0.24);
+  }
+}
+
+/* =========================================================
    REDUCED MOTION
 ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
+  .welcome-gate-side {
+    transition: none;
+  }
+
+  .welcome-gate-button {
+    transition: none;
+  }
+
+  .welcome-gate-spark {
+    animation: none;
+  }
+
   .scroll-reveal {
     opacity: 1;
     transform: none;
@@ -1338,16 +1399,16 @@ h6 {
   .gate-button {
     animation: none;
   }
-}
 
-@media (max-width: 640px) {
-  html,
-  body {
-    overflow-x: hidden;
-    overflow-y: auto;
-    overscroll-behavior-y: auto;
+  .hero-fire-spark {
+    animation: none;
+    opacity: 0;
   }
 }
+
+/* =========================================================
+   GOLD SHINE
+========================================================= */
 
 @keyframes gold-shine {
   0% {
