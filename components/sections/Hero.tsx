@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Container from "@/components/ui/Container";
-import BackgroundMusic from "@/components/ui/BackgroundMusic";
+
 import { activeTheme } from "@/config/themes";
 
 const fireSparks = Array.from({ length: 34 }, (_, index) => ({
@@ -55,7 +55,7 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
-      <BackgroundMusic />
+      
 
       {/* =====================================================
           RAJASTHANI HERO BACKGROUND
