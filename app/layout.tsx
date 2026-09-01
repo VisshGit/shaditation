@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Cinzel, Poppins, Great_Vibes } from "next/font/google";
 import "./globals.css";
@@ -37,7 +38,12 @@ export default function RootLayout({
       lang="en"
       className={`${cinzel.variable} ${poppins.variable} ${greatVibes.variable}`}
     >
-      <body className="min-h-screen w-full overflow-x-hidden overflow-y-auto">
+      <body
+        className="min-h-screen w-full overflow-x-hidden overflow-y-auto"
+        onLoad={() => {
+          window.scrollTo(0, 0);
+        }}
+      >
         <ThemeProvider>
           {children}
           <BackgroundMusic />
