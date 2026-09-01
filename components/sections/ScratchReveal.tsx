@@ -7,7 +7,7 @@ import Section from "@/components/ui/Section";
 import ScrollReveal from "@/components/ScrollReveal";
 
 const confettiPieces = Array.from({ length: 36 }, (_, index) => ({
-  left: `${(index * 29) % 96 + 2}%`,
+  left: `${((index * 29) % 96) + 2}%`,
   delay: `${(index % 12) * 0.1}s`,
   color: ["#f6d77c", "#c99832", "#ffffff", "#8b5a12"][index % 4],
 }));
@@ -18,6 +18,7 @@ export default function ScratchReveal() {
   return (
     <ScrollReveal>
       <Section className="bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
+        {/* Heading */}
         <div className="mb-12 flex flex-col items-center text-center">
           <p
             className="text-sm uppercase tracking-[6px] text-[var(--primary)]"
@@ -33,11 +34,13 @@ export default function ScratchReveal() {
 
           <h2
             className="font-heading text-5xl text-[var(--foreground)]"
-            style={{ margin: 0, lineHeight: 1.15 }}
+            style={{
+              margin: 0,
+              lineHeight: 1.15,
+            }}
           >
             Scratch to Reveal The Date
             <br />
-
             <br />
           </h2>
         </div>
@@ -46,6 +49,8 @@ export default function ScratchReveal() {
         <div className="flex justify-center px-0">
           <div className="w-[calc(100%-2rem)] max-w-2xl rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_25px_55px_rgba(111,70,13,0.28)] md:w-full">
             <div className="relative h-64 overflow-hidden rounded-[1.85rem] border border-white/20 sm:h-72 md:h-96">
+              
+              {/* Card Content */}
               <div className="absolute inset-0">
                 <Image
                   src="/images/card.png"
@@ -74,18 +79,26 @@ export default function ScratchReveal() {
                       31 JAN 2027
                     </h3>
 
-                    <p className="mt-3 text-[11px] uppercase tracking-[2px] text-amber-100 sm:mt-4 sm:text-sm sm:tracking-[3px]">
-                     
-                    </p>
+                    <p className="mt-3 text-[11px] uppercase tracking-[2px] text-amber-100 sm:mt-4 sm:text-sm sm:tracking-[3px]" />
                   </div>
                 </div>
               </div>
 
-              {/* Scratch interaction remains untouched */}
-              <div className="absolute inset-0 z-30 touch-none select-none">
-                <ScratchCanvas onReveal={() => setRevealed(true)} />
+              {/* Scratch Layer */}
+              <div
+                className="
+                  absolute
+                  inset-0
+                  z-30
+                  select-none
+                "
+              >
+                <ScratchCanvas
+                  onReveal={() => setRevealed(true)}
+                />
               </div>
 
+              {/* Reveal Effects */}
               {revealed && (
                 <div className="pointer-events-none absolute inset-0 z-40 overflow-hidden">
                   {confettiPieces.map((piece, index) => (
@@ -96,16 +109,30 @@ export default function ScratchReveal() {
                         left: piece.left,
                         backgroundColor: piece.color,
                         animationDelay: piece.delay,
+                        willChange: "transform, opacity",
                       }}
                     />
                   ))}
 
-                  <span className="party-pop party-pop-left">🎉</span>
-                  <span className="party-pop party-pop-right">🎉</span>
+                  <span className="party-pop party-pop-left">
+                    🎉
+                  </span>
 
-                  <span className="big-sparkle big-sparkle-one">✦</span>
-                  <span className="big-sparkle big-sparkle-two">✦</span>
-                  <span className="big-sparkle big-sparkle-three">✦</span>
+                  <span className="party-pop party-pop-right">
+                    🎉
+                  </span>
+
+                  <span className="big-sparkle big-sparkle-one">
+                    ✦
+                  </span>
+
+                  <span className="big-sparkle big-sparkle-two">
+                    ✦
+                  </span>
+
+                  <span className="big-sparkle big-sparkle-three">
+                    ✦
+                  </span>
                 </div>
               )}
             </div>
