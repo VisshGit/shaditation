@@ -49,21 +49,51 @@
   box-sizing: border-box;
 }
 
-html,
+/* =========================================================
+   SMOOTH & UNINTERRUPTED PAGE SCROLL
+========================================================= */
+
+html {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  scroll-behavior: auto;
+  overscroll-behavior-y: auto;
+}
+
 body {
   width: 100%;
   min-width: 100%;
   margin: 0;
   padding: 0;
+
   overflow-x: hidden;
   overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
 
-body {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-body);
+}
+
+/* Prevent decorative effects from ever interfering with scrolling */
+.hero-sparks,
+.hero-fire-sparks,
+.hero-rose-petals,
+.welcome-gate-sparks,
+.party-cannon,
+.confetti,
+.big-sparkle,
+.party-pop,
+.reveal-burst {
+  pointer-events: none;
 }
 
 h1,
