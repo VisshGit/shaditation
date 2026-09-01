@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -20,7 +21,7 @@ export default function ScrollReveal({
 
     if (!element) return;
 
-    // Respect reduced-motion preference
+    // Reduced motion = show immediately
     const reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -30,13 +31,13 @@ export default function ScrollReveal({
       return;
     }
 
-    // If IntersectionObserver is not supported,
-    // show the content normally.
+    // Fallback for older browsers
     if (!("IntersectionObserver" in window)) {
       element.classList.add("scroll-reveal-visible");
       return;
     }
 
+    // Apply delay only when actually requested
     if (delay > 0) {
       element.style.setProperty("--reveal-delay", `${delay}ms`);
     }
@@ -45,18 +46,16 @@ export default function ScrollReveal({
       (entries, observerInstance) => {
         const entry = entries[0];
 
-        if (!entry?.isIntersecting) return;
+        if (!entry || !entry.isIntersecting) return;
 
-        // Only change the class.
-        // No React state update = no extra component re-render.
-        entry.target.classList.add("scroll-reveal-visible");
+        element.classList.add("scroll-reveal-visible");
 
-        // Animate only once.
-        observerInstance.unobserve(entry.target);
+        // Reveal only once
+        observerInstance.unobserve(element);
       },
       {
-        threshold: 0.05,
-        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.01,
+        rootMargin: "0px 0px -5% 0px",
       }
     );
 
@@ -73,7 +72,7 @@ export default function ScrollReveal({
       className={`scroll-reveal ${className}`}
       style={
         {
-          "--reveal-delay": delay > 0 ? `${delay}ms` : "0ms",
+          "--reveal-delay": `${delay}ms`,
         } as React.CSSProperties
       }
     >
