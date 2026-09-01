@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -21,41 +20,39 @@ export default function ScrollReveal({
 
     if (!element) return;
 
-    // Reduced motion = show immediately
-    const reducedMotion = window.matchMedia(
+    const mediaQuery = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
-    ).matches;
+    );
 
-    if (reducedMotion) {
+    // Reduced motion → immediately visible
+    if (mediaQuery.matches) {
       element.classList.add("scroll-reveal-visible");
       return;
     }
 
-    // Fallback for older browsers
+    // Browser fallback
     if (!("IntersectionObserver" in window)) {
       element.classList.add("scroll-reveal-visible");
       return;
     }
 
-    // Apply delay only when actually requested
     if (delay > 0) {
       element.style.setProperty("--reveal-delay", `${delay}ms`);
     }
 
     const observer = new IntersectionObserver(
-      (entries, observerInstance) => {
-        const entry = entries[0];
-
-        if (!entry || !entry.isIntersecting) return;
+      ([entry]) => {
+        if (!entry?.isIntersecting) return;
 
         element.classList.add("scroll-reveal-visible");
 
-        // Reveal only once
-        observerInstance.unobserve(element);
+        // Only reveal once
+        observer.unobserve(element);
       },
       {
-        threshold: 0.01,
-        rootMargin: "0px 0px -5% 0px",
+        root: null,
+        threshold: 0,
+        rootMargin: "0px 0px -8% 0px",
       }
     );
 
