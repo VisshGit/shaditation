@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Cinzel, Poppins, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/theme/ThemeProvider";
-import BackgroundMusic from "@/components/sections/BackgroundMusic";
+import BackgroundMusic from "@/components/ui/BackgroundMusic";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
