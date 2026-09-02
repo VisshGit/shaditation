@@ -3,18 +3,60 @@ import ScrollReveal from "../ScrollReveal";
 
 const events = [
   {
+    type: "Auspicious Beginning",
+    title: "Vinayak",
+    date: "Monday, 25 January 2027",
+    time: "Details to be announced",
+    venue: "",
+  },
+  {
+    type: "Celebration",
+    title: "Dhol Night",
+    date: "Thursday, 28 January 2027",
+    time: "Details to be announced",
+    venue: "",
+  },
+  {
+    type: "Ritual",
+    title: "Kalash",
+    date: "Friday, 29 January 2027",
+    time: "Morning",
+    venue: "",
+  },
+  {
+    type: "Celebration",
+    title: "Bindoli",
+    date: "Friday, 29 January 2027",
+    time: "Evening",
+    venue: "",
+  },
+  {
     type: "Ceremony",
+    title: "Haldi Ceremony",
+    date: "Saturday, 30 January 2027",
+    time: "Morning",
+    venue: "Urmila Garden",
+  },
+  {
+    type: "Celebration",
+    title: "Cocktail Party",
+    date: "Saturday, 30 January 2027",
+    time: "Evening",
+    venue: "Urmila Garden",
+  },
+  {
+    type: "Wedding Celebration",
     title: "Barat",
     date: "Sunday, 31 January 2027",
-    time: "11:00 AM onwards",
-    venue: "Royal Palace Venue",
+    time: "Details to be announced",
+    venue: "",
   },
   {
     type: "Celebration",
     title: "Reception",
     date: "Wednesday, 3 February 2027",
-    time: "8:00 PM onwards",
-    venue: "Grand Celebration Hall",
+    time: "Details to be announced",
+    venue: "Urmila Garden",
   },
 ];
 
@@ -90,8 +132,12 @@ export default function Events() {
                       {event.date}
                       <br />
                       {event.time}
-                      <br />
-                      {event.venue}
+                      {event.venue && (
+                        <>
+                          <br />
+                          {event.venue}
+                        </>
+                      )}
                     </p>
                   </div>
                 ))}
