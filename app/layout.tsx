@@ -1,9 +1,11 @@
+
 import type { Metadata } from "next";
 import { Cinzel, Poppins, Great_Vibes } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/theme/ThemeProvider";
 import BackgroundMusic from "@/components/ui/BackgroundMusic";
 import ScrollToTop from "@/components/ui/ScrollToTop";
+import Footer from "@/components/Layout/Footer";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -41,7 +43,11 @@ export default function RootLayout({
       <body className="min-h-screen w-full overflow-x-hidden overflow-y-auto">
         <ThemeProvider>
           <ScrollToTop />
+
           {children}
+
+          <Footer />
+
           <BackgroundMusic />
         </ThemeProvider>
       </body>
