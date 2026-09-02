@@ -10,7 +10,7 @@ export default function Footer() {
     >
       {/* Ambient Gold Glow */}
       <div
-        className="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
+        className="pointer-events-none absolute left-1/2 top-0 h-56 w-56 -translate-x-1/2 rounded-full blur-3xl"
         style={{
           background: "rgba(182, 141, 64, 0.08)",
         }}
@@ -20,14 +20,14 @@ export default function Footer() {
         <div
           className="relative flex flex-col items-center px-6 text-center"
           style={{
-            paddingTop: "80px",
-            paddingBottom: "42px",
+            paddingTop: "42px",
+            paddingBottom: "24px",
           }}
         >
           {/* WEDDING NAMES */}
           <div>
             <h2
-              className="font-heading text-4xl tracking-wide md:text-6xl"
+              className="font-heading text-3xl tracking-wide md:text-5xl"
               style={{
                 color: "var(--white)",
                 lineHeight: 1.1,
@@ -35,7 +35,7 @@ export default function Footer() {
             >
               Vishal
               <span
-                className="mx-3"
+                className="mx-2"
                 style={{
                   color: "var(--primary)",
                 }}
@@ -45,16 +45,17 @@ export default function Footer() {
               Varsha
             </h2>
 
-            <div className="mt-5 flex items-center justify-center gap-4">
+            <div className="mt-3 flex items-center justify-center gap-3">
               <span
-                className="h-px w-12"
+                className="h-px w-10"
                 style={{
-                  backgroundColor: "color-mix(in srgb, var(--primary) 50%, transparent)",
+                  backgroundColor:
+                    "color-mix(in srgb, var(--primary) 50%, transparent)",
                 }}
               />
 
               <span
-                className="text-[10px]"
+                className="text-[9px]"
                 style={{
                   color: "var(--primary)",
                 }}
@@ -63,15 +64,16 @@ export default function Footer() {
               </span>
 
               <span
-                className="h-px w-12"
+                className="h-px w-10"
                 style={{
-                  backgroundColor: "color-mix(in srgb, var(--primary) 50%, transparent)",
+                  backgroundColor:
+                    "color-mix(in srgb, var(--primary) 50%, transparent)",
                 }}
               />
             </div>
 
             <p
-              className="mt-5 text-[10px] uppercase tracking-[5px]"
+              className="mt-3 text-[9px] uppercase tracking-[4px]"
               style={{
                 color: "var(--secondary)",
               }}
@@ -82,7 +84,7 @@ export default function Footer() {
 
           {/* DIVIDER */}
           <div
-            className="my-12 h-px w-full max-w-lg"
+            className="my-7 h-px w-full max-w-md"
             style={{
               background:
                 "linear-gradient(90deg, transparent, var(--primary), transparent)",
@@ -93,7 +95,7 @@ export default function Footer() {
           {/* BRAND */}
           <div>
             <p
-              className="font-heading text-xl tracking-[5px]"
+              className="font-heading text-lg tracking-[4px]"
               style={{
                 color: "var(--white)",
               }}
@@ -102,7 +104,7 @@ export default function Footer() {
             </p>
 
             <p
-              className="mt-3 text-[10px] uppercase tracking-[3px]"
+              className="mt-2 text-[9px] uppercase tracking-[2.5px]"
               style={{
                 color: "var(--secondary)",
                 opacity: 0.65,
@@ -112,7 +114,7 @@ export default function Footer() {
             </p>
 
             <p
-              className="mx-auto mt-5 max-w-md text-xs leading-6"
+              className="mx-auto mt-3 max-w-md text-[11px] leading-5"
               style={{
                 color: "var(--white)",
                 opacity: 0.45,
@@ -124,7 +126,7 @@ export default function Footer() {
 
           {/* COPYRIGHT */}
           <div
-            className="mt-12 text-[10px] tracking-[1.5px]"
+            className="mt-7 text-[9px] tracking-[1.2px]"
             style={{
               color: "var(--white)",
               opacity: 0.28,
