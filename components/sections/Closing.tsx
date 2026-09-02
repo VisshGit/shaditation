@@ -1,74 +1,17 @@
-
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Closing() {
   return (
     <ScrollReveal>
       <section
-        className="relative isolate overflow-hidden"
+        className="relative isolate overflow-hidden bg-[var(--background)]"
         style={{
           color: "var(--foreground)",
           paddingTop: "120px",
           paddingBottom: "264px",
         }}
       >
-        {/* =========================
-            CINEMATIC BACKGROUND
-        ========================== */}
-
-        <div
-          className="pointer-events-none absolute inset-0 -z-30"
-          style={{
-            backgroundImage: "url('/images/closing-sunset.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            filter: "blur(2px)",
-            transform: "scale(1.04)",
-            opacity: 0.42,
-          }}
-        />
-
-        {/* Soft Wedding Tone Overlay */}
-        <div
-          className="pointer-events-none absolute inset-0 -z-20"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(253,248,243,0.72) 0%, rgba(253,248,243,0.42) 45%, rgba(43,29,14,0.58) 100%)",
-          }}
-        />
-
-        {/* Warm Cinematic Glow */}
-        <div
-          className="pointer-events-none absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 42%, rgba(255,235,190,0.28), transparent 48%)",
-          }}
-        />
-
-        {/* =========================
-            FORT FOREGROUND
-        ========================== */}
-
-        <img
-          src="/images/closing-fort.png"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-0 left-0 z-0 select-none"
-          style={{
-            width: "clamp(280px, 43vw, 620px)",
-            maxWidth: "62%",
-            height: "auto",
-            opacity: 0.96,
-            filter:
-              "drop-shadow(0 -8px 18px rgba(43,29,14,0.18))",
-          }}
-        />
-
-        {/* =========================
-            TOP LUXURY DECORATION
-        ========================== */}
-
+        {/* TOP LUXURY DECORATION */}
         <div className="relative z-10 flex justify-center px-6">
           <div className="h-[42px] w-full max-w-[560px]">
             <svg
@@ -110,10 +53,7 @@ export default function Closing() {
           </div>
         </div>
 
-        {/* =========================
-            CENTER CONTENT
-        ========================== */}
-
+        {/* CENTER CONTENT */}
         <div className="relative z-10 flex flex-col items-center justify-center px-6 py-16 text-center">
           <span
             className="mb-6 h-px w-10"
@@ -164,10 +104,7 @@ export default function Closing() {
           </div>
         </div>
 
-        {/* =========================
-            BOTTOM LUXURY DECORATION
-        ========================== */}
-
+        {/* BOTTOM LUXURY DECORATION */}
         <div className="relative z-10 flex justify-center px-6">
           <div className="h-[42px] w-full max-w-[560px]">
             <svg
