@@ -3,59 +3,51 @@ import ScrollReveal from "../ScrollReveal";
 
 const events = [
   {
-    type: "Auspicious Beginning",
     title: "Vinayak",
     date: "Monday, 25 January 2027",
-    time: "Details to be announced",
+    time: "Time to be announced",
     venue: "",
   },
   {
-    type: "Celebration",
     title: "Dhol Night",
     date: "Thursday, 28 January 2027",
-    time: "Details to be announced",
+    time: "Time to be announced",
     venue: "",
   },
   {
-    type: "Ritual",
     title: "Kalash",
     date: "Friday, 29 January 2027",
     time: "Morning",
     venue: "",
   },
   {
-    type: "Celebration",
     title: "Bindoli",
     date: "Friday, 29 January 2027",
     time: "Evening",
     venue: "",
   },
   {
-    type: "Ceremony",
     title: "Haldi Ceremony",
     date: "Saturday, 30 January 2027",
     time: "Morning",
     venue: "Urmila Garden",
   },
   {
-    type: "Celebration",
     title: "Cocktail Party",
     date: "Saturday, 30 January 2027",
     time: "Evening",
     venue: "Urmila Garden",
   },
   {
-    type: "Wedding Celebration",
     title: "Barat",
     date: "Sunday, 31 January 2027",
-    time: "Details to be announced",
+    time: "Time to be announced",
     venue: "",
   },
   {
-    type: "Celebration",
     title: "Reception",
     date: "Wednesday, 3 February 2027",
-    time: "Details to be announced",
+    time: "Time to be announced",
     venue: "Urmila Garden",
   },
 ];
@@ -117,10 +109,6 @@ export default function Events() {
                       </span>
                       <span className="h-px w-10 bg-[var(--primary)]/30" />
                     </div>
-
-                    <p className="mb-3 text-xs uppercase tracking-[4px] text-[var(--primary)]">
-                      {event.type}
-                    </p>
 
                     <h3 className="mb-6 font-heading text-3xl text-[var(--foreground)] sm:text-4xl">
                       {event.title}
