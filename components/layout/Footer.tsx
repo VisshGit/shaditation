@@ -5,7 +5,7 @@ export default function Footer() {
     <footer
       className="relative overflow-hidden text-white"
       style={{
-        backgroundColor: "#2b1d0e",
+        backgroundColor: "var(--foreground)",
       }}
     >
       {/* Ambient Gold Glow */}
@@ -24,14 +24,12 @@ export default function Footer() {
             paddingBottom: "42px",
           }}
         >
-          {/* =========================
-              WEDDING NAMES
-          ========================== */}
+          {/* WEDDING NAMES */}
           <div>
             <h2
               className="font-heading text-4xl tracking-wide md:text-6xl"
               style={{
-                color: "#ffffff",
+                color: "var(--white)",
                 lineHeight: 1.1,
               }}
             >
@@ -39,7 +37,7 @@ export default function Footer() {
               <span
                 className="mx-3"
                 style={{
-                  color: "#b68d40",
+                  color: "var(--primary)",
                 }}
               >
                 &amp;
@@ -51,14 +49,14 @@ export default function Footer() {
               <span
                 className="h-px w-12"
                 style={{
-                  backgroundColor: "rgba(182, 141, 64, 0.5)",
+                  backgroundColor: "color-mix(in srgb, var(--primary) 50%, transparent)",
                 }}
               />
 
               <span
                 className="text-[10px]"
                 style={{
-                  color: "#b68d40",
+                  color: "var(--primary)",
                 }}
               >
                 ✦
@@ -67,7 +65,7 @@ export default function Footer() {
               <span
                 className="h-px w-12"
                 style={{
-                  backgroundColor: "rgba(182, 141, 64, 0.5)",
+                  backgroundColor: "color-mix(in srgb, var(--primary) 50%, transparent)",
                 }}
               />
             </div>
@@ -75,32 +73,29 @@ export default function Footer() {
             <p
               className="mt-5 text-[10px] uppercase tracking-[5px]"
               style={{
-                color: "#f5e6c8",
+                color: "var(--secondary)",
               }}
             >
               Forever Begins Here
             </p>
           </div>
 
-          {/* =========================
-              DIVIDER
-          ========================== */}
+          {/* DIVIDER */}
           <div
             className="my-12 h-px w-full max-w-lg"
             style={{
               background:
-                "linear-gradient(90deg, transparent, rgba(182,141,64,0.45), transparent)",
+                "linear-gradient(90deg, transparent, var(--primary), transparent)",
+              opacity: 0.45,
             }}
           />
 
-          {/* =========================
-              BRAND
-          ========================== */}
+          {/* BRAND */}
           <div>
             <p
               className="font-heading text-xl tracking-[5px]"
               style={{
-                color: "#ffffff",
+                color: "var(--white)",
               }}
             >
               SHADITATION
@@ -109,7 +104,8 @@ export default function Footer() {
             <p
               className="mt-3 text-[10px] uppercase tracking-[3px]"
               style={{
-                color: "rgba(245, 230, 200, 0.65)",
+                color: "var(--secondary)",
+                opacity: 0.65,
               }}
             >
               Digital Wedding Invitations
@@ -118,20 +114,20 @@ export default function Footer() {
             <p
               className="mx-auto mt-5 max-w-md text-xs leading-6"
               style={{
-                color: "rgba(255, 255, 255, 0.45)",
+                color: "var(--white)",
+                opacity: 0.45,
               }}
             >
               Crafted with love for beautiful beginnings.
             </p>
           </div>
 
-          {/* =========================
-              COPYRIGHT
-          ========================== */}
+          {/* COPYRIGHT */}
           <div
             className="mt-12 text-[10px] tracking-[1.5px]"
             style={{
-              color: "rgba(255, 255, 255, 0.28)",
+              color: "var(--white)",
+              opacity: 0.28,
             }}
           >
             © 2026 Shaditation. All Rights Reserved.
