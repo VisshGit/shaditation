@@ -24,7 +24,6 @@ export default function Home() {
       <Venue />
       <RSVP />
       <Closing />
-      <Footer />
     </WelcomeGate>
   );
 }
