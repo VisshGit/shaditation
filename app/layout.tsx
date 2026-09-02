@@ -5,7 +5,7 @@ import "./globals.css";
 import ThemeProvider from "@/components/theme/ThemeProvider";
 import BackgroundMusic from "@/components/ui/BackgroundMusic";
 import ScrollToTop from "@/components/ui/ScrollToTop";
-import Footer from "@/components/Layout/Footer";
+import Footer from "@/components/layout/Footer";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
