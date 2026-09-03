@@ -1,147 +1,276 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useState } from "react";
 import Container from "@/components/ui/Container";
 
+import { activeTheme } from "@/config/themes";
+
+const fireSparks = Array.from({ length: 34 }, (_, index) => ({
+  left: `${((index * 17 + 3) % 96) + 2}%`,
+  delay: `${(index % 12) * 0.18}s`,
+  size: `${3 + (index % 4) * 1.5}px`,
+  duration: `${2.4 + (index % 5) * 0.28}s`,
+}));
+
+const rosePetals = Array.from({ length: 32 }, (_, index) => ({
+  left: `${(index * 29) % 100}%`,
+  delay: `${(index % 12) * 0.16}s`,
+  size: `${10 + (index % 5) * 2}px`,
+  duration: `${3.8 + (index % 6) * 0.45}s`,
+  drift: `${-40 + (index % 9) * 10}px`,
+  rotate: `${
+    (index % 2 === 0 ? 1 : -1) * (45 + (index % 5) * 25)
+  }deg`,
+}));
+
 export default function Hero() {
-  // 1. ROSE PETALS GENERATOR
-  const petals = useMemo(() => {
-    return Array.from({ length: 22 }).map((_, i) => {
-      const left = `${(i * 4.6 + (i % 3) * 2.5) % 100}%`;
-      const size = `${14 + (i % 5) * 4}px`;
-      const duration = `${5.5 + (i % 4) * 1.6}s`;
-      const delay = `${(i * 0.35) % 4}s`;
-      const drift = `${(i % 2 === 0 ? 1 : -1) * (40 + (i % 4) * 25)}px`;
-      const rotate = `${(i % 2 === 0 ? 1 : -1) * (180 + (i % 5) * 45)}deg`;
+  const [showPetals, setShowPetals] = useState(true);
+  const [showSparks, setShowSparks] = useState(true);
 
-      return { id: i, left, size, duration, delay, drift, rotate };
-    });
-  }, []);
-
-  // 2. FIRE SPARKS GENERATOR
-  const fireSparks = useMemo(() => {
-    return Array.from({ length: 18 }).map((_, i) => {
-      const left = `${(i * 5.8 + (i % 4) * 3.2) % 96 + 2}%`;
-      const size = `${3 + (i % 4) * 2.5}px`;
-      const duration = `${3.2 + (i % 3) * 1.4}s`;
-      const delay = `${(i * 0.45) % 3.5}s`;
-      const animType =
-        i % 3 === 0
-          ? "hero-fire-spark-1"
-          : i % 3 === 1
-          ? "hero-fire-spark-2"
-          : "";
-
-      return { id: i, left, size, duration, delay, animType };
-    });
-  }, []);
+  const isRajasthani = activeTheme === "royal-rajasthani";
 
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)] py-20">
-      {/* =====================================================
-          BACKGROUND TEXTURE & CORNER ACCENTS
-      ===================================================== */}
-      <div 
-        className="absolute inset-0 z-0 opacity-20 bg-center bg-repeat"
-        style={{ backgroundImage: "url('/themes/rajasthani/pattern.png')" }}
-      />
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
+      
 
       {/* =====================================================
-          1. FLOWER PETALS RAIN
+          RAJASTHANI HERO BACKGROUND
       ===================================================== */}
-      <div className="hero-rose-petals pointer-events-none absolute inset-0 z-[6] overflow-hidden">
-        {petals.map((petal) => (
-          <span
-            key={`petal-${petal.id}`}
-            className="hero-rose-petal"
-            style={
-              {
-                left: petal.left,
-                width: petal.size,
-                height: `calc(${petal.size} * 1.35)`,
-                animationDuration: petal.duration,
-                animationDelay: petal.delay,
-                animationIterationCount: "infinite",
-                "--petal-drift": petal.drift,
-                "--petal-rotate": petal.rotate,
-              } as React.CSSProperties
-            }
-          />
-        ))}
-      </div>
 
-      {/* =====================================================
-          2. FIRE SPARKS (GOLDEN EMBERS)
-      ===================================================== */}
-      <div className="hero-fire-sparks pointer-events-none absolute inset-0 z-[5] overflow-hidden">
-        {fireSparks.map((spark) => (
-          <span
-            key={`spark-${spark.id}`}
-            className={`hero-fire-spark ${spark.animType}`}
+      {isRajasthani && (
+        <>
+          <div
+            className="pointer-events-none absolute inset-0 scale-[1.04] bg-cover bg-center"
             style={{
-              left: spark.left,
-              width: spark.size,
-              height: spark.size,
-              animationDuration: spark.duration,
-              animationDelay: spark.delay,
+              backgroundImage:
+                "url('/themes/rajasthani/hero-bg.PNG')",
+              filter: "blur(4px)",
             }}
           />
-        ))}
+
+          <div className="pointer-events-none absolute inset-0 bg-white/35" />
+        </>
+      )}
+
+      {/* =====================================================
+          THEME BACKGROUND LIGHTS
+      ===================================================== */}
+
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-[var(--secondary)]/20 blur-3xl" />
+
+        <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-[var(--primary)]/10 blur-3xl" />
       </div>
+
+      {/* =====================================================
+          ROSE PETALS
+      ===================================================== */}
+
+      {isRajasthani && showPetals && (
+        <div className="hero-rose-petals">
+          {rosePetals.map((petal, index) => (
+            <span
+              key={index}
+              className="hero-rose-petal"
+              style={{
+                left: petal.left,
+                width: petal.size,
+                height: `calc(${petal.size} * 0.65)`,
+                animationDelay: petal.delay,
+                animationDuration: petal.duration,
+                animationIterationCount: "infinite",
+                ["--petal-drift" as string]: petal.drift,
+                ["--petal-rotate" as string]: petal.rotate,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* =====================================================
+          FIRE SPARKS
+      ===================================================== */}
+
+      {isRajasthani && showSparks && (
+        <div className="hero-fire-sparks">
+          {fireSparks.map((spark, index) => (
+            <span
+              key={index}
+              className={`hero-fire-spark ${
+                index % 7 === 0 ? "hero-fire-heart" : ""
+              } hero-fire-spark-${index % 3}`}
+              style={{
+                left: spark.left,
+                width: spark.size,
+                height: spark.size,
+                fontSize: `calc(${spark.size} * 1.6)`,
+                animationDelay: spark.delay,
+                animationDuration: spark.duration,
+                animationIterationCount: "infinite",
+              }}
+            >
+              {index % 7 === 0 ? "♥" : null}
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* =====================================================
           HERO CONTENT
       ===================================================== */}
-      <div className="relative z-10 w-full">
+
+      <div className="relative z-10 w-full min-w-0">
         <Container>
-          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-            
-            {/* GANPATI LOGO */}
-            <div className="mb-6">
-              <img
-                src="/themes/rajasthani/ganpati.png"
-                alt="Shree Ganesha"
-                className="h-16 w-16 object-contain sm:h-20 sm:w-20 drop-shadow-[0_4px_12px_rgba(182,141,64,0.3)]"
+          <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
+            <div className="relative mx-auto w-full max-w-4xl translate-y-[10px] px-3 sm:translate-y-0 sm:px-0">
+
+              {/* Dark backdrop */}
+              <div
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[360px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
+                aria-hidden="true"
               />
+
+              <div className="relative z-10 mx-auto flex w-full flex-col items-center">
+
+                {/* =====================================================
+                    TOGETHER
+                ===================================================== */}
+
+                <p
+                  className="
+                    mb-12
+                    max-w-[320px]
+                    text-center
+                    text-[10px]
+                    font-medium
+                    uppercase
+                    leading-5
+                    tracking-[3px]
+                    text-[var(--foreground)]
+                    drop-shadow-[0_2px_6px_rgba(255,255,255,0.35)]
+                    sm:mb-14
+                    sm:max-w-none
+                    sm:text-sm
+                    sm:tracking-[7px]
+                  "
+                >
+                  Together With Their Families
+                </p>
+
+                {/* =====================================================
+                    NAMES
+                ===================================================== */}
+
+                <h1
+                  className="
+                    mb-12
+                    flex
+                    w-full
+                    min-w-0
+                    items-center
+                    justify-center
+                    gap-3
+                    overflow-hidden
+                    whitespace-nowrap
+                    font-heading
+                    text-[2.2rem]
+                    font-semibold
+                    leading-[1.15]
+                    tracking-normal
+
+                    bg-gradient-to-r
+                    from-[#8f641d]
+                    via-[#fff1a8]
+                    via-[45%]
+                    to-[#b98224]
+                    bg-[length:220%_100%]
+                    bg-clip-text
+                    text-transparent
+
+                    drop-shadow-[0_3px_12px_rgba(0,0,0,0.65)]
+
+                    animate-[gold-shine_9s_ease-in-out_infinite]
+
+                    sm:mb-14
+                    sm:gap-5
+                    sm:text-6xl
+                    md:text-8xl
+                  "
+                >
+                  <span>Vishal</span>
+
+                  <span
+                    className="
+                      bg-gradient-to-r
+                      from-[#9b6b1f]
+                      via-[#fff4b0]
+                      to-[#c28a2b]
+                      bg-clip-text
+                      text-transparent
+                      drop-shadow-[0_3px_10px_rgba(0,0,0,0.7)]
+                    "
+                  >
+                    &
+                  </span>
+
+                  <span>Varsha</span>
+                </h1>
+
+                {/* =====================================================
+                    INVITATION TEXT
+                ===================================================== */}
+
+                <p
+                  className="
+                    mb-10
+                    max-w-[330px]
+                    text-center
+                    text-sm
+                    leading-8
+                    text-[var(--white)]
+                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]
+                    sm:mb-12
+                    sm:max-w-xl
+                    sm:text-lg
+                    sm:leading-9
+                  "
+                >
+                  Request the pleasure of your company
+                  <br />
+                  at the celebration of their marriage.
+                </p>
+
+                {/* =====================================================
+                    DECORATIVE DIVIDER
+                ===================================================== */}
+
+                <div className="flex items-center justify-center gap-4 sm:gap-5">
+                  <span className="h-px w-14 bg-[var(--primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
+
+                  <span className="text-lg text-[var(--primary)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:text-xl">
+                    ✦
+                  </span>
+
+                  <span className="h-px w-14 bg-[var(--primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
+                </div>
+              </div>
             </div>
-
-            <p className="text-xs uppercase tracking-[6px] text-[var(--accent)] sm:text-sm sm:tracking-[8px]">
-              || श्री गणेशाय नमः ||
-            </p>
-
-            <div className="my-5 h-px w-20 bg-[var(--primary)]/60" />
-
-            <p className="text-xs uppercase tracking-[4px] text-[var(--muted)] sm:text-sm sm:tracking-[5px]">
-              We Request The Pleasure Of Your Company To Celebrate The Wedding Of
-            </p>
-
-            {/* COUPLE NAME WITH ROYAL GOLD SHIMMER */}
-            <h1 className="mt-4 font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient py-2">
-              Vishal <span className="font-script text-3xl sm:text-5xl font-normal">&amp;</span> Varsha
-            </h1>
-
-            <div className="mt-4 flex items-center justify-center gap-4">
-              <div className="h-px w-14 bg-[var(--primary)]/50" />
-              <span className="text-[var(--primary)] text-sm">✦</span>
-              <div className="h-px w-14 bg-[var(--primary)]/50" />
-            </div>
-
-            <p className="mt-6 font-heading text-lg tracking-[3px] text-[var(--foreground)] sm:text-xl">
-              SAVE THE DATE
-            </p>
-
-            <p className="mt-2 text-sm uppercase tracking-[4px] text-[var(--accent)] sm:text-base">
-              Sunday, 31st January 2027
-            </p>
-
-            {/* SCROLL INDICATOR */}
-            <div className="scroll-indicator mt-16">
-              <span className="text-[var(--primary)]">SCROLL</span>
-              <div className="scroll-line bg-[var(--primary)]" />
-            </div>
-
           </div>
         </Container>
+      </div>
+
+      {/* =====================================================
+          SCROLL INDICATOR
+      ===================================================== */}
+
+      <div className="absolute bottom-20 left-0 right-0 z-20 flex justify-center text-center">
+        <div className="scroll-indicator">
+          <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
+            SCROLL
+          </span>
+
+          <div className="scroll-line text-[var(--foreground)]" />
+        </div>
       </div>
     </section>
   );
