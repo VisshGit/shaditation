@@ -5,29 +5,42 @@ import { useEffect, useState } from "react";
 export default function ScrollToTop() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // 1. HAR REFRESH / LOAD PAR TOP SE START KAREGA
   useEffect(() => {
-    if ("scrollRestoration" in window.history) {
+    // 1. Browser ki scroll memory disable
+    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
-    window.scrollTo(0, 0);
-
-    const timer = setTimeout(() => {
+    const forceScrollTop = () => {
       window.scrollTo(0, 0);
-    }, 50);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
 
-    return () => clearTimeout(timer);
+    // Page load hote hi multiple frames me top par force karo
+    forceScrollTop();
+    requestAnimationFrame(forceScrollTop);
+    const t1 = setTimeout(forceScrollTop, 50);
+    const t2 = setTimeout(forceScrollTop, 200);
+
+    // Page reload hone se theek pehle bhi top par set karo
+    const handleBeforeUnload = () => {
+      window.scrollTo(0, 0);
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
   }, []);
 
-  // 2. FLOATING BUTTON VISIBILITY
+  // Floating Button Toggle
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.scrollY > 400) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 400);
     };
 
     window.addEventListener("scroll", toggleVisibility, { passive: true });
@@ -43,7 +56,6 @@ export default function ScrollToTop() {
 
   return (
     <>
-      {/* FLOATING BUTTON (Visible after scrolling down) */}
       {isVisible && (
         <button
           type="button"
