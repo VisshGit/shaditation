@@ -43,11 +43,10 @@ export default function Hero() {
                   Together With Their Families
                 </p>
 
-                <h1 className="mb-10 flex w-full min-w-0 items-center justify-center gap-3 overflow-hidden whitespace-nowrap font-heading text-[2.2rem] font-semibold leading-[1.15] tracking-normal bg-gradient-to-r from-[#8f641d] via-[#fff1a8] via-[45%] to-[#b98224] bg-[length:220%_100%] bg-clip-text text-transparent drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] sm:mb-12 sm:gap-5 sm:text-6xl md:text-8xl">
+                {/* Names: Pure Solid Color, Zero GPU Render Load */}
+                <h1 className="mb-10 flex w-full min-w-0 items-center justify-center gap-3 overflow-hidden whitespace-nowrap font-heading text-[2.2rem] font-semibold leading-[1.15] tracking-normal text-[#b68d40] sm:mb-12 sm:gap-5 sm:text-6xl md:text-8xl">
                   <span>Vishal</span>
-                  <span className="bg-gradient-to-r from-[#9b6b1f] via-[#fff4b0] to-[#c28a2b] bg-clip-text text-transparent">
-                    &
-                  </span>
+                  <span className="text-[#8f641d]">&</span>
                   <span>Varsha</span>
                 </h1>
 
