@@ -44,11 +44,9 @@ export default function Hero() {
                 </p>
 
                 {/* Names: Pure Solid Color, Zero GPU Render Load */}
-                <h1 className="mb-10 flex w-full min-w-0 items-center justify-center gap-3 overflow-hidden whitespace-nowrap font-heading text-[2.2rem] font-semibold leading-[1.15] tracking-normal text-[#b68d40] sm:mb-12 sm:gap-5 sm:text-6xl md:text-8xl">
-                  <span>Vishal</span>
-                  <span className="text-[#8f641d]">&</span>
-                  <span>Varsha</span>
-                </h1>
+                <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient py-2">
+  Vishal <span className="font-script text-3xl sm:text-5xl font-normal">&amp;</span> Varsha
+</h1>
 
                 <p className="mb-8 max-w-[330px] text-center text-sm leading-8 text-[var(--foreground)] sm:mb-10 sm:max-w-xl sm:text-lg sm:leading-9">
                   Request the pleasure of your company
