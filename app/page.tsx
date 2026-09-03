@@ -1,29 +1,11 @@
-import WelcomeGate from "@/components/sections/WelcomeGate";
-import Hero from "@/components/sections/Hero";
-import ScratchReveal from "@/components/sections/ScratchReveal";
-import Countdown from "@/components/sections/Countdown";
-import Story from "@/components/sections/Story";
-import Gallery from "@/components/sections/Gallery";
-import Events from "@/components/sections/Events";
-import Venue from "@/components/sections/Venue";
-import RSVP from "@/components/sections/RSVP";
-import Closing from "@/components/sections/Closing";
-
 export default function Home() {
   return (
-    <WelcomeGate
-      leftImage="/gates/gate-left.jpg"
-      rightImage="/gates/gate-right.jpg"
-    >
-      <Hero />
-      <ScratchReveal />
-      <Countdown />
-      <Story />
-      <Gallery />
-      <Events />
-      <Venue />
-      <RSVP />
-      <Closing />
-    </WelcomeGate>
+    <div className="flex flex-col items-center py-20 gap-10">
+      <h1 className="text-4xl font-bold">Scroll Test Start</h1>
+      <div className="h-[200vh] w-32 bg-amber-500/20 flex items-center justify-center">
+        Dummy Long Section (Scroll check)
+      </div>
+      <h2 className="text-2xl">Scroll Test End</h2>
+    </div>
   );
 }
