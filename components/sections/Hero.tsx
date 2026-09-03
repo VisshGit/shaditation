@@ -32,20 +32,20 @@ export default function Hero() {
   useEffect(() => {
     if (!isRajasthani) return;
 
-    // 1. Flowers 0s par shuru hote hain, 4 seconds baad stop
+    // 1. Flowers 0s se shuru hokar 7 seconds baad band honge
     const petalsStopTimer = window.setTimeout(() => {
       setShowPetals(false);
-    }, 4000);
+    }, 7000);
 
-    // 2. Fire sparks 2 seconds baad start hote hain (Flower ke 2s baad)
+    // 2. Fire sparks 4 seconds baad start honge (Flower ke 4s baad)
     const sparksStartTimer = window.setTimeout(() => {
       setShowSparks(true);
-    }, 2000);
+    }, 4000);
 
-    // 3. Fire sparks total 5s chalenge (2s + 5s = 7s par stop)
+    // 3. Fire sparks total 7 seconds chalenge (4s + 7s = 11s par stop)
     const sparksStopTimer = window.setTimeout(() => {
       setShowSparks(false);
-    }, 7000);
+    }, 11000);
 
     return () => {
       window.clearTimeout(petalsStopTimer);
@@ -88,7 +88,7 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          ROSE PETALS (0s se 4s tak)
+          ROSE PETALS (0s se 7s tak)
       ===================================================== */}
 
       {isRajasthani && showPetals && (
@@ -112,7 +112,7 @@ export default function Hero() {
       )}
 
       {/* =====================================================
-          FIRE SPARKS (2s se 7s tak, Total 5s)
+          FIRE SPARKS (4s se 11s tak, Total 7s)
       ===================================================== */}
 
       {isRajasthani && showSparks && (
