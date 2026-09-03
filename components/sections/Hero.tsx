@@ -1,129 +1,32 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Container from "@/components/ui/Container";
 import { activeTheme } from "@/config/themes";
 
-const fireSparks = Array.from({ length: 18 }, (_, index) => ({
-  left: `${((index * 17 + 3) % 96) + 2}%`,
-  delay: `${(index % 8) * 0.25}s`,
-  size: `${3 + (index % 3) * 1.5}px`,
-  duration: `${2.6 + (index % 4) * 0.3}s`,
-}));
-
-const rosePetals = Array.from({ length: 16 }, (_, index) => ({
-  left: `${(index * 29) % 100}%`,
-  delay: `${(index % 8) * 0.22}s`,
-  size: `${12 + (index % 4) * 2}px`,
-  duration: `${4 + (index % 5) * 0.5}s`,
-  drift: `${-30 + (index % 7) * 10}px`,
-  rotate: `${(index % 2 === 0 ? 1 : -1) * (45 + (index % 4) * 20)}deg`,
-}));
-
 export default function Hero() {
-  const [showPetals, setShowPetals] = useState(true);
-  const [showSparks, setShowSparks] = useState(false);
-  const [fadeEffects, setFadeEffects] = useState(false);
-
   const isRajasthani = activeTheme === "royal-rajasthani";
-
-  useEffect(() => {
-    if (!isRajasthani) return;
-
-    const sparksTimer = window.setTimeout(() => {
-      setShowSparks(true);
-    }, 2500);
-
-    const fadeTimer = window.setTimeout(() => {
-      setFadeEffects(true);
-    }, 6000);
-
-    const removeTimer = window.setTimeout(() => {
-      setShowPetals(false);
-      setShowSparks(false);
-    }, 7500);
-
-    return () => {
-      window.clearTimeout(sparksTimer);
-      window.clearTimeout(fadeTimer);
-      window.clearTimeout(removeTimer);
-    };
-  }, [isRajasthani]);
 
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
-      {/* Background with Hardware Acceleration */}
+      {/* Background Image */}
       {isRajasthani && (
         <>
           <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-center transform-gpu"
+            className="pointer-events-none absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
-              opacity: 0.92,
+              opacity: 0.95,
             }}
           />
-          <div className="pointer-events-none absolute inset-0 bg-white/40 backdrop-blur-[1px]" />
+          <div className="pointer-events-none absolute inset-0 bg-white/35" />
         </>
       )}
 
-      {/* Static theme lights */}
+      {/* Static Theme Glows */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-10 top-10 h-64 w-64 rounded-full bg-[var(--secondary)]/20 blur-2xl" />
         <div className="absolute bottom-10 right-10 h-64 w-64 rounded-full bg-[var(--primary)]/10 blur-2xl" />
       </div>
-
-      {/* Rose Petals */}
-      {isRajasthani && showPetals && (
-        <div
-          className={`hero-rose-petals pointer-events-none ${
-            fadeEffects ? "hero-rose-petals-fade" : ""
-          }`}
-        >
-          {rosePetals.map((petal, index) => (
-            <span
-              key={index}
-              className="hero-rose-petal"
-              style={{
-                left: petal.left,
-                width: petal.size,
-                height: `calc(${petal.size} * 0.65)`,
-                animationDelay: petal.delay,
-                animationDuration: petal.duration,
-                ["--petal-drift" as string]: petal.drift,
-                ["--petal-rotate" as string]: petal.rotate,
-              }}
-            />
-          ))}
-        </div>
-      )}
-
-      {/* Fire Sparks */}
-      {isRajasthani && showSparks && (
-        <div
-          className={`hero-fire-sparks pointer-events-none ${
-            fadeEffects ? "hero-fire-sparks-fade" : ""
-          }`}
-        >
-          {fireSparks.map((spark, index) => (
-            <span
-              key={index}
-              className={`hero-fire-spark ${
-                index % 5 === 0 ? "hero-fire-heart" : ""
-              } hero-fire-spark-${index % 3}`}
-              style={{
-                left: spark.left,
-                width: spark.size,
-                height: spark.size,
-                fontSize: `calc(${spark.size} * 1.5)`,
-                animationDelay: spark.delay,
-                animationDuration: spark.duration,
-              }}
-            >
-              {index % 5 === 0 ? "♥" : null}
-            </span>
-          ))}
-        </div>
-      )}
 
       {/* Hero Content */}
       <div className="relative z-10 w-full min-w-0">
