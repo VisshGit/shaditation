@@ -80,6 +80,39 @@ img {
 }
 
 /* =========================================================
+   ROYAL GOLDEN COUPLE NAME EFFECT
+   ========================================================= */
+
+.text-gold-gradient {
+  background: linear-gradient(
+    135deg,
+    #cf9537 0%,
+    #fcedb3 25%,
+    #dfa743 50%,
+    #fff4d0 75%,
+    #b3781e 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine-gold 4s linear infinite;
+  text-shadow: 0 4px 20px rgba(182, 141, 64, 0.25);
+  filter: drop-shadow(0 2px 8px rgba(182, 141, 64, 0.35));
+}
+
+@keyframes shine-gold {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* =========================================================
    PARTY CANNON
    ========================================================= */
 
