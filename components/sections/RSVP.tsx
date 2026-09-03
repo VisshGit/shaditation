@@ -62,14 +62,20 @@ export default function RSVP() {
   return (
     <ScrollReveal>
       {/* =====================================================
-          PARALLAX FIXED SECTION (Countdown Style Background)
+          PARALLAX FIXED SECTION (Countdown Same Image & Overlays)
       ===================================================== */}
       <div
-        className="relative w-full overflow-hidden bg-fixed bg-center bg-no-repeat bg-cover"
-        style={{ backgroundImage: "url('/themes/rajasthani/background.jpg')" }}
+        className="relative w-full overflow-hidden bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/cdbg.PNG')",
+          backgroundAttachment: "fixed",
+        }}
       >
-        {/* Soft Dark & Warm Tint Overlay */}
-        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
+        {/* Background Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
+
+        {/* Soft Warm Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/45" />
 
         <Section className="relative z-10 !pt-[120px] !pb-[120px] md:!pt-[160px] md:!pb-[160px]">
           <div className="flex w-full justify-center">
