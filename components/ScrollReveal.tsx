@@ -17,27 +17,14 @@ export default function ScrollReveal({
 
   useEffect(() => {
     const element = ref.current;
-
     if (!element) return;
 
-    const mediaQuery = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    );
-
-    // Reduced motion → immediately visible
-    if (mediaQuery.matches) {
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !("IntersectionObserver" in window)
+    ) {
       element.classList.add("scroll-reveal-visible");
       return;
-    }
-
-    // Browser fallback
-    if (!("IntersectionObserver" in window)) {
-      element.classList.add("scroll-reveal-visible");
-      return;
-    }
-
-    if (delay > 0) {
-      element.style.setProperty("--reveal-delay", `${delay}ms`);
     }
 
     const observer = new IntersectionObserver(
@@ -45,14 +32,21 @@ export default function ScrollReveal({
         if (!entry?.isIntersecting) return;
 
         element.classList.add("scroll-reveal-visible");
-
-        // Only reveal once
         observer.unobserve(element);
+
+        // Animation khatam hote hi heavy GPU properties hatao
+        const timer = setTimeout(() => {
+          element.style.willChange = "auto";
+          element.style.transform = "none";
+          element.style.transition = "none";
+        }, delay + 600);
+
+        return () => clearTimeout(timer);
       },
       {
         root: null,
-        threshold: 0,
-        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.05,
+        rootMargin: "0px 0px 50px 0px",
       }
     );
 
