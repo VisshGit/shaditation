@@ -25,9 +25,34 @@ const rosePetals = Array.from({ length: 32 }, (_, index) => ({
 
 export default function Hero() {
   const [showPetals, setShowPetals] = useState(true);
-  const [showSparks, setShowSparks] = useState(true);
+  const [showSparks, setShowSparks] = useState(false);
 
   const isRajasthani = activeTheme === "royal-rajasthani";
+
+  useEffect(() => {
+    if (!isRajasthani) return;
+
+    // 1. Flowers 0s par shuru hote hain, 4 seconds baad stop
+    const petalsStopTimer = window.setTimeout(() => {
+      setShowPetals(false);
+    }, 4000);
+
+    // 2. Fire sparks 2 seconds baad start hote hain (Flower ke 2s baad)
+    const sparksStartTimer = window.setTimeout(() => {
+      setShowSparks(true);
+    }, 2000);
+
+    // 3. Fire sparks total 5s chalenge (2s + 5s = 7s par stop)
+    const sparksStopTimer = window.setTimeout(() => {
+      setShowSparks(false);
+    }, 7000);
+
+    return () => {
+      window.clearTimeout(petalsStopTimer);
+      window.clearTimeout(sparksStartTimer);
+      window.clearTimeout(sparksStopTimer);
+    };
+  }, [isRajasthani]);
 
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
@@ -63,7 +88,7 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          ROSE PETALS
+          ROSE PETALS (0s se 4s tak)
       ===================================================== */}
 
       {isRajasthani && showPetals && (
@@ -78,7 +103,6 @@ export default function Hero() {
                 height: `calc(${petal.size} * 0.65)`,
                 animationDelay: petal.delay,
                 animationDuration: petal.duration,
-                animationIterationCount: "infinite",
                 ["--petal-drift" as string]: petal.drift,
                 ["--petal-rotate" as string]: petal.rotate,
               }}
@@ -88,7 +112,7 @@ export default function Hero() {
       )}
 
       {/* =====================================================
-          FIRE SPARKS
+          FIRE SPARKS (2s se 7s tak, Total 5s)
       ===================================================== */}
 
       {isRajasthani && showSparks && (
@@ -106,7 +130,6 @@ export default function Hero() {
                 fontSize: `calc(${spark.size} * 1.6)`,
                 animationDelay: spark.delay,
                 animationDuration: spark.duration,
-                animationIterationCount: "infinite",
               }}
             >
               {index % 7 === 0 ? "♥" : null}
