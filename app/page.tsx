@@ -1,4 +1,3 @@
-import WelcomeGate from "@/components/sections/WelcomeGate";
 import Hero from "@/components/sections/Hero";
 import ScratchReveal from "@/components/sections/ScratchReveal";
 import Countdown from "@/components/sections/Countdown";
@@ -11,10 +10,7 @@ import Closing from "@/components/sections/Closing";
 
 export default function Home() {
   return (
-    <WelcomeGate
-      leftImage="/gates/gate-left.jpg"
-      rightImage="/gates/gate-right.jpg"
-    >
+    <div className="w-full">
       <Hero />
       <ScratchReveal />
       <Countdown />
@@ -24,6 +20,6 @@ export default function Home() {
       <Venue />
       <RSVP />
       <Closing />
-    </WelcomeGate>
+    </div>
   );
 }
