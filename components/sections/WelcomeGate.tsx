@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useState, useEffect } from "react";
 
 type WelcomeGateProps = {
   children: ReactNode;
@@ -16,30 +16,42 @@ export default function WelcomeGate({
   const [isOpening, setIsOpening] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
 
+  // Lock scroll jab tak gate band ya open ho raha hai
+  useEffect(() => {
+    if (!isOpened) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpened]);
+
   const openGate = () => {
-  if (isOpening || isOpened) return;
+    if (isOpening || isOpened) return;
 
-  // Start wedding music from the user's tap
-  window.dispatchEvent(new Event("start-wedding-music"));
+    // Start wedding music from the user's tap
+    window.dispatchEvent(new Event("start-wedding-music"));
 
-  setIsOpening(true);
+    setIsOpening(true);
 
-  window.setTimeout(() => {
-    setIsOpened(true);
-  }, 3200);
-};
+    window.setTimeout(() => {
+      setIsOpened(true);
+    }, 3200);
+  };
 
   return (
-    <main className="relative min-h-screen w-full overflow-x-clip">
+    <main className="relative min-h-screen w-full overflow-x-hidden">
       {/* =====================================================
           WEBSITE CONTENT
       ===================================================== */}
-
       <div
-        className={`transition-all duration-[3000ms] ease-in-out ${
-          isOpening
-            ? "scale-[1.01] opacity-100 blur-0"
-            : "scale-100 opacity-0 blur-[14px]"
+        className={`w-full transition-all duration-[2500ms] ease-out ${
+          isOpening || isOpened
+            ? "scale-100 opacity-100 blur-0 pointer-events-auto"
+            : "scale-[0.98] opacity-0 blur-[12px] pointer-events-none"
         }`}
       >
         {children}
@@ -48,15 +60,14 @@ export default function WelcomeGate({
       {/* =====================================================
           WELCOME GATE
       ===================================================== */}
-
       {!isOpened && (
         <div
-          className={`fixed inset-0 z-[9999] overflow-hidden ${
-            isOpening ? "pointer-events-none" : ""
+          className={`fixed inset-0 z-[9999] overflow-hidden pointer-events-auto select-none ${
+            isOpening ? "!pointer-events-none" : ""
           }`}
+          style={{ touchAction: isOpening ? "auto" : "none" }}
         >
           {/* LEFT GATE */}
-
           <div
             className={`
               absolute inset-y-0 left-0 w-1/2
@@ -68,15 +79,14 @@ export default function WelcomeGate({
             `}
           >
             <img
-  src={leftImage}
-  alt=""
-  className="h-full w-full object-cover object-[right_center] sm:object-center"
-  draggable={false}
-/>
+              src={leftImage}
+              alt=""
+              className="h-full w-full object-cover object-[right_center] sm:object-center"
+              draggable={false}
+            />
           </div>
 
           {/* RIGHT GATE */}
-
           <div
             className={`
               absolute inset-y-0 right-0 w-1/2
@@ -88,15 +98,14 @@ export default function WelcomeGate({
             `}
           >
             <img
-  src={rightImage}
-  alt=""
-  className="h-full w-full object-cover object-[left_center] sm:object-center"
-  draggable={false}
-/>
+              src={rightImage}
+              alt=""
+              className="h-full w-full object-cover object-[left_center] sm:object-center"
+              draggable={false}
+            />
           </div>
 
           {/* CENTER GANPATI OPEN BUTTON */}
-
           <div
             className={`
               absolute inset-0
@@ -107,51 +116,51 @@ export default function WelcomeGate({
               ease-out
               ${
                 isOpening
-                  ? "scale-90 opacity-0 blur-[12px]"
+                  ? "scale-90 opacity-0 blur-[12px] pointer-events-none"
                   : "scale-100 opacity-100 blur-0"
               }
             `}
           >
             <button
-  type="button"
-  onClick={openGate}
-  disabled={isOpening}
-  aria-label="Open the wedding invitation"
-  className="
-    group
-    relative
-    z-30
-    flex
-    h-[220px]
-    w-[220px]
-    items-center
-    justify-center
-    bg-transparent
-    p-0
-    transition-transform
-    duration-700
-    hover:scale-105
-    focus:outline-none
-  "
->
-  <img
-    src="/themes/rajasthani/ganpati.png"
-    alt="Ganpati"
-    className="
-      block
-      h-full
-      w-full
-      object-contain
-      opacity-100
-      drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]
-    "
-    draggable={false}
-  />
-</button>
+              type="button"
+              onClick={openGate}
+              disabled={isOpening}
+              aria-label="Open the wedding invitation"
+              className="
+                group
+                relative
+                z-30
+                flex
+                h-[220px]
+                w-[220px]
+                cursor-pointer
+                items-center
+                justify-center
+                bg-transparent
+                p-0
+                transition-transform
+                duration-700
+                hover:scale-105
+                focus:outline-none
+              "
+            >
+              <img
+                src="/themes/rajasthani/ganpati.png"
+                alt="Ganpati"
+                className="
+                  block
+                  h-full
+                  w-full
+                  object-contain
+                  opacity-100
+                  drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]
+                "
+                draggable={false}
+              />
+            </button>
           </div>
 
           {/* SOFT CENTER BLUR */}
-
           <div
             className={`
               pointer-events-none
@@ -160,11 +169,7 @@ export default function WelcomeGate({
               bg-black/5
               transition-opacity
               duration-[3000ms]
-              ${
-                isOpening
-                  ? "opacity-0"
-                  : "opacity-100"
-              }
+              ${isOpening ? "opacity-0" : "opacity-100"}
             `}
           />
         </div>
