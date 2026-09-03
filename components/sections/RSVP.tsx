@@ -62,13 +62,12 @@ export default function RSVP() {
   return (
     <ScrollReveal>
       {/* =====================================================
-          PARALLAX FIXED SECTION (Countdown Same Image & Overlays)
+          PARALLAX SECTION (Mobile safe: bg-scroll, Desktop: bg-fixed)
       ===================================================== */}
       <div
-        className="relative w-full overflow-hidden bg-cover bg-center"
+        className="relative w-full overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
           backgroundImage: "url('/images/cdbg.PNG')",
-          backgroundAttachment: "fixed",
         }}
       >
         {/* Background Overlay */}
