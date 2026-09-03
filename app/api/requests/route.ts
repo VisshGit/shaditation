@@ -1,84 +1,35 @@
-import { NextResponse } from "next/server";
+import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 
-type WeddingRequest = {
-  id: string;
-  name: string;
-  partnerName: string;
-  weddingDate: string;
-  email: string;
-  whatsapp: string;
-  message: string;
-  themeId: string;
-  status: "pending" | "in-progress" | "completed";
-  createdAt: string;
-};
-
-const requests: WeddingRequest[] = [];
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+);
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const { name, email, response, guests, message } = body;
 
-    const {
-      name,
-      partnerName,
-      weddingDate,
-      email,
-      whatsapp,
-      message,
-      themeId,
-    } = body;
-
-    if (
-      !name ||
-      !partnerName ||
-      !weddingDate ||
-      !email ||
-      !whatsapp ||
-      !themeId
-    ) {
-      return NextResponse.json(
+    // Supabase me data insert
+    const { data, error } = await supabase
+      .from('rsvps') // agar table ka naam rsvps ke alawa kuch aur hai toh yahan badal lena
+      .insert([
         {
-          success: false,
-          message: "Required fields are missing.",
+          name,
+          email: email || null,
+          response,
+          guests: guests ? Number(guests) : 1,
+          message: message || '',
         },
-        { status: 400 }
-      );
+      ]);
+
+    if (error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    const newRequest: WeddingRequest = {
-      id: crypto.randomUUID(),
-      name,
-      partnerName,
-      weddingDate,
-      email,
-      whatsapp,
-      message: message ?? "",
-      themeId,
-      status: "pending",
-      createdAt: new Date().toISOString(),
-    };
-
-    requests.push(newRequest);
-
-    return NextResponse.json({
-      success: true,
-      request: newRequest,
-    });
-  } catch {
-    return NextResponse.json(
-      {
-        success: false,
-        message: "Something went wrong.",
-      },
-      { status: 500 }
-    );
+    return NextResponse.json({ success: true }, { status: 200 });
+  } catch (err) {
+    return NextResponse.json({ error: 'Server error' }, { status: 500 });
   }
-}
-
-export async function GET() {
-  return NextResponse.json({
-    success: true,
-    requests,
-  });
 }
