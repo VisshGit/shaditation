@@ -61,21 +61,20 @@ export default function RSVP() {
 
   return (
     <ScrollReveal>
-      {/* 
-        PARALLAX FIXED SECTION WRAPPER 
-        (Apni pasand ki image path style me change kar sakte ho)
-      */}
+      {/* =====================================================
+          PARALLAX FIXED SECTION (Countdown Style Background)
+      ===================================================== */}
       <div
         className="relative w-full overflow-hidden bg-fixed bg-center bg-no-repeat bg-cover"
-        style={{ backgroundImage: "url('/images/story-bg.jpg')" }}
+        style={{ backgroundImage: "url('/themes/rajasthani/background.jpg')" }}
       >
-        {/* Soft Contrast & Tint Overlay */}
-        <div className="absolute inset-0 bg-black/45 backdrop-blur-[2px]" />
+        {/* Soft Dark & Warm Tint Overlay */}
+        <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]" />
 
         <Section className="relative z-10 !pt-[120px] !pb-[120px] md:!pt-[160px] md:!pb-[160px]">
           <div className="flex w-full justify-center">
-            {/* LUXURY GLASS CARD FOR FORM READABILITY */}
-            <div className="w-full max-w-2xl rounded-3xl border border-[var(--primary)]/30 bg-[var(--background)]/85 px-6 py-12 text-center shadow-2xl backdrop-blur-md sm:px-10 sm:py-16">
+            {/* LUXURY ROYAL CARD */}
+            <div className="w-full max-w-2xl rounded-3xl border border-[var(--primary)]/35 bg-[var(--background)]/90 px-6 py-12 text-center shadow-2xl backdrop-blur-md sm:px-10 sm:py-16">
               {/* HEADING */}
               <div className="flex flex-col items-center">
                 <p className="text-xs uppercase tracking-[5px] text-[var(--accent)] sm:text-sm sm:tracking-[7px]">
