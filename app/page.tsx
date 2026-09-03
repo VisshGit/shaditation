@@ -1,3 +1,4 @@
+import ScrollToTop from "@/components/ui/ScrollToTop";
 import WelcomeGate from "@/components/sections/WelcomeGate";
 import Hero from "@/components/sections/Hero";
 import ScratchReveal from "@/components/sections/ScratchReveal";
@@ -11,19 +12,23 @@ import Closing from "@/components/sections/Closing";
 
 export default function Home() {
   return (
-    <WelcomeGate
-      leftImage="/gates/gate-left.jpg"
-      rightImage="/gates/gate-right.jpg"
-    >
-      <Hero />
-      <ScratchReveal />
-      <Countdown />
-      <Story />
-      <Gallery />
-      <Events />
-      <Venue />
-      <RSVP />
-      <Closing />
-    </WelcomeGate>
+    <>
+      <ScrollToTop />
+
+      <WelcomeGate
+        leftImage="/gates/gate-left.jpg"
+        rightImage="/gates/gate-right.jpg"
+      >
+        <Hero />
+        <ScratchReveal />
+        <Countdown />
+        <Story />
+        <Gallery />
+        <Events />
+        <Venue />
+        <RSVP />
+        <Closing />
+      </WelcomeGate>
+    </>
   );
 }
