@@ -16,54 +16,53 @@ export default function WelcomeGate({
   const [isOpening, setIsOpening] = useState(false);
   const [isOpened, setIsOpened] = useState(false);
 
-  // Lock scroll jab tak gate band ya open ho raha hai
+  // Initial load par lock, lekin jaise hi open shuru ho scroll TURANT unlock
   useEffect(() => {
-    if (!isOpened) {
+    if (!isOpening && !isOpened) {
       document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
-  }, [isOpened]);
+  }, [isOpening, isOpened]);
 
   const openGate = () => {
     if (isOpening || isOpened) return;
 
-    // Start wedding music from the user's tap
     window.dispatchEvent(new Event("start-wedding-music"));
 
+    // 1. Scroll ko usi millisecond free karo
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
     setIsOpening(true);
 
+    // 2. Darwaza open hone ke baad DOM se gate safely unmount karo
     window.setTimeout(() => {
       setIsOpened(true);
-    }, 3200);
+    }, 2600);
   };
 
   return (
-    <main className="relative min-h-screen w-full overflow-x-hidden">
+    <div className="relative w-full">
       {/* =====================================================
-          WEBSITE CONTENT
+          WEBSITE CONTENT (Zero Blocking, Pure Native Render)
       ===================================================== */}
-      <div
-        className={`w-full transition-all duration-[2500ms] ease-out ${
-          isOpening || isOpened
-            ? "scale-100 opacity-100 blur-0 pointer-events-auto"
-            : "scale-[0.98] opacity-0 blur-[12px] pointer-events-none"
-        }`}
-      >
+      <div className="w-full">
         {children}
       </div>
 
       {/* =====================================================
-          WELCOME GATE
+          WELCOME GATE OVERLAY
       ===================================================== */}
       {!isOpened && (
         <div
-          className={`fixed inset-0 z-[9999] overflow-hidden pointer-events-auto select-none ${
-            isOpening ? "!pointer-events-none" : ""
+          className={`fixed inset-0 z-[9999] overflow-hidden select-none ${
+            isOpening ? "pointer-events-none" : "pointer-events-auto"
           }`}
           style={{ touchAction: isOpening ? "auto" : "none" }}
         >
@@ -73,7 +72,7 @@ export default function WelcomeGate({
               absolute inset-y-0 left-0 w-1/2
               overflow-hidden
               transition-transform
-              duration-[3000ms]
+              duration-[2200ms]
               ease-[cubic-bezier(0.77,0,0.18,1)]
               ${isOpening ? "-translate-x-full" : "translate-x-0"}
             `}
@@ -92,7 +91,7 @@ export default function WelcomeGate({
               absolute inset-y-0 right-0 w-1/2
               overflow-hidden
               transition-transform
-              duration-[3000ms]
+              duration-[2200ms]
               ease-[cubic-bezier(0.77,0,0.18,1)]
               ${isOpening ? "translate-x-full" : "translate-x-0"}
             `}
@@ -105,20 +104,16 @@ export default function WelcomeGate({
             />
           </div>
 
-          {/* CENTER GANPATI OPEN BUTTON */}
+          {/* CENTER GANPATI BUTTON */}
           <div
             className={`
               absolute inset-0
               z-20
               flex items-center justify-center
-              transition-all
-              duration-[1400ms]
+              transition-opacity
+              duration-500
               ease-out
-              ${
-                isOpening
-                  ? "scale-90 opacity-0 blur-[12px] pointer-events-none"
-                  : "scale-100 opacity-100 blur-0"
-              }
+              ${isOpening ? "opacity-0 pointer-events-none" : "opacity-100"}
             `}
           >
             <button
@@ -139,7 +134,7 @@ export default function WelcomeGate({
                 bg-transparent
                 p-0
                 transition-transform
-                duration-700
+                duration-300
                 hover:scale-105
                 focus:outline-none
               "
@@ -152,7 +147,6 @@ export default function WelcomeGate({
                   h-full
                   w-full
                   object-contain
-                  opacity-100
                   drop-shadow-[0_4px_10px_rgba(0,0,0,0.35)]
                 "
                 draggable={false}
@@ -160,20 +154,20 @@ export default function WelcomeGate({
             </button>
           </div>
 
-          {/* SOFT CENTER BLUR */}
+          {/* SOFT BACKDROP */}
           <div
             className={`
               pointer-events-none
               absolute inset-0
               z-10
-              bg-black/5
+              bg-black/10
               transition-opacity
-              duration-[3000ms]
+              duration-1000
               ${isOpening ? "opacity-0" : "opacity-100"}
             `}
           />
         </div>
       )}
-    </main>
+    </div>
   );
 }
