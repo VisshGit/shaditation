@@ -2,6 +2,9 @@ import Hero from "@/components/sections/Hero";
 import ScratchReveal from "@/components/sections/ScratchReveal";
 import Countdown from "@/components/sections/Countdown";
 import Story from "@/components/sections/Story";
+import Gallery from "@/components/sections/Gallery";
+import Events from "@/components/sections/Events";
+import Venue from "@/components/sections/Venue";
 
 export default function Home() {
   return (
@@ -10,6 +13,9 @@ export default function Home() {
       <ScratchReveal />
       <Countdown />
       <Story />
+      <Gallery />
+      <Events />
+      <Venue />
     </div>
   );
 }
