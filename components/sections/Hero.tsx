@@ -1,79 +1,124 @@
 "use client";
 
-import Container from "@/components/ui/Container";
-import { activeTheme } from "@/config/themes";
+import { useMemo } from "react";
 
 export default function Hero() {
-  const isRajasthani = activeTheme === "royal-rajasthani";
+  // 1. ROSE PETALS GENERATOR (Smooth & Randomised Falling)
+  const petals = useMemo(() => {
+    return Array.from({ length: 22 }).map((_, i) => {
+      const left = `${(i * 4.6 + (i % 3) * 2.5) % 100}%`;
+      const size = `${14 + (i % 5) * 4}px`;
+      const duration = `${5.5 + (i % 4) * 1.6}s`;
+      const delay = `${(i * 0.35) % 4}s`;
+      const drift = `${(i % 2 === 0 ? 1 : -1) * (40 + (i % 4) * 25)}px`;
+      const rotate = `${(i % 2 === 0 ? 1 : -1) * (180 + (i % 5) * 45)}deg`;
+
+      return { id: i, left, size, duration, delay, drift, rotate };
+    });
+  }, []);
+
+  // 2. FIRE SPARKS GENERATOR (Warm Golden Rising Ember Effect)
+  const fireSparks = useMemo(() => {
+    return Array.from({ length: 18 }).map((_, i) => {
+      const left = `${(i * 5.8 + (i % 4) * 3.2) % 96 + 2}%`;
+      const size = `${3 + (i % 4) * 2.5}px`;
+      const duration = `${3.2 + (i % 3) * 1.4}s`;
+      const delay = `${(i * 0.45) % 3.5}s`;
+      const animType = i % 3 === 0 ? "hero-fire-spark-1" : i % 3 === 1 ? "hero-fire-spark-2" : "";
+
+      return { id: i, left, size, duration, delay, animType };
+    });
+  }, []);
 
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
-      {/* Background Image */}
-      {isRajasthani && (
-        <>
-          <div
-            className="pointer-events-none absolute inset-0 bg-cover bg-center"
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)] px-4 py-20 text-center">
+      {/* =====================================================
+          1. RAJASTHANI ROSE PETALS (FLOWER RAIN)
+      ===================================================== */}
+      <div className="hero-rose-petals pointer-events-none absolute inset-0 z-[6] overflow-hidden">
+        {petals.map((petal) => (
+          <span
+            key={`petal-${petal.id}`}
+            className="hero-rose-petal"
+            style={
+              {
+                left: petal.left,
+                width: petal.size,
+                height: `calc(${petal.size} * 1.35)`,
+                animationDuration: petal.duration,
+                animationDelay: petal.delay,
+                animationIterationCount: "infinite",
+                "--petal-drift": petal.drift,
+                "--petal-rotate": petal.rotate,
+              } as React.CSSProperties
+            }
+          />
+        ))}
+      </div>
+
+      {/* =====================================================
+          2. ROYAL FIRE SPARKS (EMBERS EFFECT)
+      ===================================================== */}
+      <div className="hero-fire-sparks pointer-events-none absolute inset-0 z-[5] overflow-hidden">
+        {fireSparks.map((spark) => (
+          <span
+            key={`spark-${spark.id}`}
+            className={`hero-fire-spark ${spark.animType}`}
             style={{
-              backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
-              opacity: 0.95,
+              left: spark.left,
+              width: spark.size,
+              height: spark.size,
+              animationDuration: spark.duration,
+              animationDelay: spark.delay,
             }}
           />
-          <div className="pointer-events-none absolute inset-0 bg-white/35" />
-        </>
-      )}
-
-      {/* Static Theme Glows */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-10 top-10 h-64 w-64 rounded-full bg-[var(--secondary)]/20 blur-2xl" />
-        <div className="absolute bottom-10 right-10 h-64 w-64 rounded-full bg-[var(--primary)]/10 blur-2xl" />
+        ))}
       </div>
 
-      {/* Hero Content */}
-      <div className="relative z-10 w-full min-w-0">
-        <Container>
-          <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
-            <div className="relative mx-auto w-full max-w-4xl px-3 sm:px-0">
-              <div
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[340px] w-[92%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/20 blur-2xl"
-                aria-hidden="true"
-              />
+      {/* =====================================================
+          HERO MAIN CONTENT
+      ===================================================== */}
+      <div className="relative z-10 flex max-w-4xl flex-col items-center">
+        {/* GANPATI BADGE / TOP ICON */}
+        <div className="mb-6 flex items-center justify-center">
+          <img
+            src="/themes/rajasthani/ganpati.png"
+            alt="Lord Ganesha"
+            className="h-16 w-16 object-contain drop-shadow-[0_2px_10px_rgba(182,141,64,0.35)] sm:h-20 sm:w-20"
+          />
+        </div>
 
-              <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                <p className="mb-10 max-w-[320px] text-center text-[10px] font-medium uppercase tracking-[3px] text-[var(--foreground)] sm:mb-12 sm:max-w-none sm:text-sm sm:tracking-[7px]">
-                  Together With Their Families
-                </p>
+        <p className="font-heading text-xs font-semibold uppercase tracking-[6px] text-[var(--accent)] sm:text-sm sm:tracking-[8px]">
+          || श्री गणेशाय नमः ||
+        </p>
 
-                {/* Names: Pure Solid Color, Zero GPU Render Load */}
-                <h1 className="font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient py-2">
-  Vishal <span className="font-script text-3xl sm:text-5xl font-normal">&amp;</span> Varsha
-</h1>
+        <p className="mt-4 text-xs uppercase tracking-[4px] text-[var(--muted)] sm:text-sm sm:tracking-[6px]">
+          We Invite You To Celebrate The Wedding Of
+        </p>
 
-                <p className="mb-8 max-w-[330px] text-center text-sm leading-8 text-[var(--foreground)] sm:mb-10 sm:max-w-xl sm:text-lg sm:leading-9">
-                  Request the pleasure of your company
-                  <br />
-                  at the celebration of their marriage.
-                </p>
+        {/* ROYAL GOLDEN SHIMMER NAME */}
+        <h1 className="font-heading text-gold-gradient py-4 text-4xl font-bold tracking-wider sm:text-6xl md:text-7xl">
+          Vishal <span className="font-script text-3xl font-normal sm:text-5xl">&amp;</span> Varsha
+        </h1>
 
-                <div className="flex items-center justify-center gap-4 sm:gap-5">
-                  <span className="h-px w-14 bg-[var(--primary)] sm:w-20" />
-                  <span className="text-lg text-[var(--primary)] sm:text-xl">
-                    ✦
-                  </span>
-                  <span className="h-px w-14 bg-[var(--primary)] sm:w-20" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </div>
+        <div className="mt-2 flex items-center gap-3">
+          <div className="h-px w-12 bg-[var(--primary)]/50 sm:w-20" />
+          <span className="text-xs tracking-[3px] text-[var(--primary)]">✦ ✦ ✦</span>
+          <div className="h-px w-12 bg-[var(--primary)]/50 sm:w-20" />
+        </div>
 
-      {/* Scroll Indicator */}
-      <div className="pointer-events-none absolute bottom-16 left-0 right-0 z-20 flex justify-center text-center">
-        <div className="scroll-indicator">
-          <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
-            SCROLL
-          </span>
-          <div className="scroll-line text-[var(--foreground)]" />
+        <p className="mt-6 font-heading text-base font-medium tracking-[3px] text-[var(--foreground)] sm:text-lg">
+          SAVE THE DATE
+        </p>
+
+        <p className="mt-2 text-sm uppercase tracking-[4px] text-[var(--accent)] sm:text-base">
+          31st January 2027
+        </p>
+
+        {/* SCROLL INDICATOR */}
+        <div className="scroll-indicator mt-14 sm:mt-16">
+          <span className="text-[var(--primary)]">SCROLL DOWN</span>
+          <div className="scroll-line bg-[var(--primary)]" />
         </div>
       </div>
     </section>
