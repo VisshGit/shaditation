@@ -1,14 +1,61 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import Section from "@/components/ui/Section";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function RSVP() {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<{
+    type: "success" | "error" | null;
+    text: string;
+  }>({ type: null, text: "" });
 
-    alert("Thank you! Your RSVP has been received.");
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setLoading(true);
+    setStatusMessage({ type: null, text: "" });
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      response: formData.get("response"),
+      guests: formData.get("guests") === "10+" ? 10 : Number(formData.get("guests")),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("/api/rsvp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit RSVP");
+      }
+
+      setStatusMessage({
+        type: "success",
+        text: "Thank you! Your RSVP has been received.",
+      });
+      form.reset();
+    } catch (err: any) {
+      console.error(err);
+      setStatusMessage({
+        type: "error",
+        text: "Oops! Kuch dikkat aayi, please dobara try karein.",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -16,32 +63,22 @@ export default function RSVP() {
       <Section className="bg-[var(--background)] !pt-[120px] !pb-[120px] md:!pt-[160px] md:!pb-[160px]">
         <div className="flex w-full justify-center">
           <div className="w-full max-w-2xl px-4 text-center sm:px-6">
-
             {/* HEADING */}
-
             <div className="flex flex-col items-center">
               <p className="text-xs uppercase tracking-[5px] text-[var(--accent)] sm:text-sm sm:tracking-[7px]">
                 We Would Love To Hear From You
-                
-              </p><br>
-              </br>
+              </p>
 
               <div className="mt-5 h-px w-20 bg-[var(--primary)]/60" />
 
               <h2 className="mt-6 font-heading text-5xl leading-tight text-[var(--foreground)] sm:text-6xl md:text-7xl">
-                
-                <br>
-              </br>
-              RSVP
+                RSVP
               </h2>
 
               <div className="mt-6 h-px w-14 bg-[var(--primary)]/40" />
             </div>
 
             {/* DESCRIPTION */}
-            <br>
-              </br>
-
             <p className="mx-auto mt-7 max-w-xl text-center text-sm leading-7 text-[var(--foreground)]/60 sm:text-base sm:leading-8">
               Your presence would mean the world to us.
               <br />
@@ -49,15 +86,11 @@ export default function RSVP() {
             </p>
 
             {/* FORM */}
-
             <form
               onSubmit={handleSubmit}
               className="mx-auto mt-12 w-full max-w-2xl text-left"
             >
               {/* NAME */}
-              <br>
-              </br>
-
               <div>
                 <label
                   htmlFor="name"
@@ -77,9 +110,6 @@ export default function RSVP() {
               </div>
 
               {/* EMAIL */}
-              <br>
-              </br>
-
               <div className="mt-7">
                 <label
                   htmlFor="email"
@@ -101,9 +131,6 @@ export default function RSVP() {
               </div>
 
               {/* RESPONSE */}
-              <br>
-              </br>
-
               <div className="mt-7">
                 <label
                   htmlFor="response"
@@ -123,20 +150,12 @@ export default function RSVP() {
                     Will you attend?
                   </option>
 
-                  <option value="accept">
-                    Joyfully accept
-                  </option>
-
-                  <option value="decline">
-                    Regretfully decline
-                  </option>
+                  <option value="accept">Joyfully accept</option>
+                  <option value="decline">Regretfully decline</option>
                 </select>
               </div>
 
               {/* NUMBER OF MEMBERS */}
-              <br>
-              </br>
-
               <div className="mt-7">
                 <label
                   htmlFor="guests"
@@ -156,7 +175,6 @@ export default function RSVP() {
                   <option value="" disabled>
                     Select number of members
                   </option>
-
                   <option value="1">1 Member</option>
                   <option value="2">2 Members</option>
                   <option value="3">3 Members</option>
@@ -172,9 +190,6 @@ export default function RSVP() {
               </div>
 
               {/* MESSAGE */}
-              <br>
-              </br>
-
               <div className="mt-7">
                 <label
                   htmlFor="message"
@@ -191,17 +206,26 @@ export default function RSVP() {
                   className="w-full resize-none rounded-xl border border-[var(--primary)]/25 bg-[var(--secondary)]/45 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 placeholder:text-[var(--foreground)]/35 focus:border-[var(--primary)]/60 focus:bg-[var(--secondary)]/65 focus:ring-2 focus:ring-[var(--primary)]/10"
                 />
               </div>
-              <br>
-              </br>
-              <br>
-              </br>
+
+              {/* FEEDBACK MESSAGE */}
+              {statusMessage.text && (
+                <div
+                  className={`mt-6 text-center text-sm font-medium ${
+                    statusMessage.type === "success"
+                      ? "text-emerald-500"
+                      : "text-rose-500"
+                  }`}
+                >
+                  {statusMessage.text}
+                </div>
+              )}
 
               {/* LUXURY RSVP BUTTON */}
-
-              <div className="mt-14 flex justify-center">
+              <div className="mt-10 flex justify-center">
                 <button
                   type="submit"
-                  className="rsvp-luxury-button group"
+                  disabled={loading}
+                  className="rsvp-luxury-button group disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <span className="rsvp-button-glow" />
 
@@ -209,7 +233,7 @@ export default function RSVP() {
                     <span className="rsvp-button-icon">✦</span>
 
                     <span className="rsvp-button-text">
-                      Send RSVP
+                      {loading ? "Sending..." : "Send RSVP"}
                     </span>
 
                     <span className="rsvp-button-icon">✦</span>
