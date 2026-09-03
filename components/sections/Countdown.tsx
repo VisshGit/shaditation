@@ -69,20 +69,14 @@ export default function Countdown() {
   return (
     <ScrollReveal>
       <section
-        className="relative flex items-center justify-center overflow-hidden bg-cover bg-center"
+        className="relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
           marginTop: "120px",
           paddingTop: "160px",
           paddingBottom: "160px",
-
-          // 👇 APNI IMAGE KA PATH YAHAAN SET KARNA
-          backgroundImage:
-            "url('/images/cdbg.PNG')",
-
-          backgroundAttachment: "fixed",
+          backgroundImage: "url('/images/cdbg.PNG')",
         }}
       >
-
         {/* Background Overlay */}
         <div className="absolute inset-0 bg-black/40" />
 
