@@ -1,9 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
+import Container from "@/components/ui/Container";
 
 export default function Hero() {
-  // 1. ROSE PETALS GENERATOR (Smooth & Randomised Falling)
+  // 1. ROSE PETALS GENERATOR
   const petals = useMemo(() => {
     return Array.from({ length: 22 }).map((_, i) => {
       const left = `${(i * 4.6 + (i % 3) * 2.5) % 100}%`;
@@ -17,23 +18,36 @@ export default function Hero() {
     });
   }, []);
 
-  // 2. FIRE SPARKS GENERATOR (Warm Golden Rising Ember Effect)
+  // 2. FIRE SPARKS GENERATOR
   const fireSparks = useMemo(() => {
     return Array.from({ length: 18 }).map((_, i) => {
       const left = `${(i * 5.8 + (i % 4) * 3.2) % 96 + 2}%`;
       const size = `${3 + (i % 4) * 2.5}px`;
       const duration = `${3.2 + (i % 3) * 1.4}s`;
       const delay = `${(i * 0.45) % 3.5}s`;
-      const animType = i % 3 === 0 ? "hero-fire-spark-1" : i % 3 === 1 ? "hero-fire-spark-2" : "";
+      const animType =
+        i % 3 === 0
+          ? "hero-fire-spark-1"
+          : i % 3 === 1
+          ? "hero-fire-spark-2"
+          : "";
 
       return { id: i, left, size, duration, delay, animType };
     });
   }, []);
 
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)] px-4 py-20 text-center">
+    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)] py-20">
       {/* =====================================================
-          1. RAJASTHANI ROSE PETALS (FLOWER RAIN)
+          BACKGROUND TEXTURE & CORNER ACCENTS
+      ===================================================== */}
+      <div 
+        className="absolute inset-0 z-0 opacity-20 bg-center bg-repeat"
+        style={{ backgroundImage: "url('/themes/rajasthani/pattern.png')" }}
+      />
+
+      {/* =====================================================
+          1. FLOWER PETALS RAIN
       ===================================================== */}
       <div className="hero-rose-petals pointer-events-none absolute inset-0 z-[6] overflow-hidden">
         {petals.map((petal) => (
@@ -57,7 +71,7 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          2. ROYAL FIRE SPARKS (EMBERS EFFECT)
+          2. FIRE SPARKS (GOLDEN EMBERS)
       ===================================================== */}
       <div className="hero-fire-sparks pointer-events-none absolute inset-0 z-[5] overflow-hidden">
         {fireSparks.map((spark) => (
@@ -76,50 +90,58 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          HERO MAIN CONTENT
+          HERO CONTENT
       ===================================================== */}
-      <div className="relative z-10 flex max-w-4xl flex-col items-center">
-        {/* GANPATI BADGE / TOP ICON */}
-        <div className="mb-6 flex items-center justify-center">
-          <img
-            src="/themes/rajasthani/ganpati.png"
-            alt="Lord Ganesha"
-            className="h-16 w-16 object-contain drop-shadow-[0_2px_10px_rgba(182,141,64,0.35)] sm:h-20 sm:w-20"
-          />
-        </div>
+      <div className="relative z-10 w-full">
+        <Container>
+          <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+            
+            {/* GANPATI LOGO */}
+            <div className="mb-6">
+              <img
+                src="/themes/rajasthani/ganpati.png"
+                alt="Shree Ganesha"
+                className="h-16 w-16 object-contain sm:h-20 sm:w-20 drop-shadow-[0_4px_12px_rgba(182,141,64,0.3)]"
+              />
+            </div>
 
-        <p className="font-heading text-xs font-semibold uppercase tracking-[6px] text-[var(--accent)] sm:text-sm sm:tracking-[8px]">
-          || श्री गणेशाय नमः ||
-        </p>
+            <p className="text-xs uppercase tracking-[6px] text-[var(--accent)] sm:text-sm sm:tracking-[8px]">
+              || श्री गणेशाय नमः ||
+            </p>
 
-        <p className="mt-4 text-xs uppercase tracking-[4px] text-[var(--muted)] sm:text-sm sm:tracking-[6px]">
-          We Invite You To Celebrate The Wedding Of
-        </p>
+            <div className="my-5 h-px w-20 bg-[var(--primary)]/60" />
 
-        {/* ROYAL GOLDEN SHIMMER NAME */}
-        <h1 className="font-heading text-gold-gradient py-4 text-4xl font-bold tracking-wider sm:text-6xl md:text-7xl">
-          Vishal <span className="font-script text-3xl font-normal sm:text-5xl">&amp;</span> Varsha
-        </h1>
+            <p className="text-xs uppercase tracking-[4px] text-[var(--muted)] sm:text-sm sm:tracking-[5px]">
+              We Request The Pleasure Of Your Company To Celebrate The Wedding Of
+            </p>
 
-        <div className="mt-2 flex items-center gap-3">
-          <div className="h-px w-12 bg-[var(--primary)]/50 sm:w-20" />
-          <span className="text-xs tracking-[3px] text-[var(--primary)]">✦ ✦ ✦</span>
-          <div className="h-px w-12 bg-[var(--primary)]/50 sm:w-20" />
-        </div>
+            {/* COUPLE NAME WITH ROYAL GOLD SHIMMER */}
+            <h1 className="mt-4 font-heading text-4xl sm:text-6xl md:text-7xl font-bold tracking-wider text-gold-gradient py-2">
+              Vishal <span className="font-script text-3xl sm:text-5xl font-normal">&amp;</span> Varsha
+            </h1>
 
-        <p className="mt-6 font-heading text-base font-medium tracking-[3px] text-[var(--foreground)] sm:text-lg">
-          SAVE THE DATE
-        </p>
+            <div className="mt-4 flex items-center justify-center gap-4">
+              <div className="h-px w-14 bg-[var(--primary)]/50" />
+              <span className="text-[var(--primary)] text-sm">✦</span>
+              <div className="h-px w-14 bg-[var(--primary)]/50" />
+            </div>
 
-        <p className="mt-2 text-sm uppercase tracking-[4px] text-[var(--accent)] sm:text-base">
-          31st January 2027
-        </p>
+            <p className="mt-6 font-heading text-lg tracking-[3px] text-[var(--foreground)] sm:text-xl">
+              SAVE THE DATE
+            </p>
 
-        {/* SCROLL INDICATOR */}
-        <div className="scroll-indicator mt-14 sm:mt-16">
-          <span className="text-[var(--primary)]">SCROLL DOWN</span>
-          <div className="scroll-line bg-[var(--primary)]" />
-        </div>
+            <p className="mt-2 text-sm uppercase tracking-[4px] text-[var(--accent)] sm:text-base">
+              Sunday, 31st January 2027
+            </p>
+
+            {/* SCROLL INDICATOR */}
+            <div className="scroll-indicator mt-16">
+              <span className="text-[var(--primary)]">SCROLL</span>
+              <div className="scroll-line bg-[var(--primary)]" />
+            </div>
+
+          </div>
+        </Container>
       </div>
     </section>
   );
