@@ -5,6 +5,8 @@ import Story from "@/components/sections/Story";
 import Gallery from "@/components/sections/Gallery";
 import Events from "@/components/sections/Events";
 import Venue from "@/components/sections/Venue";
+import RSVP from "@/components/sections/RSVP";
+import Closing from "@/components/sections/Closing";
 
 export default function Home() {
   return (
@@ -16,6 +18,8 @@ export default function Home() {
       <Gallery />
       <Events />
       <Venue />
+      <RSVP />
+      <Closing />
     </div>
   );
 }
