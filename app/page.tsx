@@ -9,6 +9,7 @@ import Events from "@/components/sections/Events";
 import Venue from "@/components/sections/Venue";
 import RSVP from "@/components/sections/RSVP";
 import Closing from "@/components/sections/Closing";
+import ParallaxStory from "@/components/sections/ParallaxStory";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Hero />
         <ScratchReveal />
         <Countdown />
+        <ParallaxStory />
         <Story />
         <Gallery />
         <Events />
