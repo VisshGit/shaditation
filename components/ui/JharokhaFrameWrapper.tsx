@@ -18,15 +18,15 @@ export default function JharokhaFrameWrapper({
   // Parallax smooth float
   const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
 
-  // Countdown end hone par clean fade-out
+  // Countdown end hone par fade-out
   const opacityFade = useTransform(scrollYProgress, [0, 0.75, 0.95, 1], [1, 1, 0, 0]);
 
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
       {/* =====================================================
-          1. LEFT JHAROKHA (Zoomed in & Pushed slightly inside)
+          1. LEFT JHAROKHA (Flush against left screen edge)
       ===================================================== */}
-      <div className="pointer-events-none absolute inset-y-0 left-2 md:left-6 lg:left-10 xl:left-14 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
         <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-visible">
           <motion.div
             style={{ y: yParallax, opacity: opacityFade }}
@@ -42,9 +42,9 @@ export default function JharokhaFrameWrapper({
       </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA (Zoomed in & Mirrored)
+          2. RIGHT JHAROKHA (Flush against right screen edge)
       ===================================================== */}
-      <div className="pointer-events-none absolute inset-y-0 right-2 md:right-6 lg:right-10 xl:right-14 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
         <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-visible">
           <motion.div
             style={{ y: yParallax, opacity: opacityFade }}
