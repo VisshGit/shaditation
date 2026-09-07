@@ -10,56 +10,57 @@ export default function JharokhaFrameWrapper({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Poore wrapper ka scroll track hoga
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Parallax speed - jharokha content se thoda alag pace par chalega
-  const jharokhaY = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  // Slow parallax depth scroll
+  const jharokhaY = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden">
+    <div ref={containerRef} className="relative w-full overflow-visible">
       {/* =====================================================
-          1. LEFT JHAROKHA PILLAR (Floating on the left side)
+          1. LEFT JHAROKHA PILLAR (Z-40 rakha hai taaki countdown ke upar dikhe)
       ===================================================== */}
-      <motion.div
-        style={{ y: jharokhaY }}
-        className="pointer-events-none absolute left-0 top-0 z-30 hidden h-full w-28 md:block lg:w-48 xl:w-60"
-      >
-        <div
-          className="sticky top-0 h-screen w-full bg-contain bg-left bg-repeat-y opacity-75 drop-shadow-[4px_0_15px_rgba(0,0,0,0.5)]"
-          style={{
-            backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
-            maskImage:
-              "linear-gradient(to right, black 60%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to right, black 60%, transparent 100%)",
-          }}
-        />
-      </motion.div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-40 hidden w-28 md:block lg:w-44 xl:w-56">
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <motion.div
+            style={{ y: jharokhaY }}
+            className="h-[120%] w-full bg-contain bg-left bg-repeat-y opacity-85 drop-shadow-[6px_0_20px_rgba(0,0,0,0.6)]"
+            style={{
+              backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
+              maskImage:
+                "linear-gradient(to right, black 65%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to right, black 65%, transparent 100%)",
+            }}
+          />
+        </div>
+      </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA PILLAR (Floating on the right side)
+          2. RIGHT JHAROKHA PILLAR (Z-40 rakha hai)
       ===================================================== */}
-      <motion.div
-        style={{ y: jharokhaY }}
-        className="pointer-events-none absolute right-0 top-0 z-30 hidden h-full w-28 md:block lg:w-48 xl:w-60"
-      >
-        <div
-          className="sticky top-0 h-screen w-full bg-contain bg-right bg-repeat-y opacity-75 drop-shadow-[-4px_0_15px_rgba(0,0,0,0.5)]"
-          style={{
-            backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
-            maskImage:
-              "linear-gradient(to left, black 60%, transparent 100%)",
-            WebkitMaskImage:
-              "linear-gradient(to left, black 60%, transparent 100%)",
-          }}
-        />
-      </motion.div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-40 hidden w-28 md:block lg:w-44 xl:w-56">
+        <div className="sticky top-0 h-screen w-full overflow-hidden">
+          <motion.div
+            style={{ y: jharokhaY }}
+            className="h-[120%] w-full bg-contain bg-right bg-repeat-y opacity-85 drop-shadow-[-6px_0_20px_rgba(0,0,0,0.6)]"
+            style={{
+              backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
+              maskImage:
+                "linear-gradient(to left, black 65%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to left, black 65%, transparent 100%)",
+            }}
+          />
+        </div>
+      </div>
 
       {/* =====================================================
-          ACTUAL CONTENT (Hero + Scratch + Countdown)
+          CONTENT (Hero, Scratch, Countdown)
       ===================================================== */}
       <div className="relative z-10 w-full">{children}</div>
     </div>
