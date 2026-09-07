@@ -23,7 +23,7 @@ export default function JharokhaFrameWrapper({
 
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
-      {/* 1. LEFT JHAROKHA */}
+      {/* 1. LEFT JHAROKHA (Normal / Unmirrored) */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-40 hidden md:block w-36 lg:w-56 xl:w-72">
         <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-hidden">
           <motion.div
@@ -33,13 +33,13 @@ export default function JharokhaFrameWrapper({
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Left Jharokha"
-              className="absolute top-1/2 -left-16 lg:-left-24 xl:-left-32 -translate-y-1/2 h-full max-w-none -scale-x-100 object-contain drop-shadow-[10px_0_20px_rgba(0,0,0,0.6)]"
+              className="absolute top-1/2 -left-16 lg:-left-24 xl:-left-32 -translate-y-1/2 h-full max-w-none object-contain drop-shadow-[10px_0_20px_rgba(0,0,0,0.6)]"
             />
           </motion.div>
         </div>
       </div>
 
-      {/* 2. RIGHT JHAROKHA */}
+      {/* 2. RIGHT JHAROKHA (Mirrored with -scale-x-100) */}
       <div className="pointer-events-none absolute inset-y-0 right-0 z-40 hidden md:block w-36 lg:w-56 xl:w-72">
         <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-hidden">
           <motion.div
@@ -49,7 +49,7 @@ export default function JharokhaFrameWrapper({
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Right Jharokha"
-              className="absolute top-1/2 -right-16 lg:-right-24 xl:-right-32 -translate-y-1/2 h-full max-w-none object-contain drop-shadow-[-10px_0_20px_rgba(0,0,0,0.6)]"
+              className="absolute top-1/2 -right-16 lg:-right-24 xl:-right-32 -translate-y-1/2 h-full max-w-none -scale-x-100 object-contain drop-shadow-[-10px_0_20px_rgba(0,0,0,0.6)]"
             />
           </motion.div>
         </div>
