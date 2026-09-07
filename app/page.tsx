@@ -9,7 +9,7 @@ import Events from "@/components/sections/Events";
 import Venue from "@/components/sections/Venue";
 import RSVP from "@/components/sections/RSVP";
 import Closing from "@/components/sections/Closing";
-import ParallaxSection from "@/components/ui/ParallaxSection";
+import JharokhaFrameWrapper from "@/components/ui/JharokhaFrameWrapper";
 
 export default function Home() {
   return (
@@ -20,56 +20,22 @@ export default function Home() {
         leftImage="/gates/gate-left.jpg"
         rightImage="/gates/gate-right.jpg"
       >
-        {/* 1. Hero */}
-        <Hero />
-
-        {/* 2. Scratch Card Reveal */}
-        <ParallaxSection speed={0.15}>
+        {/* =========================================================
+            HERO + SCRATCH + COUNTDOWN (Unified with Side Jharokhas)
+        ========================================================= */}
+        <JharokhaFrameWrapper>
+          <Hero />
           <ScratchReveal />
-        </ParallaxSection>
+          <Countdown />
+        </JharokhaFrameWrapper>
 
-        {/* 3. Countdown */}
-        <Countdown />
-
-        {/* 4. Story Section (Deep Royal Parallax) */}
-        <ParallaxSection
-          bgImage="/themes/rajasthani/hero-bg.PNG"
-          speed={0.2}
-          overlayOpacity="bg-black/60"
-        >
-          <Story />
-        </ParallaxSection>
-
-        {/* 5. Gallery */}
-        <ParallaxSection speed={0.12}>
-          <Gallery />
-        </ParallaxSection>
-
-        {/* 6. Events / Schedule */}
-        <ParallaxSection
-          bgImage="/themes/rajasthani/hero-bg.PNG"
-          speed={0.18}
-          overlayOpacity="bg-black/70"
-        >
-          <Events />
-        </ParallaxSection>
-
-        {/* 7. Venue / Location */}
-        <ParallaxSection speed={0.15}>
-          <Venue />
-        </ParallaxSection>
-
-        {/* 8. RSVP */}
+        {/* BAKI SECTIONS */}
+        <Story />
+        <Gallery />
+        <Events />
+        <Venue />
         <RSVP />
-
-        {/* 9. Closing */}
-        <ParallaxSection
-          bgImage="/images/cdbg.PNG"
-          speed={0.25}
-          overlayOpacity="bg-black/50"
-        >
-          <Closing />
-        </ParallaxSection>
+        <Closing />
       </WelcomeGate>
     </>
   );
