@@ -10,24 +10,18 @@ export default function JharokhaFrameWrapper({
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Sirf is Wrapper container ka scroll track hoga
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Parallax subtle float
   const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
-
-  // Jaise hi Countdown ka 80% scroll complete ho, dheere-dheere fade out
   const opacityFade = useTransform(scrollYProgress, [0, 0.7, 0.95, 1], [1, 1, 0, 0]);
 
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
       {/* =====================================================
-          1. LEFT JHAROKHA 
-          - Sticky inside wrapper (Hero se Countdown tak lock rahega)
-          - Left border pe half cut rahega
+          1. LEFT SIDE (Ab Right wali Mirrored image yahan hai)
       ===================================================== */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-40 hidden md:block w-36 lg:w-56 xl:w-72">
         <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-hidden">
@@ -38,16 +32,14 @@ export default function JharokhaFrameWrapper({
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Left Jharokha"
-              className="absolute top-1/2 -left-16 lg:-left-24 xl:-left-32 -translate-y-1/2 h-full max-w-none object-contain drop-shadow-[10px_0_20px_rgba(0,0,0,0.6)]"
+              className="absolute top-1/2 -left-16 lg:-left-24 xl:-left-32 -translate-y-1/2 h-full max-w-none -scale-x-100 object-contain drop-shadow-[10px_0_20px_rgba(0,0,0,0.6)]"
             />
           </motion.div>
         </div>
       </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA
-          - Sticky inside wrapper
-          - Right border pe half cut aur content ki taraf face
+          2. RIGHT SIDE (Ab Left wali Original image yahan hai)
       ===================================================== */}
       <div className="pointer-events-none absolute inset-y-0 right-0 z-40 hidden md:block w-36 lg:w-56 xl:w-72">
         <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-hidden">
@@ -58,14 +50,14 @@ export default function JharokhaFrameWrapper({
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Right Jharokha"
-              className="absolute top-1/2 -right-16 lg:-right-24 xl:-right-32 -translate-y-1/2 h-full max-w-none -scale-x-100 object-contain drop-shadow-[-10px_0_20px_rgba(0,0,0,0.6)]"
+              className="absolute top-1/2 -right-16 lg:-right-24 xl:-right-32 -translate-y-1/2 h-full max-w-none object-contain drop-shadow-[-10px_0_20px_rgba(0,0,0,0.6)]"
             />
           </motion.div>
         </div>
       </div>
 
       {/* =====================================================
-          MAIN CONTENT (Hero + ScratchReveal + Countdown)
+          MAIN CONTENT
       ===================================================== */}
       <div className="relative z-10 w-full">{children}</div>
     </div>
