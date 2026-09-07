@@ -4,6 +4,7 @@ import "./globals.css";
 import ThemeProvider from "@/components/theme/ThemeProvider";
 import BackgroundMusic from "@/components/ui/BackgroundMusic";
 import Footer from "@/components/layout/Footer";
+import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -39,13 +40,15 @@ export default function RootLayout({
       className={`${cinzel.variable} ${poppins.variable} ${greatVibes.variable}`}
     >
       <body className="min-h-screen w-full">
-        <ThemeProvider>
-          {children}
+        <SmoothScrollProvider>
+          <ThemeProvider>
+            {children}
 
-          <Footer />
+            <Footer />
 
-          <BackgroundMusic />
-        </ThemeProvider>
+            <BackgroundMusic />
+          </ThemeProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   );
