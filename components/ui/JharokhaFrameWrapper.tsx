@@ -22,14 +22,14 @@ export default function JharokhaFrameWrapper({
   return (
     <div ref={containerRef} className="relative w-full overflow-visible">
       {/* =====================================================
-          1. LEFT JHAROKHA PILLAR (Z-40 rakha hai taaki countdown ke upar dikhe)
+          1. LEFT JHAROKHA PILLAR (Z-40 layer taaki countdown ke upar dikhe)
       ===================================================== */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-40 hidden w-28 md:block lg:w-44 xl:w-56">
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <motion.div
-            style={{ y: jharokhaY }}
             className="h-[120%] w-full bg-contain bg-left bg-repeat-y opacity-85 drop-shadow-[6px_0_20px_rgba(0,0,0,0.6)]"
             style={{
+              y: jharokhaY,
               backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
               maskImage:
                 "linear-gradient(to right, black 65%, transparent 100%)",
@@ -41,14 +41,14 @@ export default function JharokhaFrameWrapper({
       </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA PILLAR (Z-40 rakha hai)
+          2. RIGHT JHAROKHA PILLAR (Z-40 layer)
       ===================================================== */}
       <div className="pointer-events-none absolute inset-y-0 right-0 z-40 hidden w-28 md:block lg:w-44 xl:w-56">
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <motion.div
-            style={{ y: jharokhaY }}
             className="h-[120%] w-full bg-contain bg-right bg-repeat-y opacity-85 drop-shadow-[-6px_0_20px_rgba(0,0,0,0.6)]"
             style={{
+              y: jharokhaY,
               backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
               maskImage:
                 "linear-gradient(to left, black 65%, transparent 100%)",
