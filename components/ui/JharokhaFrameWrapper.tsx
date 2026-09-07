@@ -27,9 +27,9 @@ export default function JharokhaFrameWrapper({
       <div className="pointer-events-none absolute inset-y-0 left-0 z-30 hidden w-24 md:block lg:w-36 xl:w-44">
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <motion.div
-            style={{ y: jharokhaY }}
             className="h-[115%] w-full bg-contain bg-left-top bg-repeat-y drop-shadow-[5px_0_15px_rgba(0,0,0,0.55)]"
             style={{
+              y: jharokhaY,
               backgroundImage: "url('/themes/rajasthani/jharokha-pillar.png')",
               backgroundSize: "100% auto",
             }}
@@ -43,9 +43,9 @@ export default function JharokhaFrameWrapper({
       <div className="pointer-events-none absolute inset-y-0 right-0 z-30 hidden w-24 md:block lg:w-36 xl:w-44">
         <div className="sticky top-0 h-screen w-full overflow-hidden">
           <motion.div
-            style={{ y: jharokhaY }}
             className="h-[115%] w-full -scale-x-100 bg-contain bg-left-top bg-repeat-y drop-shadow-[-5px_0_15px_rgba(0,0,0,0.55)]"
             style={{
+              y: jharokhaY,
               backgroundImage: "url('/themes/rajasthani/jharokha-pillar.png')",
               backgroundSize: "100% auto",
             }}
