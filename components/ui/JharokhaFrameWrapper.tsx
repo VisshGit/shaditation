@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function JharokhaFrameWrapper({
@@ -8,53 +8,62 @@ export default function JharokhaFrameWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
 
-  // Poore container (Hero + Scratch + Countdown) ka scroll track hoga
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
-  // Subtle natural depth float
-  const jharokhaY = useTransform(scrollYProgress, [0, 1], ["0%", "8%"]);
+  // Global window scroll ko direct track karega
+  const { scrollY } = useScroll();
+
+  // Scroll karne par pillars smooth upar float karenge (Parallax speed control)
+  const yLeft = useTransform(scrollY, [0, 2500], [0, -350]);
+  const yRight = useTransform(scrollY, [0, 2500], [0, -350]);
+
+  // Countdown khatam hone ke baad fade out (Opacity transition)
+  const opacity = useTransform(scrollY, [0, 1800, 2600], [1, 1, 0]);
+
+  if (!mounted) {
+    return <div className="relative w-full">{children}</div>;
+  }
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-visible">
+    <div className="relative w-full">
       {/* =====================================================
-          1. LEFT JHAROKHA PILLAR
+          1. LEFT JHAROKHA PILLAR (Fixed to Screen Viewport)
       ===================================================== */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-30 hidden w-24 md:block lg:w-36 xl:w-44">
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
-          <motion.div
-            className="h-[115%] w-full bg-contain bg-left-top bg-repeat-y drop-shadow-[5px_0_15px_rgba(0,0,0,0.55)]"
-            style={{
-              y: jharokhaY,
-              backgroundImage: "url('/themes/rajasthani/jharokha-pillar.png')",
-              backgroundSize: "100% auto",
-            }}
-          />
-        </div>
-      </div>
+      <motion.div
+        style={{ y: yLeft, opacity }}
+        className="pointer-events-none fixed top-0 left-0 z-50 hidden h-[150vh] w-28 md:block lg:w-36 xl:w-44"
+      >
+        <div
+          className="h-full w-full bg-contain bg-top bg-repeat-y drop-shadow-[8px_0_20px_rgba(0,0,0,0.6)]"
+          style={{
+            backgroundImage: "url('/themes/rajasthani/jharokha-pillar.png')",
+            backgroundSize: "100% auto",
+          }}
+        />
+      </motion.div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA PILLAR (Mirrored for right border)
+          2. RIGHT JHAROKHA PILLAR (Mirrored & Fixed)
       ===================================================== */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-30 hidden w-24 md:block lg:w-36 xl:w-44">
-        <div className="sticky top-0 h-screen w-full overflow-hidden">
-          <motion.div
-            className="h-[115%] w-full -scale-x-100 bg-contain bg-left-top bg-repeat-y drop-shadow-[-5px_0_15px_rgba(0,0,0,0.55)]"
-            style={{
-              y: jharokhaY,
-              backgroundImage: "url('/themes/rajasthani/jharokha-pillar.png')",
-              backgroundSize: "100% auto",
-            }}
-          />
-        </div>
-      </div>
+      <motion.div
+        style={{ y: yRight, opacity }}
+        className="pointer-events-none fixed top-0 right-0 z-50 hidden h-[150vh] w-28 md:block lg:w-36 xl:w-44"
+      >
+        <div
+          className="h-full w-full -scale-x-100 bg-contain bg-top bg-repeat-y drop-shadow-[-8px_0_20px_rgba(0,0,0,0.6)]"
+          style={{
+            backgroundImage: "url('/themes/rajasthani/jharokha-pillar.png')",
+            backgroundSize: "100% auto",
+          }}
+        />
+      </motion.div>
 
       {/* =====================================================
-          MAIN CONTENT (Hero + ScratchReveal + Countdown)
+          MAIN SECTIONS CONTENT
       ===================================================== */}
       <div className="relative z-10 w-full">{children}</div>
     </div>
