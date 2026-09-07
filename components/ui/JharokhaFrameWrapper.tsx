@@ -16,40 +16,44 @@ export default function JharokhaFrameWrapper({
   });
 
   // Parallax subtle float
-  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
 
   // Countdown ke end par fade-out
-  const opacityFade = useTransform(scrollYProgress, [0, 0.7, 0.95, 1], [1, 1, 0, 0]);
+  const opacityFade = useTransform(scrollYProgress, [0, 0.75, 0.95, 1], [1, 1, 0, 0]);
 
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
-      {/* 1. LEFT JHAROKHA (Normal / Unmirrored) */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-40 hidden md:block w-36 lg:w-56 xl:w-72">
-        <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-hidden">
+      {/* =====================================================
+          1. LEFT JHAROKHA (Normal / Unmirrored, Inside Viewport)
+      ===================================================== */}
+      <div className="pointer-events-none absolute inset-y-0 left-2 md:left-4 lg:left-6 xl:left-8 z-40 hidden md:block w-48 lg:w-72 xl:w-96">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-visible">
           <motion.div
             style={{ y: yParallax, opacity: opacityFade }}
-            className="relative h-[85vh] w-full"
+            className="relative h-[96vh] w-full"
           >
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Left Jharokha"
-              className="absolute top-1/2 -left-16 lg:-left-24 xl:-left-32 -translate-y-1/2 h-full max-w-none object-contain drop-shadow-[10px_0_20px_rgba(0,0,0,0.6)]"
+              className="absolute top-1/2 left-0 -translate-y-1/2 h-full w-auto max-w-none object-contain drop-shadow-[12px_0_24px_rgba(0,0,0,0.6)]"
             />
           </motion.div>
         </div>
       </div>
 
-      {/* 2. RIGHT JHAROKHA (Mirrored with -scale-x-100) */}
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-40 hidden md:block w-36 lg:w-56 xl:w-72">
-        <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-hidden">
+      {/* =====================================================
+          2. RIGHT JHAROKHA (Mirrored, Inside Viewport)
+      ===================================================== */}
+      <div className="pointer-events-none absolute inset-y-0 right-2 md:right-4 lg:right-6 xl:right-8 z-40 hidden md:block w-48 lg:w-72 xl:w-96">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-visible">
           <motion.div
             style={{ y: yParallax, opacity: opacityFade }}
-            className="relative h-[85vh] w-full"
+            className="relative h-[96vh] w-full"
           >
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Right Jharokha"
-              className="absolute top-1/2 -right-16 lg:-right-24 xl:-right-32 -translate-y-1/2 h-full max-w-none -scale-x-100 object-contain drop-shadow-[-10px_0_20px_rgba(0,0,0,0.6)]"
+              className="absolute top-1/2 right-0 -translate-y-1/2 h-full w-auto max-w-none -scale-x-100 object-contain drop-shadow-[-12px_0_24px_rgba(0,0,0,0.6)]"
             />
           </motion.div>
         </div>
