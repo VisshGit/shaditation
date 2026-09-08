@@ -15,11 +15,11 @@ export default function JharokhaFrameWrapper({
     offset: ["start start", "end end"],
   });
 
-  // Parallax smooth float
+  // Parallax float movement
   const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-18%"]);
 
-  // Countdown end hone par fade-out
-  const opacityFade = useTransform(scrollYProgress, [0, 0.75, 0.95, 1], [1, 1, 0, 0]);
+  // Countdown ke bilkul aakhiri pixel tak full visible rahega (fade-out premature nahi hoga)
+  const opacityFade = useTransform(scrollYProgress, [0, 0.92, 1], [1, 1, 0]);
 
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
