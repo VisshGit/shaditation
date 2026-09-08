@@ -1,5 +1,7 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
-import ScrollReveal from "../ScrollReveal";
 
 const events = [
   {
@@ -52,88 +54,110 @@ const events = [
   },
 ];
 
+const smoothCurve = [0.22, 1, 0.36, 1] as const;
+
 export default function Events() {
   return (
-    <ScrollReveal>
-      <section
-        className="flex items-center justify-center bg-[var(--background)]"
-        style={{
-          marginTop: "120px",
-          paddingTop: "160px",
-          paddingBottom: "160px",
-        }}
-      >
-        <Container>
-          <div className="flex justify-center">
-            <div className="w-full max-w-5xl px-4 text-center sm:px-0">
-              <p
-                className="text-xs uppercase tracking-[5px] text-[var(--primary)] sm:text-sm sm:tracking-[6px]"
-                style={{ margin: 0 }}
-              >
-                Wedding Events
-              </p>
+    <section
+      className="flex items-center justify-center bg-[var(--background)]"
+      style={{
+        marginTop: "120px",
+        paddingTop: "160px",
+        paddingBottom: "160px",
+      }}
+    >
+      <Container>
+        <div className="flex justify-center">
+          <div className="w-full max-w-5xl px-4 text-center sm:px-0">
+            {/* 1. Label (Delay: 0.15s) */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.15, ease: smoothCurve }}
+              className="text-xs uppercase tracking-[5px] text-[var(--primary)] sm:text-sm sm:tracking-[6px]"
+              style={{ margin: 0 }}
+            >
+              Wedding Events
+            </motion.p>
 
-              <div
-                className="mx-auto flex items-center justify-center gap-3"
-                style={{ margin: "18px auto 34px" }}
-              >
-                <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
-                <span className="text-sm text-[var(--primary)]">✦</span>
-                <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
-              </div>
+            {/* 2. Elegant Divider (Delay: 0.3s) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
+              className="mx-auto flex items-center justify-center gap-3"
+              style={{ margin: "18px auto 34px" }}
+            >
+              <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
+              <span className="text-sm text-[var(--primary)]">✦</span>
+              <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
+            </motion.div>
 
-              <h2
-                className="font-heading text-4xl text-[var(--foreground)] sm:text-5xl md:text-6xl"
-                style={{
-                  margin: 0,
-                  lineHeight: 1.15,
-                }}
-              >
-                Celebration Details
-              </h2>
+            {/* 3. Heading (Delay: 0.45s) */}
+            <motion.h2
+              initial={{ opacity: 0, y: 22 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
+              className="font-heading text-4xl text-[var(--foreground)] sm:text-5xl md:text-6xl"
+              style={{
+                margin: 0,
+                lineHeight: 1.15,
+              }}
+            >
+              Celebration Details
+            </motion.h2>
 
-              <div
-                className="grid gap-6 md:grid-cols-2 md:gap-8"
-                style={{ marginTop: "64px" }}
-              >
-                {events.map((event) => (
-                  <div
-                    key={event.title}
-                    aria-label="Wedding event card"
-                    className="group relative overflow-hidden rounded-3xl border border-[var(--primary)]/15 bg-white px-7 py-10 text-center shadow-[0_15px_40px_rgba(43,29,14,0.07)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(43,29,14,0.11)] sm:px-10"
-                  >
-                    <div className="mx-auto mb-7 flex items-center justify-center gap-3">
-                      <span className="h-px w-10 bg-[var(--primary)]/30" />
-                      <span className="text-sm text-[var(--primary)]">
-                        ✦
-                      </span>
-                      <span className="h-px w-10 bg-[var(--primary)]/30" />
-                    </div>
-
-                    <h3 className="mb-6 font-heading text-3xl text-[var(--foreground)] sm:text-4xl">
-                      {event.title}
-                    </h3>
-
-                    <div className="mx-auto mb-7 h-px w-12 bg-[var(--primary)]/25" />
-
-                    <p className="text-sm leading-8 text-gray-600 sm:text-base">
-                      {event.date}
-                      <br />
-                      {event.time}
-                      {event.venue && (
-                        <>
-                          <br />
-                          {event.venue}
-                        </>
-                      )}
-                    </p>
+            {/* 4. Events Grid with Staggered Entrance */}
+            <div
+              className="grid gap-6 md:grid-cols-2 md:gap-8"
+              style={{ marginTop: "64px" }}
+            >
+              {events.map((event, index) => (
+                <motion.div
+                  key={event.title}
+                  initial={{ opacity: 0, y: 35, scale: 0.96 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.15 + (index % 2) * 0.18,
+                    ease: smoothCurve,
+                  }}
+                  aria-label="Wedding event card"
+                  className="group relative overflow-hidden rounded-3xl border border-[var(--primary)]/15 bg-white px-7 py-10 text-center shadow-[0_15px_40px_rgba(43,29,14,0.07)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(43,29,14,0.11)] sm:px-10"
+                >
+                  <div className="mx-auto mb-7 flex items-center justify-center gap-3">
+                    <span className="h-px w-10 bg-[var(--primary)]/30" />
+                    <span className="text-sm text-[var(--primary)]">✦</span>
+                    <span className="h-px w-10 bg-[var(--primary)]/30" />
                   </div>
-                ))}
-              </div>
+
+                  <h3 className="mb-6 font-heading text-3xl text-[var(--foreground)] sm:text-4xl">
+                    {event.title}
+                  </h3>
+
+                  <div className="mx-auto mb-7 h-px w-12 bg-[var(--primary)]/25" />
+
+                  <p className="text-sm leading-8 text-gray-600 sm:text-base">
+                    {event.date}
+                    <br />
+                    {event.time}
+                    {event.venue && (
+                      <>
+                        <br />
+                        {event.venue}
+                      </>
+                    )}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
-        </Container>
-      </section>
-    </ScrollReveal>
+        </div>
+      </Container>
+    </section>
   );
 }
