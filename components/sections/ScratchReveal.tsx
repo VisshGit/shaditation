@@ -20,8 +20,8 @@ export default function ScratchReveal() {
   return (
     <Section className="bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
       {/* Heading */}
-      <div className="mb-12 flex flex-col items-center text-center">
-        {/* 1. Label (Delay: 0.15s) */}
+      <div className="mb-6 flex flex-col items-center text-center">
+        {/* 1. Label */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,7 +33,7 @@ export default function ScratchReveal() {
           A Special Surprise
         </motion.p>
 
-        {/* 2. Divider (Delay: 0.3s) */}
+        {/* 2. Divider */}
         <motion.div
           initial={{ opacity: 0, scaleX: 0 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
@@ -43,7 +43,7 @@ export default function ScratchReveal() {
           style={{ margin: "12px auto 28px" }}
         />
 
-        {/* 3. Heading (Delay: 0.45s) */}
+        {/* 3. Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 22 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -58,14 +58,14 @@ export default function ScratchReveal() {
           Scratch to Reveal The Date
         </motion.h2>
 
-        {/* 4. Down Arrow Hint (Delay: 0.65s + Continuous Gentle Bounce) */}
+        {/* 4. Down Arrow (Decent gap ke saath) */}
         {!revealed && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.65, ease: smoothCurve }}
-            className="mt-6 flex flex-col items-center gap-1"
+            className="mt-6 mb-8 flex flex-col items-center justify-center"
           >
             <motion.span
               animate={{ y: [0, 8, 0] }}
@@ -82,10 +82,11 @@ export default function ScratchReveal() {
         )}
       </div>
 
-      {/* Scratch Card */}
-      <div className="flex justify-center px-0">
-        <div className="w-[calc(100%-2rem)] max-w-2xl rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_25px_55px_rgba(111,70,13,0.28)] md:w-full">
-          <div className="relative h-64 overflow-hidden rounded-[1.85rem] border border-white/20 sm:h-72 md:h-96">
+      {/* Scratch Card Container */}
+      <div className="flex justify-center px-4 sm:px-0">
+        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_20px_50px_rgba(111,70,13,0.25)]">
+          {/* Height mobile par h-52 kar di hai, desktop par same rahegi */}
+          <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/20 sm:h-72 md:h-96 md:rounded-[1.85rem]">
             {/* Card Content */}
             <div className="absolute inset-0">
               <Image
@@ -93,29 +94,29 @@ export default function ScratchReveal() {
                 alt="Wedding date reveal"
                 fill
                 priority
-                sizes="(max-width: 768px) calc(100vw - 2rem), 672px"
+                sizes="(max-width: 768px) 100vw, 672px"
                 className="object-cover"
               />
 
               <div className="absolute inset-0 bg-[#2b1d0e]/45" />
 
-              <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6">
-                <div className="px-3 py-4 text-center sm:px-7 sm:py-8 md:px-12">
-                  <p className="text-[10px] uppercase tracking-[4px] text-white/80 sm:text-xs sm:tracking-[6px]">
+              <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
+                <div className="px-2 py-3 text-center sm:px-7 sm:py-8 md:px-12">
+                  <p className="text-[9px] uppercase tracking-[3px] text-white/80 sm:text-xs sm:tracking-[6px]">
                     Save the Date
                   </p>
 
-                  <div className="my-4 flex items-center justify-center gap-3 sm:my-5 sm:gap-4">
-                    <span className="h-px w-8 bg-amber-200/70 sm:w-12" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-amber-200" />
-                    <span className="h-px w-8 bg-amber-200/70 sm:w-12" />
+                  <div className="my-2 flex items-center justify-center gap-2 sm:my-5 sm:gap-4">
+                    <span className="h-px w-6 bg-amber-200/70 sm:w-12" />
+                    <span className="h-1 w-1 rounded-full bg-amber-200 sm:h-1.5 sm:w-1.5" />
+                    <span className="h-px w-6 bg-amber-200/70 sm:w-12" />
                   </div>
 
-                  <h3 className="font-heading text-3xl text-white sm:text-4xl md:text-6xl">
+                  <h3 className="font-heading text-2xl text-white sm:text-4xl md:text-6xl">
                     31 JAN 2027
                   </h3>
 
-                  <p className="mt-3 text-[11px] uppercase tracking-[2px] text-amber-100 sm:mt-4 sm:text-sm sm:tracking-[3px]" />
+                  <p className="mt-2 text-[10px] uppercase tracking-[2px] text-amber-100 sm:mt-4 sm:text-sm sm:tracking-[3px]" />
                 </div>
               </div>
             </div>
@@ -123,9 +124,7 @@ export default function ScratchReveal() {
             {/* Scratch Layer */}
             {!revealed && (
               <div className="absolute inset-0 z-30 select-none">
-                <ScratchCanvas
-                  onReveal={() => setRevealed(true)}
-                />
+                <ScratchCanvas onReveal={() => setRevealed(true)} />
               </div>
             )}
 
