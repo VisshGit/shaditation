@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function JharokhaFrameWrapper({
@@ -15,19 +15,14 @@ export default function JharokhaFrameWrapper({
     setMounted(true);
   }, []);
 
-  // Global window scroll track karega (Freeze problem 100% khatam)
+  // Sirf is wrapper ke top se bottom tak scroll track karega
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
     offset: ["start start", "end end"],
   });
 
-  // Parallax smooth dynamic float (0 se start hoke subtle upward motion)
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, -180]);
-
-  // VISIBILITY TIMELINE:
-  // Hero (0) se Countdown ke 85% tak pura visible (1)
-  // Countdown khatam hote hi (1.0) complete invisible (0)
-  const opacityFade = useTransform(scrollYProgress, [0, 0.85, 1], [1, 1, 0]);
+  // Parallax float Countdown tak
+  const yParallax = useTransform(scrollYProgress, [0, 1], [0, -140]);
 
   if (!mounted) {
     return <div className="relative w-full">{children}</div>;
@@ -36,13 +31,10 @@ export default function JharokhaFrameWrapper({
   return (
     <div ref={wrapperRef} className="relative w-full">
       {/* =====================================================
-          1. LEFT JHAROKHA (Hero start -> Countdown end pe gayab)
+          1. LEFT JHAROKHA (Locked inside wrapper boundary)
       ===================================================== */}
-      <motion.div
-        style={{ opacity: opacityFade }}
-        className="pointer-events-none fixed inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]"
-      >
-        <div className="relative h-full w-full flex items-center justify-start overflow-visible">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-30 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-hidden">
           <motion.div
             style={{ y: yParallax }}
             className="relative h-[112vh] w-full origin-left scale-110 lg:scale-120"
@@ -54,16 +46,13 @@ export default function JharokhaFrameWrapper({
             />
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA (Mirrored, Countdown end pe gayab)
+          2. RIGHT JHAROKHA (Locked inside wrapper boundary)
       ===================================================== */}
-      <motion.div
-        style={{ opacity: opacityFade }}
-        className="pointer-events-none fixed inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]"
-      >
-        <div className="relative h-full w-full flex items-center justify-end overflow-visible">
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-30 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-hidden">
           <motion.div
             style={{ y: yParallax }}
             className="relative h-[112vh] w-full origin-right scale-110 lg:scale-120"
@@ -75,9 +64,9 @@ export default function JharokhaFrameWrapper({
             />
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* SECTIONS CONTENT (Hero + ScratchReveal + Countdown) */}
+      {/* CONTENT (Hero + ScratchReveal + Countdown) */}
       <div className="relative z-10 w-full">{children}</div>
     </div>
   );
