@@ -8,7 +8,7 @@ export default function JharokhaFrameWrapper({
   children: React.ReactNode;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isLockedAtBottom, setIsLockedAtBottom] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const [parallaxY, setParallaxY] = useState(0);
 
   useEffect(() => {
@@ -18,14 +18,17 @@ export default function JharokhaFrameWrapper({
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Jab container ka bottom viewport ke bottom se mil jaye, tab freeze kar do
-      if (rect.bottom <= windowHeight) {
-        setIsLockedAtBottom(true);
-      } else {
-        setIsLockedAtBottom(false);
+      // Countdown section viewport se nikalte hi fade-out trigger hoga
+      if (rect.bottom > 80) {
+        setIsVisible(true);
         // Hero se Countdown ke beech dynamic parallax travel
-        const progress = Math.min(Math.max(-rect.top / (rect.height - windowHeight || 1), 0), 1);
+        const progress = Math.min(
+          Math.max(-rect.top / (rect.height - windowHeight || 1), 0),
+          1
+        );
         setParallaxY(progress * -160);
+      } else {
+        setIsVisible(false);
       }
     };
 
@@ -38,18 +41,14 @@ export default function JharokhaFrameWrapper({
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
       {/* =====================================================
-          1. LEFT JHAROKHA
+          1. LEFT JHAROKHA (Smooth Fade-out on Countdown Exit)
       ===================================================== */}
       <div
         style={{
-          transform: isLockedAtBottom
-            ? "translateY(0px)"
-            : `translateY(${parallaxY}px)`,
+          transform: `translateY(${parallaxY}px)`,
         }}
-        className={`pointer-events-none z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-transform duration-75 ease-out ${
-          isLockedAtBottom
-            ? "absolute bottom-0 left-0 h-screen"
-            : "fixed inset-y-0 left-0"
+        className={`pointer-events-none fixed inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-opacity duration-800 ease-in-out ${
+          isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
         <div className="relative h-full w-full flex items-center justify-start overflow-visible">
@@ -64,18 +63,14 @@ export default function JharokhaFrameWrapper({
       </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA
+          2. RIGHT JHAROKHA (Smooth Fade-out on Countdown Exit)
       ===================================================== */}
       <div
         style={{
-          transform: isLockedAtBottom
-            ? "translateY(0px)"
-            : `translateY(${parallaxY}px)`,
+          transform: `translateY(${parallaxY}px)`,
         }}
-        className={`pointer-events-none z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-transform duration-75 ease-out ${
-          isLockedAtBottom
-            ? "absolute bottom-0 right-0 h-screen"
-            : "fixed inset-y-0 right-0"
+        className={`pointer-events-none fixed inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-opacity duration-800 ease-in-out ${
+          isVisible ? "opacity-100" : "opacity-0"
         }`}
       >
         <div className="relative h-full w-full flex items-center justify-end overflow-visible">
