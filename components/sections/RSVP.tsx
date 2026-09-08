@@ -78,14 +78,14 @@ export default function RSVP() {
       {/* Content */}
       <div className="relative z-10 w-full">
         <Container>
-          <div className="flex justify-center px-3 sm:px-0">
+          <div className="flex justify-center px-4 sm:px-6">
             {/* ROYAL GLASSMORPHISM CARD */}
             <motion.div
               initial={{ opacity: 0, y: 35, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.85, delay: 0.1, ease: smoothCurve }}
-              className="w-full max-w-2xl rounded-3xl border border-white/20 bg-white/10 px-6 py-12 text-center shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-12 sm:py-16"
+              className="w-full max-w-3xl rounded-3xl border border-white/20 bg-white/10 px-6 py-12 text-center shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-16 sm:py-16 md:px-20"
             >
               {/* HEADING SECTION */}
               <div className="flex flex-col items-center">
@@ -132,21 +132,21 @@ export default function RSVP() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.75, delay: 0.65, ease: smoothCurve }}
-                className="mx-auto mt-6 max-w-lg text-center text-sm leading-7 text-white/85 sm:text-base sm:leading-8"
+                className="mx-auto mt-6 max-w-md text-center text-sm leading-7 text-white/85 sm:text-base sm:leading-8"
               >
                 Your presence would mean the world to us.
                 <br />
                 Kindly let us know if you will be joining our celebration.
               </motion.p>
 
-              {/* FORM FIELDS */}
+              {/* FORM FIELDS CONTAINER (Centered to red-box width with clean side margins) */}
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: 0.75, ease: smoothCurve }}
                 onSubmit={handleSubmit}
-                className="mx-auto mt-10 w-full text-left"
+                className="mx-auto mt-10 w-full max-w-md text-left"
               >
                 {/* NAME */}
                 <div>
@@ -167,7 +167,7 @@ export default function RSVP() {
                 </div>
 
                 {/* EMAIL */}
-                <div className="mt-6">
+                <div className="mt-5">
                   <label
                     htmlFor="email"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -187,7 +187,7 @@ export default function RSVP() {
                 </div>
 
                 {/* RESPONSE */}
-                <div className="mt-6">
+                <div className="mt-5">
                   <label
                     htmlFor="response"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -214,7 +214,7 @@ export default function RSVP() {
                 </div>
 
                 {/* NUMBER OF MEMBERS */}
-                <div className="mt-6">
+                <div className="mt-5">
                   <label
                     htmlFor="guests"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -243,7 +243,7 @@ export default function RSVP() {
                 </div>
 
                 {/* MESSAGE */}
-                <div className="mt-6">
+                <div className="mt-5">
                   <label
                     htmlFor="message"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -273,7 +273,7 @@ export default function RSVP() {
                 )}
 
                 {/* BUTTON */}
-                <div className="mt-9 flex justify-center">
+                <div className="mt-8 flex justify-center">
                   <button
                     type="submit"
                     disabled={loading}
