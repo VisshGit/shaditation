@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function JharokhaFrameWrapper({
@@ -8,24 +8,34 @@ export default function JharokhaFrameWrapper({
 }: {
   children: React.ReactNode;
 }) {
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Sirf is container (Hero + Scratch + Countdown) ka scroll measure hoga
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Sirf is Wrapper (Hero -> Scratch -> Countdown) ka scroll track karega
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // Parallax subtle motion scroll ke sath
-  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
+  // Smooth dynamic parallax float
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+
+  if (!mounted) {
+    return <div className="relative w-full">{children}</div>;
+  }
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden">
+    // 'overflow-hidden' hatakar 'overflow-visible' kiya hai taaki sticky trigger ho sake
+    <div ref={containerRef} className="relative w-full overflow-visible">
       {/* =====================================================
-          1. LEFT JHAROKHA (Hero se start -> Countdown end pe naturally exit)
+          1. LEFT JHAROKHA (Hero start se Countdown end tak lock)
       ===================================================== */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
-        <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-visible">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-hidden">
           <motion.div
             style={{ y: yParallax }}
             className="relative h-[112vh] w-full origin-left scale-110 lg:scale-120"
@@ -40,10 +50,10 @@ export default function JharokhaFrameWrapper({
       </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA (Hero se start -> Countdown end pe naturally exit)
+          2. RIGHT JHAROKHA (Mirrored, Countdown end pe auto exit)
       ===================================================== */}
       <div className="pointer-events-none absolute inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
-        <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-visible">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-hidden">
           <motion.div
             style={{ y: yParallax }}
             className="relative h-[112vh] w-full origin-right scale-110 lg:scale-120"
@@ -58,7 +68,7 @@ export default function JharokhaFrameWrapper({
       </div>
 
       {/* =====================================================
-          CHILDREN: Hero, ScratchReveal aur Countdown
+          CONTENT (Hero + ScratchReveal + Countdown)
       ===================================================== */}
       <div className="relative z-10 w-full">{children}</div>
     </div>
