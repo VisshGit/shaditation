@@ -15,20 +15,24 @@ export default function JharokhaFrameWrapper({
     setMounted(true);
   }, []);
 
-  // Is pure wrapper (Hero + Scratch + Countdown) ka window scroll tracking
+  // Sirf is Wrapper (Hero + Scratch + Countdown) ki scrolling ko map karega
+  // Offset "end start" ka matlab: Jaise hi countdown section viewport se upar nikalne lagega
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end start"],
   });
 
-  // Parallax Travel: Smooth dynamic travel scroll ke sath
-  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-28%"]);
+  // Parallax float movement Hero se Countdown tak
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-22%"]);
 
-  // Opacity Fix: Pure 0.96 (Countdown ke aakhiri bottom) tak full 1 rahega
+  // Opacity Rule:
+  // 0% (Hero Start) -> Full Visible (1)
+  // 75% (Countdown chal raha hai) -> Full Visible (1)
+  // 92% se 100% (Countdown ka bottom cross hote hi) -> Clean Gayab (0)
   const opacityFade = useTransform(
     scrollYProgress,
-    [0, 0.95, 1],
-    [1, 1, 0]
+    [0, 0.75, 0.92, 1],
+    [1, 1, 0, 0]
   );
 
   if (!mounted) {
@@ -38,7 +42,7 @@ export default function JharokhaFrameWrapper({
   return (
     <div ref={wrapperRef} className="relative w-full">
       {/* =====================================================
-          1. LEFT JHAROKHA (Fixed Viewport, High Z-Index 50)
+          1. LEFT JHAROKHA (Fixed Viewport, Locked to Left Edge)
       ===================================================== */}
       <motion.div
         style={{ opacity: opacityFade }}
@@ -52,14 +56,14 @@ export default function JharokhaFrameWrapper({
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Left Jharokha"
-              className="absolute top-1/2 left-0 -translate-y-1/2 h-full w-auto max-w-none object-contain drop-shadow-[14px_0_28px_rgba(0,0,0,0.7)]"
+              className="absolute top-1/2 left-0 -translate-y-1/2 h-full w-auto max-w-none object-contain drop-shadow-[14px_0_28px_rgba(0,0,0,0.65)]"
             />
           </motion.div>
         </div>
       </motion.div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA (Fixed Viewport, High Z-Index 50)
+          2. RIGHT JHAROKHA (Fixed Viewport, Locked to Right Edge)
       ===================================================== */}
       <motion.div
         style={{ opacity: opacityFade }}
@@ -73,14 +77,14 @@ export default function JharokhaFrameWrapper({
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Right Jharokha"
-              className="absolute top-1/2 right-0 -translate-y-1/2 h-full w-auto max-w-none -scale-x-100 object-contain drop-shadow-[-14px_0_28px_rgba(0,0,0,0.7)]"
+              className="absolute top-1/2 right-0 -translate-y-1/2 h-full w-auto max-w-none -scale-x-100 object-contain drop-shadow-[-14px_0_28px_rgba(0,0,0,0.65)]"
             />
           </motion.div>
         </div>
       </motion.div>
 
       {/* =====================================================
-          CONTENT (Hero + ScratchReveal + Countdown)
+          SECTIONS (Hero -> ScratchReveal -> Countdown)
       ===================================================== */}
       <div className="relative z-10 w-full">{children}</div>
     </div>
