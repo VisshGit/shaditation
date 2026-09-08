@@ -229,13 +229,13 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          SCROLL INDICATOR (Mobile view ke liye bottom-32 set kiya)
+          SCROLL INDICATOR (Mobile view ke liye bottom-40)
       ===================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-32 sm:bottom-20 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
+        className="absolute bottom-40 sm:bottom-20 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
       >
         <div className="scroll-indicator">
           <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
