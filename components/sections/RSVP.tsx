@@ -71,32 +71,30 @@ export default function RSVP() {
         backgroundImage: "url('/images/cdbg.PNG')",
       }}
     >
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
-
-      {/* Soft Warm Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/45" />
+      {/* Background Dim Overlays */}
+      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
 
       {/* Content */}
       <div className="relative z-10 w-full">
         <Container>
-          <div className="flex justify-center">
-            {/* LUXURY ROYAL CARD */}
+          <div className="flex justify-center px-3 sm:px-0">
+            {/* ROYAL GLASSMORPHISM CARD */}
             <motion.div
               initial={{ opacity: 0, y: 35, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.85, delay: 0.1, ease: smoothCurve }}
-              className="w-full max-w-2xl rounded-3xl border border-[var(--primary)]/35 bg-[var(--background)]/90 px-6 py-12 text-center shadow-2xl backdrop-blur-md sm:px-10 sm:py-16"
+              className="w-full max-w-2xl rounded-3xl border border-white/20 bg-white/10 px-6 py-12 text-center shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-12 sm:py-16"
             >
-              {/* HEADING */}
+              {/* HEADING SECTION */}
               <div className="flex flex-col items-center">
                 <motion.p
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.7, delay: 0.25, ease: smoothCurve }}
-                  className="text-xs uppercase tracking-[5px] text-[var(--accent)] sm:text-sm sm:tracking-[7px]"
+                  className="text-xs uppercase tracking-[5px] text-amber-200/90 sm:text-sm sm:tracking-[7px]"
                 >
                   We Would Love To Hear From You
                 </motion.p>
@@ -106,7 +104,7 @@ export default function RSVP() {
                   whileInView={{ opacity: 1, scaleX: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, delay: 0.35, ease: smoothCurve }}
-                  className="mt-5 h-px w-20 bg-[var(--primary)]/60 origin-center"
+                  className="mt-4 h-px w-16 bg-gradient-to-r from-transparent via-amber-200/60 to-transparent origin-center"
                 />
 
                 <motion.h2
@@ -114,7 +112,7 @@ export default function RSVP() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
-                  className="mt-6 font-heading text-5xl leading-tight text-[var(--foreground)] sm:text-6xl md:text-7xl"
+                  className="mt-4 font-heading text-4xl leading-tight text-white drop-shadow-md sm:text-6xl md:text-7xl"
                 >
                   RSVP
                 </motion.h2>
@@ -124,187 +122,151 @@ export default function RSVP() {
                   whileInView={{ opacity: 1, scaleX: 1 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, delay: 0.55, ease: smoothCurve }}
-                  className="mt-6 h-px w-14 bg-[var(--primary)]/40 origin-center"
+                  className="mt-4 h-px w-12 bg-gradient-to-r from-transparent via-amber-200/50 to-transparent origin-center"
                 />
               </div>
 
-              {/* DESCRIPTION */}
+              {/* SUBTITLE */}
               <motion.p
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.75, delay: 0.65, ease: smoothCurve }}
-                className="mx-auto mt-7 max-w-xl text-center text-sm leading-7 text-[var(--foreground)]/75 sm:text-base sm:leading-8"
+                className="mx-auto mt-6 max-w-lg text-center text-sm leading-7 text-white/85 sm:text-base sm:leading-8"
               >
                 Your presence would mean the world to us.
                 <br />
                 Kindly let us know if you will be joining our celebration.
               </motion.p>
 
-              {/* FORM */}
+              {/* FORM FIELDS */}
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: 0.75, ease: smoothCurve }}
                 onSubmit={handleSubmit}
-                className="mx-auto mt-12 w-full max-w-2xl text-left"
+                className="mx-auto mt-10 w-full text-left"
               >
                 {/* NAME */}
                 <div>
                   <label
                     htmlFor="name"
-                    className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
                   >
-                    Your Name <span className="text-red-500">*</span>
+                    Your Name <span className="text-rose-400">*</span>
                   </label>
-
                   <input
                     id="name"
                     name="name"
                     type="text"
                     required
                     placeholder="Enter your name"
-                    className="w-full rounded-xl border border-[var(--primary)]/25 bg-[var(--surface)]/70 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 placeholder:text-[var(--foreground)]/40 focus:border-[var(--primary)]/60 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                    className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-2 focus:ring-amber-300/20"
                   />
                 </div>
 
                 {/* EMAIL */}
-                <div className="mt-7">
+                <div className="mt-6">
                   <label
                     htmlFor="email"
-                    className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
                   >
-                    Email Address
-                    <span className="ml-2 normal-case tracking-normal text-[var(--foreground)]/50">
+                    Email Address{" "}
+                    <span className="ml-1.5 normal-case tracking-normal text-white/60">
                       (Optional)
                     </span>
                   </label>
-
                   <input
                     id="email"
                     name="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full rounded-xl border border-[var(--primary)]/25 bg-[var(--surface)]/70 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 placeholder:text-[var(--foreground)]/40 focus:border-[var(--primary)]/60 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                    className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-2 focus:ring-amber-300/20"
                   />
                 </div>
 
                 {/* RESPONSE */}
-                <div className="mt-7">
+                <div className="mt-6">
                   <label
                     htmlFor="response"
-                    className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
                   >
-                    Your Response <span className="text-red-500">*</span>
+                    Your Response <span className="text-rose-400">*</span>
                   </label>
-
                   <select
                     id="response"
                     name="response"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-[var(--primary)]/25 bg-[var(--surface)]/70 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 focus:border-[var(--primary)]/60 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/80 sm:bg-white/10 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e]/95 focus:ring-2 focus:ring-amber-300/20"
                   >
-                    <option value="" disabled>
+                    <option value="" disabled className="bg-[#2b1d0e] text-white/70">
                       Will you attend?
                     </option>
-
-                    <option value="accept">Joyfully accept</option>
-                    <option value="decline">Regretfully decline</option>
+                    <option value="accept" className="bg-[#2b1d0e] text-white">
+                      Joyfully accept
+                    </option>
+                    <option value="decline" className="bg-[#2b1d0e] text-white">
+                      Regretfully decline
+                    </option>
                   </select>
                 </div>
 
                 {/* NUMBER OF MEMBERS */}
-                <div className="mt-7">
+                <div className="mt-6">
                   <label
                     htmlFor="guests"
-                    className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
                   >
-                    How Many Members Are Joining?{" "}
-                    <span className="text-red-500">*</span>
+                    How Many Members Are Joining? <span className="text-rose-400">*</span>
                   </label>
-
                   <select
                     id="guests"
                     name="guests"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-[var(--primary)]/25 bg-[var(--surface)]/70 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 focus:border-[var(--primary)]/60 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/80 sm:bg-white/10 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e]/95 focus:ring-2 focus:ring-amber-300/20"
                   >
-                    <option value="" disabled>
+                    <option value="" disabled className="bg-[#2b1d0e] text-white/70">
                       Select number of members
                     </option>
-                    <option value="1">1 Member</option>
-                    <option value="2">2 Members</option>
-                    <option value="3">3 Members</option>
-                    <option value="4">4 Members</option>
-                    <option value="5">5 Members</option>
-                    <option value="6">6 Members</option>
-                    <option value="7">7 Members</option>
-                    <option value="8">8 Members</option>
-                    <option value="9">9 Members</option>
-                    <option value="10">10 Members</option>
-                    <option value="10+">10+ Members</option>
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
+                      <option key={num} value={num} className="bg-[#2b1d0e] text-white">
+                        {num} {num === 1 ? "Member" : "Members"}
+                      </option>
+                    ))}
+                    <option value="10+" className="bg-[#2b1d0e] text-white">
+                      10+ Members
+                    </option>
                   </select>
                 </div>
 
                 {/* MESSAGE */}
-                <div className="mt-7">
+                <div className="mt-6">
                   <label
                     htmlFor="message"
-                    className="mb-2 block text-xs uppercase tracking-[3px] text-[var(--accent)]"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
                   >
                     A Message for the Couple
                   </label>
-
                   <textarea
                     id="message"
                     name="message"
-                    rows={5}
-                    placeholder="Share your wishes..."
-                    className="w-full resize-none rounded-xl border border-[var(--primary)]/25 bg-[var(--surface)]/70 px-5 py-4 text-sm text-[var(--foreground)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] outline-none backdrop-blur-sm transition duration-300 placeholder:text-[var(--foreground)]/40 focus:border-[var(--primary)]/60 focus:bg-[var(--surface)] focus:ring-2 focus:ring-[var(--primary)]/10"
+                    rows={4}
+                    placeholder="Share your wishes and blessings..."
+                    className="w-full resize-none rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-2 focus:ring-amber-300/20"
                   />
                 </div>
 
-                {/* FEEDBACK MESSAGE */}
+                {/* STATUS MESSAGE */}
                 {statusMessage.text && (
                   <div
-                    className={`mt-6 text-center text-sm font-medium ${
+                    className={`mt-6 rounded-xl border p-3.5 text-center text-sm font-medium backdrop-blur-md ${
                       statusMessage.type === "success"
-                        ? "text-emerald-500"
-                        : "text-rose-500"
+                        ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-300"
+                        : "border-rose-500/40 bg-rose-950/40 text-rose-300"
                     }`}
                   >
                     {statusMessage.text}
                   </div>
-                )}
-
-                {/* LUXURY RSVP BUTTON */}
-                <div className="mt-10 flex justify-center">
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="rsvp-luxury-button group disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    <span className="rsvp-button-glow" />
-
-                    <span className="rsvp-button-inner">
-                      <span className="rsvp-button-icon">✦</span>
-
-                      <span className="rsvp-button-text">
-                        {loading ? "Sending..." : "Send RSVP"}
-                      </span>
-
-                      <span className="rsvp-button-icon">✦</span>
-                    </span>
-                  </button>
-                </div>
-              </motion.form>
-            </motion.div>
-          </div>
-        </Container>
-      </div>
-    </section>
-  );
-}
