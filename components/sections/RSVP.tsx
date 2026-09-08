@@ -78,17 +78,17 @@ export default function RSVP() {
       {/* Content */}
       <div className="relative z-10 w-full">
         <Container>
-          <div className="flex justify-center px-4 sm:px-6">
+          <div className="flex w-full items-center justify-center px-4 sm:px-6">
             {/* ROYAL GLASSMORPHISM CARD */}
             <motion.div
               initial={{ opacity: 0, y: 35, scale: 0.97 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.85, delay: 0.1, ease: smoothCurve }}
-              className="w-full max-w-3xl rounded-3xl border border-white/20 bg-white/10 px-6 py-12 text-center shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-16 sm:py-16 md:px-20"
+              className="flex w-full max-w-4xl flex-col items-center justify-center rounded-3xl border border-white/20 bg-white/10 px-6 py-12 text-center shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-14 sm:py-16"
             >
               {/* HEADING SECTION */}
-              <div className="flex flex-col items-center">
+              <div className="flex w-full flex-col items-center text-center">
                 <motion.p
                   initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -124,32 +124,32 @@ export default function RSVP() {
                   transition={{ duration: 0.6, delay: 0.55, ease: smoothCurve }}
                   className="mt-4 h-px w-12 bg-gradient-to-r from-transparent via-amber-200/50 to-transparent origin-center"
                 />
+
+                {/* SUBTITLE */}
+                <motion.p
+                  initial={{ opacity: 0, y: 18 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.75, delay: 0.65, ease: smoothCurve }}
+                  className="mx-auto mt-6 max-w-lg text-center text-sm leading-7 text-white/85 sm:text-base sm:leading-8"
+                >
+                  Your presence would mean the world to us.
+                  <br />
+                  Kindly let us know if you will be joining our celebration.
+                </motion.p>
               </div>
 
-              {/* SUBTITLE */}
-              <motion.p
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.75, delay: 0.65, ease: smoothCurve }}
-                className="mx-auto mt-6 max-w-md text-center text-sm leading-7 text-white/85 sm:text-base sm:leading-8"
-              >
-                Your presence would mean the world to us.
-                <br />
-                Kindly let us know if you will be joining our celebration.
-              </motion.p>
-
-              {/* FORM FIELDS CONTAINER (Centered to red-box width with clean side margins) */}
+              {/* FORM FIELDS (Strictly Centered max-w-md block) */}
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.8, delay: 0.75, ease: smoothCurve }}
                 onSubmit={handleSubmit}
-                className="mx-auto mt-10 w-full max-w-md text-left"
+                className="mt-10 flex w-full max-w-md flex-col text-left"
               >
                 {/* NAME */}
-                <div>
+                <div className="w-full">
                   <label
                     htmlFor="name"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -167,7 +167,7 @@ export default function RSVP() {
                 </div>
 
                 {/* EMAIL */}
-                <div className="mt-5">
+                <div className="mt-5 w-full">
                   <label
                     htmlFor="email"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -187,7 +187,7 @@ export default function RSVP() {
                 </div>
 
                 {/* RESPONSE */}
-                <div className="mt-5">
+                <div className="mt-5 w-full">
                   <label
                     htmlFor="response"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -199,7 +199,7 @@ export default function RSVP() {
                     name="response"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/80 sm:bg-white/10 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e]/95 focus:ring-2 focus:ring-amber-300/20"
+                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/90 sm:bg-white/10 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e]/95 focus:ring-2 focus:ring-amber-300/20"
                   >
                     <option value="" disabled className="bg-[#2b1d0e] text-white/70">
                       Will you attend?
@@ -214,7 +214,7 @@ export default function RSVP() {
                 </div>
 
                 {/* NUMBER OF MEMBERS */}
-                <div className="mt-5">
+                <div className="mt-5 w-full">
                   <label
                     htmlFor="guests"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -226,7 +226,7 @@ export default function RSVP() {
                     name="guests"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/80 sm:bg-white/10 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e]/95 focus:ring-2 focus:ring-amber-300/20"
+                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/90 sm:bg-white/10 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e]/95 focus:ring-2 focus:ring-amber-300/20"
                   >
                     <option value="" disabled className="bg-[#2b1d0e] text-white/70">
                       Select number of members
@@ -243,7 +243,7 @@ export default function RSVP() {
                 </div>
 
                 {/* MESSAGE */}
-                <div className="mt-5">
+                <div className="mt-5 w-full">
                   <label
                     htmlFor="message"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
@@ -262,7 +262,7 @@ export default function RSVP() {
                 {/* STATUS MESSAGE */}
                 {statusMessage.text && (
                   <div
-                    className={`mt-6 rounded-xl border p-3.5 text-center text-sm font-medium backdrop-blur-md ${
+                    className={`mt-6 w-full rounded-xl border p-3.5 text-center text-sm font-medium backdrop-blur-md ${
                       statusMessage.type === "success"
                         ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-300"
                         : "border-rose-500/40 bg-rose-950/40 text-rose-300"
@@ -272,8 +272,8 @@ export default function RSVP() {
                   </div>
                 )}
 
-                {/* BUTTON */}
-                <div className="mt-8 flex justify-center">
+                {/* SUBMIT BUTTON */}
+                <div className="mt-8 flex w-full justify-center">
                   <button
                     type="submit"
                     disabled={loading}
