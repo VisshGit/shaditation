@@ -48,7 +48,11 @@ export default function JharokhaFrameWrapper({
           y: scrollYOffset,
           pointerEvents: showPillars ? "none" : "none",
         }}
-        transition={{ opacity: { duration: 0.25 }, y: { ease: "linear", duration: 0 } }}
+        // --- SMOOTH FADE TRANSITION FIX ---
+        transition={{ 
+          opacity: { duration: 0.6, ease: "easeInOut" }, // smoothness metrics ensure accurate mapping
+          y: { ease: "linear", duration: 0 } // parallax metrics accurate ensure mapping
+        }}
         className={`fixed inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] ${
           !showPillars ? "pointer-events-none invisible" : ""
         }`}
@@ -73,7 +77,11 @@ export default function JharokhaFrameWrapper({
           y: scrollYOffset,
           pointerEvents: showPillars ? "none" : "none",
         }}
-        transition={{ opacity: { duration: 0.25 }, y: { ease: "linear", duration: 0 } }}
+        // --- SMOOTH FADE TRANSITION FIX ---
+        transition={{ 
+          opacity: { duration: 0.6, ease: "easeInOut" }, // smoothness metrics ensure accurate mapping
+          y: { ease: "linear", duration: 0 } // parallax metrics accurate ensure mapping
+        }}
         className={`fixed inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] ${
           !showPillars ? "pointer-events-none invisible" : ""
         }`}
