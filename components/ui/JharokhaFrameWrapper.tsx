@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
 
 export default function JharokhaFrameWrapper({
   children,
@@ -9,8 +8,8 @@ export default function JharokhaFrameWrapper({
   children: React.ReactNode;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [showPillars, setShowPillars] = useState(true);
-  const [scrollYOffset, setScrollYOffset] = useState(0);
+  const [isLockedAtBottom, setIsLockedAtBottom] = useState(false);
+  const [parallaxY, setParallaxY] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,42 +18,38 @@ export default function JharokhaFrameWrapper({
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Jab tak Wrapper (Countdown ka bottom) screen ke viewport me hai, tab tak true rahega
-      // Jaise hi Countdown viewport se upar nikal jayega, turant false ho jayega
-      if (rect.bottom > 100) {
-        setShowPillars(true);
-        // Hero se Countdown ke beech smooth parallax offset
-        const progress = Math.min(Math.max(-rect.top / (rect.height - windowHeight || 1), 0), 1);
-        setScrollYOffset(progress * -160);
+      // Jab container ka bottom viewport ke bottom se mil jaye, tab freeze kar do
+      if (rect.bottom <= windowHeight) {
+        setIsLockedAtBottom(true);
       } else {
-        setShowPillars(false);
+        setIsLockedAtBottom(false);
+        // Hero se Countdown ke beech dynamic parallax travel
+        const progress = Math.min(Math.max(-rect.top / (rect.height - windowHeight || 1), 0), 1);
+        setParallaxY(progress * -160);
       }
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll(); // Initial check
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div ref={containerRef} className="relative w-full">
+    <div ref={containerRef} className="relative w-full overflow-hidden">
       {/* =====================================================
-          1. LEFT JHAROKHA (Hero to Countdown Locked)
+          1. LEFT JHAROKHA
       ===================================================== */}
-      <motion.div
-        animate={{
-          opacity: showPillars ? 1 : 0,
-          y: scrollYOffset,
-          pointerEvents: showPillars ? "none" : "none",
+      <div
+        style={{
+          transform: isLockedAtBottom
+            ? "translateY(0px)"
+            : `translateY(${parallaxY}px)`,
         }}
-        // --- SMOOTH FADE TRANSITION FIX ---
-        transition={{ 
-          opacity: { duration: 0.6, ease: "easeInOut" }, // smoothness metrics ensure accurate mapping
-          y: { ease: "linear", duration: 0 } // parallax metrics accurate ensure mapping
-        }}
-        className={`fixed inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] ${
-          !showPillars ? "pointer-events-none invisible" : ""
+        className={`pointer-events-none z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-transform duration-75 ease-out ${
+          isLockedAtBottom
+            ? "absolute bottom-0 left-0 h-screen"
+            : "fixed inset-y-0 left-0"
         }`}
       >
         <div className="relative h-full w-full flex items-center justify-start overflow-visible">
@@ -66,24 +61,21 @@ export default function JharokhaFrameWrapper({
             />
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA (Hero to Countdown Locked)
+          2. RIGHT JHAROKHA
       ===================================================== */}
-      <motion.div
-        animate={{
-          opacity: showPillars ? 1 : 0,
-          y: scrollYOffset,
-          pointerEvents: showPillars ? "none" : "none",
+      <div
+        style={{
+          transform: isLockedAtBottom
+            ? "translateY(0px)"
+            : `translateY(${parallaxY}px)`,
         }}
-        // --- SMOOTH FADE TRANSITION FIX ---
-        transition={{ 
-          opacity: { duration: 0.6, ease: "easeInOut" }, // smoothness metrics ensure accurate mapping
-          y: { ease: "linear", duration: 0 } // parallax metrics accurate ensure mapping
-        }}
-        className={`fixed inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] ${
-          !showPillars ? "pointer-events-none invisible" : ""
+        className={`pointer-events-none z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-transform duration-75 ease-out ${
+          isLockedAtBottom
+            ? "absolute bottom-0 right-0 h-screen"
+            : "fixed inset-y-0 right-0"
         }`}
       >
         <div className="relative h-full w-full flex items-center justify-end overflow-visible">
@@ -95,7 +87,7 @@ export default function JharokhaFrameWrapper({
             />
           </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* Hero + ScratchReveal + Countdown */}
       <div className="relative z-10 w-full">{children}</div>
