@@ -40,13 +40,14 @@ export default function JharokhaFrameWrapper({
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
       {/* =====================================================
-          1. LEFT JHAROKHA (Ease-in slide from Left)
+          1. LEFT JHAROKHA (3s delay ke baad smooth ease-in)
       ===================================================== */}
       <motion.div
-        initial={{ opacity: 0, x: -90 }}
+        initial={{ opacity: 0, x: -120 }}
         animate={{ opacity: isVisible ? 1 : 0, x: 0 }}
         transition={{
-          duration: 1.2,
+          duration: 1.6,
+          delay: 3.0, // Gate open hone ke 3 sec baad trigger hoga
           ease: [0.22, 1, 0.36, 1],
         }}
         style={{
@@ -66,13 +67,14 @@ export default function JharokhaFrameWrapper({
       </motion.div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA (Ease-in slide from Right)
+          2. RIGHT JHAROKHA (3s delay ke baad smooth ease-in)
       ===================================================== */}
       <motion.div
-        initial={{ opacity: 0, x: 90 }}
+        initial={{ opacity: 0, x: 120 }}
         animate={{ opacity: isVisible ? 1 : 0, x: 0 }}
         transition={{
-          duration: 1.2,
+          duration: 1.6,
+          delay: 3.0, // Gate open hone ke 3 sec baad trigger hoga
           ease: [0.22, 1, 0.36, 1],
         }}
         style={{
