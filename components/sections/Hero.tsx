@@ -211,10 +211,7 @@ export default function Hero() {
                     sm:leading-9
                   "
                 >
-                  <br>
-                  </br>
-                  <br>
-                  </br>
+                  
                   Request the pleasure of your company
                   <br />
                   at the celebration of their marriage.
