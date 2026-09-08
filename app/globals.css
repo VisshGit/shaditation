@@ -827,6 +827,6 @@ img {
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
-  animation: goldShine 4s linear infinite;
+  animation: goldShine 10s linear infinite;
   text-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
 }
