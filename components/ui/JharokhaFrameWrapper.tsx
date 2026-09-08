@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function JharokhaFrameWrapper({
@@ -8,47 +8,24 @@ export default function JharokhaFrameWrapper({
 }: {
   children: React.ReactNode;
 }) {
-  const [mounted, setMounted] = useState(false);
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Sirf is Wrapper (Hero + Scratch + Countdown) ki scrolling ko map karega
-  // Offset "end start" ka matlab: Jaise hi countdown section viewport se upar nikalne lagega
+  // Sirf is container (Hero + Scratch + Countdown) ka scroll measure hoga
   const { scrollYProgress } = useScroll({
-    target: wrapperRef,
-    offset: ["start start", "end start"],
+    target: containerRef,
+    offset: ["start start", "end end"],
   });
 
-  // Parallax float movement Hero se Countdown tak
-  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-22%"]);
-
-  // Opacity Rule:
-  // 0% (Hero Start) -> Full Visible (1)
-  // 75% (Countdown chal raha hai) -> Full Visible (1)
-  // 92% se 100% (Countdown ka bottom cross hote hi) -> Clean Gayab (0)
-  const opacityFade = useTransform(
-    scrollYProgress,
-    [0, 0.75, 0.92, 1],
-    [1, 1, 0, 0]
-  );
-
-  if (!mounted) {
-    return <div className="relative w-full">{children}</div>;
-  }
+  // Parallax subtle motion scroll ke sath
+  const yParallax = useTransform(scrollYProgress, [0, 1], ["0%", "-15%"]);
 
   return (
-    <div ref={wrapperRef} className="relative w-full">
+    <div ref={containerRef} className="relative w-full overflow-hidden">
       {/* =====================================================
-          1. LEFT JHAROKHA (Fixed Viewport, Locked to Left Edge)
+          1. LEFT JHAROKHA (Hero se start -> Countdown end pe naturally exit)
       ===================================================== */}
-      <motion.div
-        style={{ opacity: opacityFade }}
-        className="pointer-events-none fixed inset-y-0 left-0 z-50 hidden md:block w-56 lg:w-80 xl:w-[28rem]"
-      >
-        <div className="relative h-full w-full flex items-center justify-start overflow-visible">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-start overflow-visible">
           <motion.div
             style={{ y: yParallax }}
             className="relative h-[112vh] w-full origin-left scale-110 lg:scale-120"
@@ -60,16 +37,13 @@ export default function JharokhaFrameWrapper({
             />
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA (Fixed Viewport, Locked to Right Edge)
+          2. RIGHT JHAROKHA (Hero se start -> Countdown end pe naturally exit)
       ===================================================== */}
-      <motion.div
-        style={{ opacity: opacityFade }}
-        className="pointer-events-none fixed inset-y-0 right-0 z-50 hidden md:block w-56 lg:w-80 xl:w-[28rem]"
-      >
-        <div className="relative h-full w-full flex items-center justify-end overflow-visible">
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem]">
+        <div className="sticky top-0 h-screen w-full flex items-center justify-end overflow-visible">
           <motion.div
             style={{ y: yParallax }}
             className="relative h-[112vh] w-full origin-right scale-110 lg:scale-120"
@@ -81,10 +55,10 @@ export default function JharokhaFrameWrapper({
             />
           </motion.div>
         </div>
-      </motion.div>
+      </div>
 
       {/* =====================================================
-          SECTIONS (Hero -> ScratchReveal -> Countdown)
+          CHILDREN: Hero, ScratchReveal aur Countdown
       ===================================================== */}
       <div className="relative z-10 w-full">{children}</div>
     </div>
