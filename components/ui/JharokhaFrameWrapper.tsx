@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function JharokhaFrameWrapper({
   children,
@@ -18,7 +19,6 @@ export default function JharokhaFrameWrapper({
       const rect = containerRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
 
-      // Countdown section viewport se nikalte hi fade-out trigger hoga
       if (rect.bottom > 80) {
         setIsVisible(true);
         const progress = Math.min(
@@ -40,15 +40,19 @@ export default function JharokhaFrameWrapper({
   return (
     <div ref={containerRef} className="relative w-full overflow-hidden">
       {/* =====================================================
-          1. LEFT JHAROKHA (Desktop Only: hidden md:block)
+          1. LEFT JHAROKHA (Ease-in slide from Left)
       ===================================================== */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, x: -90 }}
+        animate={{ opacity: isVisible ? 1 : 0, x: 0 }}
+        transition={{
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         style={{
           transform: `translateY(${parallaxY}px)`,
         }}
-        className={`pointer-events-none fixed inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-opacity duration-800 ease-in-out ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        className="pointer-events-none fixed inset-y-0 left-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-opacity duration-700 ease-in-out"
       >
         <div className="relative h-full w-full flex items-center justify-start overflow-visible">
           <div className="relative h-[112vh] w-full origin-left scale-110 lg:scale-120">
@@ -59,18 +63,22 @@ export default function JharokhaFrameWrapper({
             />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* =====================================================
-          2. RIGHT JHAROKHA (Desktop Only: hidden md:block)
+          2. RIGHT JHAROKHA (Ease-in slide from Right)
       ===================================================== */}
-      <div
+      <motion.div
+        initial={{ opacity: 0, x: 90 }}
+        animate={{ opacity: isVisible ? 1 : 0, x: 0 }}
+        transition={{
+          duration: 1.2,
+          ease: [0.22, 1, 0.36, 1],
+        }}
         style={{
           transform: `translateY(${parallaxY}px)`,
         }}
-        className={`pointer-events-none fixed inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-opacity duration-800 ease-in-out ${
-          isVisible ? "opacity-100" : "opacity-0"
-        }`}
+        className="pointer-events-none fixed inset-y-0 right-0 z-40 hidden md:block w-56 lg:w-80 xl:w-[28rem] transition-opacity duration-700 ease-in-out"
       >
         <div className="relative h-full w-full flex items-center justify-end overflow-visible">
           <div className="relative h-[112vh] w-full origin-right scale-110 lg:scale-120">
@@ -81,7 +89,7 @@ export default function JharokhaFrameWrapper({
             />
           </div>
         </div>
-      </div>
+      </motion.div>
 
       {/* Hero + ScratchReveal + Countdown */}
       <div className="relative z-10 w-full">{children}</div>
