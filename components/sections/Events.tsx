@@ -69,7 +69,7 @@ export default function Events() {
       <Container>
         <div className="flex justify-center">
           <div className="w-full max-w-5xl px-4 text-center sm:px-0">
-            {/* 1. Label (Delay: 0.15s) */}
+            {/* 1. Label (Smooth Transition) */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +81,7 @@ export default function Events() {
               Wedding Events
             </motion.p>
 
-            {/* 2. Elegant Divider (Delay: 0.3s) */}
+            {/* 2. Elegant Divider (Smooth Transition) */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -95,7 +95,7 @@ export default function Events() {
               <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
             </motion.div>
 
-            {/* 3. Heading (Delay: 0.45s) */}
+            {/* 3. Heading (Smooth Transition) */}
             <motion.h2
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -110,22 +110,14 @@ export default function Events() {
               Celebration Details
             </motion.h2>
 
-            {/* 4. Events Grid with Staggered Entrance */}
+            {/* 4. Events Grid (Transitions removed - Normal Static Cards) */}
             <div
               className="grid gap-6 md:grid-cols-2 md:gap-8"
               style={{ marginTop: "64px" }}
             >
-              {events.map((event, index) => (
-                <motion.div
+              {events.map((event) => (
+                <div
                   key={event.title}
-                  initial={{ opacity: 0, y: 35, scale: 0.96 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: 0.15 + (index % 2) * 0.18,
-                    ease: smoothCurve,
-                  }}
                   aria-label="Wedding event card"
                   className="group relative overflow-hidden rounded-3xl border border-[var(--primary)]/15 bg-white px-7 py-10 text-center shadow-[0_15px_40px_rgba(43,29,14,0.07)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(43,29,14,0.11)] sm:px-10"
                 >
@@ -152,7 +144,7 @@ export default function Events() {
                       </>
                     )}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
