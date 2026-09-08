@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 
 import { activeTheme } from "@/config/themes";
@@ -23,6 +24,13 @@ const rosePetals = Array.from({ length: 32 }, (_, index) => ({
   }deg`,
 }));
 
+// Reusable smooth entrance transition settings
+const smoothTransition = (delay: number) => ({
+  duration: 1.0,
+  delay: delay,
+  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+});
+
 export default function Hero() {
   const [showPetals, setShowPetals] = useState(true);
   const [showSparks, setShowSparks] = useState(false);
@@ -32,17 +40,14 @@ export default function Hero() {
   useEffect(() => {
     if (!isRajasthani) return;
 
-    // 1. Flowers 0s se shuru hokar 7 seconds baad band honge
     const petalsStopTimer = window.setTimeout(() => {
       setShowPetals(false);
     }, 7000);
 
-    // 2. Fire sparks 4 seconds baad start honge (Flower ke 4s baad)
     const sparksStartTimer = window.setTimeout(() => {
       setShowSparks(true);
     }, 4000);
 
-    // 3. Fire sparks total 7 seconds chalenge (4s + 7s = 11s par stop)
     const sparksStopTimer = window.setTimeout(() => {
       setShowSparks(false);
     }, 11000);
@@ -56,23 +61,18 @@ export default function Hero() {
 
   return (
     <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
-      
-
       {/* =====================================================
           RAJASTHANI HERO BACKGROUND
       ===================================================== */}
-
       {isRajasthani && (
         <>
           <div
             className="pointer-events-none absolute inset-0 scale-[1.04] bg-cover bg-center"
             style={{
-              backgroundImage:
-                "url('/themes/rajasthani/hero-bg.PNG')",
+              backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
               filter: "blur(4px)",
             }}
           />
-
           <div className="pointer-events-none absolute inset-0 bg-white/35" />
         </>
       )}
@@ -80,17 +80,14 @@ export default function Hero() {
       {/* =====================================================
           THEME BACKGROUND LIGHTS
       ===================================================== */}
-
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-[var(--secondary)]/20 blur-3xl" />
-
         <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-[var(--primary)]/10 blur-3xl" />
       </div>
 
       {/* =====================================================
-          ROSE PETALS (0s se 7s tak)
+          ROSE PETALS
       ===================================================== */}
-
       {isRajasthani && showPetals && (
         <div className="hero-rose-petals">
           {rosePetals.map((petal, index) => (
@@ -112,9 +109,8 @@ export default function Hero() {
       )}
 
       {/* =====================================================
-          FIRE SPARKS (4s se 11s tak, Total 7s)
+          FIRE SPARKS
       ===================================================== */}
-
       {isRajasthani && showSparks && (
         <div className="hero-fire-sparks">
           {fireSparks.map((spark, index) => (
@@ -141,12 +137,10 @@ export default function Hero() {
       {/* =====================================================
           HERO CONTENT
       ===================================================== */}
-
       <div className="relative z-10 w-full min-w-0">
         <Container>
           <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
             <div className="relative mx-auto w-full max-w-4xl translate-y-[10px] px-3 sm:translate-y-0 sm:px-0">
-
               {/* Dark backdrop */}
               <div
                 className="pointer-events-none absolute left-1/2 top-1/2 h-[360px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
@@ -154,14 +148,13 @@ export default function Hero() {
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-
-                {/* =====================================================
-                    TOGETHER
-                ===================================================== */}
-
-                <p
+                {/* 1. TOGETHER (Delay: 0.2s) */}
+                <motion.p
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={smoothTransition(0.2)}
                   className="
-                    mb-12
+                    mb-8
                     max-w-[320px]
                     text-center
                     text-[10px]
@@ -171,65 +164,64 @@ export default function Hero() {
                     tracking-[3px]
                     text-[var(--foreground)]
                     drop-shadow-[0_2px_6px_rgba(255,255,255,0.35)]
-                    sm:mb-14
+                    sm:mb-10
                     sm:max-w-none
                     sm:text-sm
                     sm:tracking-[7px]
                   "
                 >
                   Together With Their Families
-                  <br>
-                  </br>
-                  <br>
-                  </br>
-                </p>
+                </motion.p>
 
-                {/* =====================================================
-                    NAMES
-                ===================================================== */}
+                {/* 2. NAMES (Delay: 0.45s) */}
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={smoothTransition(0.45)}
+                  className="w-full flex justify-center mb-6"
+                >
+                  <h1 className="gold-shimmer-text font-serif text-3xl md:text-5xl lg:text-7xl font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] break-words whitespace-normal text-center">
+                    Vishal <span className="mx-3 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
+                  </h1>
+                </motion.div>
 
-                <h1 className="gold-shimmer-text font-serif text-3xl md:text-5xl lg:text-7xl font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] break-words whitespace-normal text-center">
-  Vishal <span className="mx-3 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
-</h1>
-
-                {/* =====================================================
-                    INVITATION TEXT
-                ===================================================== */}
-
-                <p
+                {/* 3. INVITATION TEXT (Delay: 0.7s) */}
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={smoothTransition(0.7)}
                   className="
-                    mb-10
+                    mb-8
                     max-w-[330px]
                     text-center
                     text-sm
                     leading-8
                     text-[var(--white)]
                     drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]
-                    sm:mb-12
+                    sm:mb-10
                     sm:max-w-xl
                     sm:text-lg
                     sm:leading-9
                   "
                 >
-                  
                   Request the pleasure of your company
                   <br />
                   at the celebration of their marriage.
-                </p>
+                </motion.p>
 
-                {/* =====================================================
-                    DECORATIVE DIVIDER
-                ===================================================== */}
-
-                <div className="flex items-center justify-center gap-4 sm:gap-5">
+                {/* 4. DECORATIVE DIVIDER (Delay: 0.95s) */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.85 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={smoothTransition(0.95)}
+                  className="flex items-center justify-center gap-4 sm:gap-5"
+                >
                   <span className="h-px w-14 bg-[var(--primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
-
                   <span className="text-lg text-[var(--primary)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:text-xl">
                     ✦
                   </span>
-
                   <span className="h-px w-14 bg-[var(--primary)] shadow-[0_0_8px_rgba(255,255,255,0.35)] sm:w-20" />
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
@@ -237,18 +229,21 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          SCROLL INDICATOR
+          SCROLL INDICATOR (Delay: 1.2s)
       ===================================================== */}
-
-      <div className="absolute bottom-20 left-0 right-0 z-20 flex justify-center text-center">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="absolute bottom-20 left-0 right-0 z-20 flex justify-center text-center"
+      >
         <div className="scroll-indicator">
           <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
             SCROLL
           </span>
-
           <div className="scroll-line text-[var(--foreground)]" />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
