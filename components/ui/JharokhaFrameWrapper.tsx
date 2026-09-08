@@ -57,7 +57,7 @@ export default function JharokhaFrameWrapper({
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Left Jharokha"
-              className="absolute top-1/2 left-0 -translate-y-1/2 h-full w-auto max-w-none object-contain drop-shadow-[14px_0_28px_rgba(0,0,0,0.65)]"
+              className="absolute top-[calc(50%+0.5in)] left-0 -translate-y-1/2 h-full w-auto max-w-none object-contain drop-shadow-[14px_0_28px_rgba(0,0,0,0.65)]"
             />
           </div>
         </div>
@@ -83,7 +83,7 @@ export default function JharokhaFrameWrapper({
             <img
               src="/themes/rajasthani/jharokha-pillar.png"
               alt="Right Jharokha"
-              className="absolute top-1/2 right-0 -translate-y-1/2 h-full w-auto max-w-none -scale-x-100 object-contain drop-shadow-[-14px_0_28px_rgba(0,0,0,0.65)]"
+              className="absolute top-[calc(50%+0.5in)] right-0 -translate-y-1/2 h-full w-auto max-w-none -scale-x-100 object-contain drop-shadow-[-14px_0_28px_rgba(0,0,0,0.65)]"
             />
           </div>
         </div>
