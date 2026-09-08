@@ -184,8 +184,8 @@ export default function Hero() {
                     NAMES
                 ===================================================== */}
 
-                <h1 className="gold-shimmer-text font-serif text-5xl md:text-7xl lg:text-8xl tracking-wider font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)]">
-  Vishal &amp; Varsha
+                <h1 className="gold-shimmer-text font-serif text-3xl md:text-5xl lg:text-7xl font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] break-words whitespace-normal text-center">
+  Vishal <span className="mx-3 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
 </h1>
 
                 {/* =====================================================
