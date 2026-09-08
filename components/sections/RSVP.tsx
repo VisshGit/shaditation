@@ -270,3 +270,30 @@ export default function RSVP() {
                   >
                     {statusMessage.text}
                   </div>
+                )}
+
+                {/* BUTTON */}
+                <div className="mt-9 flex justify-center">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="rsvp-luxury-button group disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <span className="rsvp-button-glow" />
+                    <span className="rsvp-button-inner">
+                      <span className="rsvp-button-icon">✦</span>
+                      <span className="rsvp-button-text">
+                        {loading ? "Sending..." : "Send RSVP"}
+                      </span>
+                      <span className="rsvp-button-icon">✦</span>
+                    </span>
+                  </button>
+                </div>
+              </motion.form>
+            </motion.div>
+          </div>
+        </Container>
+      </div>
+    </section>
+  );
+}
