@@ -147,7 +147,7 @@ export default function Hero() {
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                {/* 1. TOGETHER (Arch/Aasmaan area) */}
+                {/* 1. TOGETHER (Arch/Aasmaan me positioned) */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -172,25 +172,25 @@ export default function Hero() {
                   Together With Their Families
                 </motion.p>
 
-                {/* 2. NAMES */}
+                {/* 2. NAMES (Halka sa upar lift kiya) */}
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.45)}
-                  className="w-full flex justify-center mb-2 -translate-y-[10px] sm:translate-y-0"
+                  className="w-full flex justify-center mb-0 -translate-y-[22px] sm:-translate-y-[10px]"
                 >
                   <h1 className="gold-shimmer-text font-serif text-3xl md:text-5xl lg:text-7xl font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] break-words whitespace-normal text-center">
                     Vishal <span className="mx-2 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
                   </h1>
                 </motion.div>
 
-                {/* 3. INVITATION TEXT (Niche shift kiya gaya) */}
+                {/* 3. INVITATION TEXT (Gap badha kar niche shift kiya) */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.7)}
                   className="
-                    mt-8
+                    mt-12
                     mb-10
                     max-w-[330px]
                     text-center
@@ -198,7 +198,7 @@ export default function Hero() {
                     leading-7
                     text-[var(--white)]
                     drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]
-                    sm:mt-6
+                    sm:mt-14
                     sm:mb-12
                     sm:max-w-xl
                     sm:text-lg
@@ -230,7 +230,7 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          SCROLL INDICATOR (Thoda aur upar lift kiya)
+          SCROLL INDICATOR
       ===================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
