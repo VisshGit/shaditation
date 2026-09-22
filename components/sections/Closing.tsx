@@ -4,16 +4,18 @@ export default function Closing() {
   return (
     <ScrollReveal>
       <section
-        className="relative isolate overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
+        className="relative isolate overflow-hidden bg-cover bg-bottom bg-no-repeat"
         style={{
           backgroundImage: "url('/images/cdbg.PNG')",
-          paddingTop: "140px",
+          paddingTop: "120px",
           paddingBottom: "220px",
         }}
       >
-        {/* Background Dim Overlays (Same as Countdown / RSVP) */}
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+        {/* Top Blend Overlay: Countdown se smooth transition ke liye */}
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#1a110a] via-[#1a110a]/80 to-transparent pointer-events-none z-0" />
+
+        {/* Dark Tint Overlay */}
+        <div className="absolute inset-0 bg-black/55 z-0" />
 
         {/* TOP LUXURY DECORATION */}
         <div className="relative z-10 flex justify-center px-6">
@@ -58,7 +60,7 @@ export default function Closing() {
         </div>
 
         {/* CENTER CONTENT */}
-        <div className="relative z-10 flex flex-col items-center justify-center px-6 py-14 text-center">
+        <div className="relative z-10 flex flex-col items-center justify-center px-6 py-10 text-center">
           <span
             className="mb-6 h-px w-12"
             style={{
@@ -68,11 +70,11 @@ export default function Closing() {
           />
 
           <p
-            className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)]"
+            className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
             style={{
               margin: 0,
-              paddingTop: "24px",
-              paddingBottom: "24px",
+              paddingTop: "16px",
+              paddingBottom: "16px",
               fontFamily: "var(--font-script), cursive",
               fontSize: "clamp(28px, 4.5vw, 42px)",
               lineHeight: 1.3,
@@ -150,6 +152,9 @@ export default function Closing() {
             </svg>
           </div>
         </div>
+
+        {/* Bottom Fade to dark background */}
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#120b06] to-transparent pointer-events-none z-0" />
       </section>
     </ScrollReveal>
   );
