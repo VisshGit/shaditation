@@ -56,14 +56,14 @@ export default function Story() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.35, ease: smoothCurve }}
               className="cinematic-divider mx-auto flex items-center justify-center gap-3"
-              style={{ margin: "20px auto 40px" }}
+              style={{ margin: "20px auto 48px" }}
             >
               <span className="h-px w-12 bg-amber-200/60 sm:w-20 shadow-sm" />
               <span className="text-sm text-amber-200 drop-shadow">✦</span>
               <span className="h-px w-12 bg-amber-200/60 sm:w-20 shadow-sm" />
             </motion.div>
 
-            {/* 3. Heading (Thoda aur neeche shift kiya) */}
+            {/* 3. Heading (Niche shift kiya + Mobile me 2 lines: "A Beautiful" aur "Journey") */}
             <motion.h2
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -71,22 +71,22 @@ export default function Story() {
               transition={{ duration: 0.8, delay: 0.55, ease: smoothCurve }}
               className="cinematic-heading font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] sm:text-5xl md:text-6xl"
               style={{
-                margin: 0,
-                lineHeight: 1.2,
-                marginTop: "16px",
+                margin: "32px 0 0 0",
+                lineHeight: 1.25,
               }}
             >
-              A Beautiful Journey
+              <span className="block sm:inline">A Beautiful </span>
+              <span className="block sm:inline">Journey</span>
             </motion.h2>
 
-            {/* 4. Story Description (Isko bhi achhe gap ke saath neeche shift kiya) */}
+            {/* 4. Story Description (Aur jyada gap ke sath niche kiya) */}
             <motion.p
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.75, ease: smoothCurve }}
               className="cinematic-text mx-auto max-w-2xl text-base leading-8 text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:text-lg sm:leading-9"
-              style={{ marginTop: "60px" }}
+              style={{ marginTop: "75px" }}
             >
               Two hearts, one beautiful journey. With love, laughter and
               countless memories, Vishal and Varsha begin their forever
@@ -99,7 +99,7 @@ export default function Story() {
               whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.95, ease: smoothCurve }}
-              className="cinematic-item mx-auto mt-14 h-px w-16 bg-amber-200/50 origin-center"
+              className="cinematic-item mx-auto mt-16 h-px w-16 bg-amber-200/50 origin-center"
               aria-hidden="true"
             />
           </div>
