@@ -10,7 +10,7 @@ export default function Venue() {
     <section
       className="bg-[var(--background)]"
       style={{
-        marginTop: "400px",
+        marginTop: "40px",
         paddingTop: "60px",
         paddingBottom: "100px",
       }}
