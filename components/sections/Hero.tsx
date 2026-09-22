@@ -147,7 +147,7 @@ export default function Hero() {
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                {/* 1. TOGETHER (Arch/Aasmaan me positioned) */}
+                {/* 1. TOGETHER (Arch/Aasmaan area) */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -172,7 +172,7 @@ export default function Hero() {
                   Together With Their Families
                 </motion.p>
 
-                {/* 2. NAMES (Balcony line par) */}
+                {/* 2. NAMES */}
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -184,22 +184,22 @@ export default function Hero() {
                   </h1>
                 </motion.div>
 
-                {/* 3. INVITATION TEXT (Thoda aur neeche shift kiya gaya hai) */}
+                {/* 3. INVITATION TEXT (Niche shift kiya gaya) */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.7)}
                   className="
-                    mt-4
-                    mb-8
+                    mt-8
+                    mb-10
                     max-w-[330px]
                     text-center
                     text-sm
                     leading-7
                     text-[var(--white)]
                     drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]
-                    sm:mt-3
-                    sm:mb-10
+                    sm:mt-6
+                    sm:mb-12
                     sm:max-w-xl
                     sm:text-lg
                     sm:leading-9
@@ -230,13 +230,13 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          SCROLL INDICATOR (Upar shift kiya taaki screen me saaf dikhe)
+          SCROLL INDICATOR (Thoda aur upar lift kiya)
       ===================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-16 sm:bottom-20 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
+        className="absolute bottom-24 sm:bottom-28 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
       >
         <div className="scroll-indicator">
           <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
