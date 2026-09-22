@@ -10,7 +10,7 @@ export default function Story() {
     <section
       className="relative isolate overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed flex items-center justify-center"
       style={{
-        backgroundImage: "url('/images/cdbg.PNG')",
+        backgroundImage: "url('/images/cdbg3.png')",
         marginTop: "120px",
         paddingTop: "160px",
         paddingBottom: "160px",
