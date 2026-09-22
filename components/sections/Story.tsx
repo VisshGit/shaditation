@@ -10,19 +10,19 @@ export default function Story() {
     <section
       className="relative isolate overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed flex items-center justify-center"
       style={{
-        backgroundImage: "url('/images/cdbg3.png')",
+        backgroundImage: "url('/images/cdbg.PNG')",
         marginTop: "120px",
         paddingTop: "160px",
         paddingBottom: "160px",
       }}
     >
-      {/* Background Dim Overlays */}
-      <div className="absolute inset-0 bg-black/60 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50 pointer-events-none z-0" />
+      {/* Background Clearer Overlays (Reduced from black/60 to black/35) */}
+      <div className="absolute inset-0 bg-black/35 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/25 pointer-events-none z-0" />
 
-      {/* Top & Bottom Blend Fades */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#120b06] to-transparent pointer-events-none z-0" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#120b06] to-transparent pointer-events-none z-0" />
+      {/* Subtle Top & Bottom Blend Fades */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#120b06]/80 to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#120b06]/80 to-transparent pointer-events-none z-0" />
 
       <Container>
         <div className="relative z-10 cinematic-content flex justify-center">
@@ -33,7 +33,7 @@ export default function Story() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.15, ease: smoothCurve }}
-              className="cinematic-text text-xs uppercase tracking-[5px] text-amber-200/90 sm:text-sm sm:tracking-[6px]"
+              className="cinematic-text text-xs uppercase tracking-[5px] text-amber-100 sm:text-sm sm:tracking-[6px]"
               style={{ margin: 0 }}
             >
               Our Story
@@ -48,9 +48,9 @@ export default function Story() {
               className="cinematic-divider mx-auto flex items-center justify-center gap-3"
               style={{ margin: "18px auto 34px" }}
             >
-              <span className="h-px w-12 bg-amber-200/40 sm:w-20" />
-              <span className="text-sm text-amber-200">✦</span>
-              <span className="h-px w-12 bg-amber-200/40 sm:w-20" />
+              <span className="h-px w-12 bg-amber-100/40 sm:w-20" />
+              <span className="text-sm text-amber-100">✦</span>
+              <span className="h-px w-12 bg-amber-100/40 sm:w-20" />
             </motion.div>
 
             {/* 3. Heading (Delay: 0.55s) */}
@@ -59,7 +59,7 @@ export default function Story() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.55, ease: smoothCurve }}
-              className="cinematic-heading font-heading text-4xl text-white drop-shadow-md sm:text-5xl md:text-6xl"
+              className="cinematic-heading font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)] sm:text-5xl md:text-6xl"
               style={{
                 margin: 0,
                 lineHeight: 1.15,
@@ -74,7 +74,7 @@ export default function Story() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.75, ease: smoothCurve }}
-              className="cinematic-text mx-auto max-w-2xl text-base leading-8 text-white/90 drop-shadow sm:text-lg sm:leading-9"
+              className="cinematic-text mx-auto max-w-2xl text-base leading-8 text-white drop-shadow-[0_2px_12px_rgba(0,0,0,1)] sm:text-lg sm:leading-9"
               style={{ marginTop: "48px" }}
             >
               Two hearts, one beautiful journey. With love, laughter and
@@ -88,7 +88,7 @@ export default function Story() {
               whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.95, ease: smoothCurve }}
-              className="cinematic-item mx-auto mt-12 h-px w-16 bg-amber-200/30 origin-center"
+              className="cinematic-item mx-auto mt-12 h-px w-16 bg-amber-100/30 origin-center"
               aria-hidden="true"
             />
           </div>
