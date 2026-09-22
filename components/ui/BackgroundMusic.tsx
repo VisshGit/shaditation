@@ -43,17 +43,44 @@ export default function BackgroundMusic() {
       void startMusic();
     };
 
+    // 1. Mobile par browser back karne ya page leave karne par audio band
+    const handlePageExit = () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+    };
+
+    // 2. Tab switch hone ya phone lock hone par pause, wapas aane par resume
+    const handleVisibilityChange = () => {
+      if (!audioRef.current) return;
+
+      if (document.hidden) {
+        audioRef.current.pause();
+      } else if (isPlaying && !audioRef.current.muted) {
+        audioRef.current.play().catch(() => {});
+      }
+    };
+
     window.addEventListener("start-wedding-music", handleGateOpen);
+    window.addEventListener("pagehide", handlePageExit);
+    window.addEventListener("popstate", handlePageExit);
+    window.addEventListener("beforeunload", handlePageExit);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       window.removeEventListener("start-wedding-music", handleGateOpen);
+      window.removeEventListener("pagehide", handlePageExit);
+      window.removeEventListener("popstate", handlePageExit);
+      window.removeEventListener("beforeunload", handlePageExit);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
 
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
       }
     };
-  }, []);
+  }, [isPlaying]);
 
   // Gate open hone se pehle button hidden rahega
   if (!isPlaying) {
