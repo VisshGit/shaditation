@@ -142,12 +142,13 @@ export default function Hero() {
             <div className="relative mx-auto w-full max-w-4xl px-3 sm:px-0">
               {/* Dark backdrop */}
               <div
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[380px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
                 aria-hidden="true"
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                {/* 1. TOGETHER (Arch ke top curved area ke theek niche) */}
+                
+                {/* 1. TOGETHER (Arch/Aasmaan ke window wale hisse me shift kiya) */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -165,17 +166,19 @@ export default function Hero() {
                     sm:max-w-none
                     sm:text-sm
                     sm:tracking-[7px]
+                    -translate-y-[85px] sm:-translate-y-[60px]
                   "
+                  style={{ margin: 0 }}
                 >
                   Together With Their Families
                 </motion.p>
 
-                {/* 2. NAMES (Dono ke beech clean 52px gap, pehle wali "Together" ki jagah par) */}
+                {/* 2. NAMES (85px+ gap ke baad theek pillar/balcony line par) */}
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.45)}
-                  className="w-full flex justify-center mb-5 mt-12 sm:mt-8"
+                  className="w-full flex justify-center mb-5 -translate-y-[10px] sm:translate-y-0"
                 >
                   <h1 className="gold-shimmer-text font-serif text-3xl md:text-5xl lg:text-7xl font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] break-words whitespace-normal text-center">
                     Vishal <span className="mx-2 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
