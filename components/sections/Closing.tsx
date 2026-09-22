@@ -4,13 +4,17 @@ export default function Closing() {
   return (
     <ScrollReveal>
       <section
-        className="relative isolate overflow-hidden bg-[var(--background)]"
+        className="relative isolate overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
-          color: "var(--foreground)",
-          paddingTop: "120px",
-          paddingBottom: "264px",
+          backgroundImage: "url('/images/cdbg.PNG')",
+          paddingTop: "140px",
+          paddingBottom: "220px",
         }}
       >
+        {/* Background Dim Overlays (Same as Countdown / RSVP) */}
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+
         {/* TOP LUXURY DECORATION */}
         <div className="relative z-10 flex justify-center px-6">
           <div className="h-[42px] w-full max-w-[560px]">
@@ -29,7 +33,7 @@ export default function Closing() {
                 fill="none"
                 stroke="var(--primary)"
                 strokeWidth="1"
-                opacity="0.75"
+                opacity="0.85"
               />
 
               <path
@@ -41,7 +45,7 @@ export default function Closing() {
                 fill="none"
                 stroke="var(--primary)"
                 strokeWidth="0.6"
-                opacity="0.35"
+                opacity="0.45"
               />
 
               <circle cx="90" cy="15" r="1.8" fill="var(--primary)" />
@@ -54,22 +58,23 @@ export default function Closing() {
         </div>
 
         {/* CENTER CONTENT */}
-        <div className="relative z-10 flex flex-col items-center justify-center px-6 py-16 text-center">
+        <div className="relative z-10 flex flex-col items-center justify-center px-6 py-14 text-center">
           <span
-            className="mb-6 h-px w-10"
+            className="mb-6 h-px w-12"
             style={{
               background: "var(--primary)",
-              opacity: 0.55,
+              opacity: 0.65,
             }}
           />
 
           <p
+            className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.7)]"
             style={{
               margin: 0,
-              paddingTop: "46px",
-              paddingBottom: "46px",
+              paddingTop: "24px",
+              paddingBottom: "24px",
               fontFamily: "var(--font-script), cursive",
-              fontSize: "clamp(24px, 4vw, 36px)",
+              fontSize: "clamp(28px, 4.5vw, 42px)",
               lineHeight: 1.3,
               color: "var(--primary)",
               fontWeight: 400,
@@ -77,26 +82,26 @@ export default function Closing() {
               textAlign: "center",
             }}
           >
-            Can't wait to celebrate with you
+            Can&apos;t wait to celebrate with you
           </p>
 
           <div
-            className="mt-7 flex items-center gap-4"
+            className="mt-6 flex items-center gap-4"
             style={{
               color: "var(--primary)",
             }}
           >
             <span
-              className="h-px w-14 opacity-40"
+              className="h-px w-14 opacity-50"
               style={{
                 background: "var(--primary)",
               }}
             />
 
-            <span className="text-xs opacity-80">✦</span>
+            <span className="text-sm opacity-90 drop-shadow-md">✦</span>
 
             <span
-              className="h-px w-14 opacity-40"
+              className="h-px w-14 opacity-50"
               style={{
                 background: "var(--primary)",
               }}
@@ -122,7 +127,7 @@ export default function Closing() {
                 fill="none"
                 stroke="var(--primary)"
                 strokeWidth="1"
-                opacity="0.75"
+                opacity="0.85"
               />
 
               <path
@@ -134,7 +139,7 @@ export default function Closing() {
                 fill="none"
                 stroke="var(--primary)"
                 strokeWidth="0.6"
-                opacity="0.35"
+                opacity="0.45"
               />
 
               <circle cx="90" cy="27" r="1.8" fill="var(--primary)" />
