@@ -11,7 +11,7 @@ export default function Story() {
       className="relative isolate overflow-hidden flex items-start justify-center bg-[#120b06]"
       style={{
         marginTop: "120px",
-        paddingTop: "90px",      /* Upar se padding kam ki taaki text aasman ke paas shift ho */
+        paddingTop: "90px",
         paddingBottom: "180px",
       }}
     >
@@ -28,17 +28,16 @@ export default function Story() {
       />
 
       {/* Soft Vignette / Subtle Overlay */}
-      <div className="absolute inset-0 bg-black/25 pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-black/35 pointer-events-none z-0" />
 
       {/* Smooth Gradient Transitions for Top and Bottom Edges */}
       <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#120b06]/80 to-transparent pointer-events-none z-0" />
       <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#120b06]/80 to-transparent pointer-events-none z-0" />
 
       <Container>
-        {/* -translate-y-4 se content thoda aur natural tarike se upar lift hoga */}
-        <div className="relative z-10 cinematic-content flex justify-center -translate-y-4 sm:-translate-y-6">
+        <div className="relative z-10 cinematic-content flex justify-center">
           <div className="w-full max-w-3xl px-4 text-center sm:px-0">
-            {/* 1. Section Label */}
+            {/* 1. Section Label (Reference - Same Position) */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -57,14 +56,14 @@ export default function Story() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.35, ease: smoothCurve }}
               className="cinematic-divider mx-auto flex items-center justify-center gap-3"
-              style={{ margin: "14px auto 26px" }}
+              style={{ margin: "20px auto 40px" }}
             >
               <span className="h-px w-12 bg-amber-200/60 sm:w-20 shadow-sm" />
               <span className="text-sm text-amber-200 drop-shadow">✦</span>
               <span className="h-px w-12 bg-amber-200/60 sm:w-20 shadow-sm" />
             </motion.div>
 
-            {/* 3. Heading */}
+            {/* 3. Heading (Thoda aur neeche shift kiya) */}
             <motion.h2
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -73,20 +72,21 @@ export default function Story() {
               className="cinematic-heading font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] sm:text-5xl md:text-6xl"
               style={{
                 margin: 0,
-                lineHeight: 1.15,
+                lineHeight: 1.2,
+                marginTop: "16px",
               }}
             >
               A Beautiful Journey
             </motion.h2>
 
-            {/* 4. Story Description */}
+            {/* 4. Story Description (Isko bhi achhe gap ke saath neeche shift kiya) */}
             <motion.p
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.75, ease: smoothCurve }}
               className="cinematic-text mx-auto max-w-2xl text-base leading-8 text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:text-lg sm:leading-9"
-              style={{ marginTop: "32px" }}
+              style={{ marginTop: "60px" }}
             >
               Two hearts, one beautiful journey. With love, laughter and
               countless memories, Vishal and Varsha begin their forever
@@ -99,7 +99,7 @@ export default function Story() {
               whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.95, ease: smoothCurve }}
-              className="cinematic-item mx-auto mt-10 h-px w-16 bg-amber-200/50 origin-center"
+              className="cinematic-item mx-auto mt-14 h-px w-16 bg-amber-200/50 origin-center"
               aria-hidden="true"
             />
           </div>
