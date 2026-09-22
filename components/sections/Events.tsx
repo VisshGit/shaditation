@@ -63,7 +63,7 @@ export default function Events() {
       style={{
         marginTop: "40px",     /* Pehle 120px tha, ab kam kar diya */
         paddingTop: "60px",    /* Pehle 160px tha, breathing space tight karne ke liye */
-        paddingBottom: "100px",
+        paddingBottom: "60px",
       }}
     >
       <Container>
