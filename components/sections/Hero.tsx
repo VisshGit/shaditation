@@ -140,21 +140,21 @@ export default function Hero() {
       <div className="relative z-10 w-full min-w-0">
         <Container>
           <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
-            <div className="relative mx-auto w-full max-w-4xl translate-y-[10px] px-3 sm:translate-y-0 sm:px-0">
+            <div className="relative mx-auto w-full max-w-4xl px-3 sm:px-0">
               {/* Dark backdrop */}
               <div
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[360px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
                 aria-hidden="true"
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                {/* 1. TOGETHER (Delay: 0.2s) */}
+                {/* 1. TOGETHER (Upar arch me shift kiya gaya hai) */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.2)}
                   className="
-                    mb-8
+                    mb-14
                     max-w-[320px]
                     text-center
                     text-[10px]
@@ -163,17 +163,20 @@ export default function Hero() {
                     leading-5
                     tracking-[3px]
                     text-[var(--foreground)]
-                    drop-shadow-[0_2px_6px_rgba(255,255,255,0.35)]
-                    sm:mb-10
+                    drop-shadow-[0_2px_6px_rgba(255,255,255,0.45)]
+                    sm:mb-12
                     sm:max-w-none
                     sm:text-sm
                     sm:tracking-[7px]
                   "
+                  style={{
+                    marginTop: "-40px", // Mobile me upar arch area me push karne ke liye
+                  }}
                 >
                   Together With Their Families
                 </motion.p>
 
-                {/* 2. NAMES (Delay: 0.45s) */}
+                {/* 2. NAMES (Jahan pehle Together tha waha se start hoga) */}
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -181,23 +184,23 @@ export default function Hero() {
                   className="w-full flex justify-center mb-6"
                 >
                   <h1 className="gold-shimmer-text font-serif text-3xl md:text-5xl lg:text-7xl font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] break-words whitespace-normal text-center">
-                    Vishal <span className="mx-3 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
+                    Vishal <span className="mx-2 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
                   </h1>
                 </motion.div>
 
-                {/* 3. INVITATION TEXT (Delay: 0.7s) */}
+                {/* 3. INVITATION TEXT */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.7)}
                   className="
-                    mb-8
+                    mb-7
                     max-w-[330px]
                     text-center
                     text-sm
-                    leading-8
+                    leading-7
                     text-[var(--white)]
-                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]
+                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]
                     sm:mb-10
                     sm:max-w-xl
                     sm:text-lg
@@ -209,7 +212,7 @@ export default function Hero() {
                   at the celebration of their marriage.
                 </motion.p>
 
-                {/* 4. DECORATIVE DIVIDER (Delay: 0.95s) */}
+                {/* 4. DECORATIVE DIVIDER */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -229,13 +232,13 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          SCROLL INDICATOR (Mobile view ke liye bottom-40)
+          SCROLL INDICATOR
       ===================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-40 sm:bottom-20 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
+        className="absolute bottom-28 sm:bottom-20 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
       >
         <div className="scroll-indicator">
           <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
