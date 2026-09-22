@@ -6,7 +6,7 @@ export default function Closing() {
       <section
         className="relative isolate overflow-hidden bg-cover bg-bottom bg-no-repeat"
         style={{
-          backgroundImage: "url('/images/cdbg2.PNG')",
+          backgroundImage: "url('/images/cdbg2.png')",
           paddingTop: "120px",
           paddingBottom: "220px",
         }}
