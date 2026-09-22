@@ -86,18 +86,16 @@ export default function Countdown() {
         backgroundImage: "url('/images/cdbg.PNG')",
       }}
     >
-      {/* Background Overlay */}
-      <div className="absolute inset-0 bg-black/40" />
-
-      {/* Soft Warm Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/45" />
+      {/* Background Dim Overlays */}
+      <div className="absolute inset-0 bg-black/40 z-0" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/45 z-0" />
 
       {/* Content */}
       <div className="relative z-10 w-full">
         <Container>
           <div className="flex justify-center">
             <div className="w-full max-w-4xl text-center">
-              {/* 1. Subtitle - Delay 0.15s */}
+              {/* 1. Subtitle */}
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -109,7 +107,7 @@ export default function Countdown() {
                 Counting Down to Forever
               </motion.p>
 
-              {/* 2. Divider - Delay 0.3s */}
+              {/* 2. Divider */}
               <motion.div
                 initial={{ opacity: 0, scaleX: 0 }}
                 whileInView={{ opacity: 1, scaleX: 1 }}
@@ -119,7 +117,7 @@ export default function Countdown() {
                 style={{ margin: "12px auto 36px" }}
               />
 
-              {/* 3. Main Heading - Delay 0.45s */}
+              {/* 3. Main Heading */}
               <motion.h2
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -131,7 +129,7 @@ export default function Countdown() {
                 The Celebration Begins Soon
               </motion.h2>
 
-              {/* 4. Boxes Container with Staggered Delays (0.65s, 0.75s, 0.85s, 0.95s) */}
+              {/* 4. Boxes Container */}
               <div
                 className="flex flex-nowrap justify-center gap-2 sm:gap-4 md:gap-8"
                 style={{ marginTop: "64px" }}
@@ -164,6 +162,9 @@ export default function Countdown() {
           </div>
         </Container>
       </div>
+
+      {/* BOTTOM FADE: Agle section ke sath seamless mix hone ke liye */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#120b06] via-[#120b06]/75 to-transparent pointer-events-none z-10" />
     </section>
   );
 }
