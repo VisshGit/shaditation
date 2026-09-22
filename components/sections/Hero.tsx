@@ -24,7 +24,6 @@ const rosePetals = Array.from({ length: 32 }, (_, index) => ({
   }deg`,
 }));
 
-// Reusable smooth entrance transition settings
 const smoothTransition = (delay: number) => ({
   duration: 1.0,
   delay: delay,
@@ -60,7 +59,7 @@ export default function Hero() {
   }, [isRajasthani]);
 
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
+    <section className="relative flex min-h-screen w-full items-start justify-center overflow-hidden bg-[var(--background)] pt-24 pb-28 sm:items-center sm:pt-0 sm:pb-0">
       {/* =====================================================
           RAJASTHANI HERO BACKGROUND
       ===================================================== */}
@@ -139,22 +138,21 @@ export default function Hero() {
       ===================================================== */}
       <div className="relative z-10 w-full min-w-0">
         <Container>
-          <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
+          <div className="flex w-full items-center justify-center px-4 text-center sm:px-6">
             <div className="relative mx-auto w-full max-w-4xl px-3 sm:px-0">
               {/* Dark backdrop */}
               <div
-                className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
+                className="pointer-events-none absolute left-1/2 top-1/2 h-[480px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
                 aria-hidden="true"
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                {/* 1. TOGETHER (Upar arch me shift kiya gaya hai) */}
+                {/* 1. TOGETHER (Upar aasmaan / arch window ke paas place kiya) */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.2)}
                   className="
-                    mb-14
                     max-w-[320px]
                     text-center
                     text-[10px]
@@ -164,24 +162,26 @@ export default function Hero() {
                     tracking-[3px]
                     text-[var(--foreground)]
                     drop-shadow-[0_2px_6px_rgba(255,255,255,0.45)]
-                    sm:mb-12
                     sm:max-w-none
                     sm:text-sm
                     sm:tracking-[7px]
                   "
                   style={{
-                    marginTop: "-40px", // Mobile me upar arch area me push karne ke liye
+                    marginTop: "20px",
                   }}
                 >
                   Together With Their Families
                 </motion.p>
 
-                {/* 2. NAMES (Jahan pehle Together tha waha se start hoga) */}
+                {/* 2. NAMES (Bada gap dekar theek arch line par shift kiya) */}
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.45)}
-                  className="w-full flex justify-center mb-6"
+                  className="w-full flex justify-center mb-5"
+                  style={{
+                    marginTop: "75px", // Yeh 75px ka gap Together ko upar rakhega aur Vishal & Varsha ko theek marked jagah par layega
+                  }}
                 >
                   <h1 className="gold-shimmer-text font-serif text-3xl md:text-5xl lg:text-7xl font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] break-words whitespace-normal text-center">
                     Vishal <span className="mx-2 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
@@ -238,7 +238,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-28 sm:bottom-20 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
+        className="absolute bottom-8 sm:bottom-12 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
       >
         <div className="scroll-indicator">
           <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
