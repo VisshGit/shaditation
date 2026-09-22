@@ -65,15 +65,19 @@ export default function RSVP() {
     <section
       className="relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
       style={{
-        marginTop: "120px",
-        paddingTop: "160px",
-        paddingBottom: "160px",
+        paddingTop: "140px",
+        paddingBottom: "80px",
         backgroundImage: "url('/images/cdbg.PNG')",
       }}
     >
-      {/* Background Dim Overlays */}
-      <div className="absolute inset-0 bg-black/50" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+      {/* Base Dim Layer */}
+      <div className="absolute inset-0 bg-black/50 z-0" />
+
+      {/* TOP FADE: Upar ke section se seamless blend */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#120b06] via-[#120b06]/70 to-transparent pointer-events-none z-0" />
+
+      {/* BOTTOM FADE: Niche Closing section me seamless blend */}
+      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none z-0" />
 
       {/* Content */}
       <div className="relative z-10 w-full">
@@ -139,7 +143,7 @@ export default function RSVP() {
                 </motion.p>
               </div>
 
-              {/* FORM FIELDS (Strictly Centered max-w-md block) */}
+              {/* FORM FIELDS */}
               <motion.form
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -261,7 +265,9 @@ export default function RSVP() {
 
                 {/* STATUS MESSAGE */}
                 {statusMessage.text && (
-                  <div
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
                     className={`mt-6 w-full rounded-xl border p-3.5 text-center text-sm font-medium backdrop-blur-md ${
                       statusMessage.type === "success"
                         ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-300"
@@ -269,7 +275,7 @@ export default function RSVP() {
                     }`}
                   >
                     {statusMessage.text}
-                  </div>
+                  </motion.div>
                 )}
 
                 {/* SUBMIT BUTTON */}
