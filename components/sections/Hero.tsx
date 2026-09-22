@@ -147,8 +147,7 @@ export default function Hero() {
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                
-                {/* 1. TOGETHER (Arch/Aasmaan ke window wale hisse me shift kiya) */}
+                {/* 1. TOGETHER (Arch/Aasmaan me positioned) */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -173,31 +172,33 @@ export default function Hero() {
                   Together With Their Families
                 </motion.p>
 
-                {/* 2. NAMES (85px+ gap ke baad theek pillar/balcony line par) */}
+                {/* 2. NAMES (Balcony line par) */}
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.45)}
-                  className="w-full flex justify-center mb-5 -translate-y-[10px] sm:translate-y-0"
+                  className="w-full flex justify-center mb-2 -translate-y-[10px] sm:translate-y-0"
                 >
                   <h1 className="gold-shimmer-text font-serif text-3xl md:text-5xl lg:text-7xl font-bold uppercase drop-shadow-[0_4px_12px_rgba(0,0,0,0.6)] break-words whitespace-normal text-center">
                     Vishal <span className="mx-2 text-2xl md:text-3xl lg:text-5xl font-normal lowercase">&amp;</span> Varsha
                   </h1>
                 </motion.div>
 
-                {/* 3. INVITATION TEXT */}
+                {/* 3. INVITATION TEXT (Thoda aur neeche shift kiya gaya hai) */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.7)}
                   className="
-                    mb-7
+                    mt-4
+                    mb-8
                     max-w-[330px]
                     text-center
                     text-sm
                     leading-7
                     text-[var(--white)]
                     drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]
+                    sm:mt-3
                     sm:mb-10
                     sm:max-w-xl
                     sm:text-lg
@@ -229,13 +230,13 @@ export default function Hero() {
       </div>
 
       {/* =====================================================
-          SCROLL INDICATOR
+          SCROLL INDICATOR (Upar shift kiya taaki screen me saaf dikhe)
       ===================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-8 sm:bottom-12 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
+        className="absolute bottom-16 sm:bottom-20 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
       >
         <div className="scroll-indicator">
           <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
