@@ -10,34 +10,29 @@ export default function Story() {
     <section
       className="relative isolate overflow-hidden flex items-start justify-center bg-[#120b06]"
       style={{
-        marginTop: "120px",
         paddingTop: "90px",
-        paddingBottom: "180px",
+        paddingBottom: "140px",
       }}
     >
-      {/* Background Image (cdbg3.png) with Soft Blurred & Feathered Edges */}
+      {/* Background Image (cdbg3.png) */}
       <div
-        className="absolute inset-0 bg-cover bg-[center_top] bg-no-repeat bg-scroll md:bg-fixed scale-105"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
           backgroundImage: "url('/images/cdbg3.png')",
-          WebkitMaskImage:
-            "radial-gradient(ellipse 95% 80% at 50% 50%, black 40%, rgba(0, 0, 0, 0.5) 75%, transparent 100%)",
-          maskImage:
-            "radial-gradient(ellipse 95% 80% at 50% 50%, black 40%, rgba(0, 0, 0, 0.5) 75%, transparent 100%)",
         }}
       />
 
-      {/* Soft Vignette / Subtle Overlay */}
-      <div className="absolute inset-0 bg-black/35 pointer-events-none z-0" />
+      {/* Dim Overlay - text readability ke liye */}
+      <div className="absolute inset-0 bg-black/40 z-0" />
 
-      {/* Smooth Gradient Transitions for Top and Bottom Edges */}
-      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#120b06]/80 to-transparent pointer-events-none z-0" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#120b06]/80 to-transparent pointer-events-none z-0" />
+      {/* Smooth Blending Gradients */}
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#120b06] to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#120b06] to-transparent pointer-events-none z-0" />
 
       <Container>
-        <div className="relative z-10 cinematic-content flex justify-center">
+        <div className="relative z-10 cinematic-content flex flex-col items-center justify-center">
           <div className="w-full max-w-3xl px-4 text-center sm:px-0">
-            {/* 1. Section Label (Reference - Same Position) */}
+            {/* 1. Section Label - SAME POSITION */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -56,37 +51,37 @@ export default function Story() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.35, ease: smoothCurve }}
               className="cinematic-divider mx-auto flex items-center justify-center gap-3"
-              style={{ margin: "20px auto 48px" }}
+              style={{ margin: "16px auto 0" }}
             >
               <span className="h-px w-12 bg-amber-200/60 sm:w-20 shadow-sm" />
               <span className="text-sm text-amber-200 drop-shadow">✦</span>
               <span className="h-px w-12 bg-amber-200/60 sm:w-20 shadow-sm" />
             </motion.div>
 
-            {/* 3. Heading (Niche shift kiya + Mobile me 2 lines: "A Beautiful" aur "Journey") */}
+            {/* 3. Heading - Pushed down to match your red markings */}
             <motion.h2
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.55, ease: smoothCurve }}
-              className="cinematic-heading font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] sm:text-5xl md:text-6xl"
+              className="cinematic-heading font-heading text-3xl sm:text-5xl md:text-6xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,1)] uppercase tracking-wider"
               style={{
-                margin: "32px 0 0 0",
+                marginTop: "75px", // "A BEAUTIFUL" ko niche le aayega jahan mark kiya hai
                 lineHeight: 1.25,
               }}
             >
-              <span className="block sm:inline">A Beautiful </span>
-              <span className="block sm:inline">Journey</span>
+              <span className="block">A BEAUTIFUL</span>
+              <span className="block mt-2">JOURNEY</span>
             </motion.h2>
 
-            {/* 4. Story Description (Aur jyada gap ke sath niche kiya) */}
+            {/* 4. Story Description - Shifted down accordingly */}
             <motion.p
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.75, ease: smoothCurve }}
-              className="cinematic-text mx-auto max-w-2xl text-base leading-8 text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] sm:text-lg sm:leading-9"
-              style={{ marginTop: "75px" }}
+              className="cinematic-text mx-auto max-w-xl text-sm leading-7 sm:text-base sm:leading-8 text-white/95 drop-shadow-[0_2px_12px_rgba(0,0,0,1)]"
+              style={{ marginTop: "55px" }}
             >
               Two hearts, one beautiful journey. With love, laughter and
               countless memories, Vishal and Varsha begin their forever
@@ -99,7 +94,7 @@ export default function Story() {
               whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.95, ease: smoothCurve }}
-              className="cinematic-item mx-auto mt-16 h-px w-16 bg-amber-200/50 origin-center"
+              className="cinematic-item mx-auto mt-8 h-px w-16 bg-amber-200/50 origin-center"
               aria-hidden="true"
             />
           </div>
