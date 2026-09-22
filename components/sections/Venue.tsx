@@ -10,9 +10,9 @@ export default function Venue() {
     <section
       className="bg-[var(--background)]"
       style={{
-        marginTop: "120px",
-        paddingTop: "160px",
-        paddingBottom: "160px",
+        marginTop: "400px",
+        paddingTop: "60px",
+        paddingBottom: "100px",
       }}
     >
       <Container>
