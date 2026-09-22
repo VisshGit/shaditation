@@ -7,18 +7,24 @@ export default function Closing() {
         className="relative isolate overflow-hidden bg-cover bg-bottom bg-no-repeat"
         style={{
           backgroundImage: "url('/images/cdbg.PNG')",
-          paddingTop: "120px",
-          paddingBottom: "180px", // Reduced from 220px to tighten up the design on mobile
+          paddingTop: "80px",
+          paddingBottom: "130px",
         }}
       >
-        {/* Dark Tint Overlay */}
+        {/* Base Dark Tint */}
         <div className="absolute inset-0 bg-black/60 z-0" />
 
-        {/* --- LUXURY DECORATIVE GROUP --- */}
+        {/* TOP FADE: RSVP ke bottom fade ke sath link hokar seam-free banata hai */}
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black via-black/60 to-transparent pointer-events-none z-0" />
+
+        {/* BOTTOM FADE: Footer ki taraf smooth dark fade */}
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#120b06] to-transparent pointer-events-none z-0" />
+
+        {/* CENTER CONTENT CONTAINER */}
         <div className="relative z-10 flex flex-col items-center justify-center px-6 text-center">
           
-          {/* TOP LUXURY DECORATION (As shown in screenshot) */}
-          <div className="mb-10 w-full max-w-[560px]">
+          {/* TOP ORNAMENT */}
+          <div className="mb-6 w-full max-w-[500px]">
             <svg
               viewBox="0 0 560 42"
               width="100%"
@@ -56,15 +62,14 @@ export default function Closing() {
             </svg>
           </div>
 
-          {/* MAIN TEXT (strictly centered) */}
+          {/* MAIN TEXT */}
           <p
-            className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]"
+            className="drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]"
             style={{
               margin: 0,
-              paddingTop: "0",
-              paddingBottom: "0",
+              padding: "10px 0",
               fontFamily: "var(--font-script), cursive",
-              fontSize: "clamp(26px, 4.2vw, 42px)", // slightly adjusted clamp for mobile
+              fontSize: "clamp(26px, 4.2vw, 42px)",
               lineHeight: 1.3,
               color: "var(--primary)",
               fontWeight: 400,
@@ -75,8 +80,8 @@ export default function Closing() {
             Can&apos;t wait to celebrate with you
           </p>
 
-          {/* BOTTOM LUXURY DECORATION (Flourishes shown in screenshot) */}
-          <div className="mt-10 w-full max-w-[560px]">
+          {/* BOTTOM ORNAMENT */}
+          <div className="mt-6 w-full max-w-[500px]">
             <svg
               viewBox="0 0 560 42"
               width="100%"
@@ -113,11 +118,7 @@ export default function Closing() {
               <circle cx="470" cy="27" r="1.8" fill="currentColor" />
             </svg>
           </div>
-
         </div>
-
-        {/* --- BOTTOM FADE to footer background --- */}
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#120b06] to-transparent pointer-events-none z-0" />
       </section>
     </ScrollReveal>
   );
