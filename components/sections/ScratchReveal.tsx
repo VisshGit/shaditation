@@ -18,9 +18,9 @@ export default function ScratchReveal() {
   const [revealed, setRevealed] = useState(false);
 
   return (
-    <Section className="relative isolate overflow-hidden bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
+    <Section className="bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
       {/* Heading */}
-      <div className="relative z-20 flex flex-col items-center text-center">
+      <div className="flex flex-col items-center text-center">
         {/* 1. Label */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -58,7 +58,7 @@ export default function ScratchReveal() {
           Scratch to Reveal The Date
         </motion.h2>
 
-        {/* 4. Down Arrow Container (Fixed height & smooth fade-out to prevent layout shift) */}
+        {/* 4. Down Arrow Container */}
         <div className="mt-8 mb-12 sm:mb-16 flex h-10 items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -86,7 +86,7 @@ export default function ScratchReveal() {
       </div>
 
       {/* Scratch Card Container */}
-      <div className="relative z-20 flex justify-center px-4 sm:px-0">
+      <div className="flex justify-center px-4 sm:px-0">
         <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_20px_50px_rgba(111,70,13,0.25)]">
           <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/20 sm:h-72 md:h-96 md:rounded-[1.85rem]">
             {/* Card Content */}
@@ -156,9 +156,6 @@ export default function ScratchReveal() {
           </div>
         </div>
       </div>
-
-      {/* Bottom Gradient Fade: Next dark section ke sath seamless match hone ke liye */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#120b06] via-[#120b06]/70 to-transparent pointer-events-none z-10" />
     </Section>
   );
 }
