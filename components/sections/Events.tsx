@@ -61,15 +61,15 @@ export default function Events() {
     <section
       className="flex items-center justify-center bg-[var(--background)]"
       style={{
-        marginTop: "120px",
-        paddingTop: "160px",
-        paddingBottom: "160px",
+        marginTop: "40px",     /* Pehle 120px tha, ab kam kar diya */
+        paddingTop: "60px",    /* Pehle 160px tha, breathing space tight karne ke liye */
+        paddingBottom: "100px",
       }}
     >
       <Container>
         <div className="flex justify-center">
           <div className="w-full max-w-5xl px-4 text-center sm:px-0">
-            {/* 1. Label (Smooth Transition) */}
+            {/* 1. Label */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -81,21 +81,21 @@ export default function Events() {
               Wedding Events
             </motion.p>
 
-            {/* 2. Elegant Divider (Smooth Transition) */}
+            {/* 2. Elegant Divider */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
               className="mx-auto flex items-center justify-center gap-3"
-              style={{ margin: "18px auto 34px" }}
+              style={{ margin: "16px auto 28px" }}
             >
               <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
               <span className="text-sm text-[var(--primary)]">✦</span>
               <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
             </motion.div>
 
-            {/* 3. Heading (Smooth Transition) */}
+            {/* 3. Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -110,10 +110,10 @@ export default function Events() {
               Celebration Details
             </motion.h2>
 
-            {/* 4. Events Grid (Transitions removed - Normal Static Cards) */}
+            {/* 4. Events Grid */}
             <div
               className="grid gap-6 md:grid-cols-2 md:gap-8"
-              style={{ marginTop: "64px" }}
+              style={{ marginTop: "48px" }}
             >
               {events.map((event) => (
                 <div
