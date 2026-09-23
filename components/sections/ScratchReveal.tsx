@@ -19,8 +19,19 @@ export default function ScratchReveal() {
 
   return (
     <Section className="relative isolate overflow-hidden bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
+      {/* Background Image (cdbg3.png) */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
+        style={{
+          backgroundImage: "url('/images/cdbg3.png')",
+        }}
+      />
+
+      {/* Dim Overlay - text readability ke liye */}
+      <div className="absolute inset-0 bg-black/30 z-0" />
+
       {/* Top White Gradient Overlay */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-36 bg-gradient-to-b from-white via-white/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-40 bg-gradient-to-b from-white via-white/80 to-transparent" />
 
       {/* Heading */}
       <div className="relative z-20 flex flex-col items-center text-center">
@@ -30,7 +41,7 @@ export default function ScratchReveal() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.15, ease: smoothCurve }}
-          className="text-sm uppercase tracking-[6px] text-[var(--primary)]"
+          className="text-sm uppercase tracking-[6px] text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-semibold"
           style={{ margin: 0 }}
         >
           A Special Surprise
@@ -42,7 +53,7 @@ export default function ScratchReveal() {
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
-          className="h-px w-20 bg-[var(--primary)]/50 origin-center"
+          className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
           style={{ margin: "12px auto 28px" }}
         />
 
@@ -52,7 +63,7 @@ export default function ScratchReveal() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
-          className="font-heading text-4xl sm:text-5xl text-[var(--foreground)]"
+          className="font-heading text-4xl sm:text-5xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]"
           style={{
             margin: 0,
             lineHeight: 1.15,
@@ -90,7 +101,7 @@ export default function ScratchReveal() {
 
       {/* Scratch Card Container */}
       <div className="relative z-20 flex justify-center px-4 sm:px-0">
-        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_20px_50px_rgba(111,70,13,0.25)]">
+        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
           <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/20 sm:h-72 md:h-96 md:rounded-[1.85rem]">
             {/* Card Content */}
             <div className="absolute inset-0">
@@ -161,7 +172,7 @@ export default function ScratchReveal() {
       </div>
 
       {/* Bottom White Gradient Overlay */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-36 bg-gradient-to-t from-white via-white/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-white via-white/80 to-transparent" />
     </Section>
   );
 }
