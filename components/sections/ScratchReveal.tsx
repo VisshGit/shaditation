@@ -18,9 +18,12 @@ export default function ScratchReveal() {
   const [revealed, setRevealed] = useState(false);
 
   return (
-    <Section className="bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
+    <Section className="relative isolate overflow-hidden bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
+      {/* Top White Gradient Overlay */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-36 bg-gradient-to-b from-white via-white/70 to-transparent" />
+
       {/* Heading */}
-      <div className="flex flex-col items-center text-center">
+      <div className="relative z-20 flex flex-col items-center text-center">
         {/* 1. Label */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -86,7 +89,7 @@ export default function ScratchReveal() {
       </div>
 
       {/* Scratch Card Container */}
-      <div className="flex justify-center px-4 sm:px-0">
+      <div className="relative z-20 flex justify-center px-4 sm:px-0">
         <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_20px_50px_rgba(111,70,13,0.25)]">
           <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/20 sm:h-72 md:h-96 md:rounded-[1.85rem]">
             {/* Card Content */}
@@ -156,6 +159,9 @@ export default function ScratchReveal() {
           </div>
         </div>
       </div>
+
+      {/* Bottom White Gradient Overlay */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-36 bg-gradient-to-t from-white via-white/70 to-transparent" />
     </Section>
   );
 }
