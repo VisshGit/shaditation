@@ -23,15 +23,15 @@ export default function ScratchReveal() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
-          backgroundImage: "url('/images/cdbg.PNG')",
+          backgroundImage: "url('/images/cdbg3.png')",
         }}
       />
 
-      {/* Dim Overlay - text readability ke liye */}
+      {/* Dim Overlay */}
       <div className="absolute inset-0 bg-black/30 z-0" />
 
-      {/* Top White Gradient Overlay */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-40 bg-gradient-to-b from-white via-white/80 to-transparent" />
+      {/* Top White Gradient Overlay (Sirf edge par halka sa fade) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-16 sm:h-20 bg-gradient-to-b from-white from-0% via-white/50 via-10% to-transparent to-20%" />
 
       {/* Heading */}
       <div className="relative z-20 flex flex-col items-center text-center">
@@ -171,8 +171,8 @@ export default function ScratchReveal() {
         </div>
       </div>
 
-      {/* Bottom White Gradient Overlay */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-white via-white/80 to-transparent" />
+      {/* Bottom White Gradient Overlay (Sirf edge par halka sa fade) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 sm:h-20 bg-gradient-to-t from-white from-0% via-white/50 via-10% to-transparent to-20%" />
     </Section>
   );
 }
