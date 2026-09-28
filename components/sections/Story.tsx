@@ -10,22 +10,28 @@ const storyTimeline = [
     title: "The Spark",
     description:
       "A chance encounter that lit up everything. What began as a simple conversation quickly turned into an undeniable connection.",
+    floatDuration: 3.2,
+    floatDelay: 0,
   },
   {
     year: "2026",
     title: "The Journey",
     description:
       "Growing together through every season, sharing countless laughs, endless dreams, and building our foundation of love.",
+    floatDuration: 3.8,
+    floatDelay: 0.4,
   },
   {
     year: "2027",
     title: "Tying the Sacred Knot",
     description:
       "Hand in hand, with the sacred fire as witness and loved ones around us, we step into our forever.",
+    floatDuration: 3.5,
+    floatDelay: 0.8,
   },
 ];
 
-const smoothCurve = [0.22, 1, 0.36, 1] as const;
+const smoothCurve = [0.16, 1, 0.3, 1] as const;
 
 export default function OurStory() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -64,7 +70,7 @@ export default function OurStory() {
       {/* Atmospheric lighting & soft edge transitions */}
       <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
 
-      {/* Top Golden Glow Gradient (Matching previous sections) */}
+      {/* Top Golden Glow Gradient */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
       {/* Bottom Transition Gradient */}
@@ -112,7 +118,7 @@ export default function OurStory() {
               A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that brought us here.
             </motion.p>
 
-            {/* Guaranteed Physical Spacer - Badges aur description ke beech clear visual gap */}
+            {/* Guaranteed Physical Spacer */}
             <div className="h-24 sm:h-32 md:h-36 w-full" aria-hidden="true" />
 
             {/* Timeline Cards Grid */}
@@ -120,21 +126,34 @@ export default function OurStory() {
               {storyTimeline.map((item, index) => (
                 <motion.div
                   key={item.year}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 35 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{
-                    duration: 0.8,
-                    delay: 0.3 + index * 0.15,
+                    duration: 0.9,
+                    delay: 0.2 + index * 0.15,
                     ease: smoothCurve,
                   }}
-                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition duration-300"
+                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform"
                 >
-                  {/* Floating Year Badge */}
-                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center h-14 w-32 rounded-full border-2 border-[#b68d40] bg-[#0c0704] shadow-[0_0_20px_rgba(182,141,64,0.55)] group-hover:border-[#e5c158] transition duration-300">
-                    <span className="font-heading text-lg sm:text-xl font-bold tracking-widest text-amber-200 group-hover:text-amber-100 transition duration-300">
-                      {item.year}
-                    </span>
+                  {/* Floating Year Badge - Centered via CSS Flex Wrapper to kill Transform Matrix Jerk */}
+                  <div className="absolute -top-7 inset-x-0 flex justify-center pointer-events-none">
+                    <motion.div
+                      animate={{
+                        y: [-3.5, 3.5, -3.5],
+                      }}
+                      transition={{
+                        duration: item.floatDuration,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: item.floatDelay,
+                      }}
+                      className="pointer-events-auto flex items-center justify-center h-14 w-32 rounded-full border-2 border-[#b68d40] bg-[#0c0704] shadow-[0_0_20px_rgba(182,141,64,0.55)] group-hover:border-[#e5c158] transition-colors duration-300 will-change-transform"
+                    >
+                      <span className="font-heading text-lg sm:text-xl font-bold tracking-widest text-amber-200 group-hover:text-amber-100 transition-colors duration-300">
+                        {item.year}
+                      </span>
+                    </motion.div>
                   </div>
 
                   {/* Decorative Spark Divider */}
@@ -145,12 +164,12 @@ export default function OurStory() {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition duration-300 min-h-[3.5rem] flex items-center justify-center">
+                  <h3 className="font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition-colors duration-300 min-h-[3.5rem] flex items-center justify-center">
                     {item.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="mt-5 text-sm sm:text-[0.95rem] leading-7 text-amber-100/75 flex-grow group-hover:text-amber-100/95 transition duration-300">
+                  <p className="mt-5 text-sm sm:text-[0.95rem] leading-7 text-amber-100/75 flex-grow group-hover:text-amber-100/95 transition-colors duration-300">
                     {item.description}
                   </p>
                 </motion.div>
