@@ -42,8 +42,7 @@ export default function OurStory() {
   return (
     <section
       ref={sectionRef}
-      /* Standalone cinematic stage with generous breathing buffer */
-      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52 md:py-60"
+      className="relative isolate flex min-h-[125vh] w-full flex-col justify-start overflow-hidden bg-[#0c0704] pt-36 pb-40 sm:pt-48 sm:pb-52 md:pt-56 md:pb-60"
     >
       {/* =====================================================
           PARALLAX HERITAGE BACKGROUND (cdbg3.png)
@@ -81,9 +80,9 @@ export default function OurStory() {
       </div>
 
       {/* =====================================================
-          STORY CONTENT (Floating in Center)
+          STORY CONTENT
       ===================================================== */}
-      <div className="relative z-10 my-auto w-full">
+      <div className="relative z-10 w-full">
         <Container>
           <div className="mx-auto max-w-5xl px-4 text-center">
             {/* 1. Label */}
@@ -120,28 +119,33 @@ export default function OurStory() {
               Our Story
             </motion.h2>
 
-            {/* Description with bottom margin */}
+            {/* Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.6, ease: smoothCurve }}
-              className="mt-6 mb-4 text-sm sm:text-base leading-relaxed text-amber-100/80 max-w-2xl mx-auto"
+              className="mt-6 text-sm sm:text-base leading-relaxed text-amber-100/80 max-w-2xl mx-auto"
             >
               A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that brought us here.
             </motion.p>
 
-            {/* Timeline Cards with shifted downward position (mt-36 to mt-52) */}
-            <div className="mt-36 sm:mt-44 md:mt-48 lg:mt-52 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-10 lg:gap-12 items-stretch">
+            {/* =====================================================
+                GUARANTEED PHYSICAL BREATHING SPACE (Cannot Collapse)
+            ===================================================== */}
+            <div className="h-28 sm:h-36 md:h-44 w-full" aria-hidden="true" />
+
+            {/* Timeline Cards Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-10 items-stretch">
               {storyTimeline.map((item, index) => (
                 <motion.div
                   key={item.year}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{
                     duration: 0.8,
-                    delay: 0.7 + index * 0.15,
+                    delay: 0.3 + index * 0.15,
                     ease: smoothCurve,
                   }}
                   className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition duration-300"
