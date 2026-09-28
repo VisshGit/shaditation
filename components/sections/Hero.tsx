@@ -247,9 +247,14 @@ export default function Hero() {
       </motion.div>
 
       {/* =====================================================
-          BOTTOM WHITE GRADIENT OVERLAY (Sleek subtle fade)
+          BOTTOM SEAMLESS BLACK GRADIENT
       ===================================================== */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-12 sm:h-16 bg-gradient-to-t from-white/90 via-white/45 to-transparent" />
+      <div 
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 sm:h-36"
+        style={{
+          background: "linear-gradient(to top, #0c0704 0%, rgba(12, 7, 4, 0.85) 30%, rgba(12, 7, 4, 0.35) 65%, transparent 100%)",
+        }}
+      />
     </section>
   );
 }
