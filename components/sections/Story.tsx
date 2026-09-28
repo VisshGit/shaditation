@@ -8,17 +8,20 @@ const storyTimeline = [
   {
     year: "2025",
     title: "The Spark",
-    
+    description:
+      "A chance encounter that lit up everything. What began as a simple conversation quickly turned into an undeniable connection.",
   },
   {
     year: "2026",
     title: "The Journey",
-    
+    description:
+      "Growing together through every season, sharing countless laughs, endless dreams, and building our foundation of love.",
   },
   {
     year: "2027",
     title: "Tying the Sacred Knot",
-    
+    description:
+      "Hand in hand, with the sacred fire as witness and loved ones around us, we step into our forever.",
   },
 ];
 
@@ -27,13 +30,13 @@ const smoothCurve = [0.22, 1, 0.36, 1] as const;
 export default function OurStory() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Parallax tracking: Is complete section ko trace karega
+  // Parallax tracking
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"], // Section bottom se enter ho aur top se exit ho
+    offset: ["start end", "end start"],
   });
 
-  // Background smooth slow parallax drift (-12% relative translation on scroll)
+  // Background smooth slow parallax drift
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
 
   return (
@@ -42,7 +45,7 @@ export default function OurStory() {
       className="relative isolate overflow-hidden bg-[#0c0704] py-24 sm:py-32"
     >
       {/* =====================================================
-          PARALLAX HERITAGE BACKGROUND (Image set via CSS)
+          PARALLAX HERITAGE BACKGROUND
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
@@ -55,17 +58,16 @@ export default function OurStory() {
             filter: "blur(1px)",
           }}
         />
-        {/* Continuous depth texture blend to avoid sharp edge near parallax limits */}
         <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0c0704] to-transparent" />
       </motion.div>
 
-      {/* Atmospheric lighting & soft edge blend to neighboring sections */}
+      {/* Atmospheric lighting & soft edge blend */}
       <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-14 bg-gradient-to-b from-[#0c0704] to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-14 bg-gradient-to-t from-[#0c0704] to-transparent" />
 
       {/* =====================================================
-          DECORATIVE AMBER GOLD BORDER RIBBON
+          TOP DECORATIVE AMBER GOLD BORDER RIBBON
       ===================================================== */}
       <div className="absolute inset-x-0 top-0 z-10 flex h-24 items-center justify-center -translate-y-[45px]">
         <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
@@ -78,7 +80,7 @@ export default function OurStory() {
       </div>
 
       {/* =====================================================
-          STORY CONTENT (Floating above parallax bg)
+          STORY CONTENT
       ===================================================== */}
       <div className="relative z-10 w-full">
         <Container>
@@ -124,10 +126,10 @@ export default function OurStory() {
               transition={{ duration: 0.8, delay: 0.6, ease: smoothCurve }}
               className="mt-6 text-sm sm:text-base leading-relaxed text-amber-100/80 max-w-2xl mx-auto"
             >
-              A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that defined us.
+              A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that brought us here.
             </motion.p>
 
-            {/* Timeline (Floating design with balanced spacing) */}
+            {/* Timeline Cards */}
             <div className="mt-20 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-stretch">
               {storyTimeline.map((item, index) => (
                 <motion.div
@@ -135,10 +137,14 @@ export default function OurStory() {
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.8, delay: 0.7 + index * 0.15, ease: smoothCurve }}
+                  transition={{
+                    duration: 0.8,
+                    delay: 0.7 + index * 0.15,
+                    ease: smoothCurve,
+                  }}
                   className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/40 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-sm flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition duration-300"
                 >
-                  {/* Floating Year Bubble */}
+                  {/* Floating Year Badge */}
                   <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex items-center justify-center h-12 w-28 rounded-full border-2 border-[#b68d40] bg-[#0c0704] shadow-[0_0_15px_rgba(182,141,64,0.5)] group-hover:border-[#e5c158] transition duration-300">
                     <span className="font-heading text-xl font-bold text-amber-200 group-hover:text-amber-100 transition duration-300">
                       {item.year}
@@ -165,7 +171,7 @@ export default function OurStory() {
       </div>
 
       {/* =====================================================
-          BOTTOM DECORATIVE BORDER RIBBON
+          BOTTOM DECORATIVE AMBER GOLD BORDER RIBBON
       ===================================================== */}
       <div className="absolute inset-x-0 bottom-0 z-10 flex h-24 items-center justify-center translate-y-[45px]">
         <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
@@ -176,7 +182,6 @@ export default function OurStory() {
         </div>
         <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
       </div>
-
     </section>
   );
 }
