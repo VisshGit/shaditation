@@ -29,8 +29,8 @@ export default function ScratchReveal() {
       {/* Dim Overlay */}
       <div className="absolute inset-0 bg-black/35 z-0" />
 
-      {/* Top Black Gradient Overlay (Hero se merge ke liye) */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 sm:h-28 bg-gradient-to-b from-black via-black/70 to-transparent" />
+      {/* Top Black Gradient Overlay (Reduced height) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-12 sm:h-16 bg-gradient-to-b from-black/80 via-black/40 to-transparent" />
 
       {/* Heading */}
       <div className="relative z-20 flex flex-col items-center text-center">
@@ -157,7 +157,7 @@ export default function ScratchReveal() {
         </div>
       </div>
 
-      {/* Bottom Black Gradient Overlay (Directly merging into Countdown) */}
+      {/* Bottom Black Gradient Overlay */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 sm:h-40 bg-gradient-to-t from-black via-black/80 to-transparent" />
     </Section>
   );
