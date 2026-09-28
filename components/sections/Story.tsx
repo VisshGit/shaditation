@@ -37,19 +37,19 @@ export default function OurStory() {
   });
 
   // Background smooth slow parallax drift
-  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-[#0c0704] py-24 sm:py-32"
+      className="relative isolate overflow-hidden bg-[#0c0704] py-32 sm:py-44 md:py-52"
     >
       {/* =====================================================
           PARALLAX HERITAGE BACKGROUND
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-16 -bottom-16 scale-[1.05] will-change-transform z-0"
+        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.15] will-change-transform z-0"
       >
         <div
           className="h-full w-full bg-cover bg-center"
@@ -58,13 +58,13 @@ export default function OurStory() {
             filter: "blur(1px)",
           }}
         />
-        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0c0704] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0c0704] to-transparent" />
       </motion.div>
 
       {/* Atmospheric lighting & soft edge blend */}
       <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-14 bg-gradient-to-b from-[#0c0704] to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-14 bg-gradient-to-t from-[#0c0704] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-20 bg-gradient-to-b from-[#0c0704] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-20 bg-gradient-to-t from-[#0c0704] to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
@@ -104,7 +104,7 @@ export default function OurStory() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
               className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
-              style={{ margin: "12px auto 28px" }}
+              style={{ margin: "14px auto 32px" }}
             />
 
             {/* 3. Heading */}
@@ -130,7 +130,7 @@ export default function OurStory() {
             </motion.p>
 
             {/* Timeline Cards */}
-            <div className="mt-20 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-stretch">
+            <div className="mt-24 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-stretch">
               {storyTimeline.map((item, index) => (
                 <motion.div
                   key={item.year}
