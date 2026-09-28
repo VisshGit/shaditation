@@ -6,19 +6,19 @@ import Container from "@/components/ui/Container";
 
 const storyTimeline = [
   {
-    year: "2024",
-    title: "The First Meeting",
-    description: "Sparks flew as our paths crossed at a cozy cafe in Jaipur. A coffee turned into hours of endless conversation.",
-  },
-  {
     year: "2025",
-    title: "Growing Together",
-    description: "From exploring hidden alleys to sharing dreams under the stars, every moment brought us closer.",
+    title: "The Spark",
+    
   },
   {
     year: "2026",
-    title: "The Big Yes",
-    description: "On a serene beach at sunset, surrounded by waves and love, we promised our 'forever' to each other.",
+    title: "The Journey",
+    
+  },
+  {
+    year: "2027",
+    title: "Tying the Sacred Knot",
+    
   },
 ];
 
