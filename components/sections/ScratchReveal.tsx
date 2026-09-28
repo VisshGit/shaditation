@@ -28,14 +28,14 @@ export default function ScratchReveal() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-[#0c0704] py-24 sm:py-32"
+      className="relative isolate overflow-hidden bg-[#0c0704] pt-36 pb-32 sm:pt-44 sm:pb-40 md:pt-48 md:pb-44"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER (Continuous depth)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-24 -bottom-24 scale-[1.12] bg-cover bg-center will-change-transform"
+        className="pointer-events-none absolute inset-0 -top-28 -bottom-28 scale-[1.12] bg-cover bg-center will-change-transform"
       >
         <div
           className="h-full w-full bg-cover bg-center"
@@ -47,8 +47,8 @@ export default function ScratchReveal() {
 
       {/* Atmospheric ambient lighting & subtle vignette */}
       <div className="absolute inset-0 bg-black/30 z-[1]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-14 bg-gradient-to-b from-[#0c0704]/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-14 bg-gradient-to-t from-[#0c0704]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-16 bg-gradient-to-b from-[#0c0704]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-16 bg-gradient-to-t from-[#0c0704]/80 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center px-4">
@@ -71,7 +71,7 @@ export default function ScratchReveal() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
           className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
-          style={{ margin: "12px auto 28px" }}
+          style={{ margin: "14px auto 32px" }}
         />
 
         {/* 3. Heading */}
@@ -86,8 +86,8 @@ export default function ScratchReveal() {
           Scratch to Reveal The Date
         </motion.h2>
 
-        {/* 4. Down Arrow */}
-        <div className="mt-6 mb-10 sm:mb-12 flex h-10 items-center justify-center">
+        {/* 4. Down Arrow (Expanded spacing) */}
+        <div className="mt-8 mb-14 sm:mb-16 flex h-10 items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: revealed ? 0 : 1, y: 0 }}
