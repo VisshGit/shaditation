@@ -26,11 +26,16 @@ export default function ScratchReveal() {
         }}
       />
 
-      {/* Dim Overlay */}
-      <div className="absolute inset-0 bg-black/35 z-0" />
+      {/* Subtle Ambient Dim Overlay */}
+      <div className="absolute inset-0 bg-black/30 z-0" />
 
-      {/* Top White Gradient Overlay */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-12 sm:h-16 bg-gradient-to-b from-white/90 via-white/45 to-transparent" />
+      {/* Top Seamless Black Gradient (Hero ke bottom gradient se exact merge) */}
+      <div 
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 sm:h-36"
+        style={{
+          background: "linear-gradient(to bottom, #0c0704 0%, rgba(12, 7, 4, 0.85) 30%, rgba(12, 7, 4, 0.35) 65%, transparent 100%)",
+        }}
+      />
 
       {/* Heading */}
       <div className="relative z-20 flex flex-col items-center text-center">
@@ -157,8 +162,13 @@ export default function ScratchReveal() {
         </div>
       </div>
 
-      {/* Bottom White Gradient Overlay */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-12 sm:h-16 bg-gradient-to-t from-white/90 via-white/45 to-transparent" />
+      {/* Bottom Black Gradient (Countdown se merge ke liye) */}
+      <div 
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 sm:h-36"
+        style={{
+          background: "linear-gradient(to top, #0c0704 0%, rgba(12, 7, 4, 0.85) 30%, rgba(12, 7, 4, 0.35) 65%, transparent 100%)",
+        }}
+      />
     </Section>
   );
 }
