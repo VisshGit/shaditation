@@ -120,18 +120,19 @@ export default function OurStory() {
               Our Story
             </motion.h2>
 
+            {/* Description with bottom margin */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.6, ease: smoothCurve }}
-              className="mt-6 text-sm sm:text-base leading-relaxed text-amber-100/80 max-w-2xl mx-auto"
+              className="mt-6 mb-4 text-sm sm:text-base leading-relaxed text-amber-100/80 max-w-2xl mx-auto"
             >
               A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that brought us here.
             </motion.p>
 
-            {/* Timeline Cards with Clean Breathing Room */}
-            <div className="mt-28 md:mt-36 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10 lg:gap-12 items-stretch">
+            {/* Timeline Cards with shifted downward position (mt-36 to mt-52) */}
+            <div className="mt-36 sm:mt-44 md:mt-48 lg:mt-52 grid grid-cols-1 md:grid-cols-3 gap-14 md:gap-10 lg:gap-12 items-stretch">
               {storyTimeline.map((item, index) => (
                 <motion.div
                   key={item.year}
@@ -145,26 +146,26 @@ export default function OurStory() {
                   }}
                   className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition duration-300"
                 >
-                  {/* Floating Year Badge - Clear offset & elevated padding */}
-                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center h-13 w-32 rounded-full border-2 border-[#b68d40] bg-[#0c0704] shadow-[0_0_20px_rgba(182,141,64,0.55)] group-hover:border-[#e5c158] transition duration-300">
+                  {/* Floating Year Badge */}
+                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center h-14 w-32 rounded-full border-2 border-[#b68d40] bg-[#0c0704] shadow-[0_0_20px_rgba(182,141,64,0.55)] group-hover:border-[#e5c158] transition duration-300">
                     <span className="font-heading text-lg sm:text-xl font-bold tracking-widest text-amber-200 group-hover:text-amber-100 transition duration-300">
                       {item.year}
                     </span>
                   </div>
 
-                  {/* Decorative Spark Divider - Separated with clean margins */}
+                  {/* Decorative Spark Divider */}
                   <div className="mb-6 flex items-center gap-3 text-amber-300/80">
                     <span className="h-px w-7 bg-amber-400/80" />
                     <span className="text-xs">✦</span>
                     <span className="h-px w-7 bg-amber-400/80" />
                   </div>
 
-                  {/* Title - Increased line-height & proper vertical separation */}
+                  {/* Title */}
                   <h3 className="font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition duration-300 min-h-[3.5rem] flex items-center justify-center">
                     {item.title}
                   </h3>
 
-                  {/* Description - Comfortable breathing margin and line height */}
+                  {/* Description */}
                   <p className="mt-5 text-sm sm:text-[0.95rem] leading-7 text-amber-100/75 flex-grow group-hover:text-amber-100/95 transition duration-300">
                     {item.description}
                   </p>
