@@ -22,7 +22,7 @@ export default function ScratchReveal() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
-          backgroundImage: "url('/images/scbg.png')",
+          backgroundImage: "url('/images/scbg1.png')",
         }}
       />
 
