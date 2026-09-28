@@ -46,7 +46,7 @@ export default function OurStory() {
       className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52 md:py-60"
     >
       {/* =====================================================
-          PARALLAX HERITAGE BACKGROUND (Extended Buffer)
+          PARALLAX HERITAGE BACKGROUND (cdbg3.png)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
@@ -55,7 +55,7 @@ export default function OurStory() {
         <div
           className="h-full w-full bg-cover bg-center"
           style={{
-            backgroundImage: "url('/themes/rajasthani/story-bg.PNG')",
+            backgroundImage: "url('/images/cdbg3.png')",
             filter: "blur(1px)",
           }}
         />
@@ -64,7 +64,7 @@ export default function OurStory() {
 
       {/* Atmospheric lighting & soft edge transitions */}
       <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
       {/* =====================================================
@@ -131,7 +131,7 @@ export default function OurStory() {
             </motion.p>
 
             {/* Timeline Cards with Clean Breathing Room */}
-            <div className="mt-28 md:mt-32 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 items-stretch">
+            <div className="mt-28 md:mt-36 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-10 lg:gap-12 items-stretch">
               {storyTimeline.map((item, index) => (
                 <motion.div
                   key={item.year}
@@ -143,25 +143,29 @@ export default function OurStory() {
                     delay: 0.7 + index * 0.15,
                     ease: smoothCurve,
                   }}
-                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/40 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-sm flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition duration-300"
+                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition duration-300"
                 >
-                  {/* Floating Year Badge */}
-                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex items-center justify-center h-12 w-28 rounded-full border-2 border-[#b68d40] bg-[#0c0704] shadow-[0_0_15px_rgba(182,141,64,0.5)] group-hover:border-[#e5c158] transition duration-300">
-                    <span className="font-heading text-xl font-bold text-amber-200 group-hover:text-amber-100 transition duration-300">
+                  {/* Floating Year Badge - Clear offset & elevated padding */}
+                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 flex items-center justify-center h-13 w-32 rounded-full border-2 border-[#b68d40] bg-[#0c0704] shadow-[0_0_20px_rgba(182,141,64,0.55)] group-hover:border-[#e5c158] transition duration-300">
+                    <span className="font-heading text-lg sm:text-xl font-bold tracking-widest text-amber-200 group-hover:text-amber-100 transition duration-300">
                       {item.year}
                     </span>
                   </div>
 
-                  <div className="mt-10 mb-5 flex items-center gap-3 text-amber-300/80">
-                    <span className="h-px w-6 bg-amber-400/80" />
+                  {/* Decorative Spark Divider - Separated with clean margins */}
+                  <div className="mb-6 flex items-center gap-3 text-amber-300/80">
+                    <span className="h-px w-7 bg-amber-400/80" />
                     <span className="text-xs">✦</span>
-                    <span className="h-px w-6 bg-amber-400/80" />
+                    <span className="h-px w-7 bg-amber-400/80" />
                   </div>
 
-                  <h3 className="font-serif text-2xl font-bold text-amber-100 group-hover:text-white transition duration-300">
+                  {/* Title - Increased line-height & proper vertical separation */}
+                  <h3 className="font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition duration-300 min-h-[3.5rem] flex items-center justify-center">
                     {item.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-amber-100/70 flex-grow group-hover:text-amber-100/90 transition duration-300">
+
+                  {/* Description - Comfortable breathing margin and line height */}
+                  <p className="mt-5 text-sm sm:text-[0.95rem] leading-7 text-amber-100/75 flex-grow group-hover:text-amber-100/95 transition duration-300">
                     {item.description}
                   </p>
                 </motion.div>
