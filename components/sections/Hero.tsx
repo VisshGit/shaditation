@@ -147,7 +147,7 @@ export default function Hero() {
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                {/* 1. TOGETHER (Arch/Aasmaan me positioned) */}
+                {/* 1. TOGETHER */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -172,7 +172,7 @@ export default function Hero() {
                   Together With Their Families
                 </motion.p>
 
-                {/* 2. NAMES (Halka sa upar lift kiya) */}
+                {/* 2. NAMES */}
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -184,7 +184,7 @@ export default function Hero() {
                   </h1>
                 </motion.div>
 
-                {/* 3. INVITATION TEXT (Gap badha kar niche shift kiya) */}
+                {/* 3. INVITATION TEXT */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -247,12 +247,12 @@ export default function Hero() {
       </motion.div>
 
       {/* =====================================================
-          BOTTOM EXTENDED SEAMLESS BLACK GRADIENT
+          BOTTOM EXTENDED DEEP BLACK GRADIENT (Upar tak lifted)
       ===================================================== */}
       <div 
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-44 sm:h-56"
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-64 sm:h-80 md:h-96"
         style={{
-          background: "linear-gradient(to top, #0c0704 0%, rgba(12, 7, 4, 0.9) 20%, rgba(12, 7, 4, 0.6) 45%, rgba(12, 7, 4, 0.25) 75%, transparent 100%)",
+          background: "linear-gradient(to top, #0c0704 0%, rgba(12, 7, 4, 0.95) 25%, rgba(12, 7, 4, 0.7) 50%, rgba(12, 7, 4, 0.3) 75%, transparent 100%)",
         }}
       />
     </section>
