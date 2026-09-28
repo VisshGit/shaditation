@@ -245,6 +245,12 @@ export default function Hero() {
           <div className="scroll-line text-[var(--foreground)]" />
         </div>
       </motion.div>
+
+      {/* =====================================================
+          BOTTOM BLACK GRADIENT OVERLAY
+          (Scratch section ke top black gradient ke sath merge hone ke liye)
+      ===================================================== */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 sm:h-36 bg-gradient-to-t from-black via-black/75 to-transparent" />
     </section>
   );
 }
