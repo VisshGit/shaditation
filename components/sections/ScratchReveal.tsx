@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ScratchCanvas from "@/components/ui/ScratchCanvas";
 
@@ -15,6 +15,7 @@ const smoothCurve = [0.22, 1, 0.36, 1] as const;
 export default function ScratchReveal() {
   const [revealed, setRevealed] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   // Parallax tracking
   const { scrollYProgress } = useScroll({
@@ -23,6 +24,29 @@ export default function ScratchReveal() {
   });
 
   const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+
+  // Mobile Autoplay Force Trigger
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Fallback if browser blocks first attempt
+          const handleInteraction = () => {
+            video.play();
+            window.removeEventListener("touchstart", handleInteraction);
+          };
+          window.addEventListener("touchstart", handleInteraction, { once: true });
+        });
+      }
+    }
+  }, []);
 
   return (
     <section
@@ -37,11 +61,13 @@ export default function ScratchReveal() {
         className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.15] will-change-transform"
       >
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
           poster="/images/scbg1.png"
+          preload="auto"
           className="h-full w-full object-cover object-center"
         >
           <source src="/images/scbg1.mp4" type="video/mp4" />
@@ -57,7 +83,7 @@ export default function ScratchReveal() {
       {/* Bottom Golden Glow Gradient */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
-      {/* Content wrapper with guaranteed vertical breathing space */}
+      {/* Content wrapper */}
       <div className="relative z-10 my-auto flex w-full flex-col items-center justify-center px-4">
         {/* 1. Label */}
         <motion.p
