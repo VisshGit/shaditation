@@ -17,7 +17,52 @@ export default function ScratchReveal() {
   const [revealed, setRevealed] = useState(false);
 
   return (
-    <Section className="relative isolate overflow-hidden bg-[#0c0704] !pt-[140px] !pb-[40px] md:!pt-[160px] md:!pb-[50px] !mb-0">
+    <Section className="relative isolate overflow-hidden bg-[#0c0704] !pt-[130px] !pb-[40px] md:!pt-[150px] md:!pb-[50px] !mb-0">
+      {/* =====================================================
+          RAJASTHANI MEHRAB ARCH DIVIDER (Option 1)
+      ===================================================== */}
+      <div className="pointer-events-none absolute inset-x-0 -top-px z-30 w-full overflow-hidden leading-none select-none">
+        <svg
+          viewBox="0 0 1440 90"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          className="w-full h-10 sm:h-14 md:h-18 filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.85)]"
+        >
+          {/* Main Heritage Cutout */}
+          <path
+            d="M0,0 L1440,0 L1440,32 C1260,32 1180,68 1020,68 C900,68 830,42 750,42 C732,42 724,18 720,8 C716,18 708,42 690,42 C610,42 540,68 420,68 C260,68 180,32 0,32 Z"
+            fill="#0c0704"
+          />
+
+          {/* Gold Filigree Accent Stroke */}
+          <path
+            d="M0,32 C180,32 260,68 420,68 C540,68 610,42 690,42 C708,42 716,18 720,8 C724,18 732,42 750,42 C830,42 900,68 1020,68 C1180,68 1260,32 1440,32"
+            stroke="#d4af37"
+            strokeWidth="1.5"
+            strokeOpacity="0.8"
+            fill="none"
+          />
+
+          {/* Secondary Sub-curve Stroke */}
+          <path
+            d="M200,34 C300,56 360,64 420,64 C480,64 550,48 640,44 M800,44 C890,48 960,64 1020,64 C1080,64 1140,56 1240,34"
+            stroke="#b68d40"
+            strokeWidth="0.8"
+            strokeDasharray="4 4"
+            strokeOpacity="0.5"
+            fill="none"
+          />
+        </svg>
+
+        {/* Center Royal Motif Point */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center">
+          <span className="text-amber-300 drop-shadow-[0_0_8px_rgba(245,215,124,0.9)] text-xs sm:text-sm">
+            ✦
+          </span>
+        </div>
+      </div>
+
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
@@ -26,16 +71,8 @@ export default function ScratchReveal() {
         }}
       />
 
-      {/* Subtle Ambient Dim Overlay */}
-      <div className="absolute inset-0 bg-black/30 z-0" />
-
-      {/* Top Extended Seamless Black Gradient */}
-      <div 
-        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-44 sm:h-56"
-        style={{
-          background: "linear-gradient(to bottom, #0c0704 0%, rgba(12, 7, 4, 0.9) 20%, rgba(12, 7, 4, 0.6) 45%, rgba(12, 7, 4, 0.25) 75%, transparent 100%)",
-        }}
-      />
+      {/* Subtle Ambient Dim */}
+      <div className="absolute inset-0 bg-black/35 z-0" />
 
       {/* Heading */}
       <div className="relative z-20 flex flex-col items-center text-center">
@@ -162,13 +199,8 @@ export default function ScratchReveal() {
         </div>
       </div>
 
-      {/* Bottom Black Gradient (Countdown se merge ke liye) */}
-      <div 
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 sm:h-36"
-        style={{
-          background: "linear-gradient(to top, #0c0704 0%, rgba(12, 7, 4, 0.85) 30%, rgba(12, 7, 4, 0.35) 65%, transparent 100%)",
-        }}
-      />
+      {/* Bottom subtle shadow */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-black/60 to-transparent" />
     </Section>
   );
 }
