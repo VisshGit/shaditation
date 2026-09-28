@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import ScratchCanvas from "@/components/ui/ScratchCanvas";
-import Section from "@/components/ui/Section";
 
 const confettiPieces = Array.from({ length: 36 }, (_, index) => ({
   left: `${((index * 29) % 96) + 2}%`,
@@ -15,67 +14,44 @@ const smoothCurve = [0.22, 1, 0.36, 1] as const;
 
 export default function ScratchReveal() {
   const [revealed, setRevealed] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Parallax tracking
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Background slow continuous parallax shift
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
   return (
-    <Section className="relative isolate overflow-hidden bg-[#0c0704] !pt-[130px] !pb-[40px] md:!pt-[150px] md:!pb-[50px] !mb-0">
+    <section
+      ref={sectionRef}
+      className="relative isolate overflow-hidden bg-[#0c0704] py-24 sm:py-32"
+    >
       {/* =====================================================
-          RAJASTHANI MEHRAB ARCH DIVIDER (Option 1)
+          PARALLAX BACKGROUND LAYER (Continuous depth)
       ===================================================== */}
-      <div className="pointer-events-none absolute inset-x-0 -top-px z-30 w-full overflow-hidden leading-none select-none">
-        <svg
-          viewBox="0 0 1440 90"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className="w-full h-10 sm:h-14 md:h-18 filter drop-shadow-[0_8px_16px_rgba(0,0,0,0.85)]"
-        >
-          {/* Main Heritage Cutout */}
-          <path
-            d="M0,0 L1440,0 L1440,32 C1260,32 1180,68 1020,68 C900,68 830,42 750,42 C732,42 724,18 720,8 C716,18 708,42 690,42 C610,42 540,68 420,68 C260,68 180,32 0,32 Z"
-            fill="#0c0704"
-          />
+      <motion.div
+        style={{ y: bgY }}
+        className="pointer-events-none absolute inset-0 -top-24 -bottom-24 scale-[1.12] bg-cover bg-center will-change-transform"
+      >
+        <div
+          className="h-full w-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/scbg1.png')",
+          }}
+        />
+      </motion.div>
 
-          {/* Gold Filigree Accent Stroke */}
-          <path
-            d="M0,32 C180,32 260,68 420,68 C540,68 610,42 690,42 C708,42 716,18 720,8 C724,18 732,42 750,42 C830,42 900,68 1020,68 C1180,68 1260,32 1440,32"
-            stroke="#d4af37"
-            strokeWidth="1.5"
-            strokeOpacity="0.8"
-            fill="none"
-          />
+      {/* Atmospheric ambient lighting & subtle vignette */}
+      <div className="absolute inset-0 bg-black/30 z-[1]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-14 bg-gradient-to-b from-[#0c0704]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-14 bg-gradient-to-t from-[#0c0704]/70 to-transparent" />
 
-          {/* Secondary Sub-curve Stroke */}
-          <path
-            d="M200,34 C300,56 360,64 420,64 C480,64 550,48 640,44 M800,44 C890,48 960,64 1020,64 C1080,64 1140,56 1240,34"
-            stroke="#b68d40"
-            strokeWidth="0.8"
-            strokeDasharray="4 4"
-            strokeOpacity="0.5"
-            fill="none"
-          />
-        </svg>
-
-        {/* Center Royal Motif Point */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 flex items-center justify-center">
-          <span className="text-amber-300 drop-shadow-[0_0_8px_rgba(245,215,124,0.9)] text-xs sm:text-sm">
-            ✦
-          </span>
-        </div>
-      </div>
-
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
-        style={{
-          backgroundImage: "url('/images/scbg1.png')",
-        }}
-      />
-
-      {/* Subtle Ambient Dim */}
-      <div className="absolute inset-0 bg-black/35 z-0" />
-
-      {/* Heading */}
-      <div className="relative z-20 flex flex-col items-center text-center">
+      {/* Content */}
+      <div className="relative z-10 flex flex-col items-center text-center px-4">
         {/* 1. Label */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -105,16 +81,13 @@ export default function ScratchReveal() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
           className="font-heading text-4xl sm:text-5xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]"
-          style={{
-            margin: 0,
-            lineHeight: 1.15,
-          }}
+          style={{ margin: 0, lineHeight: 1.15 }}
         >
           Scratch to Reveal The Date
         </motion.h2>
 
-        {/* 4. Down Arrow Container */}
-        <div className="mt-8 mb-12 sm:mb-16 flex h-10 items-center justify-center">
+        {/* 4. Down Arrow */}
+        <div className="mt-6 mb-10 sm:mb-12 flex h-10 items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: revealed ? 0 : 1, y: 0 }}
@@ -140,11 +113,11 @@ export default function ScratchReveal() {
         </div>
       </div>
 
-      {/* Scratch Card Container */}
-      <div className="relative z-20 flex justify-center px-4 sm:px-0">
-        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40]/70 p-[2px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      {/* Floating Scratch Card Container */}
+      <div className="relative z-10 flex justify-center px-4 sm:px-0">
+        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40]/70 p-[2px] shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-[1px]">
           <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/25 sm:h-72 md:h-96 md:rounded-[1.85rem] bg-transparent">
-            {/* Revealed Content */}
+            {/* Revealed Date Layer */}
             <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
               <div className="px-2 py-3 text-center sm:px-7 sm:py-8 md:px-12">
                 <p className="text-[10px] uppercase tracking-[3px] text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] sm:text-xs sm:tracking-[6px] font-semibold">
@@ -165,14 +138,14 @@ export default function ScratchReveal() {
               </div>
             </div>
 
-            {/* Scratch Layer */}
+            {/* Scratch Canvas */}
             {!revealed && (
               <div className="absolute inset-0 z-30 select-none">
                 <ScratchCanvas onReveal={() => setRevealed(true)} />
               </div>
             )}
 
-            {/* Reveal Effects */}
+            {/* Celebration FX */}
             {revealed && (
               <div className="pointer-events-none absolute inset-0 z-40 overflow-hidden">
                 {confettiPieces.map((piece, index) => (
@@ -198,9 +171,6 @@ export default function ScratchReveal() {
           </div>
         </div>
       </div>
-
-      {/* Bottom subtle shadow */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-black/60 to-transparent" />
-    </Section>
+    </section>
   );
 }
