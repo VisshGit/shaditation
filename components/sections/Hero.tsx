@@ -83,7 +83,7 @@ export default function Hero() {
           <div
             className="h-full w-full bg-cover bg-center"
             style={{
-              backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
+              backgroundImage: "url('/themes/rajasthani/hero-bg1.png')",
               filter: "blur(2px)",
             }}
           />
