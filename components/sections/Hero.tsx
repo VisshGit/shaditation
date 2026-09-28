@@ -247,10 +247,9 @@ export default function Hero() {
       </motion.div>
 
       {/* =====================================================
-          BOTTOM BLACK GRADIENT OVERLAY
-          (Scratch section ke top black gradient ke sath merge hone ke liye)
+          BOTTOM BLACK GRADIENT OVERLAY (Sleek subtle fade)
       ===================================================== */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-28 sm:h-36 bg-gradient-to-t from-black via-black/75 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-12 sm:h-16 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
     </section>
   );
 }
