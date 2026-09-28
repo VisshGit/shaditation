@@ -70,7 +70,7 @@ export default function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0c0704]"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0c0704] pb-28 sm:pb-36"
     >
       {/* =====================================================
           PARALLAX HERITAGE BACKGROUND
@@ -78,7 +78,7 @@ export default function Hero() {
       {isRajasthani && (
         <motion.div
           style={{ y: bgY }}
-          className="pointer-events-none absolute inset-0 -top-12 -bottom-24 scale-[1.08] bg-cover bg-center will-change-transform"
+          className="pointer-events-none absolute inset-0 -top-12 -bottom-28 scale-[1.08] bg-cover bg-center will-change-transform"
         >
           <div
             className="h-full w-full bg-cover bg-center"
@@ -150,7 +150,7 @@ export default function Hero() {
         className="relative z-10 w-full min-w-0"
       >
         <Container>
-          <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
+          <div className="flex min-h-[85vh] w-full items-center justify-center px-4 text-center sm:px-6">
             <div className="relative mx-auto w-full max-w-4xl px-3 sm:px-0">
               <div
                 className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
@@ -217,7 +217,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-20 sm:bottom-24 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
+        className="absolute bottom-12 sm:bottom-16 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
       >
         <div className="scroll-indicator">
           <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
@@ -227,8 +227,8 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Soft Vignette Edge (Sirf bottom 40px, no heavy black patch) */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-14 bg-gradient-to-t from-[#0c0704]/70 to-transparent" />
+      {/* Soft Vignette Edge */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-[#0c0704]/80 to-transparent" />
     </section>
   );
 }
