@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "@/components/ui/Container";
 
 const weddingDate = new Date("2027-01-31T19:00:00+05:30").getTime();
@@ -39,18 +39,18 @@ function CountdownBox({ label, value, delay = 0 }: CountdownBoxProps) {
       }}
       className="min-w-0 text-center"
     >
-      <div className="relative flex h-20 w-[4.25rem] items-center justify-center overflow-hidden rounded-xl border-2 border-[#b68d40] bg-white/55 shadow-[0_12px_30px_rgba(0,0,0,0.15)] backdrop-blur-xl transition duration-300 hover:-translate-y-1 hover:border-[#8b5e34] hover:shadow-[0_18px_38px_rgba(0,0,0,0.25)] sm:h-24 sm:w-20 md:h-32 md:w-28 md:rounded-2xl">
+      <div className="relative flex h-20 w-[4.25rem] items-center justify-center overflow-hidden rounded-xl border-2 border-[#b68d40] bg-white/55 shadow-[0_15px_35px_rgba(0,0,0,0.35)] backdrop-blur-xl transition duration-300 hover:-translate-y-1.5 hover:border-[#e5c158] hover:shadow-[0_20px_45px_rgba(182,141,64,0.3)] sm:h-24 sm:w-20 md:h-32 md:w-28 md:rounded-2xl">
         <div className="absolute -top-10 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full bg-amber-100/70 blur-2xl" />
 
         <span
           key={`${label}-${displayValue}`}
-          className="countdown-number relative z-10 font-heading text-3xl text-[#2b1d0e] sm:text-4xl md:text-5xl"
+          className="countdown-number relative z-10 font-heading text-3xl font-bold text-[#2b1d0e] sm:text-4xl md:text-5xl"
         >
           {displayValue}
         </span>
       </div>
 
-      <p className="mt-2 text-[10px] uppercase tracking-[2px] text-white drop-shadow-md sm:mt-3 sm:text-xs sm:tracking-[3px] md:mt-4">
+      <p className="mt-2 text-[10px] uppercase tracking-[2px] text-amber-200/90 drop-shadow-md sm:mt-3 sm:text-xs sm:tracking-[3px] md:mt-4 font-medium">
         {label}
       </p>
     </motion.div>
@@ -61,6 +61,16 @@ export default function Countdown() {
   const [timeLeft, setTimeLeft] = useState<ReturnType<
     typeof getTimeLeft
   > | null>(null);
+
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Parallax tracking
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -78,30 +88,41 @@ export default function Countdown() {
 
   return (
     <section
-      className="relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed !mt-0 !pt-[100px] !pb-[140px] md:!pt-[120px] md:!pb-[160px]"
-      style={{
-        backgroundImage: "url('/images/cdbg.PNG')",
-      }}
+      ref={sectionRef}
+      className="relative isolate flex items-center justify-center overflow-hidden bg-[#0c0704] py-24 sm:py-32"
     >
-      {/* Background Dim Overlays */}
-      <div className="absolute inset-0 bg-black/40 z-0" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/45 z-0" />
+      {/* =====================================================
+          PARALLAX BACKGROUND LAYER (cdbg.PNG)
+      ===================================================== */}
+      <motion.div
+        style={{ y: bgY }}
+        className="pointer-events-none absolute inset-0 -top-24 -bottom-24 scale-[1.12] bg-cover bg-center will-change-transform"
+      >
+        <div
+          className="h-full w-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/cdbg.PNG')",
+          }}
+        />
+      </motion.div>
 
-      {/* TOP BLACK GRADIENT OVERLAY (Kam karke h-12 / h-16 kiya) */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-12 sm:h-16 bg-gradient-to-b from-black/80 via-black/40 to-transparent" />
+      {/* Atmospheric ambient lighting & subtle vignettes */}
+      <div className="absolute inset-0 bg-black/45 z-[1]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-14 bg-gradient-to-b from-[#0c0704]/75 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-14 bg-gradient-to-t from-[#0c0704]/75 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 w-full">
         <Container>
           <div className="flex justify-center">
-            <div className="w-full max-w-4xl text-center">
+            <div className="w-full max-w-4xl text-center px-4">
               {/* 1. Subtitle */}
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="text-sm uppercase tracking-[6px] text-white drop-shadow-lg"
+                className="text-sm uppercase tracking-[6px] text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-semibold"
                 style={{ margin: 0 }}
               >
                 Counting Down to Forever
@@ -113,17 +134,17 @@ export default function Countdown() {
                 whileInView={{ opacity: 1, scaleX: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="h-px w-20 bg-white/70 origin-center"
-                style={{ margin: "12px auto 36px" }}
+                className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
+                style={{ margin: "12px auto 28px" }}
               />
 
               {/* 3. Main Heading */}
               <motion.h2
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                className="font-heading text-4xl text-white drop-shadow-lg md:text-5xl"
+                className="font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] md:text-5xl"
                 style={{ margin: 0, lineHeight: 1.15 }}
               >
                 The Celebration Begins Soon
@@ -131,8 +152,8 @@ export default function Countdown() {
 
               {/* 4. Boxes Container */}
               <div
-                className="flex flex-nowrap justify-center gap-2 sm:gap-4 md:gap-8"
-                style={{ marginTop: "64px" }}
+                className="flex flex-nowrap justify-center gap-2.5 sm:gap-4 md:gap-8"
+                style={{ marginTop: "52px" }}
               >
                 <CountdownBox
                   label="Days"
@@ -162,9 +183,6 @@ export default function Countdown() {
           </div>
         </Container>
       </div>
-
-      {/* BOTTOM FADE */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#120b06] via-[#120b06]/75 to-transparent pointer-events-none z-10" />
     </section>
   );
 }
