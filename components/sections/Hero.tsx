@@ -166,6 +166,8 @@ export default function Hero() {
                   className="max-w-[320px] text-center text-[10px] font-medium uppercase leading-5 tracking-[3px] text-[var(--foreground)] drop-shadow-[0_2px_6px_rgba(255,255,255,0.45)] sm:max-w-none sm:text-sm sm:tracking-[7px] -translate-y-[85px] sm:-translate-y-[60px]"
                   style={{ margin: 0 }}
                 >
+                  <br>
+                  </br>
                   Together With Their Families
                 </motion.p>
 
