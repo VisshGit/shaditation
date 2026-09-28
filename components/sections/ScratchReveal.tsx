@@ -22,20 +22,20 @@ export default function ScratchReveal() {
     offset: ["start end", "end start"],
   });
 
-  // Smooth continuous parallax drift
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-14%", "14%"]);
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-[#0c0704] py-32 sm:py-44 md:py-52"
+      /* NOTE: min-h-[115vh] aur massive vertical buffer taaki content full isolated stage bane */
+      className="relative isolate flex min-h-[115vh] w-full flex-col items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER (Extended bounds for breathing room)
+          PARALLAX BACKGROUND LAYER
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.18] bg-cover bg-center will-change-transform"
+        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.15] bg-cover bg-center will-change-transform"
       >
         <div
           className="h-full w-full bg-cover bg-center"
@@ -45,13 +45,13 @@ export default function ScratchReveal() {
         />
       </motion.div>
 
-      {/* Atmospheric lighting & soft edge transitions */}
-      <div className="absolute inset-0 bg-black/30 z-[1]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-20 bg-gradient-to-b from-[#0c0704]/80 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-20 bg-gradient-to-t from-[#0c0704]/80 to-transparent" />
+      {/* Atmospheric Vignettes for seamless depth */}
+      <div className="absolute inset-0 bg-black/40 z-[1]" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4">
+      {/* Content wrapper with guaranteed vertical breathing space */}
+      <div className="relative z-10 my-auto flex w-full flex-col items-center justify-center px-4">
         {/* 1. Label */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -71,7 +71,7 @@ export default function ScratchReveal() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
           className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
-          style={{ margin: "14px auto 32px" }}
+          style={{ margin: "16px auto 32px" }}
         />
 
         {/* 3. Heading */}
@@ -80,14 +80,14 @@ export default function ScratchReveal() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
-          className="font-heading text-4xl sm:text-5xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]"
+          className="font-heading text-4xl sm:text-5xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] text-center"
           style={{ margin: 0, lineHeight: 1.15 }}
         >
           Scratch to Reveal The Date
         </motion.h2>
 
         {/* 4. Down Arrow */}
-        <div className="mt-8 mb-14 sm:mb-18 flex h-10 items-center justify-center">
+        <div className="mt-8 mb-12 sm:mb-16 flex h-10 items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: revealed ? 0 : 1, y: 0 }}
@@ -111,12 +111,10 @@ export default function ScratchReveal() {
             </motion.span>
           </motion.div>
         </div>
-      </div>
 
-      {/* Floating Scratch Card Container */}
-      <div className="relative z-10 flex justify-center px-4 sm:px-0">
+        {/* Floating Scratch Card Container */}
         <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40]/70 p-[2px] shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-[1px]">
-          <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/25 sm:h-72 md:h-96 md:rounded-[1.85rem] bg-transparent">
+          <div className="relative h-56 overflow-hidden rounded-[1.6rem] border border-white/25 sm:h-72 md:h-96 md:rounded-[1.85rem] bg-transparent">
             {/* Revealed Date Layer */}
             <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
               <div className="px-2 py-3 text-center sm:px-7 sm:py-8 md:px-12">
