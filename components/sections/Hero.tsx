@@ -157,7 +157,6 @@ export default function Hero() {
                 aria-hidden="true"
               />
 
-              {/* Teeno text lines ko slightly neeche shift kiya gaya hai */}
               <div className="relative z-10 mx-auto flex w-full flex-col items-center translate-y-6 sm:translate-y-8">
                 {/* 1. Together */}
                 <motion.p
@@ -213,18 +212,20 @@ export default function Hero() {
         </Container>
       </motion.div>
 
-      {/* Scroll Indicator */}
+      {/* =====================================================
+          SCROLL INDICATOR (Shifted Upwards + Pure White)
+      ===================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-12 sm:bottom-16 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
+        className="absolute bottom-24 sm:bottom-20 left-0 right-0 z-30 flex justify-center text-center pb-[env(safe-area-inset-bottom)] pointer-events-none"
       >
-        <div className="scroll-indicator">
-          <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
+        <div className="scroll-indicator flex flex-col items-center gap-2">
+          <span className="text-[11px] font-semibold uppercase tracking-[5px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
             SCROLL
           </span>
-          <div className="scroll-line text-[var(--foreground)]" />
+          <div className="scroll-line h-8 w-[2px] bg-gradient-to-b from-white via-white/80 to-transparent shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
         </div>
       </motion.div>
 
