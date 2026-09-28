@@ -236,7 +236,7 @@ export default function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-24 sm:bottom-28 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
+        className="absolute bottom-20 sm:bottom-24 left-0 right-0 z-20 flex justify-center text-center pb-[env(safe-area-inset-bottom)]"
       >
         <div className="scroll-indicator">
           <span className="text-xs uppercase tracking-[5px] text-[var(--foreground)]">
@@ -246,15 +246,8 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* =====================================================
-          BOTTOM EXTENDED DEEP BLACK GRADIENT (Upar tak lifted)
-      ===================================================== */}
-      <div 
-        className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-64 sm:h-80 md:h-96"
-        style={{
-          background: "linear-gradient(to top, #0c0704 0%, rgba(12, 7, 4, 0.95) 25%, rgba(12, 7, 4, 0.7) 50%, rgba(12, 7, 4, 0.3) 75%, transparent 100%)",
-        }}
-      />
+      {/* Subtle baseline shadow (no mud/heavy black) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-black/50 to-transparent" />
     </section>
   );
 }
