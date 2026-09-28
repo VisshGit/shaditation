@@ -39,7 +39,7 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Background Parallax
+  // Background Parallax: Scroll hone par subtle slow drift
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.2]);
 
@@ -73,15 +73,15 @@ export default function Hero() {
       className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0c0704] pb-28 sm:pb-36"
     >
       {/* =====================================================
-          PARALLAX HERITAGE BACKGROUND (Mobile Centered)
+          PARALLAX HERITAGE BACKGROUND
       ===================================================== */}
       {isRajasthani && (
         <motion.div
           style={{ y: bgY }}
-          className="pointer-events-none absolute inset-x-0 -top-12 -bottom-28 w-full min-w-full overflow-hidden will-change-transform"
+          className="pointer-events-none absolute inset-0 -top-12 -bottom-28 scale-[1.08] bg-cover bg-center will-change-transform"
         >
           <div
-            className="absolute left-1/2 top-0 h-full w-[108vw] min-w-full -translate-x-1/2 bg-cover bg-[position:center_top] sm:bg-center bg-no-repeat"
+            className="h-full w-full bg-cover bg-center"
             style={{
               backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
               filter: "blur(2px)",
@@ -93,8 +93,8 @@ export default function Hero() {
 
       {/* Ambient Radial Lights */}
       <div className="pointer-events-none absolute inset-0 z-[1]">
-        <div className="absolute left-1/2 top-20 h-72 w-72 -translate-x-1/2 rounded-full bg-[var(--secondary)]/15 blur-3xl sm:left-20 sm:translate-x-0" />
-        <div className="absolute bottom-20 right-10 h-72 w-72 rounded-full bg-[var(--primary)]/10 blur-3xl sm:right-20" />
+        <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-[var(--secondary)]/15 blur-3xl" />
+        <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-[var(--primary)]/10 blur-3xl" />
       </div>
 
       {/* Rose Petals */}
