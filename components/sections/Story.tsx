@@ -36,20 +36,21 @@ export default function OurStory() {
     offset: ["start end", "end start"],
   });
 
-  // Background smooth slow parallax drift
+  // Smooth continuous parallax drift
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden bg-[#0c0704] py-32 sm:py-44 md:py-52"
+      /* Standalone cinematic stage with generous breathing buffer */
+      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52 md:py-60"
     >
       {/* =====================================================
-          PARALLAX HERITAGE BACKGROUND
+          PARALLAX HERITAGE BACKGROUND (Extended Buffer)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.15] will-change-transform z-0"
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] will-change-transform z-0"
       >
         <div
           className="h-full w-full bg-cover bg-center"
@@ -58,13 +59,13 @@ export default function OurStory() {
             filter: "blur(1px)",
           }}
         />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0c0704] to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0c0704] to-transparent" />
       </motion.div>
 
-      {/* Atmospheric lighting & soft edge blend */}
+      {/* Atmospheric lighting & soft edge transitions */}
       <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-20 bg-gradient-to-b from-[#0c0704] to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-20 bg-gradient-to-t from-[#0c0704] to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
@@ -80,11 +81,11 @@ export default function OurStory() {
       </div>
 
       {/* =====================================================
-          STORY CONTENT
+          STORY CONTENT (Floating in Center)
       ===================================================== */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 my-auto w-full">
         <Container>
-          <div className="mx-auto max-w-4xl px-4 text-center">
+          <div className="mx-auto max-w-5xl px-4 text-center">
             {/* 1. Label */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -104,7 +105,7 @@ export default function OurStory() {
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
               className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
-              style={{ margin: "14px auto 32px" }}
+              style={{ margin: "16px auto 32px" }}
             />
 
             {/* 3. Heading */}
@@ -129,8 +130,8 @@ export default function OurStory() {
               A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that brought us here.
             </motion.p>
 
-            {/* Timeline Cards */}
-            <div className="mt-24 md:mt-28 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-stretch">
+            {/* Timeline Cards with Clean Breathing Room */}
+            <div className="mt-28 md:mt-32 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 items-stretch">
               {storyTimeline.map((item, index) => (
                 <motion.div
                   key={item.year}
