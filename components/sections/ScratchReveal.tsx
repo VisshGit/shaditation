@@ -27,22 +27,25 @@ export default function ScratchReveal() {
   return (
     <section
       ref={sectionRef}
-      /* NOTE: min-h-[115vh] aur massive vertical buffer taaki content full isolated stage bane */
       className="relative isolate flex min-h-[115vh] w-full flex-col items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER
+          PARALLAX BACKGROUND VIDEO LAYER
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.15] bg-cover bg-center will-change-transform"
+        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.15] will-change-transform"
       >
-        <div
-          className="h-full w-full bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/images/scbg1.png')",
-          }}
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/scbg1.png"
+          className="h-full w-full object-cover object-center"
+        >
+          <source src="/videos/scbg1.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
       {/* Atmospheric Royal Golden Vignettes & Ambient Tint */}
@@ -54,7 +57,7 @@ export default function ScratchReveal() {
       {/* Bottom Golden Glow Gradient */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
-      {/* Content wrapper with guaranteed vertical breathing space */}
+      {/* Content wrapper */}
       <div className="relative z-10 my-auto flex w-full flex-col items-center justify-center px-4">
         {/* 1. Label */}
         <motion.p
