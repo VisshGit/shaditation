@@ -29,11 +29,11 @@ export default function ScratchReveal() {
       {/* Subtle Ambient Dim Overlay */}
       <div className="absolute inset-0 bg-black/30 z-0" />
 
-      {/* Top Seamless Black Gradient (Hero ke bottom gradient se exact merge) */}
+      {/* Top Extended Seamless Black Gradient */}
       <div 
-        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-28 sm:h-36"
+        className="pointer-events-none absolute inset-x-0 top-0 z-10 h-44 sm:h-56"
         style={{
-          background: "linear-gradient(to bottom, #0c0704 0%, rgba(12, 7, 4, 0.85) 30%, rgba(12, 7, 4, 0.35) 65%, transparent 100%)",
+          background: "linear-gradient(to bottom, #0c0704 0%, rgba(12, 7, 4, 0.9) 20%, rgba(12, 7, 4, 0.6) 45%, rgba(12, 7, 4, 0.25) 75%, transparent 100%)",
         }}
       />
 
