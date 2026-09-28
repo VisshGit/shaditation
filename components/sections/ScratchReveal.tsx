@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import ScratchCanvas from "@/components/ui/ScratchCanvas";
 import Section from "@/components/ui/Section";
@@ -19,7 +18,7 @@ export default function ScratchReveal() {
 
   return (
     <Section className="relative isolate overflow-hidden bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
-      {/* Background Image (cdbg3.png) */}
+      {/* Background Image (scbg.png) */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
         style={{
@@ -101,39 +100,26 @@ export default function ScratchReveal() {
 
       {/* Scratch Card Container */}
       <div className="relative z-20 flex justify-center px-4 sm:px-0">
-        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40] p-[3px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-          <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/20 sm:h-72 md:h-96 md:rounded-[1.85rem]">
-            {/* Card Content */}
-            <div className="absolute inset-0">
-              <Image
-                src="/images/card.png"
-                alt="Wedding date reveal"
-                fill
-                priority
-                sizes="(max-width: 768px) 100vw, 672px"
-                className="object-cover"
-              />
+        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40]/80 p-[3px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/20 sm:h-72 md:h-96 md:rounded-[1.85rem] bg-black/20 backdrop-blur-[2px]">
+            {/* Revealed Content (Transparent Background with Page Show-through) */}
+            <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
+              <div className="px-2 py-3 text-center sm:px-7 sm:py-8 md:px-12">
+                <p className="text-[10px] uppercase tracking-[3px] text-amber-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] sm:text-xs sm:tracking-[6px] font-medium">
+                  Save the Date
+                </p>
 
-              <div className="absolute inset-0 bg-[#2b1d0e]/45" />
-
-              <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
-                <div className="px-2 py-3 text-center sm:px-7 sm:py-8 md:px-12">
-                  <p className="text-[9px] uppercase tracking-[3px] text-white/80 sm:text-xs sm:tracking-[6px]">
-                    Save the Date
-                  </p>
-
-                  <div className="my-2 flex items-center justify-center gap-2 sm:my-5 sm:gap-4">
-                    <span className="h-px w-6 bg-amber-200/70 sm:w-12" />
-                    <span className="h-1 w-1 rounded-full bg-amber-200 sm:h-1.5 sm:w-1.5" />
-                    <span className="h-px w-6 bg-amber-200/70 sm:w-12" />
-                  </div>
-
-                  <h3 className="font-heading text-2xl text-white sm:text-4xl md:text-6xl">
-                    31 JAN 2027
-                  </h3>
-
-                  <p className="mt-2 text-[10px] uppercase tracking-[2px] text-amber-100 sm:mt-4 sm:text-sm sm:tracking-[3px]" />
+                <div className="my-2 flex items-center justify-center gap-2 sm:my-5 sm:gap-4">
+                  <span className="h-px w-6 bg-amber-200/80 sm:w-12 shadow" />
+                  <span className="h-1 w-1 rounded-full bg-amber-200 sm:h-1.5 sm:w-1.5 shadow" />
+                  <span className="h-px w-6 bg-amber-200/80 sm:w-12 shadow" />
                 </div>
+
+                <h3 className="font-heading text-3xl sm:text-5xl md:text-6xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+                  31 JAN 2027
+                </h3>
+
+                <p className="mt-2 text-[10px] uppercase tracking-[2px] text-amber-100/90 drop-shadow sm:mt-4 sm:text-sm sm:tracking-[3px]" />
               </div>
             </div>
 
