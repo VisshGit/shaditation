@@ -78,17 +78,17 @@ export default function Countdown() {
 
   return (
     <section
-      className="relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
+      className="relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed !mt-0 !pt-[100px] !pb-[140px] md:!pt-[120px] md:!pb-[160px]"
       style={{
-        marginTop: "120px",
-        paddingTop: "160px",
-        paddingBottom: "160px",
         backgroundImage: "url('/images/cdbg.PNG')",
       }}
     >
       {/* Background Dim Overlays */}
       <div className="absolute inset-0 bg-black/40 z-0" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/45 z-0" />
+
+      {/* TOP BLACK GRADIENT OVERLAY (Scratch section ke sath continuous merge hone ke liye) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-32 sm:h-40 bg-gradient-to-b from-black via-black/80 to-transparent" />
 
       {/* Content */}
       <div className="relative z-10 w-full">
