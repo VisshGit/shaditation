@@ -24,34 +24,38 @@ export default function Gallery() {
     offset: ["start end", "end start"],
   });
 
-  // Smooth continuous parallax drift
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  // Parallax continuous smooth drift
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
   return (
     <section
       ref={sectionRef}
-      /* Standalone cinematic stage with massive breathing buffer */
+      /* Standalone cinematic stage with massive vertical breathing buffer */
       className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-40 sm:py-52 md:py-60"
     >
       {/* =====================================================
-          PARALLAX LIGHT ROYAL PARCHMENT BACKGROUND
+          PARALLAX BACKGROUND LAYER (cdbg.PNG with Light Royal Tint)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
         className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform z-0"
       >
-        {/* Soft Royal Parchment Base */}
-        <div className="h-full w-full bg-[#faf6ee]" />
-
-        {/* Subtle Ambient Heritage Light Accents */}
-        <div className="absolute left-1/4 top-1/4 h-96 w-96 -translate-x-1/2 rounded-full bg-[#f3e5c8]/60 blur-3xl" />
-        <div className="absolute right-1/4 bottom-1/4 h-96 w-96 translate-x-1/2 rounded-full bg-[#ebd19f]/40 blur-3xl" />
+        <div
+          className="h-full w-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/cdbg.PNG')",
+          }}
+        />
+        {/* Light theme overlay over cdbg texture */}
+        <div className="absolute inset-0 bg-[#faf6ee]/85 mix-blend-screen" />
+        <div className="absolute inset-0 bg-[#f4ece1]/60" />
       </motion.div>
 
-      {/* Atmospheric lighting & soft edge transitions to adjacent dark sections */}
+      {/* Atmospheric edge vignettes & deep void transitions to adjacent sections */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/40 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-48 bg-gradient-to-b from-[#b68d40]/25 via-transparent to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-48 bg-gradient-to-b from-[#b68d40]/30 via-transparent to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/40 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-48 bg-gradient-to-t from-[#b68d40]/25 via-transparent to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
@@ -67,11 +71,11 @@ export default function Gallery() {
       </div>
 
       {/* =====================================================
-          GALLERY CONTENT (Centered Stage)
+          GALLERY CONTENT (Centered in Isolated Stage)
       ===================================================== */}
       <div className="relative z-10 my-auto w-full">
         <Container>
-          {/* Gallery Heading */}
+          {/* Header Block */}
           <div className="flex justify-center">
             <div className="w-full max-w-3xl px-4 text-center sm:px-0">
               {/* 1. Label */}
