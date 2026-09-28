@@ -36,26 +36,26 @@ export default function OurStory() {
     offset: ["start end", "end start"],
   });
 
-  // Smooth continuous parallax drift
+  // Parallax smooth drift
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
 
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-[125vh] w-full flex-col justify-start overflow-hidden bg-[#0c0704] pt-36 pb-40 sm:pt-48 sm:pb-52 md:pt-56 md:pb-60"
+      /* Standalone cinematic stage with massive breathing buffer */
+      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52 md:py-60"
     >
       {/* =====================================================
-          PARALLAX HERITAGE BACKGROUND (cdbg3.png)
+          PARALLAX BACKGROUND LAYER (cdbg.PNG - Extended Buffer)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] will-change-transform z-0"
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform z-0"
       >
         <div
           className="h-full w-full bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/cdbg3.png')",
-            filter: "blur(1px)",
+            backgroundImage: "url('/images/cdbg.PNG')",
           }}
         />
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0c0704] to-transparent" />
@@ -63,7 +63,11 @@ export default function OurStory() {
 
       {/* Atmospheric lighting & soft edge transitions */}
       <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
+      
+      {/* Top Golden Glow Gradient (Matching previous sections) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      
+      {/* Bottom Transition Gradient */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
       {/* =====================================================
@@ -80,12 +84,12 @@ export default function OurStory() {
       </div>
 
       {/* =====================================================
-          STORY CONTENT
+          STORY CONTENT (Centered in the Isolated Stage)
       ===================================================== */}
-      <div className="relative z-10 w-full">
+      <div className="relative z-10 my-auto w-full">
         <Container>
           <div className="mx-auto max-w-5xl px-4 text-center">
-            {/* 1. Label */}
+            {/* 1. Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -107,7 +111,7 @@ export default function OurStory() {
               style={{ margin: "16px auto 32px" }}
             />
 
-            {/* 3. Heading */}
+            {/* 3. Main Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -130,10 +134,8 @@ export default function OurStory() {
               A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that brought us here.
             </motion.p>
 
-            {/* =====================================================
-                GUARANTEED PHYSICAL BREATHING SPACE (Cannot Collapse)
-            ===================================================== */}
-            <div className="h-28 sm:h-36 md:h-44 w-full" aria-hidden="true" />
+            {/* Guaranteed Physical Spacer - Badges aur description ke beech clear visual gap */}
+            <div className="h-24 sm:h-32 md:h-36 w-full" aria-hidden="true" />
 
             {/* Timeline Cards Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-10 items-stretch">
