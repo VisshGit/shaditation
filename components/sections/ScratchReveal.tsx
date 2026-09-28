@@ -158,7 +158,7 @@ export default function ScratchReveal() {
       </div>
 
       {/* Bottom Black Gradient Overlay */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 sm:h-40 bg-gradient-to-t from-black via-black/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-12 sm:h-16 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
     </Section>
   );
 }
