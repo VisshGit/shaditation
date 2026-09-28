@@ -100,26 +100,27 @@ export default function ScratchReveal() {
 
       {/* Scratch Card Container */}
       <div className="relative z-20 flex justify-center px-4 sm:px-0">
-        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40]/80 p-[3px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-          <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/20 sm:h-72 md:h-96 md:rounded-[1.85rem] bg-black/20 backdrop-blur-[2px]">
-            {/* Revealed Content (Transparent Background with Page Show-through) */}
+        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40]/70 p-[2px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          {/* Card inner: Pure transparent background (no blur, no black tint) */}
+          <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/25 sm:h-72 md:h-96 md:rounded-[1.85rem] bg-transparent">
+            {/* Revealed Content */}
             <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
               <div className="px-2 py-3 text-center sm:px-7 sm:py-8 md:px-12">
-                <p className="text-[10px] uppercase tracking-[3px] text-amber-200 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] sm:text-xs sm:tracking-[6px] font-medium">
+                <p className="text-[10px] uppercase tracking-[3px] text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] sm:text-xs sm:tracking-[6px] font-semibold">
                   Save the Date
                 </p>
 
                 <div className="my-2 flex items-center justify-center gap-2 sm:my-5 sm:gap-4">
-                  <span className="h-px w-6 bg-amber-200/80 sm:w-12 shadow" />
-                  <span className="h-1 w-1 rounded-full bg-amber-200 sm:h-1.5 sm:w-1.5 shadow" />
-                  <span className="h-px w-6 bg-amber-200/80 sm:w-12 shadow" />
+                  <span className="h-px w-6 bg-amber-200/90 sm:w-12 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]" />
+                  <span className="h-1 w-1 rounded-full bg-amber-200 sm:h-1.5 sm:w-1.5 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]" />
+                  <span className="h-px w-6 bg-amber-200/90 sm:w-12 drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)]" />
                 </div>
 
-                <h3 className="font-heading text-3xl sm:text-5xl md:text-6xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">
+                <h3 className="font-heading text-3xl sm:text-5xl md:text-6xl text-white drop-shadow-[0_6px_20px_rgba(0,0,0,1)] font-bold">
                   31 JAN 2027
                 </h3>
 
-                <p className="mt-2 text-[10px] uppercase tracking-[2px] text-amber-100/90 drop-shadow sm:mt-4 sm:text-sm sm:tracking-[3px]" />
+                <p className="mt-2 text-[10px] uppercase tracking-[2px] text-amber-100 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)] sm:mt-4 sm:text-sm sm:tracking-[3px]" />
               </div>
             </div>
 
