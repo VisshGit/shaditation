@@ -157,7 +157,8 @@ export default function Hero() {
                 aria-hidden="true"
               />
 
-              <div className="relative z-10 mx-auto flex w-full flex-col items-center">
+              {/* Teeno text lines ko slightly neeche shift kiya gaya hai */}
+              <div className="relative z-10 mx-auto flex w-full flex-col items-center translate-y-6 sm:translate-y-8">
                 {/* 1. Together */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
