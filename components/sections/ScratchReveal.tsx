@@ -17,7 +17,7 @@ export default function ScratchReveal() {
   const [revealed, setRevealed] = useState(false);
 
   return (
-    <Section className="relative isolate overflow-hidden bg-[var(--surface-soft)] !pt-[150px] !pb-[150px] md:!pt-[160px] md:!pb-[160px]">
+    <Section className="relative isolate overflow-hidden bg-[#0c0704] !pt-[140px] !pb-[40px] md:!pt-[160px] md:!pb-[50px] !mb-0">
       {/* Background Image (scbg.png) */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
@@ -29,7 +29,7 @@ export default function ScratchReveal() {
       {/* Dim Overlay */}
       <div className="absolute inset-0 bg-black/35 z-0" />
 
-      {/* Top Black Gradient Overlay */}
+      {/* Top Black Gradient Overlay (Hero se merge ke liye) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 sm:h-28 bg-gradient-to-b from-black via-black/70 to-transparent" />
 
       {/* Heading */}
@@ -101,7 +101,6 @@ export default function ScratchReveal() {
       {/* Scratch Card Container */}
       <div className="relative z-20 flex justify-center px-4 sm:px-0">
         <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40]/70 p-[2px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-          {/* Card inner: Pure transparent background (no blur, no black tint) */}
           <div className="relative h-52 overflow-hidden rounded-[1.6rem] border border-white/25 sm:h-72 md:h-96 md:rounded-[1.85rem] bg-transparent">
             {/* Revealed Content */}
             <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
@@ -158,8 +157,8 @@ export default function ScratchReveal() {
         </div>
       </div>
 
-      {/* Bottom Black Gradient Overlay */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-24 sm:h-28 bg-gradient-to-t from-black via-black/70 to-transparent" />
+      {/* Bottom Black Gradient Overlay (Directly merging into Countdown) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-32 sm:h-40 bg-gradient-to-t from-black via-black/80 to-transparent" />
     </Section>
   );
 }
