@@ -110,7 +110,11 @@ export default function Countdown() {
 
       {/* Atmospheric lighting & soft edge blend */}
       <div className="absolute inset-0 bg-black/45 z-[1]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+      
+      {/* Top Golden Glow Gradient (Matching Scratch Reveal) */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      
+      {/* Bottom Transition Gradient */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
       {/* Content wrapper centered inside the stage */}
