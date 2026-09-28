@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "@/components/ui/Container";
-
 import { activeTheme } from "@/config/themes";
 
 const fireSparks = Array.from({ length: 34 }, (_, index) => ({
@@ -33,6 +32,16 @@ const smoothTransition = (delay: number) => ({
 export default function Hero() {
   const [showPetals, setShowPetals] = useState(true);
   const [showSparks, setShowSparks] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Background Parallax: Scroll hone par subtle slow drift
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.2]);
 
   const isRajasthani = activeTheme === "royal-rajasthani";
 
@@ -59,36 +68,38 @@ export default function Hero() {
   }, [isRajasthani]);
 
   return (
-    <section className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[var(--background)]">
+    <section
+      ref={containerRef}
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0c0704]"
+    >
       {/* =====================================================
-          RAJASTHANI HERO BACKGROUND
+          PARALLAX HERITAGE BACKGROUND
       ===================================================== */}
       {isRajasthani && (
-        <>
+        <motion.div
+          style={{ y: bgY }}
+          className="pointer-events-none absolute inset-0 -top-12 -bottom-24 scale-[1.08] bg-cover bg-center will-change-transform"
+        >
           <div
-            className="pointer-events-none absolute inset-0 scale-[1.04] bg-cover bg-center"
+            className="h-full w-full bg-cover bg-center"
             style={{
               backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
-              filter: "blur(4px)",
+              filter: "blur(2px)",
             }}
           />
-          <div className="pointer-events-none absolute inset-0 bg-white/35" />
-        </>
+          <div className="absolute inset-0 bg-black/25" />
+        </motion.div>
       )}
 
-      {/* =====================================================
-          THEME BACKGROUND LIGHTS
-      ===================================================== */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-[var(--secondary)]/20 blur-3xl" />
+      {/* Ambient Radial Lights */}
+      <div className="pointer-events-none absolute inset-0 z-[1]">
+        <div className="absolute left-20 top-20 h-72 w-72 rounded-full bg-[var(--secondary)]/15 blur-3xl" />
         <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-[var(--primary)]/10 blur-3xl" />
       </div>
 
-      {/* =====================================================
-          ROSE PETALS
-      ===================================================== */}
+      {/* Rose Petals */}
       {isRajasthani && showPetals && (
-        <div className="hero-rose-petals">
+        <div className="hero-rose-petals z-[2]">
           {rosePetals.map((petal, index) => (
             <span
               key={index}
@@ -107,11 +118,9 @@ export default function Hero() {
         </div>
       )}
 
-      {/* =====================================================
-          FIRE SPARKS
-      ===================================================== */}
+      {/* Fire Sparks */}
       {isRajasthani && showSparks && (
-        <div className="hero-fire-sparks">
+        <div className="hero-fire-sparks z-[2]">
           {fireSparks.map((spark, index) => (
             <span
               key={index}
@@ -134,45 +143,33 @@ export default function Hero() {
       )}
 
       {/* =====================================================
-          HERO CONTENT
+          HERO CONTENT (Fades gently on scroll)
       ===================================================== */}
-      <div className="relative z-10 w-full min-w-0">
+      <motion.div
+        style={{ opacity: contentOpacity }}
+        className="relative z-10 w-full min-w-0"
+      >
         <Container>
           <div className="flex min-h-screen w-full items-center justify-center px-4 text-center sm:px-6">
             <div className="relative mx-auto w-full max-w-4xl px-3 sm:px-0">
-              {/* Dark backdrop */}
               <div
                 className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[95%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] bg-black/25 blur-3xl sm:h-[440px] sm:w-[90%]"
                 aria-hidden="true"
               />
 
               <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-                {/* 1. TOGETHER */}
+                {/* 1. Together */}
                 <motion.p
                   initial={{ opacity: 0, y: 18 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.2)}
-                  className="
-                    max-w-[320px]
-                    text-center
-                    text-[10px]
-                    font-medium
-                    uppercase
-                    leading-5
-                    tracking-[3px]
-                    text-[var(--foreground)]
-                    drop-shadow-[0_2px_6px_rgba(255,255,255,0.45)]
-                    sm:max-w-none
-                    sm:text-sm
-                    sm:tracking-[7px]
-                    -translate-y-[85px] sm:-translate-y-[60px]
-                  "
+                  className="max-w-[320px] text-center text-[10px] font-medium uppercase leading-5 tracking-[3px] text-[var(--foreground)] drop-shadow-[0_2px_6px_rgba(255,255,255,0.45)] sm:max-w-none sm:text-sm sm:tracking-[7px] -translate-y-[85px] sm:-translate-y-[60px]"
                   style={{ margin: 0 }}
                 >
                   Together With Their Families
                 </motion.p>
 
-                {/* 2. NAMES */}
+                {/* 2. Names */}
                 <motion.div
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -184,33 +181,19 @@ export default function Hero() {
                   </h1>
                 </motion.div>
 
-                {/* 3. INVITATION TEXT */}
+                {/* 3. Text */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={smoothTransition(0.7)}
-                  className="
-                    mt-12
-                    mb-10
-                    max-w-[330px]
-                    text-center
-                    text-sm
-                    leading-7
-                    text-[var(--white)]
-                    drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]
-                    sm:mt-14
-                    sm:mb-12
-                    sm:max-w-xl
-                    sm:text-lg
-                    sm:leading-9
-                  "
+                  className="mt-12 mb-10 max-w-[330px] text-center text-sm leading-7 text-[var(--white)] drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)] sm:mt-14 sm:mb-12 sm:max-w-xl sm:text-lg sm:leading-9"
                 >
                   Request the pleasure of your company
                   <br />
                   at the celebration of their marriage.
                 </motion.p>
 
-                {/* 4. DECORATIVE DIVIDER */}
+                {/* 4. Divider */}
                 <motion.div
                   initial={{ opacity: 0, scale: 0.85 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -227,11 +210,9 @@ export default function Hero() {
             </div>
           </div>
         </Container>
-      </div>
+      </motion.div>
 
-      {/* =====================================================
-          SCROLL INDICATOR
-      ===================================================== */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -246,8 +227,8 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* Subtle baseline shadow (no mud/heavy black) */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-16 bg-gradient-to-t from-black/50 to-transparent" />
+      {/* Soft Vignette Edge (Sirf bottom 40px, no heavy black patch) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-14 bg-gradient-to-t from-[#0c0704]/70 to-transparent" />
     </section>
   );
 }
