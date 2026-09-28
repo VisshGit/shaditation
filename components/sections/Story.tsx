@@ -4,18 +4,37 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "@/components/ui/Container";
 
+const storyTimeline = [
+  {
+    year: "2024",
+    title: "The First Meeting",
+    description: "Sparks flew as our paths crossed at a cozy cafe in Jaipur. A coffee turned into hours of endless conversation.",
+  },
+  {
+    year: "2025",
+    title: "Growing Together",
+    description: "From exploring hidden alleys to sharing dreams under the stars, every moment brought us closer.",
+  },
+  {
+    year: "2026",
+    title: "The Big Yes",
+    description: "On a serene beach at sunset, surrounded by waves and love, we promised our 'forever' to each other.",
+  },
+];
+
 const smoothCurve = [0.22, 1, 0.36, 1] as const;
 
 export default function OurStory() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Parallax tracking
+  // Parallax tracking: Is complete section ko trace karega
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"],
+    offset: ["start end", "end start"], // Section bottom se enter ho aur top se exit ho
   });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+  // Background smooth slow parallax drift (-12% relative translation on scroll)
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-12%"]);
 
   return (
     <section
@@ -23,30 +42,47 @@ export default function OurStory() {
       className="relative isolate overflow-hidden bg-[#0c0704] py-24 sm:py-32"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER
+          PARALLAX HERITAGE BACKGROUND (Image set via CSS)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-24 -bottom-24 scale-[1.12] bg-cover bg-center will-change-transform"
+        className="pointer-events-none absolute inset-0 -top-16 -bottom-16 scale-[1.05] will-change-transform z-0"
       >
         <div
-          className="h-full w-full bg-cover bg-center opacity-40"
+          className="h-full w-full bg-cover bg-center"
           style={{
-            backgroundImage: "url('/themes/rajasthani/hero-bg.PNG')",
-            filter: "blur(3px)",
+            backgroundImage: "url('/themes/rajasthani/story-bg.PNG')",
+            filter: "blur(1px)",
           }}
         />
+        {/* Continuous depth texture blend to avoid sharp edge near parallax limits */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#0c0704] to-transparent" />
       </motion.div>
 
-      {/* Atmospheric lighting & soft edge blend */}
+      {/* Atmospheric lighting & soft edge blend to neighboring sections */}
       <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-14 bg-gradient-to-b from-[#0c0704] to-transparent" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-14 bg-gradient-to-t from-[#0c0704] to-transparent" />
 
-      {/* Content */}
+      {/* =====================================================
+          DECORATIVE AMBER GOLD BORDER RIBBON
+      ===================================================== */}
+      <div className="absolute inset-x-0 top-0 z-10 flex h-24 items-center justify-center -translate-y-[45px]">
+        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
+          <span className="text-xl">𑁍</span>
+          <span className="text-sm">✦</span>
+          <span className="text-xl">𑁍</span>
+        </div>
+        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
+      </div>
+
+      {/* =====================================================
+          STORY CONTENT (Floating above parallax bg)
+      ===================================================== */}
       <div className="relative z-10 w-full">
         <Container>
-          <div className="mx-auto max-w-4xl text-center px-4">
+          <div className="mx-auto max-w-4xl px-4 text-center">
             {/* 1. Label */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -56,7 +92,7 @@ export default function OurStory() {
               className="text-sm uppercase tracking-[6px] text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-semibold"
               style={{ margin: 0 }}
             >
-              A Royal Beginning
+              Counting Down to Forever
             </motion.p>
 
             {/* 2. Divider */}
@@ -88,57 +124,59 @@ export default function OurStory() {
               transition={{ duration: 0.8, delay: 0.6, ease: smoothCurve }}
               className="mt-6 text-sm sm:text-base leading-relaxed text-amber-100/80 max-w-2xl mx-auto"
             >
-              From spontaneous conversations that turned into cherished memories,
-              to promises that will last a lifetime. Here begins our forever.
+              A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that defined us.
             </motion.p>
 
-            {/* Couple Cards with Ornate Gold Frame */}
-            <div className="mt-14 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-              {/* Groom */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, delay: 0.7, ease: smoothCurve }}
-                className="relative rounded-2xl border border-[#b68d40]/50 bg-black/40 p-6 sm:p-8 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-              >
-                <div className="mx-auto h-32 w-32 sm:h-40 sm:w-40 rounded-full border-2 border-[#b68d40] p-1.5 shadow-[0_0_20px_rgba(182,141,64,0.3)]">
-                  <div className="h-full w-full rounded-full bg-stone-800/80 flex items-center justify-center text-amber-200/50 text-2xl font-serif">
-                    V
+            {/* Timeline (Floating design with balanced spacing) */}
+            <div className="mt-20 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 items-stretch">
+              {storyTimeline.map((item, index) => (
+                <motion.div
+                  key={item.year}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.8, delay: 0.7 + index * 0.15, ease: smoothCurve }}
+                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/40 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-sm flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition duration-300"
+                >
+                  {/* Floating Year Bubble */}
+                  <div className="absolute -top-6 left-1/2 -translate-x-1/2 flex items-center justify-center h-12 w-28 rounded-full border-2 border-[#b68d40] bg-[#0c0704] shadow-[0_0_15px_rgba(182,141,64,0.5)] group-hover:border-[#e5c158] transition duration-300">
+                    <span className="font-heading text-xl font-bold text-amber-200 group-hover:text-amber-100 transition duration-300">
+                      {item.year}
+                    </span>
                   </div>
-                </div>
-                <h3 className="mt-5 font-serif text-2xl font-bold text-amber-200">
-                  Vishal
-                </h3>
-                <p className="mt-1 text-xs uppercase tracking-[3px] text-amber-100/70">
-                  The Groom
-                </p>
-              </motion.div>
 
-              {/* Bride */}
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, delay: 0.8, ease: smoothCurve }}
-                className="relative rounded-2xl border border-[#b68d40]/50 bg-black/40 p-6 sm:p-8 backdrop-blur-md shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-              >
-                <div className="mx-auto h-32 w-32 sm:h-40 sm:w-40 rounded-full border-2 border-[#b68d40] p-1.5 shadow-[0_0_20px_rgba(182,141,64,0.3)]">
-                  <div className="h-full w-full rounded-full bg-stone-800/80 flex items-center justify-center text-amber-200/50 text-2xl font-serif">
-                    V
+                  <div className="mt-10 mb-5 flex items-center gap-3 text-amber-300/80">
+                    <span className="h-px w-6 bg-amber-400/80" />
+                    <span className="text-xs">✦</span>
+                    <span className="h-px w-6 bg-amber-400/80" />
                   </div>
-                </div>
-                <h3 className="mt-5 font-serif text-2xl font-bold text-amber-200">
-                  Varsha
-                </h3>
-                <p className="mt-1 text-xs uppercase tracking-[3px] text-amber-100/70">
-                  The Bride
-                </p>
-              </motion.div>
+
+                  <h3 className="font-serif text-2xl font-bold text-amber-100 group-hover:text-white transition duration-300">
+                    {item.title}
+                  </h3>
+                  <p className="mt-4 text-sm leading-relaxed text-amber-100/70 flex-grow group-hover:text-amber-100/90 transition duration-300">
+                    {item.description}
+                  </p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </Container>
       </div>
+
+      {/* =====================================================
+          BOTTOM DECORATIVE BORDER RIBBON
+      ===================================================== */}
+      <div className="absolute inset-x-0 bottom-0 z-10 flex h-24 items-center justify-center translate-y-[45px]">
+        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
+          <span className="text-xl">𑁍</span>
+          <span className="text-sm">✦</span>
+          <span className="text-xl">𑁍</span>
+        </div>
+        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
+      </div>
+
     </section>
   );
 }
