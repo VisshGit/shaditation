@@ -70,6 +70,7 @@ export default function Countdown() {
     offset: ["start end", "end start"],
   });
 
+  // Parallax smooth drift
   const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
   useEffect(() => {
@@ -89,14 +90,15 @@ export default function Countdown() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex items-center justify-center overflow-hidden bg-[#0c0704] py-32 sm:py-44 md:py-52"
+      /* Standalone cinematic stage with massive breathing buffer */
+      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52 md:py-60"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER (cdbg.PNG)
+          PARALLAX BACKGROUND LAYER (Extended Buffer)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.18] bg-cover bg-center will-change-transform"
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform"
       >
         <div
           className="h-full w-full bg-cover bg-center"
@@ -108,11 +110,11 @@ export default function Countdown() {
 
       {/* Atmospheric lighting & soft edge blend */}
       <div className="absolute inset-0 bg-black/45 z-[1]" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-20 bg-gradient-to-b from-[#0c0704]/80 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-20 bg-gradient-to-t from-[#0c0704]/80 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
-      {/* Content */}
-      <div className="relative z-10 w-full">
+      {/* Content wrapper centered inside the stage */}
+      <div className="relative z-10 my-auto w-full">
         <Container>
           <div className="flex justify-center">
             <div className="w-full max-w-4xl text-center px-4">
@@ -135,7 +137,7 @@ export default function Countdown() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
                 className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
-                style={{ margin: "14px auto 32px" }}
+                style={{ margin: "16px auto 32px" }}
               />
 
               {/* 3. Main Heading */}
@@ -150,10 +152,10 @@ export default function Countdown() {
                 The Celebration Begins Soon
               </motion.h2>
 
-              {/* 4. Boxes Container */}
+              {/* 4. Boxes Container with generous upper margin */}
               <div
                 className="flex flex-nowrap justify-center gap-2.5 sm:gap-4 md:gap-8"
-                style={{ marginTop: "60px" }}
+                style={{ marginTop: "72px" }}
               >
                 <CountdownBox
                   label="Days"
