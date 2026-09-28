@@ -44,20 +44,20 @@ export default function ScratchReveal() {
           poster="/images/scbg1.png"
           className="h-full w-full object-cover object-center"
         >
-          <source src="/videos/scbg1.mp4" type="video/mp4" />
+          <source src="/images/scbg1.mp4" type="video/mp4" />
         </video>
       </motion.div>
 
       {/* Atmospheric Royal Golden Vignettes & Ambient Tint */}
       <div className="absolute inset-0 bg-[#1a0f05]/35 mix-blend-multiply z-[1]" />
-      
+
       {/* Top Golden Glow Gradient */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
-      
+
       {/* Bottom Golden Glow Gradient */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
-      {/* Content wrapper */}
+      {/* Content wrapper with guaranteed vertical breathing space */}
       <div className="relative z-10 my-auto flex w-full flex-col items-center justify-center px-4">
         {/* 1. Label */}
         <motion.p
