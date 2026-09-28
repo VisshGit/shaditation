@@ -63,10 +63,10 @@ export default function OurStory() {
 
       {/* Atmospheric lighting & soft edge transitions */}
       <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
-      
+
       {/* Top Golden Glow Gradient (Matching previous sections) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
-      
+
       {/* Bottom Transition Gradient */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
@@ -89,46 +89,24 @@ export default function OurStory() {
       <div className="relative z-10 my-auto w-full">
         <Container>
           <div className="mx-auto max-w-5xl px-4 text-center">
-            {/* 1. Subtitle */}
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: smoothCurve }}
-              className="text-sm uppercase tracking-[6px] text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-semibold"
-              style={{ margin: 0 }}
-            >
-              Counting Down to Forever
-            </motion.p>
-
-            {/* 2. Divider */}
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
-              className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
-              style={{ margin: "16px auto 32px" }}
-            />
-
-            {/* 3. Main Heading */}
+            {/* 1. Main Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
+              transition={{ duration: 0.8, delay: 0.2, ease: smoothCurve }}
               className="font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] md:text-5xl"
               style={{ margin: 0, lineHeight: 1.15 }}
             >
               Our Story
             </motion.h2>
 
-            {/* Description */}
+            {/* 2. Description */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.6, ease: smoothCurve }}
+              transition={{ duration: 0.8, delay: 0.35, ease: smoothCurve }}
               className="mt-6 text-sm sm:text-base leading-relaxed text-amber-100/80 max-w-2xl mx-auto"
             >
               A journey of laughter, dreams, and endless love. Here’s a glimpse into the moments that brought us here.
