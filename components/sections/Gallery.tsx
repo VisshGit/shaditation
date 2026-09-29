@@ -24,21 +24,21 @@ export default function Gallery() {
     offset: ["start end", "end start"],
   });
 
-  // Pure linear GPU drift (Zero stutter)
+  // Parallax smooth drift
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
 
   return (
     <section
       ref={sectionRef}
-      /* Standalone cinematic stage with luxurious vertical buffer */
-      className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-48 sm:py-60 md:py-72"
+      /* Standalone cinematic stage with massive breathing buffer (Exact match to OurStory) */
+      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-40 sm:py-52 md:py-60"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER (mry.png - Extended Bounds)
+          PARALLAX BACKGROUND LAYER (mry.png - Extended Buffer)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] will-change-transform transform-gpu z-0"
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform z-0"
       >
         <div
           className="h-full w-full bg-cover bg-center"
@@ -50,16 +50,14 @@ export default function Gallery() {
         <div className="absolute inset-0 bg-[#faf6ee]/50" />
       </motion.div>
 
-      {/* =====================================================
-          ATMOSPHERIC GRADIENT BUFFERS (Airy & Smooth Transitions)
-      ===================================================== */}
-      {/* Top Transition - Softened height to prevent overlapping feeling */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-28 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/30 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-36 bg-gradient-to-b from-[#b68d40]/20 via-transparent to-transparent" />
+      {/* Atmospheric lighting & soft edge transitions (Exact match to OurStory) */}
+      <div className="absolute inset-0 bg-[#faf6ee]/20 z-[1]" />
 
-      {/* Bottom Transition - Softened height */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/30 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-36 bg-gradient-to-t from-[#b68d40]/20 via-transparent to-transparent" />
+      {/* Top Golden Glow Gradient */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+
+      {/* Bottom Transition Gradient */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#faf6ee] via-[#faf6ee]/70 to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
@@ -75,12 +73,12 @@ export default function Gallery() {
       </div>
 
       {/* =====================================================
-          GALLERY CONTENT (Centered in Isolated Stage)
+          GALLERY CONTENT (Centered in the Isolated Stage)
       ===================================================== */}
       <div className="relative z-10 my-auto w-full">
         <Container>
           <div className="mx-auto max-w-5xl px-4 text-center">
-            {/* 1. Subtitle */}
+            {/* 1. Subtitle / Label */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +100,7 @@ export default function Gallery() {
               style={{ margin: "16px auto 32px" }}
             />
 
-            {/* 3. Heading */}
+            {/* 3. Main Heading */}
             <motion.h2
               initial={{ opacity: 0, y: 22 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -125,19 +123,19 @@ export default function Gallery() {
               Captured glances, timeless frames, and beautiful reminiscence of our togetherness.
             </motion.p>
 
-            {/* Guaranteed Physical Breathing Spacer */}
-            <div className="h-28 sm:h-36 md:h-44 w-full" aria-hidden="true" />
+            {/* Guaranteed Physical Spacer */}
+            <div className="h-24 sm:h-32 md:h-36 w-full" aria-hidden="true" />
 
-            {/* 5. Photos Grid - Pure hardware accelerated layers */}
+            {/* Photos Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
               {photos.map((photo, index) => (
                 <motion.div
                   key={photo}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 35 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{
-                    duration: 0.85,
+                    duration: 0.9,
                     delay: 0.2 + (index % 3) * 0.15,
                     ease: smoothCurve,
                   }}
@@ -147,7 +145,7 @@ export default function Gallery() {
                       : "h-[300px] sm:h-[340px]"
                   }`}
                 >
-                  {/* Photo with independent hover transform */}
+                  {/* Photo Image */}
                   <img
                     src={photo}
                     alt={`Wedding memory ${index + 1}`}
