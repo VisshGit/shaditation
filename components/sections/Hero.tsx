@@ -213,19 +213,19 @@ export default function Hero() {
       </motion.div>
 
       {/* =====================================================
-          SCROLL INDICATOR (Shifted Upwards + Pure White)
+          SCROLL INDICATOR (Enhanced Size, Upward Shift & Pure White)
       ===================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 1 }}
-        className="absolute bottom-24 sm:bottom-20 left-0 right-0 z-30 flex justify-center text-center pb-[env(safe-area-inset-bottom)] pointer-events-none"
+        className="absolute bottom-28 sm:bottom-24 left-0 right-0 z-30 flex justify-center text-center pb-[env(safe-area-inset-bottom)] pointer-events-none"
       >
-        <div className="scroll-indicator flex flex-col items-center gap-2">
-          <span className="text-[11px] font-semibold uppercase tracking-[5px] text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
+        <div className="scroll-indicator flex flex-col items-center gap-2.5">
+          <span className="text-xs sm:text-sm font-semibold uppercase tracking-[6px] sm:tracking-[8px] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
             SCROLL
           </span>
-          <div className="scroll-line h-8 w-[2px] bg-gradient-to-b from-white via-white/80 to-transparent shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
+          <div className="scroll-line h-12 sm:h-14 w-[2px] sm:w-[2.5px] bg-gradient-to-b from-white via-white/80 to-transparent shadow-[0_0_10px_rgba(255,255,255,0.85)]" />
         </div>
       </motion.div>
 
