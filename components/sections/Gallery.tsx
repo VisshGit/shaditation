@@ -46,8 +46,8 @@ export default function Gallery() {
             backgroundImage: "url('/images/mry.png')",
           }}
         />
-        {/* Uniform Royal Parchment Wash */}
-        <div className="absolute inset-0 bg-[#faf6ee]/90" />
+        {/* Balanced 50% Royal Parchment Wash */}
+        <div className="absolute inset-0 bg-[#faf6ee]/50" />
       </motion.div>
 
       {/* =====================================================
@@ -141,7 +141,7 @@ export default function Gallery() {
                     delay: 0.2 + (index % 3) * 0.15,
                     ease: smoothCurve,
                   }}
-                  className={`group relative overflow-hidden rounded-3xl border-2 border-[#b68d40]/35 bg-white shadow-[0_16px_40px_rgba(75,50,22,0.1)] transition-colors duration-500 hover:border-[#b68d40]/75 hover:shadow-[0_22px_50px_rgba(182,141,64,0.25)] will-change-transform transform-gpu ${
+                  className={`group relative overflow-hidden rounded-3xl border-2 border-[#b68d40]/35 bg-white/90 shadow-[0_16px_40px_rgba(75,50,22,0.12)] transition-colors duration-500 hover:border-[#b68d40]/75 hover:shadow-[0_22px_50px_rgba(182,141,64,0.25)] will-change-transform transform-gpu ${
                     index % 2 === 1
                       ? "h-[360px] sm:h-[400px]"
                       : "h-[300px] sm:h-[340px]"
