@@ -12,7 +12,6 @@ const storyTimeline = [
       "A chance encounter that lit up everything. What began as a simple conversation quickly turned into an undeniable connection.",
     floatDuration: 3.2,
     floatDelay: 0,
-    useCardBg: true, // Only for The Spark
   },
   {
     year: "2026",
@@ -21,7 +20,6 @@ const storyTimeline = [
       "Growing together through every season, sharing countless laughs, endless dreams, and building our foundation of love.",
     floatDuration: 3.8,
     floatDelay: 0.4,
-    useCardBg: false,
   },
   {
     year: "2027",
@@ -30,7 +28,6 @@ const storyTimeline = [
       "Hand in hand, with the sacred fire as witness and loved ones around us, we step into our forever.",
     floatDuration: 3.5,
     floatDelay: 0.8,
-    useCardBg: false,
   },
 ];
 
@@ -137,23 +134,10 @@ export default function OurStory() {
                     delay: 0.2 + index * 0.15,
                     ease: smoothCurve,
                   }}
-                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-hidden min-h-[340px]"
+                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform"
                 >
-                  {/* Conditional Background Texture Image (/images/card.png) only for 'The Spark' */}
-                  {item.useCardBg && (
-                    <>
-                      <div
-                        className="absolute inset-0 bg-cover bg-center opacity-35 pointer-events-none transition-opacity duration-500 group-hover:opacity-45"
-                        style={{
-                          backgroundImage: "url('/images/card.png')",
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 pointer-events-none" />
-                    </>
-                  )}
-
                   {/* Floating Year Badge - Centered via CSS Flex Wrapper to kill Transform Matrix Jerk */}
-                  <div className="absolute -top-7 inset-x-0 flex justify-center pointer-events-none z-10">
+                  <div className="absolute -top-7 inset-x-0 flex justify-center pointer-events-none">
                     <motion.div
                       animate={{
                         y: [-3.5, 3.5, -3.5],
@@ -172,25 +156,22 @@ export default function OurStory() {
                     </motion.div>
                   </div>
 
-                  {/* Content Container (Above background overlay) */}
-                  <div className="relative z-10 flex flex-col items-center w-full">
-                    {/* Decorative Spark Divider */}
-                    <div className="mb-6 flex items-center gap-3 text-amber-300/80">
-                      <span className="h-px w-7 bg-amber-400/80" />
-                      <span className="text-xs">✦</span>
-                      <span className="h-px w-7 bg-amber-400/80" />
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition-colors duration-300 min-h-[3.5rem] flex items-center justify-center">
-                      {item.title}
-                    </h3>
-
-                    {/* Description */}
-                    <p className="mt-5 text-sm sm:text-[0.95rem] leading-7 text-amber-100/75 flex-grow group-hover:text-amber-100/95 transition-colors duration-300">
-                      {item.description}
-                    </p>
+                  {/* Decorative Spark Divider */}
+                  <div className="mb-6 flex items-center gap-3 text-amber-300/80">
+                    <span className="h-px w-7 bg-amber-400/80" />
+                    <span className="text-xs">✦</span>
+                    <span className="h-px w-7 bg-amber-400/80" />
                   </div>
+
+                  {/* Title */}
+                  <h3 className="font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition-colors duration-300 min-h-[3.5rem] flex items-center justify-center">
+                    {item.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="mt-5 text-sm sm:text-[0.95rem] leading-7 text-amber-100/75 flex-grow group-hover:text-amber-100/95 transition-colors duration-300">
+                    {item.description}
+                  </p>
                 </motion.div>
               ))}
             </div>
