@@ -51,14 +51,14 @@ export default function ScratchReveal() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-[115vh] w-full flex-col items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52"
+      className="relative isolate flex min-h-[120vh] w-full flex-col items-center justify-center overflow-hidden bg-[#0c0704] py-48 sm:py-60 md:py-72"
     >
       {/* =====================================================
           PARALLAX BACKGROUND VIDEO LAYER
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.15] will-change-transform"
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] will-change-transform z-0"
       >
         <video
           ref={videoRef}
@@ -77,14 +77,18 @@ export default function ScratchReveal() {
       {/* Atmospheric Royal Golden Vignettes & Ambient Tint */}
       <div className="absolute inset-0 bg-[#1a0f05]/35 mix-blend-multiply z-[1]" />
 
-      {/* Top Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      {/* Top Transparent Fade & Golden Glow Gradient */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-48 bg-gradient-to-b from-[#faf6ee] via-[#0c0704]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-44 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
       {/* Bottom Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
       {/* Content wrapper */}
       <div className="relative z-10 my-auto flex w-full flex-col items-center justify-center px-4">
+        {/* Top Symmetrical Breathing Spacer */}
+        <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
+
         {/* 1. Label */}
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -201,6 +205,9 @@ export default function ScratchReveal() {
             )}
           </div>
         </div>
+
+        {/* Bottom Symmetrical Breathing Spacer */}
+        <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
       </div>
     </section>
   );
