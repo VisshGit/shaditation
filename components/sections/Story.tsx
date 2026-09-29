@@ -12,7 +12,7 @@ const storyTimeline = [
       "A chance encounter that lit up everything. What began as a simple conversation quickly turned into an undeniable connection.",
     floatDuration: 3.2,
     floatDelay: 0,
-    useCardBg: true, // Only for The Spark
+    bgImage: "/images/card.png", // 1st card background
   },
   {
     year: "2026",
@@ -21,7 +21,7 @@ const storyTimeline = [
       "Growing together through every season, sharing countless laughs, endless dreams, and building our foundation of love.",
     floatDuration: 3.8,
     floatDelay: 0.4,
-    useCardBg: false,
+    bgImage: "/images/knot.png", // 2nd card background
   },
   {
     year: "2027",
@@ -30,7 +30,7 @@ const storyTimeline = [
       "Hand in hand, with the sacred fire as witness and loved ones around us, we step into our forever.",
     floatDuration: 3.5,
     floatDelay: 0.8,
-    useCardBg: false,
+    bgImage: "/images/knot.png", // 3rd card background
   },
 ];
 
@@ -137,20 +137,16 @@ export default function OurStory() {
                     delay: 0.2 + index * 0.15,
                     ease: smoothCurve,
                   }}
-                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-20 pb-12 sm:px-8 sm:pt-24 sm:pb-14 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-visible"
+                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-visible"
                 >
-                  {/* Conditional Background Texture Image (/images/card.png) with 80% opacity only for 'The Spark' */}
-                  {item.useCardBg && (
-                    <>
-                      <div
-                        className="absolute inset-0 bg-cover bg-center opacity-[0.80] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.90] rounded-3xl overflow-hidden"
-                        style={{
-                          backgroundImage: "url('/images/hand.jpg')",
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-black/40 pointer-events-none rounded-3xl" />
-                    </>
-                  )}
+                  {/* Card Background Texture Image with 80% opacity for all cards */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-center opacity-[0.80] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.90] rounded-3xl overflow-hidden"
+                    style={{
+                      backgroundImage: `url('${item.bgImage}')`,
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-black/40 pointer-events-none rounded-3xl" />
 
                   {/* Floating Year Badge - Centered via CSS Flex Wrapper to kill Transform Matrix Jerk */}
                   <div className="absolute -top-7 inset-x-0 flex justify-center pointer-events-none z-30">
