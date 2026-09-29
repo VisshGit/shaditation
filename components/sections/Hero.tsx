@@ -213,7 +213,7 @@ export default function Hero() {
       </motion.div>
 
       {/* =====================================================
-          SCROLL INDICATOR (Enhanced Size, Upward Shift & Pure White)
+          SCROLL INDICATOR (Forced Pure White Text & Line)
       ===================================================== */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -221,11 +221,18 @@ export default function Hero() {
         transition={{ delay: 1.2, duration: 1 }}
         className="absolute bottom-28 sm:bottom-24 left-0 right-0 z-30 flex justify-center text-center pb-[env(safe-area-inset-bottom)] pointer-events-none"
       >
-        <div className="scroll-indicator flex flex-col items-center gap-2.5">
+        <div className="flex flex-col items-center gap-2.5">
           <span className="text-xs sm:text-sm font-semibold uppercase tracking-[6px] sm:tracking-[8px] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
             SCROLL
           </span>
-          <div className="scroll-line h-12 sm:h-14 w-[2px] sm:w-[2.5px] bg-gradient-to-b from-white via-white/80 to-transparent shadow-[0_0_10px_rgba(255,255,255,0.85)]" />
+          {/* Forced Pure White Gradient Line */}
+          <div 
+            className="h-12 sm:h-14 w-[2px] sm:w-[2.5px]"
+            style={{
+              background: "linear-gradient(to bottom, #ffffff, rgba(255,255,255,0.7), transparent)",
+              boxShadow: "0 0 12px rgba(255,255,255,0.9)",
+            }}
+          />
         </div>
       </motion.div>
 
