@@ -34,7 +34,7 @@ export default function Gallery() {
       className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-40 sm:py-52 md:py-60"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER (Extended Bounds - No Cut)
+          PARALLAX BACKGROUND LAYER (mry.png - Extended Bounds)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
@@ -43,7 +43,7 @@ export default function Gallery() {
         <div
           className="h-full w-full bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/cdbg.PNG')",
+            backgroundImage: "url('/images/mry.png')",
           }}
         />
         {/* Uniform Royal Parchment Wash */}
