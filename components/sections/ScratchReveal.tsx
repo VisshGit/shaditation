@@ -70,7 +70,7 @@ export default function ScratchReveal() {
           preload="auto"
           className="h-full w-full object-cover object-center"
         >
-          <source src="/images/scbg3.mp4" type="video/mp4" />
+          <source src="/images/scbg4.mp4" type="video/mp4" />
         </video>
       </motion.div>
 
