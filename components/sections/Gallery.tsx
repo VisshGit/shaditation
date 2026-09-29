@@ -30,8 +30,8 @@ export default function Gallery() {
   return (
     <section
       ref={sectionRef}
-      /* Standalone cinematic stage with massive breathing buffer (Exact match to OurStory) */
-      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-40 sm:py-52 md:py-60"
+      /* Standalone cinematic stage with perfectly symmetrical top-bottom buffers */
+      className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-48 sm:py-60 md:py-72"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER (mry.png - Extended Buffer)
@@ -50,14 +50,14 @@ export default function Gallery() {
         <div className="absolute inset-0 bg-[#faf6ee]/50" />
       </motion.div>
 
-      {/* Atmospheric lighting & soft edge transitions (Exact match to OurStory) */}
+      {/* Atmospheric lighting & soft edge transitions */}
       <div className="absolute inset-0 bg-[#faf6ee]/20 z-[1]" />
 
       {/* Top Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-44 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
       {/* Bottom Transition Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#faf6ee] via-[#faf6ee]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#faf6ee] via-[#faf6ee]/70 to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
@@ -78,6 +78,9 @@ export default function Gallery() {
       <div className="relative z-10 my-auto w-full">
         <Container>
           <div className="mx-auto max-w-5xl px-4 text-center">
+            {/* Top Symmetrical Breathing Spacer */}
+            <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
+
             {/* 1. Subtitle / Label */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -123,8 +126,8 @@ export default function Gallery() {
               Captured glances, timeless frames, and beautiful reminiscence of our togetherness.
             </motion.p>
 
-            {/* Guaranteed Physical Spacer */}
-            <div className="h-24 sm:h-32 md:h-36 w-full" aria-hidden="true" />
+            {/* Guaranteed Physical Spacer between Description and Cards */}
+            <div className="h-28 sm:h-36 md:h-44 w-full" aria-hidden="true" />
 
             {/* Photos Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
@@ -161,6 +164,9 @@ export default function Gallery() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Bottom Symmetrical Breathing Spacer inside container */}
+            <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
           </div>
         </Container>
       </div>
