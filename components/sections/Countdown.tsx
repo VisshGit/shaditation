@@ -17,6 +17,8 @@ function getTimeLeft() {
   };
 }
 
+const smoothCurve = [0.16, 1, 0.3, 1] as const;
+
 type CountdownBoxProps = {
   label: string;
   value: number | undefined;
@@ -29,26 +31,24 @@ function CountdownBox({ label, value, delay = 0 }: CountdownBoxProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.9 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 25 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{
-        duration: 0.8,
+        duration: 0.9,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: smoothCurve,
       }}
-      className="min-w-0 text-center"
+      whileHover={{ y: -4 }}
+      className="min-w-0 text-center will-change-transform transform-gpu"
     >
-      {/* Frosted Royal Glass Container */}
-      <div className="relative flex h-20 w-[4.25rem] items-center justify-center overflow-hidden rounded-xl border border-amber-200/30 bg-white/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-300/60 hover:bg-white/[0.14] hover:shadow-[inset_0_1px_2px_rgba(255,255,255,0.5),0_22px_50px_rgba(182,141,64,0.3)] sm:h-24 sm:w-20 md:h-32 md:w-28 md:rounded-2xl">
+      {/* Frosted Royal Glass Container - Clean GPU Layer */}
+      <div className="relative flex h-20 w-[4.25rem] items-center justify-center overflow-hidden rounded-xl border border-amber-200/30 bg-white/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-md transition-colors duration-300 hover:border-amber-300/60 hover:bg-white/[0.14] hover:shadow-[0_20px_45px_rgba(182,141,64,0.35)] sm:h-24 sm:w-20 md:h-32 md:w-28 md:rounded-2xl">
         {/* Subtle Ambient Glass Glow */}
-        <div className="pointer-events-none absolute -top-10 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full bg-amber-300/20 blur-2xl" />
+        <div className="pointer-events-none absolute -top-10 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full bg-amber-300/20 blur-xl" />
 
-        {/* Counter Number */}
-        <span
-          key={`${label}-${displayValue}`}
-          className="countdown-number relative z-10 font-heading text-3xl font-bold text-amber-100 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] sm:text-4xl md:text-5xl"
-        >
+        {/* Counter Number - Smooth update without remount jitter */}
+        <span className="countdown-number relative z-10 font-heading text-3xl font-bold tabular-nums text-amber-100 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] sm:text-4xl md:text-5xl">
           {displayValue}
         </span>
       </div>
@@ -101,7 +101,7 @@ export default function Countdown() {
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform"
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform transform-gpu"
       >
         <div
           className="h-full w-full bg-cover bg-center"
@@ -133,7 +133,7 @@ export default function Countdown() {
                 transition={{
                   duration: 0.8,
                   delay: 0.15,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: smoothCurve,
                 }}
                 className="text-sm uppercase tracking-[6px] text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-semibold"
                 style={{ margin: 0 }}
@@ -149,7 +149,7 @@ export default function Countdown() {
                 transition={{
                   duration: 0.7,
                   delay: 0.3,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: smoothCurve,
                 }}
                 className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
                 style={{ margin: "16px auto 32px" }}
@@ -163,7 +163,7 @@ export default function Countdown() {
                 transition={{
                   duration: 0.8,
                   delay: 0.45,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: smoothCurve,
                 }}
                 className="font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] md:text-5xl"
                 style={{ margin: 0, lineHeight: 1.15 }}
@@ -179,25 +179,25 @@ export default function Countdown() {
                 <CountdownBox
                   label="Days"
                   value={timeLeft?.days}
-                  delay={0.65}
+                  delay={0.5}
                 />
 
                 <CountdownBox
                   label="Hours"
                   value={timeLeft?.hours}
-                  delay={0.75}
+                  delay={0.62}
                 />
 
                 <CountdownBox
                   label="Minutes"
                   value={timeLeft?.minutes}
-                  delay={0.85}
+                  delay={0.74}
                 />
 
                 <CountdownBox
                   label="Seconds"
                   value={timeLeft?.seconds}
-                  delay={0.95}
+                  delay={0.86}
                 />
               </div>
             </div>
