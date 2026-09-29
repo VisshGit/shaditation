@@ -30,8 +30,8 @@ export default function Gallery() {
   return (
     <section
       ref={sectionRef}
-      /* Standalone isolated stage with exact vertical buffer */
-      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-40 sm:py-52 md:py-60"
+      /* Standalone cinematic stage with luxurious vertical buffer */
+      className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-48 sm:py-60 md:py-72"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER (mry.png - Extended Bounds)
@@ -51,15 +51,15 @@ export default function Gallery() {
       </motion.div>
 
       {/* =====================================================
-          ATMOSPHERIC GRADIENT BUFFERS (Zero Hard Lines)
+          ATMOSPHERIC GRADIENT BUFFERS (Airy & Smooth Transitions)
       ===================================================== */}
-      {/* Top Transition */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/40 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-48 bg-gradient-to-b from-[#b68d40]/25 via-transparent to-transparent" />
+      {/* Top Transition - Softened height to prevent overlapping feeling */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-28 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-36 bg-gradient-to-b from-[#b68d40]/20 via-transparent to-transparent" />
 
-      {/* Bottom Transition */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/40 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-48 bg-gradient-to-t from-[#b68d40]/25 via-transparent to-transparent" />
+      {/* Bottom Transition - Softened height */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/30 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-36 bg-gradient-to-t from-[#b68d40]/20 via-transparent to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
@@ -126,7 +126,7 @@ export default function Gallery() {
             </motion.p>
 
             {/* Guaranteed Physical Breathing Spacer */}
-            <div className="h-24 sm:h-32 md:h-36 w-full" aria-hidden="true" />
+            <div className="h-28 sm:h-36 md:h-44 w-full" aria-hidden="true" />
 
             {/* 5. Photos Grid - Pure hardware accelerated layers */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
