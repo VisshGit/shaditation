@@ -125,7 +125,7 @@ export default function OurStory() {
             <div className="h-24 sm:h-32 md:h-36 w-full" aria-hidden="true" />
 
             {/* Timeline Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-10 items-stretch pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-10 items-stretch pt-8">
               {storyTimeline.map((item, index) => (
                 <motion.div
                   key={item.year}
@@ -137,7 +137,7 @@ export default function OurStory() {
                     delay: 0.2 + index * 0.15,
                     ease: smoothCurve,
                   }}
-                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-visible"
+                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-20 pb-12 sm:px-8 sm:pt-24 sm:pb-14 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-visible"
                 >
                   {/* Conditional Background Texture Image (/images/card.png) with 80% opacity only for 'The Spark' */}
                   {item.useCardBg && (
