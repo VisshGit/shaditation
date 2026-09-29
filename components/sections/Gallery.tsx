@@ -159,8 +159,8 @@ export default function Gallery() {
                   {/* Gentle Film Tint */}
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2b1d0e]/20 via-transparent to-white/10 opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
 
-                  {/* Inner Golden Stroke */}
-                  <div className="pointer-events-none absolute inset-3 rounded-2xl border border-white/60 transition-colors duration-300 group-hover:border-amber-200/90" />
+                  {/* Inner Golden Stroke (Updated to Golden Color) */}
+                  <div className="pointer-events-none absolute inset-3 rounded-2xl border border-amber-400/80 transition-colors duration-300 group-hover:border-amber-300" />
                 </motion.div>
               ))}
             </div>
