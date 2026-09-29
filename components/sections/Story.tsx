@@ -145,7 +145,7 @@ export default function OurStory() {
                       <div
                         className="absolute inset-0 bg-cover bg-center opacity-[0.80] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.90] rounded-3xl overflow-hidden"
                         style={{
-                          backgroundImage: "url('/images/card.png')",
+                          backgroundImage: "url('/images/hand.jpg')",
                         }}
                       />
                       <div className="absolute inset-0 bg-black/40 pointer-events-none rounded-3xl" />
