@@ -125,7 +125,7 @@ export default function OurStory() {
             <div className="h-24 sm:h-32 md:h-36 w-full" aria-hidden="true" />
 
             {/* Timeline Cards Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-10 items-stretch pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 lg:gap-10 items-stretch">
               {storyTimeline.map((item, index) => (
                 <motion.div
                   key={item.year}
@@ -137,18 +137,18 @@ export default function OurStory() {
                     delay: 0.2 + index * 0.15,
                     ease: smoothCurve,
                   }}
-                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-24 pb-16 sm:px-8 sm:pt-28 sm:pb-20 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-visible min-h-[380px]"
+                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-hidden"
                 >
                   {/* Conditional Background Texture Image (/images/card.png) with 80% opacity only for 'The Spark' */}
                   {item.useCardBg && (
                     <>
                       <div
-                        className="absolute inset-0 bg-cover bg-center opacity-[0.80] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.90] rounded-3xl overflow-hidden"
+                        className="absolute inset-0 bg-cover bg-center opacity-[0.80] pointer-events-none transition-opacity duration-500 group-hover:opacity-[0.90]"
                         style={{
                           backgroundImage: "url('/images/card.png')",
                         }}
                       />
-                      <div className="absolute inset-0 bg-black/35 pointer-events-none rounded-3xl" />
+                      <div className="absolute inset-0 bg-black/40 pointer-events-none" />
                     </>
                   )}
 
@@ -173,7 +173,7 @@ export default function OurStory() {
                   </div>
 
                   {/* Content Container (Above background overlay) */}
-                  <div className="relative z-10 flex flex-col items-center w-full my-auto">
+                  <div className="relative z-10 flex flex-col items-center w-full">
                     {/* Decorative Spark Divider */}
                     <div className="mb-6 flex items-center gap-3 text-amber-300/80">
                       <span className="h-px w-7 bg-amber-400/80" />
