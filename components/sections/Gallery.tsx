@@ -13,30 +13,32 @@ const photos = [
   "/images/image6.jpeg",
 ];
 
+const smoothCurve = [0.22, 1, 0.36, 1] as const;
+
 export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Parallax scroll tracking
+  // Parallax tracking (Exact standard offset)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  // Smooth continuous parallax background drift (GPU friendly)
-  const bgY = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
+  // Parallax continuous smooth drift
+  const bgY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
 
   return (
     <section
       ref={sectionRef}
-      /* 1. STANDALONE CINEMATIC STAGE: min-h-[120vh] with massive vertical padding */
-      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-44 sm:py-52 md:py-60"
+      /* Standalone cinematic stage with massive breathing buffer (Exact same as Countdown/Story) */
+      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-40 sm:py-52 md:py-60"
     >
       {/* =====================================================
-          2. DEEP PARALLAX BACKGROUND LAYER (-top-36 -bottom-36 scale-[1.15])
+          PARALLAX BACKGROUND LAYER (Extended Buffer - Exact standard)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
-        className="pointer-events-none absolute inset-0 -top-36 -bottom-36 scale-[1.15] will-change-transform z-0"
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform z-0"
       >
         <div
           className="h-full w-full bg-cover bg-center"
@@ -44,22 +46,17 @@ export default function Gallery() {
             backgroundImage: "url('/images/cdbg.PNG')",
           }}
         />
-        {/* Clean Royal Light Tint (No heavy blend modes to prevent stutter) */}
-        <div className="absolute inset-0 bg-[#faf6ee]/92" />
+        {/* Light theme parchment tint */}
+        <div className="absolute inset-0 bg-[#faf6ee]/90" />
       </motion.div>
 
+      {/* Atmospheric lighting & soft edge transitions */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+
       {/* =====================================================
-          3. ATMOSPHERIC EDGE GRADIENT BUFFERS (Soft Cinema Cuts)
+          TOP DECORATIVE AMBER GOLD BORDER RIBBON
       ===================================================== */}
-      {/* Top transition from dark section to cream */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#0c0704] via-[#0c0704]/40 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-48 bg-gradient-to-b from-[#b68d40]/25 to-transparent" />
-
-      {/* Bottom transition to next section */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-40 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/40 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-48 bg-gradient-to-t from-[#b68d40]/25 to-transparent" />
-
-      {/* Top Amber Ribbon */}
       <div className="absolute inset-x-0 top-0 z-10 flex h-24 items-center justify-center -translate-y-[45px]">
         <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-500/80 to-amber-600" />
         <div className="mx-6 flex items-center gap-2.5 text-amber-600 drop-shadow-[0_0_10px_rgba(245,215,124,0.7)]">
@@ -71,82 +68,102 @@ export default function Gallery() {
       </div>
 
       {/* =====================================================
-          4. CONTENT CONTAINER (Centered Stage)
+          GALLERY CONTENT (Centered inside Stage)
       ===================================================== */}
       <div className="relative z-10 my-auto w-full">
         <Container>
-          {/* Header Block */}
           <div className="flex justify-center">
-            <div className="w-full max-w-3xl px-4 text-center sm:px-0">
-              {/* Label */}
-              <p className="text-xs uppercase tracking-[6px] text-[#936a24] font-semibold sm:text-sm sm:tracking-[7px]">
+            <div className="w-full max-w-5xl text-center px-4">
+              {/* 1. Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.15, ease: smoothCurve }}
+                className="text-sm uppercase tracking-[6px] text-[#936a24] font-semibold"
+                style={{ margin: 0 }}
+              >
                 Memories
-              </p>
+              </motion.p>
 
-              {/* Divider */}
-              <div className="mx-auto my-5 flex items-center justify-center gap-3">
-                <span className="h-px w-14 bg-[#b68d40]/50 sm:w-20" />
-                <span className="text-sm text-[#b68d40]">✦</span>
-                <span className="h-px w-14 bg-[#b68d40]/50 sm:w-20" />
-              </div>
-
-              {/* Heading */}
-              <h2 className="font-heading text-4xl text-[#2b1d0e] drop-shadow-sm sm:text-5xl md:text-6xl">
-                Our Gallery
-              </h2>
-
-              <p className="mt-5 text-sm sm:text-base leading-relaxed text-[#68523c] max-w-xl mx-auto">
-                Captured glances, timeless frames, and beautiful reminiscence of our togetherness.
-              </p>
-            </div>
-          </div>
-
-          {/* Guaranteed Breathing Spacer */}
-          <div className="h-20 sm:h-28 md:h-32 w-full" aria-hidden="true" />
-
-          {/* Photos Grid - Pure hardware performance without scale collision */}
-          <div className="mx-auto grid w-full max-w-6xl grid-cols-1 gap-8 px-4 sm:px-0 md:grid-cols-3 items-center">
-            {photos.map((photo, index) => (
+              {/* 2. Divider */}
               <motion.div
-                key={photo}
+                initial={{ opacity: 0, scaleX: 0 }}
+                whileInView={{ opacity: 1, scaleX: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
+                className="h-px w-20 bg-[#b68d40]/70 origin-center drop-shadow"
+                style={{ margin: "16px auto 32px" }}
+              />
+
+              {/* 3. Main Heading */}
+              <motion.h2
+                initial={{ opacity: 0, y: 22 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
+                className="font-heading text-4xl text-[#2b1d0e] drop-shadow-sm md:text-5xl"
+                style={{ margin: 0, lineHeight: 1.15 }}
+              >
+                Our Gallery
+              </motion.h2>
+
+              {/* 4. Description */}
+              <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{
-                  duration: 0.7,
-                  delay: (index % 3) * 0.1,
-                  ease: "easeOut",
-                }}
-                className={`group relative overflow-hidden rounded-3xl border-2 border-[#b68d40]/30 bg-white shadow-[0_16px_40px_rgba(75,50,22,0.1)] transition-colors duration-300 hover:border-[#b68d40]/70 ${
-                  index % 2 === 1
-                    ? "h-[380px] sm:h-[440px]"
-                    : "h-[320px] sm:h-[360px]"
-                }`}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: smoothCurve }}
+                className="mt-6 text-sm sm:text-base leading-relaxed text-[#68523c] max-w-2xl mx-auto"
               >
-                <img
-                  src={photo}
-                  alt={`Wedding memory ${index + 1}`}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                />
+                Captured glances, timeless frames, and beautiful reminiscence of our togetherness.
+              </motion.p>
 
-                {/* Subtle Luxury Film Gradient */}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2b1d0e]/20 via-transparent to-white/10 opacity-60" />
+              {/* 5. Photos Grid (Matching 72px margin exactly like countdown) */}
+              <div
+                className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center"
+                style={{ marginTop: "72px" }}
+              >
+                {photos.map((photo, index) => (
+                  <motion.div
+                    key={photo}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{
+                      duration: 0.8,
+                      delay: 0.65 + (index % 3) * 0.15,
+                      ease: smoothCurve,
+                    }}
+                    className={`group relative overflow-hidden rounded-2xl border-2 border-[#b68d40]/30 bg-white shadow-[0_15px_35px_rgba(75,50,22,0.12)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#b68d40]/70 hover:shadow-[0_20px_45px_rgba(182,141,64,0.25)] ${
+                      index % 2 === 1
+                        ? "h-[360px] sm:h-[400px]"
+                        : "h-[300px] sm:h-[340px]"
+                    }`}
+                  >
+                    {/* Image */}
+                    <img
+                      src={photo}
+                      alt={`Wedding memory ${index + 1}`}
+                      className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
 
-                {/* Inner Border Accent */}
-                <div className="pointer-events-none absolute inset-3 rounded-2xl border border-white/60" />
-              </motion.div>
-            ))}
-          </div>
+                    {/* Subtle Overlay */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2b1d0e]/20 via-transparent to-white/10 opacity-60" />
 
-          {/* Bottom Ornament */}
-          <div className="mt-20 flex justify-center">
-            <div className="h-px w-20 bg-[#b68d40]/40" />
+                    {/* Inner Border */}
+                    <div className="pointer-events-none absolute inset-3 rounded-xl border border-white/60" />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </Container>
       </div>
 
-      {/* Bottom Amber Ribbon */}
+      {/* =====================================================
+          BOTTOM DECORATIVE AMBER GOLD BORDER RIBBON
+      ===================================================== */}
       <div className="absolute inset-x-0 bottom-0 z-10 flex h-24 items-center justify-center translate-y-[45px]">
         <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-500/80 to-amber-600" />
         <div className="mx-6 flex items-center gap-2.5 text-amber-600 drop-shadow-[0_0_10px_rgba(245,215,124,0.7)]">
