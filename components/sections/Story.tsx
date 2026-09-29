@@ -137,18 +137,18 @@ export default function OurStory() {
                     delay: 0.2 + index * 0.15,
                     ease: smoothCurve,
                   }}
-                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-hidden"
+                  className="relative group rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 pt-16 pb-10 sm:px-8 sm:pt-20 sm:pb-12 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md flex flex-col items-center hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] transition-colors duration-500 will-change-transform overflow-hidden min-h-[340px]"
                 >
                   {/* Conditional Background Texture Image (/images/card.png) only for 'The Spark' */}
                   {item.useCardBg && (
                     <>
                       <div
-                        className="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none transition-opacity duration-500 group-hover:opacity-25"
+                        className="absolute inset-0 bg-cover bg-center opacity-35 pointer-events-none transition-opacity duration-500 group-hover:opacity-45"
                         style={{
                           backgroundImage: "url('/images/card.png')",
                         }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 pointer-events-none" />
                     </>
                   )}
 
