@@ -39,12 +39,15 @@ function CountdownBox({ label, value, delay = 0 }: CountdownBoxProps) {
       }}
       className="min-w-0 text-center"
     >
-      <div className="relative flex h-20 w-[4.25rem] items-center justify-center overflow-hidden rounded-xl border-2 border-[#b68d40] bg-white/55 shadow-[0_15px_35px_rgba(0,0,0,0.35)] backdrop-blur-xl transition duration-300 hover:-translate-y-1.5 hover:border-[#e5c158] hover:shadow-[0_20px_45px_rgba(182,141,64,0.3)] sm:h-24 sm:w-20 md:h-32 md:w-28 md:rounded-2xl">
-        <div className="absolute -top-10 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full bg-amber-100/70 blur-2xl" />
+      {/* Frosted Royal Glass Container */}
+      <div className="relative flex h-20 w-[4.25rem] items-center justify-center overflow-hidden rounded-xl border border-amber-200/30 bg-white/[0.08] shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-md transition-all duration-300 hover:-translate-y-1.5 hover:border-amber-300/60 hover:bg-white/[0.14] hover:shadow-[inset_0_1px_2px_rgba(255,255,255,0.5),0_22px_50px_rgba(182,141,64,0.3)] sm:h-24 sm:w-20 md:h-32 md:w-28 md:rounded-2xl">
+        {/* Subtle Ambient Glass Glow */}
+        <div className="pointer-events-none absolute -top-10 left-1/2 h-20 w-20 -translate-x-1/2 rounded-full bg-amber-300/20 blur-2xl" />
 
+        {/* Counter Number */}
         <span
           key={`${label}-${displayValue}`}
-          className="countdown-number relative z-10 font-heading text-3xl font-bold text-[#2b1d0e] sm:text-4xl md:text-5xl"
+          className="countdown-number relative z-10 font-heading text-3xl font-bold text-amber-100 drop-shadow-[0_2px_12px_rgba(0,0,0,0.85)] sm:text-4xl md:text-5xl"
         >
           {displayValue}
         </span>
@@ -110,10 +113,10 @@ export default function Countdown() {
 
       {/* Atmospheric lighting & soft edge blend */}
       <div className="absolute inset-0 bg-black/45 z-[1]" />
-      
+
       {/* Top Golden Glow Gradient (Matching Scratch Reveal) */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
-      
+
       {/* Bottom Transition Gradient */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
@@ -127,7 +130,11 @@ export default function Countdown() {
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.15,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="text-sm uppercase tracking-[6px] text-amber-200 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-semibold"
                 style={{ margin: 0 }}
               >
@@ -139,7 +146,11 @@ export default function Countdown() {
                 initial={{ opacity: 0, scaleX: 0 }}
                 whileInView={{ opacity: 1, scaleX: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.7, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  duration: 0.7,
+                  delay: 0.3,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="h-px w-20 bg-amber-200/70 origin-center drop-shadow"
                 style={{ margin: "16px auto 32px" }}
               />
@@ -149,7 +160,11 @@ export default function Countdown() {
                 initial={{ opacity: 0, y: 22 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 className="font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] md:text-5xl"
                 style={{ margin: 0, lineHeight: 1.15 }}
               >
