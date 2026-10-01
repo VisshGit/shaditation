@@ -60,7 +60,7 @@ const smoothCurve = [0.16, 1, 0.3, 1] as const;
 export default function Events() {
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Parallax tracking identical to OurStory
+  // Parallax tracking identical to Gallery & Story
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -72,11 +72,11 @@ export default function Events() {
   return (
     <section
       ref={sectionRef}
-      /* Standalone cinematic stage with massive breathing buffer */
-      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52 md:py-60"
+      /* Standalone cinematic stage with massive breathing buffer and smooth render */
+      className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-48 sm:py-60 md:py-72 transform-gpu"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER (cdbg.PNG - Extended Buffer)
+          PARALLAX BACKGROUND LAYER (mry.png - Extended Buffer)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
@@ -85,20 +85,21 @@ export default function Events() {
         <div
           className="h-full w-full bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/cdbg.PNG')",
+            backgroundImage: "url('/images/mry.png')",
           }}
         />
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0c0704] to-transparent" />
+        {/* Balanced softer dark wash so image remains visible */}
+        <div className="absolute inset-0 bg-[#0c0704]/70" />
       </motion.div>
 
       {/* Atmospheric lighting & soft edge transitions */}
-      <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
+      <div className="absolute inset-0 bg-[#0c0704]/25 z-[1]" />
 
       {/* Top Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-44 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
       {/* Bottom Transition Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
@@ -119,6 +120,9 @@ export default function Events() {
       <div className="relative z-10 my-auto w-full">
         <Container>
           <div className="mx-auto max-w-5xl px-4 text-center">
+            {/* Top Symmetrical Breathing Spacer */}
+            <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
+
             {/* 1. Label */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -153,8 +157,8 @@ export default function Events() {
               Celebration Details
             </motion.h2>
 
-            {/* Guaranteed Physical Spacer */}
-            <div className="h-16 sm:h-24 md:h-28 w-full" aria-hidden="true" />
+            {/* Guaranteed Physical Spacer between Heading and Cards */}
+            <div className="h-28 sm:h-36 md:h-44 w-full" aria-hidden="true" />
 
             {/* Events Grid */}
             <div className="grid gap-8 md:grid-cols-2 md:gap-8 items-stretch">
@@ -170,7 +174,7 @@ export default function Events() {
                     ease: smoothCurve,
                   }}
                   aria-label="Wedding event card"
-                  className="group relative overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 py-10 text-center shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all duration-500 hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] sm:px-10 will-change-transform flex flex-col justify-center"
+                  className="group relative overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 py-10 text-center shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all duration-500 hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] sm:px-10 will-change-transform flex flex-col justify-center transform-gpu"
                 >
                   <div className="mx-auto mb-7 flex items-center justify-center gap-3 text-amber-300/80">
                     <span className="h-px w-7 bg-amber-400/80" />
@@ -198,6 +202,9 @@ export default function Events() {
                 </motion.div>
               ))}
             </div>
+
+            {/* Bottom Symmetrical Breathing Spacer inside container */}
+            <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
           </div>
         </Container>
       </div>
