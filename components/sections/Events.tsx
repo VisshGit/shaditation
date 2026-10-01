@@ -7,48 +7,56 @@ import Container from "@/components/ui/Container";
 const events = [
   {
     title: "Vinayak",
+    icon: "/icons/vinayak.svg", // Apni vector/svg ya png ka path yahan dein
     date: "Monday, 25 January 2027",
     time: "Time to be announced",
     venue: "",
   },
   {
     title: "Dhol Night",
+    icon: "/icons/dhol.svg",
     date: "Thursday, 28 January 2027",
     time: "Time to be announced",
     venue: "",
   },
   {
     title: "Kalash",
+    icon: "/icons/kalash.svg",
     date: "Friday, 29 January 2027",
     time: "Morning",
     venue: "",
   },
   {
     title: "Bindoli",
+    icon: "/icons/bindoli.svg",
     date: "Friday, 29 January 2027",
     time: "Evening",
     venue: "",
   },
   {
     title: "Haldi Ceremony",
+    icon: "/icons/haldi.svg",
     date: "Saturday, 30 January 2027",
     time: "Morning",
     venue: "Urmila Garden",
   },
   {
     title: "Cocktail Party",
+    icon: "/icons/cocktail.svg",
     date: "Saturday, 30 January 2027",
     time: "Evening",
     venue: "Urmila Garden",
   },
   {
     title: "Barat",
+    icon: "/icons/barat.svg",
     date: "Sunday, 31 January 2027",
     time: "Time to be announced",
     venue: "",
   },
   {
     title: "Reception",
+    icon: "/icons/reception.svg",
     date: "Wednesday, 3 February 2027",
     time: "Time to be announced",
     venue: "Urmila Garden",
@@ -72,7 +80,7 @@ export default function Events() {
   return (
     <section
       ref={sectionRef}
-      /* Standalone cinematic stage with massive breathing buffer and smooth render */
+      /* Standalone cinematic stage with massive breathing buffer and zero layout shift */
       className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-48 sm:py-60 md:py-72 transform-gpu"
     >
       {/* =====================================================
@@ -125,10 +133,10 @@ export default function Events() {
 
             {/* 1. Label */}
             <motion.p
-              initial={{ opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.15, ease: smoothCurve }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.1, ease: smoothCurve }}
               className="text-sm uppercase tracking-[6px] text-amber-200 font-semibold"
               style={{ margin: 0 }}
             >
@@ -139,18 +147,18 @@ export default function Events() {
             <motion.div
               initial={{ opacity: 0, scaleX: 0 }}
               whileInView={{ opacity: 1, scaleX: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: smoothCurve }}
               className="h-px w-20 bg-amber-400/70 origin-center drop-shadow"
               style={{ margin: "16px auto 32px" }}
             />
 
             {/* 3. Heading */}
             <motion.h2
-              initial={{ opacity: 0, y: 22 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
               className="font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] md:text-5xl"
               style={{ margin: 0, lineHeight: 1.15 }}
             >
@@ -162,17 +170,9 @@ export default function Events() {
 
             {/* Events Grid */}
             <div className="grid gap-8 md:grid-cols-2 md:gap-8 items-stretch">
-              {events.map((event, index) => (
-                <motion.div
+              {events.map((event) => (
+                <div
                   key={event.title}
-                  initial={{ opacity: 0, y: 35 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    duration: 0.9,
-                    delay: 0.2 + (index % 2) * 0.15,
-                    ease: smoothCurve,
-                  }}
                   aria-label="Wedding event card"
                   className="group relative overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 py-10 text-center shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all duration-500 hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] sm:px-10 will-change-transform flex flex-col justify-center transform-gpu"
                 >
@@ -182,9 +182,18 @@ export default function Events() {
                     <span className="h-px w-7 bg-amber-400/80" />
                   </div>
 
-                  <h3 className="mb-4 font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition-colors duration-300">
-                    {event.title}
-                  </h3>
+                  {/* Vector Icon + Title */}
+                  <div className="mb-4 flex items-center justify-center gap-3">
+                    <img
+                      src={event.icon}
+                      alt=""
+                      className="h-7 w-7 object-contain filter drop-shadow-[0_0_8px_rgba(245,215,124,0.6)]"
+                      // Agar SVG icons ka color golden karna ho toh CSS filter ya direct SVG use kar sakte ho
+                    />
+                    <h3 className="font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition-colors duration-300">
+                      {event.title}
+                    </h3>
+                  </div>
 
                   <div className="mx-auto mb-5 h-px w-12 bg-amber-400/30" />
 
@@ -199,7 +208,7 @@ export default function Events() {
                       </>
                     )}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
 
