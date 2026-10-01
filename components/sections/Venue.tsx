@@ -140,7 +140,7 @@ export default function Venue() {
                 <div className="space-y-3 text-sm leading-7 text-amber-100/90 sm:text-base">
                   <p>
                     <span className="mr-2 text-amber-300">📍</span>
-                    Ajmer, Rajasthan
+                    Ajmer, Rajasthan[cite: 1]
                   </p>
 
                   <p>
@@ -150,7 +150,7 @@ export default function Venue() {
                 </div>
               </motion.div>
 
-              {/* Right: Map Container */}
+              {/* Right: Map Container (Fully Colorful) */}
               <motion.div
                 initial={{ opacity: 0, x: 30, scale: 0.96 }}
                 whileInView={{ opacity: 1, x: 0, scale: 1 }}
@@ -160,8 +160,8 @@ export default function Venue() {
               >
                 <div className="h-80 sm:h-96">
                   <iframe
-                    className="h-full w-full grayscale contrast-125 opacity-90 hover:opacity-100 transition-opacity"
-                    src="https://maps.google.com/maps?q=Urmila+palace+%26+marriage+garden&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    className="h-full w-full"
+                    src="https://maps.google.com/maps?q=Urmila+palace+%26+marriage+garden+Ajmer&t=&z=14&ie=UTF8&iwloc=&output=embed"
                     loading="lazy"
                     title="Urmila Palace & Marriage Garden location map"
                   />
