@@ -34,7 +34,7 @@ export default function Closing() {
         <div
           className="h-full w-full bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/closing.jpg')",
+            backgroundImage: "url('/images/closing1.jpg')",
           }}
         />
         {/* Balanced softer dark wash so image remains visible */}
@@ -80,23 +80,7 @@ export default function Closing() {
               transition={{ duration: 0.85, ease: smoothCurve }}
               className="flex w-full flex-col items-center justify-center rounded-3xl border border-[#b68d40]/40 bg-black/45 px-8 sm:px-16 py-14 sm:py-20 text-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md"
             >
-              {/* TOP DECORATIVE LABEL */}
-              <p className="text-xs uppercase tracking-[6px] text-amber-200 font-semibold sm:text-sm">
-                Forever Begins Here
-              </p>
-
-              {/* TOP DIVIDER */}
-              <div className="mt-4 h-px w-20 bg-amber-400/70 origin-center drop-shadow" />
-
-              {/* MAIN SCRIPT TEXT */}
-              <motion.p
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.9, delay: 0.2, ease: smoothCurve }}
-                className="mt-8 font-serif italic text-3xl sm:text-5xl md:text-6xl text-amber-100 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] leading-tight"
-                style={{ fontFamily: "var(--font-script), cursive" }}
-              >
+             
                 Can&apos;t wait to celebrate with you
               </motion.p>
 
@@ -109,11 +93,7 @@ export default function Closing() {
                 <span className="h-px w-12 bg-amber-400/60 sm:w-20" />
               </div>
 
-              {/* COUPLE NAMES SIGNATURE */}
-              <p className="mt-6 text-xs uppercase tracking-[5px] text-amber-200/90 font-medium">
-                Vishal &amp; Varsha
-              </p>
-            </motion.div>
+             
 
             {/* Bottom Symmetrical Breathing Spacer */}
             <div className="h-10 sm:h-16 w-full" aria-hidden="true" />
