@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "@/components/ui/Container";
 
 const events = [
@@ -54,46 +55,91 @@ const events = [
   },
 ];
 
-const smoothCurve = [0.22, 1, 0.36, 1] as const;
+const smoothCurve = [0.16, 1, 0.3, 1] as const;
 
 export default function Events() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Parallax tracking identical to OurStory
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax smooth drift
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
+
   return (
     <section
-      className="flex items-center justify-center bg-[var(--background)]"
-      style={{
-        marginTop: "40px",     /* Pehle 120px tha, ab kam kar diya */
-        paddingTop: "60px",    /* Pehle 160px tha, breathing space tight karne ke liye */
-        paddingBottom: "60px",
-      }}
+      ref={sectionRef}
+      /* Standalone cinematic stage with massive breathing buffer */
+      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-40 sm:py-52 md:py-60"
     >
-      <Container>
-        <div className="flex justify-center">
-          <div className="w-full max-w-5xl px-4 text-center sm:px-0">
+      {/* =====================================================
+          PARALLAX BACKGROUND LAYER (cdbg.PNG - Extended Buffer)
+      ===================================================== */}
+      <motion.div
+        style={{ y: bgY }}
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform z-0"
+      >
+        <div
+          className="h-full w-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/cdbg.PNG')",
+          }}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0c0704] to-transparent" />
+      </motion.div>
+
+      {/* Atmospheric lighting & soft edge transitions */}
+      <div className="absolute inset-0 bg-[#0c0704]/80 z-[1]" />
+
+      {/* Top Golden Glow Gradient */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-40 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+
+      {/* Bottom Transition Gradient */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+
+      {/* =====================================================
+          TOP DECORATIVE AMBER GOLD BORDER RIBBON
+      ===================================================== */}
+      <div className="absolute inset-x-0 top-0 z-10 flex h-24 items-center justify-center -translate-y-[45px]">
+        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
+          <span className="text-xl">𑁍</span>
+          <span className="text-sm">✦</span>
+          <span className="text-xl">𑁍</span>
+        </div>
+        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
+      </div>
+
+      {/* =====================================================
+          EVENTS CONTENT (Centered in the Isolated Stage)
+      ===================================================== */}
+      <div className="relative z-10 my-auto w-full">
+        <Container>
+          <div className="mx-auto max-w-5xl px-4 text-center">
             {/* 1. Label */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.15, ease: smoothCurve }}
-              className="text-xs uppercase tracking-[5px] text-[var(--primary)] sm:text-sm sm:tracking-[6px]"
+              className="text-sm uppercase tracking-[6px] text-amber-200 font-semibold"
               style={{ margin: 0 }}
             >
               Wedding Events
             </motion.p>
 
-            {/* 2. Elegant Divider */}
+            {/* 2. Divider */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scaleX: 0 }}
+              whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
-              className="mx-auto flex items-center justify-center gap-3"
-              style={{ margin: "16px auto 28px" }}
-            >
-              <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
-              <span className="text-sm text-[var(--primary)]">✦</span>
-              <span className="h-px w-12 bg-[var(--primary)]/40 sm:w-20" />
-            </motion.div>
+              className="h-px w-20 bg-amber-400/70 origin-center drop-shadow"
+              style={{ margin: "16px auto 32px" }}
+            />
 
             {/* 3. Heading */}
             <motion.h2
@@ -101,55 +147,73 @@ export default function Events() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
-              className="font-heading text-4xl text-[var(--foreground)] sm:text-5xl md:text-6xl"
-              style={{
-                margin: 0,
-                lineHeight: 1.15,
-              }}
+              className="font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] md:text-5xl"
+              style={{ margin: 0, lineHeight: 1.15 }}
             >
               Celebration Details
             </motion.h2>
 
-            {/* 4. Events Grid */}
-            <div
-              className="grid gap-6 md:grid-cols-2 md:gap-8"
-              style={{ marginTop: "48px" }}
-            >
-              {events.map((event) => (
-                <div
+            {/* Guaranteed Physical Spacer */}
+            <div className="h-16 sm:h-24 md:h-28 w-full" aria-hidden="true" />
+
+            {/* Events Grid */}
+            <div className="grid gap-8 md:grid-cols-2 md:gap-8 items-stretch">
+              {events.map((event, index) => (
+                <motion.div
                   key={event.title}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: 0.9,
+                    delay: 0.2 + (index % 2) * 0.15,
+                    ease: smoothCurve,
+                  }}
                   aria-label="Wedding event card"
-                  className="group relative overflow-hidden rounded-3xl border border-[var(--primary)]/15 bg-white px-7 py-10 text-center shadow-[0_15px_40px_rgba(43,29,14,0.07)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(43,29,14,0.11)] sm:px-10"
+                  className="group relative overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 py-10 text-center shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all duration-500 hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] sm:px-10 will-change-transform flex flex-col justify-center"
                 >
-                  <div className="mx-auto mb-7 flex items-center justify-center gap-3">
-                    <span className="h-px w-10 bg-[var(--primary)]/30" />
-                    <span className="text-sm text-[var(--primary)]">✦</span>
-                    <span className="h-px w-10 bg-[var(--primary)]/30" />
+                  <div className="mx-auto mb-7 flex items-center justify-center gap-3 text-amber-300/80">
+                    <span className="h-px w-7 bg-amber-400/80" />
+                    <span className="text-xs">✦</span>
+                    <span className="h-px w-7 bg-amber-400/80" />
                   </div>
 
-                  <h3 className="mb-6 font-heading text-3xl text-[var(--foreground)] sm:text-4xl">
+                  <h3 className="mb-4 font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition-colors duration-300">
                     {event.title}
                   </h3>
 
-                  <div className="mx-auto mb-7 h-px w-12 bg-[var(--primary)]/25" />
+                  <div className="mx-auto mb-5 h-px w-12 bg-amber-400/30" />
 
-                  <p className="text-sm leading-8 text-gray-600 sm:text-base">
+                  <p className="text-sm sm:text-[0.95rem] leading-7 text-amber-100/75 group-hover:text-amber-100/95 transition-colors duration-300">
                     {event.date}
                     <br />
                     {event.time}
                     {event.venue && (
                       <>
                         <br />
-                        {event.venue}
+                        <span className="text-amber-200 font-medium">{event.venue}</span>
                       </>
                     )}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
+        </Container>
+      </div>
+
+      {/* =====================================================
+          BOTTOM DECORATIVE AMBER GOLD BORDER RIBBON
+      ===================================================== */}
+      <div className="absolute inset-x-0 bottom-0 z-10 flex h-24 items-center justify-center translate-y-[45px]">
+        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
+          <span className="text-xl">𑁍</span>
+          <span className="text-sm">✦</span>
+          <span className="text-xl">𑁍</span>
         </div>
-      </Container>
+        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
+      </div>
     </section>
   );
 }
