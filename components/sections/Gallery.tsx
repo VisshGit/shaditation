@@ -46,12 +46,12 @@ export default function Gallery() {
             backgroundImage: "url('/images/mry.png')",
           }}
         />
-        {/* Dark Royal Wash to merge with website aesthetic */}
-        <div className="absolute inset-0 bg-[#0c0704]/85" />
+        {/* Balanced softer dark wash so image remains visible */}
+        <div className="absolute inset-0 bg-[#0c0704]/70" />
       </motion.div>
 
       {/* Atmospheric lighting & soft edge transitions */}
-      <div className="absolute inset-0 bg-[#0c0704]/40 z-[1]" />
+      <div className="absolute inset-0 bg-[#0c0704]/25 z-[1]" />
 
       {/* Top Golden Glow Gradient */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-44 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
