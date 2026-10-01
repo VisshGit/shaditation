@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState, useEffect, Children, isValidElement } from "react";
+import { ReactNode, useState, useEffect } from "react";
 
 type WelcomeGateProps = {
   children: ReactNode;
@@ -35,6 +35,8 @@ export default function WelcomeGate({
     if (isOpening || isOpened) return;
 
     window.dispatchEvent(new Event("start-wedding-music"));
+    // Hero animations ko trigger karne ke liye custom event dispatch kar rahe hain
+    window.dispatchEvent(new Event("gate-opened-animation"));
 
     // 1. Scroll ko usi millisecond free karo
     document.body.style.overflow = "";
@@ -47,22 +49,13 @@ export default function WelcomeGate({
     }, 2600);
   };
 
-  // Children ko clone karke automatically isOpened prop pass kar rahe hain
-  const enhancedChildren = Children.map(children, (child) => {
-    if (isValidElement(child)) {
-      // @ts-ignore
-      return React.cloneElement(child, { isOpened: isOpening || isOpened });
-    }
-    return child;
-  });
-
   return (
     <div className="relative w-full">
       {/* =====================================================
           WEBSITE CONTENT (Zero Blocking, Pure Native Render)
       ===================================================== */}
       <div className="w-full">
-        {enhancedChildren}
+        {children}
       </div>
 
       {/* =====================================================
