@@ -61,16 +61,17 @@ export default function Hero() {
   useEffect(() => {
     if (!isRajasthani || !isOpened) return;
 
-    // Gate open hone par hi petals aur sparks trigger honge
+    // Gate open hone par petals turant shuru
     setShowPetals(true);
 
     const petalsStopTimer = window.setTimeout(() => {
       setShowPetals(false);
     }, 7000);
 
+    // Fire sparks ka delay 4s se hata kar 1.5s kar diya hai taaki jaldi dikhein
     const sparksStartTimer = window.setTimeout(() => {
       setShowSparks(true);
-    }, 4000);
+    }, 1500);
 
     const sparksStopTimer = window.setTimeout(() => {
       setShowSparks(false);
@@ -134,7 +135,7 @@ export default function Hero() {
         </div>
       )}
 
-      {/* Fire Sparks (Only starts when isOpened is true) */}
+      {/* Fire Sparks (Starts earlier now at 1.5s) */}
       {isRajasthani && showSparks && (
         <div className="hero-fire-sparks z-[2]">
           {fireSparks.map((spark, index) => (
