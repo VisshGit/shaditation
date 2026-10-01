@@ -76,7 +76,7 @@ export default function RSVP() {
     <section
       ref={sectionRef}
       /* Standalone cinematic stage with balanced breathing buffer and zero layout shift */
-      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-36 sm:py-44 md:py-52 transform-gpu"
+      className="relative isolate flex min-h-[100vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-24 sm:py-32 md:py-36 transform-gpu"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER (cdbg.PNG - Extended Buffer)
@@ -105,34 +105,27 @@ export default function RSVP() {
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
       {/* =====================================================
-          TOP DECORATIVE AMBER GOLD BORDER RIBBON
-      ===================================================== */}
-      <div className="absolute inset-x-0 top-0 z-10 flex h-24 items-center justify-center -translate-y-[45px]">
-        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
-        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
-          <span className="text-xl">𑁍</span>
-          <span className="text-sm">✦</span>
-          <span className="text-xl">𑁍</span>
-        </div>
-        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
-      </div>
-
-      {/* =====================================================
           RSVP CONTENT (Centered in the Isolated Stage)
       ===================================================== */}
       <div className="relative z-10 my-auto w-full">
         <Container>
           <div className="mx-auto max-w-4xl px-4 text-center">
             {/* Reduced Top Breathing Spacer */}
-            <div className="h-8 sm:h-12 w-full" aria-hidden="true" />
+            <div className="h-4 sm:h-6 w-full" aria-hidden="true" />
 
             {/* HEADING SECTION (OUTSIDE THE BOX) */}
-            <div className="flex w-full flex-col items-center text-center mb-10 sm:mb-14">
+            <div className="flex w-full flex-col items-center text-center mb-8 sm:mb-10">
               <p className="text-xs uppercase tracking-[6px] text-amber-200 font-semibold sm:text-sm">
                 We Would Love To Hear From You 
                 <br> 
                 </br>
               </p>
+              <br> 
+                </br>
+              <br> 
+                </br>
+              <br> 
+                </br>
 
               <div
                 className="mt-3.5 h-px w-20 bg-amber-400/70 origin-center drop-shadow"
@@ -313,7 +306,7 @@ export default function RSVP() {
             </div>
 
             {/* Bottom Symmetrical Breathing Spacer inside container */}
-            <div className="h-8 sm:h-12 w-full" aria-hidden="true" />
+            <div className="h-4 sm:h-6 w-full" aria-hidden="true" />
           </div>
         </Container>
       </div>
