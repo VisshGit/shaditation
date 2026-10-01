@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useState, useEffect, Children, isValidElement } from "react";
 
 type WelcomeGateProps = {
   children: ReactNode;
@@ -47,13 +47,22 @@ export default function WelcomeGate({
     }, 2600);
   };
 
+  // Children ko clone karke automatically isOpened prop pass kar rahe hain
+  const enhancedChildren = Children.map(children, (child) => {
+    if (isValidElement(child)) {
+      // @ts-ignore
+      return React.cloneElement(child, { isOpened: isOpening || isOpened });
+    }
+    return child;
+  });
+
   return (
     <div className="relative w-full">
       {/* =====================================================
           WEBSITE CONTENT (Zero Blocking, Pure Native Render)
       ===================================================== */}
       <div className="w-full">
-        {children}
+        {enhancedChildren}
       </div>
 
       {/* =====================================================
