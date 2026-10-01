@@ -122,42 +122,42 @@ export default function RSVP() {
       ===================================================== */}
       <div className="relative z-10 my-auto w-full">
         <Container>
-          <div className="mx-auto max-w-5xl px-4 text-center">
+          <div className="mx-auto max-w-4xl px-4 text-center">
             {/* Top Symmetrical Breathing Spacer */}
             <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
 
-            {/* ROYAL GLASSMORPHISM CARD */}
-            <div className="flex w-full flex-col items-center justify-center rounded-3xl border border-[#b68d40]/40 bg-black/45 px-6 py-12 text-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md sm:px-14 sm:py-16">
-              {/* HEADING SECTION */}
-              <div className="flex w-full flex-col items-center text-center">
-                <p className="text-xs uppercase tracking-[6px] text-amber-200 font-semibold sm:text-sm">
-                  We Would Love To Hear From You
-                </p>
+            {/* HEADING SECTION (OUTSIDE THE BOX) */}
+            <div className="flex w-full flex-col items-center text-center mb-12 sm:mb-16">
+              <p className="text-xs uppercase tracking-[6px] text-amber-200 font-semibold sm:text-sm">
+                We Would Love To Hear From You
+              </p>
 
-                <div
-                  className="mt-4 h-px w-20 bg-amber-400/70 origin-center drop-shadow"
-                />
+              <div
+                className="mt-4 h-px w-20 bg-amber-400/70 origin-center drop-shadow"
+              />
 
-                <h2 className="mt-4 font-heading text-4xl leading-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] sm:text-6xl md:text-7xl">
-                  RSVP
-                </h2>
+              <h2 className="mt-4 font-heading text-4xl leading-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] sm:text-6xl md:text-7xl">
+                RSVP
+              </h2>
 
-                <div
-                  className="mt-4 h-px w-12 bg-amber-400/50 origin-center"
-                />
+              <div
+                className="mt-4 h-px w-12 bg-amber-400/50 origin-center"
+              />
 
-                {/* SUBTITLE */}
-                <p className="mx-auto mt-6 max-w-lg text-center text-sm leading-7 text-amber-100/85 sm:text-base sm:leading-8">
-                  Your presence would mean the world to us.
-                  <br />
-                  Kindly let us know if you will be joining our celebration.
-                </p>
-              </div>
+              {/* SUBTITLE */}
+              <p className="mx-auto mt-6 max-w-lg text-center text-sm leading-7 text-amber-100/85 sm:text-base sm:leading-8">
+                Your presence would mean the world to us.
+                <br />
+                Kindly let us know if you will be joining our celebration.
+              </p>
+            </div>
 
+            {/* ROYAL GLASSMORPHISM CARD (ONLY FORM FIELDS INSIDE) */}
+            <div className="flex w-full flex-col items-center justify-center rounded-3xl border border-[#b68d40]/40 bg-black/45 px-6 py-10 sm:px-16 sm:py-14 text-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md">
               {/* FORM FIELDS */}
               <form
                 onSubmit={handleSubmit}
-                className="mt-10 flex w-full max-w-md flex-col text-left"
+                className="flex w-full max-w-xl flex-col text-left mx-auto"
               >
                 {/* NAME */}
                 <div className="w-full">
@@ -178,7 +178,7 @@ export default function RSVP() {
                 </div>
 
                 {/* EMAIL */}
-                <div className="mt-5 w-full">
+                <div className="mt-6 w-full">
                   <label
                     htmlFor="email"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
@@ -198,7 +198,7 @@ export default function RSVP() {
                 </div>
 
                 {/* RESPONSE */}
-                <div className="mt-5 w-full">
+                <div className="mt-6 w-full">
                   <label
                     htmlFor="response"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
@@ -225,7 +225,7 @@ export default function RSVP() {
                 </div>
 
                 {/* NUMBER OF MEMBERS */}
-                <div className="mt-5 w-full">
+                <div className="mt-6 w-full">
                   <label
                     htmlFor="guests"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
@@ -254,7 +254,7 @@ export default function RSVP() {
                 </div>
 
                 {/* MESSAGE */}
-                <div className="mt-5 w-full">
+                <div className="mt-6 w-full">
                   <label
                     htmlFor="message"
                     className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
