@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Vishal & Varsha Wedding",
     images: [
       {
-        url: "/images/logo1.png", // Yahan 1200x630 ki saaf suthri banner image ka path dena
+        url: "/images/logo11.png", // Yahan 1200x630 ki saaf suthri banner image ka path dena
         width: 1200,
         height: 630,
         alt: "Vishal & Varsha Wedding Invitation",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vishal & Varsha Wedding Invitation",
     description: "You're invited to celebrate our wedding ceremony!",
-    images: ["/images/logo1.png"],
+    images: ["/images/logo11.png"],
   },
 };
 
