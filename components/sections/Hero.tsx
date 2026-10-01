@@ -29,11 +29,8 @@ const smoothTransition = (delay: number) => ({
   ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
 });
 
-interface HeroProps {
-  isOpened?: boolean; // Gate open hone ki state
-}
-
-export default function Hero({ isOpened = false }: HeroProps) {
+export default function Hero() {
+  const [isOpened, setIsOpened] = useState(false);
   const [showPetals, setShowPetals] = useState(false);
   const [showSparks, setShowSparks] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,6 +45,18 @@ export default function Hero({ isOpened = false }: HeroProps) {
   const contentOpacity = useTransform(scrollYProgress, [0, 0.75], [1, 0.2]);
 
   const isRajasthani = activeTheme === "royal-rajasthani";
+
+  // Gate open event listener listen kar rahe hain
+  useEffect(() => {
+    const handleGateOpen = () => {
+      setIsOpened(true);
+    };
+
+    window.addEventListener("gate-opened-animation", handleGateOpen);
+    return () => {
+      window.removeEventListener("gate-opened-animation", handleGateOpen);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isRajasthani || !isOpened) return;
