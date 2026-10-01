@@ -114,14 +114,8 @@ export default function Venue() {
 
             {/* Content Grid */}
             <div className="grid items-center gap-10 md:grid-cols-2 md:gap-14">
-              {/* Left: Venue Details */}
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.85, delay: 0.4, ease: smoothCurve }}
-                className="group relative overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 py-10 text-center md:text-left shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all duration-500 hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] sm:px-10 will-change-transform transform-gpu"
-              >
+              {/* Left: Venue Details (Jerk fixed: removed x-axis translation) */}
+              <div className="group relative overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 px-7 py-10 text-center md:text-left shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md transition-all duration-500 hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] sm:px-10 transform-gpu">
                 <p className="mb-3 text-xs uppercase tracking-[4px] text-amber-200 font-medium">
                   The Celebration
                 </p>
@@ -148,16 +142,10 @@ export default function Venue() {
                     7:00 PM onwards
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
-              {/* Right: Map Container (Fully Colorful) */}
-              <motion.div
-                initial={{ opacity: 0, x: 30, scale: 0.96 }}
-                whileInView={{ opacity: 1, x: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.85, delay: 0.5, ease: smoothCurve }}
-                className="overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md"
-              >
+              {/* Right: Map Container (Fully Colorful & Jerk-free) */}
+              <div className="overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md transform-gpu">
                 <div className="h-80 sm:h-96">
                   <iframe
                     className="h-full w-full"
@@ -166,7 +154,7 @@ export default function Venue() {
                     title="Urmila Palace & Marriage Garden location map"
                   />
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Bottom Symmetrical Breathing Spacer inside container */}
