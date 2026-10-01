@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 
     description: "You're invited to celebrate our wedding ceremony!",
 
-    url: "https://your-domain.vercel.app", // Yahan apni live website ka domain daal dena
+    url: "https://shaditation.vercel.app", // Yahan apni live website ka domain daal dena
 
     siteName: "Vishal & Varsha Wedding",
 
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 
       {
 
-        url: "/images/logo.png", // Public/images folder mein rakhi hui logo.png ka path
+        url: "/images/logo1.png", // Public/images folder mein rakhi hui logo.png ka path
 
         width: 1200,
 
@@ -96,7 +96,7 @@ export const metadata: Metadata = {
 
     description: "You're invited to celebrate our wedding ceremony!",
 
-    images: ["/images/logo.png"],
+    images: ["/images/logo1.png"],
 
   },
 
