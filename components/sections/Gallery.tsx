@@ -31,7 +31,7 @@ export default function Gallery() {
     <section
       ref={sectionRef}
       /* Standalone cinematic stage with perfectly symmetrical top-bottom buffers */
-      className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#faf6ee] py-48 sm:py-60 md:py-72"
+      className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-48 sm:py-60 md:py-72"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER (mry.png - Extended Buffer)
@@ -46,30 +46,30 @@ export default function Gallery() {
             backgroundImage: "url('/images/mry.png')",
           }}
         />
-        {/* Balanced 50% Royal Parchment Wash */}
-        <div className="absolute inset-0 bg-[#faf6ee]/50" />
+        {/* Dark Royal Wash to merge with website aesthetic */}
+        <div className="absolute inset-0 bg-[#0c0704]/85" />
       </motion.div>
 
       {/* Atmospheric lighting & soft edge transitions */}
-      <div className="absolute inset-0 bg-[#faf6ee]/20 z-[1]" />
+      <div className="absolute inset-0 bg-[#0c0704]/40 z-[1]" />
 
       {/* Top Golden Glow Gradient */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-44 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
       {/* Bottom Transition Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#faf6ee] via-[#faf6ee]/70 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
       ===================================================== */}
       <div className="absolute inset-x-0 top-0 z-10 flex h-24 items-center justify-center -translate-y-[45px]">
-        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-500/80 to-amber-600" />
-        <div className="mx-6 flex items-center gap-2.5 text-amber-600 drop-shadow-[0_0_10px_rgba(245,215,124,0.7)]">
+        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
           <span className="text-xl">𑁍</span>
           <span className="text-sm">✦</span>
           <span className="text-xl">𑁍</span>
         </div>
-        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-500/80 to-amber-600" />
+        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
       </div>
 
       {/* =====================================================
@@ -87,7 +87,7 @@ export default function Gallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.15, ease: smoothCurve }}
-              className="text-sm uppercase tracking-[6px] text-[#936a24] font-semibold"
+              className="text-sm uppercase tracking-[6px] text-amber-200 font-semibold"
               style={{ margin: 0 }}
             >
               Memories
@@ -99,7 +99,7 @@ export default function Gallery() {
               whileInView={{ opacity: 1, scaleX: 1 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, delay: 0.3, ease: smoothCurve }}
-              className="h-px w-20 bg-[#b68d40]/70 origin-center drop-shadow"
+              className="h-px w-20 bg-amber-400/70 origin-center drop-shadow"
               style={{ margin: "16px auto 32px" }}
             />
 
@@ -109,7 +109,7 @@ export default function Gallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
-              className="font-heading text-4xl text-[#2b1d0e] drop-shadow-sm md:text-5xl"
+              className="font-heading text-4xl text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] md:text-5xl"
               style={{ margin: 0, lineHeight: 1.15 }}
             >
               Our Gallery
@@ -121,7 +121,7 @@ export default function Gallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.8, delay: 0.6, ease: smoothCurve }}
-              className="mt-6 text-sm sm:text-base leading-relaxed text-[#68523c] max-w-2xl mx-auto"
+              className="mt-6 text-sm sm:text-base leading-relaxed text-amber-100/80 max-w-2xl mx-auto"
             >
               Captured glances, timeless frames, and beautiful reminiscence of our togetherness.
             </motion.p>
@@ -142,7 +142,7 @@ export default function Gallery() {
                     delay: 0.2 + (index % 3) * 0.15,
                     ease: smoothCurve,
                   }}
-                  className={`group relative overflow-hidden rounded-3xl border-2 border-[#b68d40]/35 bg-white/90 shadow-[0_16px_40px_rgba(75,50,22,0.12)] transition-colors duration-500 hover:border-[#b68d40]/75 hover:shadow-[0_22px_50px_rgba(182,141,64,0.25)] will-change-transform transform-gpu ${
+                  className={`group relative overflow-hidden rounded-3xl border border-[#b68d40]/40 bg-black/45 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-md transition-colors duration-500 hover:border-[#e5c158]/70 hover:shadow-[0_25px_80px_rgba(182,141,64,0.3)] will-change-transform transform-gpu ${
                     index % 2 === 1
                       ? "h-[360px] sm:h-[400px]"
                       : "h-[300px] sm:h-[340px]"
@@ -157,9 +157,9 @@ export default function Gallery() {
                   />
 
                   {/* Gentle Film Tint */}
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2b1d0e]/20 via-transparent to-white/10 opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 opacity-60 group-hover:opacity-30 transition-opacity duration-500" />
 
-                  {/* Inner Golden Stroke (Updated to Golden Color) */}
+                  {/* Inner Golden Stroke */}
                   <div className="pointer-events-none absolute inset-3 rounded-2xl border border-amber-400/80 transition-colors duration-300 group-hover:border-amber-300" />
                 </motion.div>
               ))}
@@ -175,13 +175,13 @@ export default function Gallery() {
           BOTTOM DECORATIVE AMBER GOLD BORDER RIBBON
       ===================================================== */}
       <div className="absolute inset-x-0 bottom-0 z-10 flex h-24 items-center justify-center translate-y-[45px]">
-        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-500/80 to-amber-600" />
-        <div className="mx-6 flex items-center gap-2.5 text-amber-600 drop-shadow-[0_0_10px_rgba(245,215,124,0.7)]">
+        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
           <span className="text-xl">𑁍</span>
           <span className="text-sm">✦</span>
           <span className="text-xl">𑁍</span>
         </div>
-        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-500/80 to-amber-600" />
+        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
       </div>
     </section>
   );
