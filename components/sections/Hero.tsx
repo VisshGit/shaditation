@@ -29,8 +29,12 @@ const smoothTransition = (delay: number) => ({
   ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
 });
 
-export default function Hero() {
-  const [showPetals, setShowPetals] = useState(true);
+interface HeroProps {
+  isOpened?: boolean; // Gate open hone ki state
+}
+
+export default function Hero({ isOpened = true }: HeroProps) {
+  const [showPetals, setShowPetals] = useState(false);
   const [showSparks, setShowSparks] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +50,10 @@ export default function Hero() {
   const isRajasthani = activeTheme === "royal-rajasthani";
 
   useEffect(() => {
-    if (!isRajasthani) return;
+    if (!isRajasthani || !isOpened) return;
+
+    // Gate open hone par petals aur sparks trigger honge
+    setShowPetals(true);
 
     const petalsStopTimer = window.setTimeout(() => {
       setShowPetals(false);
@@ -65,7 +72,7 @@ export default function Hero() {
       window.clearTimeout(sparksStartTimer);
       window.clearTimeout(sparksStopTimer);
     };
-  }, [isRajasthani]);
+  }, [isRajasthani, isOpened]);
 
   return (
     <section
@@ -97,7 +104,7 @@ export default function Hero() {
         <div className="absolute bottom-20 right-20 h-72 w-72 rounded-full bg-[var(--primary)]/10 blur-3xl" />
       </div>
 
-      {/* Rose Petals */}
+      {/* Rose Petals (Only starts when isOpened is true) */}
       {isRajasthani && showPetals && (
         <div className="hero-rose-petals z-[2]">
           {rosePetals.map((petal, index) => (
@@ -118,7 +125,7 @@ export default function Hero() {
         </div>
       )}
 
-      {/* Fire Sparks */}
+      {/* Fire Sparks (Only starts when isOpened is true) */}
       {isRajasthani && showSparks && (
         <div className="hero-fire-sparks z-[2]">
           {fireSparks.map((spark, index) => (
