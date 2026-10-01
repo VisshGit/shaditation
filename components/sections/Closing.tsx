@@ -25,7 +25,7 @@ export default function Closing() {
       className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-36 sm:py-44 md:py-52 transform-gpu"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER (closing.jpg - Extended Buffer)
+          PARALLAX BACKGROUND LAYER (closing1.jpg - Extended Buffer)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
@@ -80,7 +80,15 @@ export default function Closing() {
               transition={{ duration: 0.85, ease: smoothCurve }}
               className="flex w-full flex-col items-center justify-center rounded-3xl border border-[#b68d40]/40 bg-black/45 px-8 sm:px-16 py-14 sm:py-20 text-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md"
             >
-             
+              {/* MAIN SCRIPT TEXT */}
+              <motion.p
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.9, delay: 0.2, ease: smoothCurve }}
+                className="font-serif italic text-3xl sm:text-5xl md:text-6xl text-amber-100 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] leading-tight"
+                style={{ fontFamily: "var(--font-script), cursive" }}
+              >
                 Can&apos;t wait to celebrate with you
               </motion.p>
 
@@ -92,8 +100,7 @@ export default function Closing() {
                 <span className="text-sm">✦</span>
                 <span className="h-px w-12 bg-amber-400/60 sm:w-20" />
               </div>
-
-             
+            </motion.div>
 
             {/* Bottom Symmetrical Breathing Spacer */}
             <div className="h-10 sm:h-16 w-full" aria-hidden="true" />
