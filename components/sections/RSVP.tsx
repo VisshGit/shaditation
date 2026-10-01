@@ -129,7 +129,9 @@ export default function RSVP() {
             {/* HEADING SECTION (OUTSIDE THE BOX) */}
             <div className="flex w-full flex-col items-center text-center mb-10 sm:mb-14">
               <p className="text-xs uppercase tracking-[6px] text-amber-200 font-semibold sm:text-sm">
-                We Would Love To Hear From You
+                We Would Love To Hear From You 
+                <br> 
+                </br>
               </p>
 
               <div
@@ -146,9 +148,16 @@ export default function RSVP() {
 
               {/* SUBTITLE WITH PROPER SPACING BEFORE THE BOX */}
               <p className="mx-auto mt-5 max-w-lg text-center text-sm leading-7 text-amber-100/85 sm:text-base sm:leading-8 mb-4">
+               <br> 
+                </br>
                 Your presence would mean the world to us.
                 <br />
                 Kindly let us know if you will be joining our celebration.
+                <br> 
+                </br>
+                <br> 
+                </br>
+                
               </p>
             </div>
 
