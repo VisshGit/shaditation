@@ -5,6 +5,7 @@ import ThemeProvider from "@/components/theme/ThemeProvider";
 import BackgroundMusic from "@/components/ui/BackgroundMusic";
 import Footer from "@/components/layout/Footer";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
+import StickyHashtag from "@/components/ui/StickyHashtag";
 
 const cinzel = Cinzel({
   subsets: ["latin"],
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Vishal & Varsha Wedding",
     images: [
       {
-        url: "/images/logo11.png", // Yahan 1200x630 ki saaf suthri banner image ka path dena
+        url: "/images/logo11.png",
         width: 1200,
         height: 630,
         alt: "Vishal & Varsha Wedding Invitation",
@@ -65,6 +66,7 @@ export default function RootLayout({
       <body className="min-h-screen w-full">
         <SmoothScrollProvider>
           <ThemeProvider>
+            <StickyHashtag />
             {children}
 
             <Footer />
