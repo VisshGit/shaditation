@@ -1,10 +1,10 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-import { motion } from "framer-motion";
+import { FormEvent, useState, useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "@/components/ui/Container";
 
-const smoothCurve = [0.22, 1, 0.36, 1] as const;
+const smoothCurve = [0.16, 1, 0.3, 1] as const;
 
 export default function RSVP() {
   const [loading, setLoading] = useState(false);
@@ -12,6 +12,17 @@ export default function RSVP() {
     type: "success" | "error" | null;
     text: string;
   }>({ type: null, text: "" });
+
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Parallax tracking identical to Story, Events, & Venue
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax smooth drift
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -63,92 +74,88 @@ export default function RSVP() {
 
   return (
     <section
-      className="relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat bg-scroll md:bg-fixed"
-      style={{
-        paddingTop: "140px",
-        paddingBottom: "80px",
-        backgroundImage: "url('/images/cdbg.PNG')",
-      }}
+      ref={sectionRef}
+      /* Standalone cinematic stage with massive breathing buffer and zero layout shift */
+      className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-48 sm:py-60 md:py-72 transform-gpu"
     >
-      {/* Base Dim Layer */}
-      <div className="absolute inset-0 bg-black/50 z-0" />
+      {/* =====================================================
+          PARALLAX BACKGROUND LAYER (cdbg.PNG - Extended Buffer)
+      ===================================================== */}
+      <motion.div
+        style={{ y: bgY }}
+        className="pointer-events-none absolute inset-0 -top-40 -bottom-40 scale-[1.18] bg-cover bg-center will-change-transform z-0"
+      >
+        <div
+          className="h-full w-full bg-cover bg-center"
+          style={{
+            backgroundImage: "url('/images/cdbg.PNG')",
+          }}
+        />
+        {/* Balanced softer dark wash so image remains visible */}
+        <div className="absolute inset-0 bg-[#0c0704]/70" />
+      </motion.div>
 
-      {/* TOP FADE: Upar ke section se seamless blend */}
-      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#120b06] via-[#120b06]/70 to-transparent pointer-events-none z-0" />
+      {/* Atmospheric lighting & soft edge transitions */}
+      <div className="absolute inset-0 bg-[#0c0704]/25 z-[1]" />
 
-      {/* BOTTOM FADE: Niche Closing section me seamless blend */}
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black via-black/60 to-transparent pointer-events-none z-0" />
+      {/* Top Golden Glow Gradient */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-44 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
-      {/* Content */}
-      <div className="relative z-10 w-full">
+      {/* Bottom Transition Gradient */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+
+      {/* =====================================================
+          TOP DECORATIVE AMBER GOLD BORDER RIBBON
+      ===================================================== */}
+      <div className="absolute inset-x-0 top-0 z-10 flex h-24 items-center justify-center -translate-y-[45px]">
+        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
+          <span className="text-xl">𑁍</span>
+          <span className="text-sm">✦</span>
+          <span className="text-xl">𑁍</span>
+        </div>
+        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
+      </div>
+
+      {/* =====================================================
+          RSVP CONTENT (Centered in the Isolated Stage)
+      ===================================================== */}
+      <div className="relative z-10 my-auto w-full">
         <Container>
-          <div className="flex w-full items-center justify-center px-4 sm:px-6">
+          <div className="mx-auto max-w-5xl px-4 text-center">
+            {/* Top Symmetrical Breathing Spacer */}
+            <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
+
             {/* ROYAL GLASSMORPHISM CARD */}
-            <motion.div
-              initial={{ opacity: 0, y: 35, scale: 0.97 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.85, delay: 0.1, ease: smoothCurve }}
-              className="flex w-full max-w-4xl flex-col items-center justify-center rounded-3xl border border-white/20 bg-white/10 px-6 py-12 text-center shadow-[0_25px_60px_rgba(0,0,0,0.45)] backdrop-blur-2xl sm:px-14 sm:py-16"
-            >
+            <div className="flex w-full flex-col items-center justify-center rounded-3xl border border-[#b68d40]/40 bg-black/45 px-6 py-12 text-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md sm:px-14 sm:py-16">
               {/* HEADING SECTION */}
               <div className="flex w-full flex-col items-center text-center">
-                <motion.p
-                  initial={{ opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.7, delay: 0.25, ease: smoothCurve }}
-                  className="text-xs uppercase tracking-[5px] text-amber-200/90 sm:text-sm sm:tracking-[7px]"
-                >
+                <p className="text-xs uppercase tracking-[6px] text-amber-200 font-semibold sm:text-sm">
                   We Would Love To Hear From You
-                </motion.p>
+                </p>
 
-                <motion.div
-                  initial={{ opacity: 0, scaleX: 0 }}
-                  whileInView={{ opacity: 1, scaleX: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, delay: 0.35, ease: smoothCurve }}
-                  className="mt-4 h-px w-16 bg-gradient-to-r from-transparent via-amber-200/60 to-transparent origin-center"
+                <div
+                  className="mt-4 h-px w-20 bg-amber-400/70 origin-center drop-shadow"
                 />
 
-                <motion.h2
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.8, delay: 0.45, ease: smoothCurve }}
-                  className="mt-4 font-heading text-4xl leading-tight text-white drop-shadow-md sm:text-6xl md:text-7xl"
-                >
+                <h2 className="mt-4 font-heading text-4xl leading-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] sm:text-6xl md:text-7xl">
                   RSVP
-                </motion.h2>
+                </h2>
 
-                <motion.div
-                  initial={{ opacity: 0, scaleX: 0 }}
-                  whileInView={{ opacity: 1, scaleX: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, delay: 0.55, ease: smoothCurve }}
-                  className="mt-4 h-px w-12 bg-gradient-to-r from-transparent via-amber-200/50 to-transparent origin-center"
+                <div
+                  className="mt-4 h-px w-12 bg-amber-400/50 origin-center"
                 />
 
                 {/* SUBTITLE */}
-                <motion.p
-                  initial={{ opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.75, delay: 0.65, ease: smoothCurve }}
-                  className="mx-auto mt-6 max-w-lg text-center text-sm leading-7 text-white/85 sm:text-base sm:leading-8"
-                >
+                <p className="mx-auto mt-6 max-w-lg text-center text-sm leading-7 text-amber-100/85 sm:text-base sm:leading-8">
                   Your presence would mean the world to us.
                   <br />
                   Kindly let us know if you will be joining our celebration.
-                </motion.p>
+                </p>
               </div>
 
               {/* FORM FIELDS */}
-              <motion.form
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.8, delay: 0.75, ease: smoothCurve }}
+              <form
                 onSubmit={handleSubmit}
                 className="mt-10 flex w-full max-w-md flex-col text-left"
               >
@@ -156,7 +163,7 @@ export default function RSVP() {
                 <div className="w-full">
                   <label
                     htmlFor="name"
-                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
                   >
                     Your Name <span className="text-rose-400">*</span>
                   </label>
@@ -174,7 +181,7 @@ export default function RSVP() {
                 <div className="mt-5 w-full">
                   <label
                     htmlFor="email"
-                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
                   >
                     Email Address{" "}
                     <span className="ml-1.5 normal-case tracking-normal text-white/60">
@@ -194,7 +201,7 @@ export default function RSVP() {
                 <div className="mt-5 w-full">
                   <label
                     htmlFor="response"
-                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
                   >
                     Your Response <span className="text-rose-400">*</span>
                   </label>
@@ -203,7 +210,7 @@ export default function RSVP() {
                     name="response"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/90 sm:bg-white/10 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e]/95 focus:ring-2 focus:ring-amber-300/20"
+                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/95 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e] focus:ring-2 focus:ring-amber-300/20"
                   >
                     <option value="" disabled className="bg-[#2b1d0e] text-white/70">
                       Will you attend?
@@ -221,7 +228,7 @@ export default function RSVP() {
                 <div className="mt-5 w-full">
                   <label
                     htmlFor="guests"
-                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
                   >
                     How Many Members Are Joining? <span className="text-rose-400">*</span>
                   </label>
@@ -230,7 +237,7 @@ export default function RSVP() {
                     name="guests"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/90 sm:bg-white/10 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e]/95 focus:ring-2 focus:ring-amber-300/20"
+                    className="w-full rounded-xl border border-white/20 bg-[#2b1d0e]/95 px-4 py-3.5 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-[#2b1d0e] focus:ring-2 focus:ring-amber-300/20"
                   >
                     <option value="" disabled className="bg-[#2b1d0e] text-white/70">
                       Select number of members
@@ -250,7 +257,7 @@ export default function RSVP() {
                 <div className="mt-5 w-full">
                   <label
                     htmlFor="message"
-                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-100 font-medium"
+                    className="mb-2 block text-[11px] uppercase tracking-[3px] text-amber-200 font-medium"
                   >
                     A Message for the Couple
                   </label>
@@ -265,9 +272,7 @@ export default function RSVP() {
 
                 {/* STATUS MESSAGE */}
                 {statusMessage.text && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
+                  <div
                     className={`mt-6 w-full rounded-xl border p-3.5 text-center text-sm font-medium backdrop-blur-md ${
                       statusMessage.type === "success"
                         ? "border-emerald-500/40 bg-emerald-950/40 text-emerald-300"
@@ -275,7 +280,7 @@ export default function RSVP() {
                     }`}
                   >
                     {statusMessage.text}
-                  </motion.div>
+                  </div>
                 )}
 
                 {/* SUBMIT BUTTON */}
@@ -295,10 +300,26 @@ export default function RSVP() {
                     </span>
                   </button>
                 </div>
-              </motion.form>
-            </motion.div>
+              </form>
+            </div>
+
+            {/* Bottom Symmetrical Breathing Spacer inside container */}
+            <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
           </div>
         </Container>
+      </div>
+
+      {/* =====================================================
+          BOTTOM DECORATIVE AMBER GOLD BORDER RIBBON
+      ===================================================== */}
+      <div className="absolute inset-x-0 bottom-0 z-10 flex h-24 items-center justify-center translate-y-[45px]">
+        <div className="h-[2px] w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-6 flex items-center gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
+          <span className="text-xl">𑁍</span>
+          <span className="text-sm">✦</span>
+          <span className="text-xl">𑁍</span>
+        </div>
+        <div className="h-[2px] w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
       </div>
     </section>
   );
