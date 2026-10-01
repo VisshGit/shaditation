@@ -145,9 +145,9 @@ export default function ScratchReveal() {
           </motion.div>
         </div>
 
-        {/* Floating Scratch Card Container */}
-        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-[#b68d40]/70 p-[2px] shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-[1px]">
-          <div className="relative h-56 overflow-hidden rounded-[1.6rem] border border-white/25 sm:h-72 md:h-96 md:rounded-[1.85rem] bg-transparent">
+        {/* Floating Scratch Card Container (Frosted Glass Effect) */}
+        <div className="w-full max-w-sm sm:max-w-xl md:max-w-2xl rounded-[1.75rem] md:rounded-[2rem] bg-white/10 p-[1.5px] shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md border border-white/20">
+          <div className="relative h-56 overflow-hidden rounded-[1.6rem] sm:h-72 md:h-96 md:rounded-[1.85rem] bg-black/20 backdrop-blur-lg">
             {/* Revealed Date Layer */}
             <div className="absolute inset-0 flex items-center justify-center p-3 sm:p-6">
               <div className="px-2 py-3 text-center sm:px-7 sm:py-8 md:px-12">
