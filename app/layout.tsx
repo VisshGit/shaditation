@@ -25,8 +25,30 @@ const greatVibes = Great_Vibes({
 });
 
 export const metadata: Metadata = {
-  title: "Wedding Invitation",
-  description: "A Premium Digital Wedding Invitation",
+  title: "Vishal & Varsha Wedding Invitation",
+  description: "Join us in celebrating our special day!",
+  openGraph: {
+    title: "Vishal & Varsha Wedding Invitation",
+    description: "You're invited to celebrate our wedding ceremony!",
+    url: "https://your-domain.vercel.app", // Yahan apni live website ka domain daal dena
+    siteName: "Vishal & Varsha Wedding",
+    images: [
+      {
+        url: "/images/logo.png", // Public/images folder mein rakhi hui logo.png ka path
+        width: 1200,
+        height: 630,
+        alt: "Vishal & Varsha Wedding Invitation",
+      },
+    ],
+    locale: "en_IN",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Vishal & Varsha Wedding Invitation",
+    description: "You're invited to celebrate our wedding ceremony!",
+    images: ["/images/logo.png"],
+  },
 };
 
 export default function RootLayout({
