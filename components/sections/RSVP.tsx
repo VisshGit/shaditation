@@ -75,8 +75,8 @@ export default function RSVP() {
   return (
     <section
       ref={sectionRef}
-      /* Standalone cinematic stage with massive breathing buffer and zero layout shift */
-      className="relative isolate flex min-h-[130vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-48 sm:py-60 md:py-72 transform-gpu"
+      /* Standalone cinematic stage with balanced breathing buffer and zero layout shift */
+      className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-36 sm:py-44 md:py-52 transform-gpu"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER (cdbg.PNG - Extended Buffer)
@@ -101,8 +101,8 @@ export default function RSVP() {
       {/* Top Golden Glow Gradient */}
       <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-44 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
-      {/* Bottom Transition Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#0c0704] via-[#0c0704]/70 to-transparent" />
+      {/* Bottom Golden Glow Gradient (Updated to match top style) */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
 
       {/* =====================================================
           TOP DECORATIVE AMBER GOLD BORDER RIBBON
@@ -123,37 +123,37 @@ export default function RSVP() {
       <div className="relative z-10 my-auto w-full">
         <Container>
           <div className="mx-auto max-w-4xl px-4 text-center">
-            {/* Top Symmetrical Breathing Spacer */}
-            <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
+            {/* Reduced Top Breathing Spacer */}
+            <div className="h-8 sm:h-12 w-full" aria-hidden="true" />
 
             {/* HEADING SECTION (OUTSIDE THE BOX) */}
-            <div className="flex w-full flex-col items-center text-center mb-12 sm:mb-16">
+            <div className="flex w-full flex-col items-center text-center mb-10 sm:mb-14">
               <p className="text-xs uppercase tracking-[6px] text-amber-200 font-semibold sm:text-sm">
                 We Would Love To Hear From You
               </p>
 
               <div
-                className="mt-4 h-px w-20 bg-amber-400/70 origin-center drop-shadow"
+                className="mt-3.5 h-px w-20 bg-amber-400/70 origin-center drop-shadow"
               />
 
-              <h2 className="mt-4 font-heading text-4xl leading-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] sm:text-6xl md:text-7xl">
+              <h2 className="mt-3.5 font-heading text-4xl leading-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] sm:text-6xl md:text-7xl">
                 RSVP
               </h2>
 
               <div
-                className="mt-4 h-px w-12 bg-amber-400/50 origin-center"
+                className="mt-3.5 h-px w-12 bg-amber-400/50 origin-center"
               />
 
-              {/* SUBTITLE */}
-              <p className="mx-auto mt-6 max-w-lg text-center text-sm leading-7 text-amber-100/85 sm:text-base sm:leading-8">
+              {/* SUBTITLE WITH PROPER SPACING BEFORE THE BOX */}
+              <p className="mx-auto mt-5 max-w-lg text-center text-sm leading-7 text-amber-100/85 sm:text-base sm:leading-8 mb-4">
                 Your presence would mean the world to us.
                 <br />
                 Kindly let us know if you will be joining our celebration.
               </p>
             </div>
 
-            {/* ROYAL GLASSMORPHISM CARD (ONLY FORM FIELDS INSIDE) */}
-            <div className="flex w-full flex-col items-center justify-center rounded-3xl border border-[#b68d40]/40 bg-black/45 px-6 py-10 sm:px-16 sm:py-14 text-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md">
+            {/* ROYAL GLASSMORPHISM CARD (WITH PROPER LEFT-RIGHT PADDING) */}
+            <div className="flex w-full flex-col items-center justify-center rounded-3xl border border-[#b68d40]/40 bg-black/45 px-8 sm:px-16 md:px-20 py-10 sm:py-14 text-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md">
               {/* FORM FIELDS */}
               <form
                 onSubmit={handleSubmit}
@@ -304,7 +304,7 @@ export default function RSVP() {
             </div>
 
             {/* Bottom Symmetrical Breathing Spacer inside container */}
-            <div className="h-16 sm:h-24 w-full" aria-hidden="true" />
+            <div className="h-8 sm:h-12 w-full" aria-hidden="true" />
           </div>
         </Container>
       </div>
