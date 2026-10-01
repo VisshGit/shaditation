@@ -25,7 +25,7 @@ export default function Closing() {
       className="relative isolate flex min-h-[120vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-36 sm:py-44 md:py-52 transform-gpu"
     >
       {/* =====================================================
-          PARALLAX BACKGROUND LAYER (closing1.jpg - Extended Buffer)
+          PARALLAX BACKGROUND LAYER (closing1.png - Extended Buffer)
       ===================================================== */}
       <motion.div
         style={{ y: bgY }}
@@ -34,7 +34,7 @@ export default function Closing() {
         <div
           className="h-full w-full bg-cover bg-center"
           style={{
-            backgroundImage: "url('/images/closing1.jpg')",
+            backgroundImage: "url('/images/closing1.png')",
           }}
         />
         {/* Balanced softer dark wash so image remains visible */}
@@ -72,18 +72,12 @@ export default function Closing() {
             {/* Top Symmetrical Breathing Spacer */}
             <div className="h-10 sm:h-16 w-full" aria-hidden="true" />
 
-            {/* ROYAL GLASSMORPHISM CARD CONTAINER */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.85, ease: smoothCurve }}
-              className="flex w-full flex-col items-center justify-center rounded-3xl border border-[#b68d40]/40 bg-black/45 px-8 sm:px-16 py-14 sm:py-20 text-center shadow-[0_25px_60px_rgba(0,0,0,0.6)] backdrop-blur-md"
-            >
+            {/* OPEN CONTAINER (WITHOUT BOX) */}
+            <div className="flex w-full flex-col items-center justify-center text-center">
               {/* MAIN SCRIPT TEXT */}
               <motion.p
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.9, delay: 0.2, ease: smoothCurve }}
                 className="font-serif italic text-3xl sm:text-5xl md:text-6xl text-amber-100 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] leading-tight"
@@ -93,14 +87,20 @@ export default function Closing() {
               </motion.p>
 
               {/* CENTRAL ROYAL MOTIF DIVIDER */}
-              <div className="mt-8 flex items-center justify-center gap-3 text-amber-300">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.8, delay: 0.35, ease: smoothCurve }}
+                className="mt-8 flex items-center justify-center gap-3 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.7)]"
+              >
                 <span className="h-px w-12 bg-amber-400/60 sm:w-20" />
                 <span className="text-sm">✦</span>
                 <span className="text-xl">𑁍</span>
                 <span className="text-sm">✦</span>
                 <span className="h-px w-12 bg-amber-400/60 sm:w-20" />
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
             {/* Bottom Symmetrical Breathing Spacer */}
             <div className="h-10 sm:h-16 w-full" aria-hidden="true" />
