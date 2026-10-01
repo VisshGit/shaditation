@@ -33,7 +33,7 @@ interface HeroProps {
   isOpened?: boolean; // Gate open hone ki state
 }
 
-export default function Hero({ isOpened = true }: HeroProps) {
+export default function Hero({ isOpened = false }: HeroProps) {
   const [showPetals, setShowPetals] = useState(false);
   const [showSparks, setShowSparks] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -52,7 +52,7 @@ export default function Hero({ isOpened = true }: HeroProps) {
   useEffect(() => {
     if (!isRajasthani || !isOpened) return;
 
-    // Gate open hone par petals aur sparks trigger honge
+    // Gate open hone par hi petals aur sparks trigger honge
     setShowPetals(true);
 
     const petalsStopTimer = window.setTimeout(() => {
