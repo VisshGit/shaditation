@@ -4,8 +4,6 @@ import { FormEvent, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Container from "@/components/ui/Container";
 
-const smoothCurve = [0.16, 1, 0.3, 1] as const;
-
 export default function RSVP() {
   const [loading, setLoading] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{
@@ -15,13 +13,11 @@ export default function RSVP() {
 
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Parallax tracking identical to Story, Events, & Venue
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
   });
 
-  // Parallax smooth drift
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "-14%"]);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -75,8 +71,7 @@ export default function RSVP() {
   return (
     <section
       ref={sectionRef}
-      /* Section shifted slightly upwards with compact top padding */
-      className="relative isolate flex min-h-screen w-full items-start justify-center overflow-hidden bg-[#0c0704] pt-10 pb-20 sm:pt-16 sm:pb-28 md:pt-20 md:pb-32 transform-gpu"
+      className="relative isolate flex min-h-screen w-full flex-col items-center justify-start overflow-hidden bg-[#0c0704] pt-24 pb-36 sm:pt-32 sm:pb-44 transform-gpu"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER
@@ -98,49 +93,49 @@ export default function RSVP() {
       <div className="absolute inset-0 bg-[#0c0704]/25 z-[1]" />
 
       {/* Top Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-28 sm:h-40 bg-gradient-to-b from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 sm:h-48 bg-gradient-to-b from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
 
       {/* Bottom Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 sm:h-40 bg-gradient-to-t from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 sm:h-48 bg-gradient-to-t from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
 
       {/* =====================================================
           RSVP CONTENT
       ===================================================== */}
-      <div className="relative z-10 w-full px-4 sm:px-6 md:px-8">
+      <div className="relative z-10 w-full px-5 sm:px-8">
         <Container>
           <div className="mx-auto flex flex-col items-center w-full max-w-2xl text-center">
             
-            {/* HEADING SECTION: Shifted up with clear, generous spacing between lines */}
-            <div className="flex w-full flex-col items-center mb-8 sm:mb-12">
-              <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[4px] sm:tracking-[6px] text-amber-200 font-semibold">
+            {/* HEADING SECTION: Khula aur proper breathing gaps ke sath */}
+            <div className="flex w-full flex-col items-center mb-12 sm:mb-16">
+              <p className="text-xs sm:text-sm uppercase tracking-[5px] sm:tracking-[7px] text-amber-200 font-semibold mb-5">
                 We Would Love To Hear From You
               </p>
 
-              <div className="mt-4 h-px w-16 sm:w-24 bg-amber-400/70 origin-center drop-shadow" />
+              <div className="h-px w-20 sm:w-28 bg-amber-400/70 origin-center drop-shadow my-2" />
 
-              <h2 className="mt-4 font-heading text-4xl sm:text-5xl md:text-6xl font-medium tracking-wider leading-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
+              <h2 className="my-5 font-heading text-4xl sm:text-6xl md:text-7xl font-normal tracking-wider leading-none text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
                 RSVP
               </h2>
 
-              <div className="mt-4 h-px w-10 sm:w-14 bg-amber-400/50 origin-center" />
+              <div className="h-px w-14 sm:w-16 bg-amber-400/50 origin-center my-2" />
 
-              <p className="mx-auto mt-5 max-w-md text-xs sm:text-sm md:text-base leading-relaxed text-amber-100/85 px-3">
+              <p className="mx-auto mt-6 max-w-lg text-sm sm:text-base leading-relaxed text-amber-100/85 px-4">
                 Your presence would mean the world to us. <br className="hidden sm:inline" />
                 Kindly let us know if you will be joining our celebration.
               </p>
             </div>
 
-            {/* ROYAL GLASSMORPHISM CARD: Clean margins with solid internal padding */}
-            <div className="w-full rounded-2xl sm:rounded-3xl border border-[#b68d40]/40 bg-black/60 px-5 py-7 sm:px-10 sm:py-10 md:px-12 text-center shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-md">
+            {/* ROYAL GLASSMORPHISM CARD: Clean outside space + andar generous padding */}
+            <div className="w-full rounded-3xl border border-[#b68d40]/40 bg-black/60 p-7 sm:p-12 md:p-14 text-center shadow-[0_20px_50px_rgba(0,0,0,0.85)] backdrop-blur-md">
               <form
                 onSubmit={handleSubmit}
-                className="flex w-full flex-col text-left space-y-5 sm:space-y-6"
+                className="flex w-full flex-col text-left space-y-7 sm:space-y-8"
               >
                 {/* NAME */}
                 <div className="w-full">
                   <label
                     htmlFor="name"
-                    className="mb-2 block text-[11px] uppercase tracking-[2.5px] text-amber-200 font-medium"
+                    className="mb-3 block text-xs sm:text-[13px] uppercase tracking-[2.5px] text-amber-200 font-medium"
                   >
                     Your Name <span className="text-rose-400">*</span>
                   </label>
@@ -150,7 +145,7 @@ export default function RSVP() {
                     type="text"
                     required
                     placeholder="Enter your name"
-                    className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
                   />
                 </div>
 
@@ -158,10 +153,10 @@ export default function RSVP() {
                 <div className="w-full">
                   <label
                     htmlFor="email"
-                    className="mb-2 block text-[11px] uppercase tracking-[2.5px] text-amber-200 font-medium"
+                    className="mb-3 block text-xs sm:text-[13px] uppercase tracking-[2.5px] text-amber-200 font-medium"
                   >
                     Email Address{" "}
-                    <span className="ml-1 text-[10px] normal-case tracking-normal text-white/50">
+                    <span className="ml-1 text-[11px] normal-case tracking-normal text-white/50">
                       (Optional)
                     </span>
                   </label>
@@ -170,7 +165,7 @@ export default function RSVP() {
                     name="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
                   />
                 </div>
 
@@ -178,7 +173,7 @@ export default function RSVP() {
                 <div className="w-full">
                   <label
                     htmlFor="response"
-                    className="mb-2 block text-[11px] uppercase tracking-[2.5px] text-amber-200 font-medium"
+                    className="mb-3 block text-xs sm:text-[13px] uppercase tracking-[2.5px] text-amber-200 font-medium"
                   >
                     Your Response <span className="text-rose-400">*</span>
                   </label>
@@ -187,15 +182,15 @@ export default function RSVP() {
                     name="response"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-white/20 bg-[#180f07] px-4 py-3 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-xl border border-white/20 bg-[#160e06] px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
                   >
-                    <option value="" disabled className="bg-[#180f07] text-white/60">
+                    <option value="" disabled className="bg-[#160e06] text-white/60">
                       Will you attend?
                     </option>
-                    <option value="accept" className="bg-[#180f07] text-white">
+                    <option value="accept" className="bg-[#160e06] text-white">
                       Joyfully accept
                     </option>
-                    <option value="decline" className="bg-[#180f07] text-white">
+                    <option value="decline" className="bg-[#160e06] text-white">
                       Regretfully decline
                     </option>
                   </select>
@@ -205,7 +200,7 @@ export default function RSVP() {
                 <div className="w-full">
                   <label
                     htmlFor="guests"
-                    className="mb-2 block text-[11px] uppercase tracking-[2.5px] text-amber-200 font-medium"
+                    className="mb-3 block text-xs sm:text-[13px] uppercase tracking-[2.5px] text-amber-200 font-medium"
                   >
                     How Many Members Are Joining? <span className="text-rose-400">*</span>
                   </label>
@@ -214,17 +209,17 @@ export default function RSVP() {
                     name="guests"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-white/20 bg-[#180f07] px-4 py-3 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-xl border border-white/20 bg-[#160e06] px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
                   >
-                    <option value="" disabled className="bg-[#180f07] text-white/60">
+                    <option value="" disabled className="bg-[#160e06] text-white/60">
                       Select number of members
                     </option>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                      <option key={num} value={num} className="bg-[#180f07] text-white">
+                      <option key={num} value={num} className="bg-[#160e06] text-white">
                         {num} {num === 1 ? "Member" : "Members"}
                       </option>
                     ))}
-                    <option value="10+" className="bg-[#180f07] text-white">
+                    <option value="10+" className="bg-[#160e06] text-white">
                       10+ Members
                     </option>
                   </select>
@@ -234,26 +229,26 @@ export default function RSVP() {
                 <div className="w-full">
                   <label
                     htmlFor="message"
-                    className="mb-2 block text-[11px] uppercase tracking-[2.5px] text-amber-200 font-medium"
+                    className="mb-3 block text-xs sm:text-[13px] uppercase tracking-[2.5px] text-amber-200 font-medium"
                   >
                     A Message for the Couple
                   </label>
                   <textarea
                     id="message"
                     name="message"
-                    rows={3}
+                    rows={4}
                     placeholder="Share your wishes and blessings..."
-                    className="w-full resize-none rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full resize-none rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
                   />
                 </div>
 
                 {/* STATUS MESSAGE */}
                 {statusMessage.text && (
                   <div
-                    className={`rounded-xl border p-3.5 text-center text-xs sm:text-sm font-medium backdrop-blur-md ${
+                    className={`rounded-xl border p-4 text-center text-sm font-medium backdrop-blur-md ${
                       statusMessage.type === "success"
-                        ? "border-emerald-500/40 bg-emerald-950/50 text-emerald-300"
-                        : "border-rose-500/40 bg-rose-950/50 text-rose-300"
+                        ? "border-emerald-500/40 bg-emerald-950/60 text-emerald-300"
+                        : "border-rose-500/40 bg-rose-950/60 text-rose-300"
                     }`}
                   >
                     {statusMessage.text}
@@ -261,11 +256,11 @@ export default function RSVP() {
                 )}
 
                 {/* SUBMIT BUTTON */}
-                <div className="pt-3 sm:pt-4 flex w-full justify-center">
+                <div className="pt-4 flex w-full justify-center">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="rsvp-luxury-button group w-full sm:w-auto px-8 py-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="rsvp-luxury-button group w-full sm:w-auto px-10 py-3.5 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <span className="rsvp-button-glow" />
                     <span className="rsvp-button-inner">
@@ -286,14 +281,14 @@ export default function RSVP() {
       {/* =====================================================
           BOTTOM DECORATIVE AMBER GOLD BORDER RIBBON
       ===================================================== */}
-      <div className="absolute inset-x-0 bottom-0 z-10 flex h-14 sm:h-20 items-center justify-center translate-y-[15px] sm:translate-y-[25px] pointer-events-none">
-        <div className="h-[1.5px] sm:h-[2px] w-[28%] sm:w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
-        <div className="mx-3 sm:mx-6 flex items-center gap-1.5 sm:gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
-          <span className="text-sm sm:text-xl">𑁍</span>
-          <span className="text-[10px] sm:text-sm">✦</span>
-          <span className="text-sm sm:text-xl">𑁍</span>
+      <div className="absolute inset-x-0 bottom-0 z-10 flex h-20 items-center justify-center translate-y-[20px] pointer-events-none">
+        <div className="h-[2px] w-[28%] sm:w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+        <div className="mx-4 sm:mx-6 flex items-center gap-2 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
+          <span className="text-base sm:text-xl">𑁍</span>
+          <span className="text-xs sm:text-sm">✦</span>
+          <span className="text-base sm:text-xl">𑁍</span>
         </div>
-        <div className="h-[1.5px] sm:h-[2px] w-[28%] sm:w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
+        <div className="h-[2px] w-[28%] sm:w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
       </div>
     </section>
   );
