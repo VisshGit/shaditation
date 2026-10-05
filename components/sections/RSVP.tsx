@@ -75,7 +75,7 @@ export default function RSVP() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-[100vh] w-full items-center justify-center overflow-hidden bg-[#0c0704] py-16 sm:py-24 md:py-32 transform-gpu"
+      className="relative isolate flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#0c0704] py-14 sm:py-24 md:py-32 transform-gpu"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER
@@ -97,24 +97,25 @@ export default function RSVP() {
       <div className="absolute inset-0 bg-[#0c0704]/25 z-[1]" />
 
       {/* Top Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 sm:h-44 bg-gradient-to-b from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-28 sm:h-44 bg-gradient-to-b from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
 
       {/* Bottom Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 sm:h-44 bg-gradient-to-t from-[#b68d40]/45 via-[#b68d40]/15 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 sm:h-44 bg-gradient-to-t from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
 
       {/* =====================================================
           RSVP CONTENT
       ===================================================== */}
-      <div className="relative z-10 my-auto w-full">
+      <div className="relative z-10 w-full px-4 sm:px-6">
         <Container>
-          <div className="mx-auto max-w-3xl px-2 sm:px-4 text-center">
+          <div className="mx-auto flex flex-col items-center w-full max-w-2xl text-center">
+            
             {/* HEADING SECTION */}
-            <div className="flex w-full flex-col items-center text-center mb-6 sm:mb-8">
+            <div className="flex w-full flex-col items-center mb-6 sm:mb-8">
               <p className="text-[11px] sm:text-xs md:text-sm uppercase tracking-[4px] sm:tracking-[6px] text-amber-200 font-semibold">
                 We Would Love To Hear From You
               </p>
 
-              <div className="mt-3 h-px w-16 sm:w-20 bg-amber-400/70 origin-center drop-shadow" />
+              <div className="mt-3 h-px w-14 sm:w-20 bg-amber-400/70 origin-center drop-shadow" />
 
               <h2 className="mt-3 font-heading text-3xl sm:text-5xl md:text-6xl font-medium tracking-wide leading-tight text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
                 RSVP
@@ -122,14 +123,14 @@ export default function RSVP() {
 
               <div className="mt-3 h-px w-10 sm:w-12 bg-amber-400/50 origin-center" />
 
-              <p className="mx-auto mt-4 max-w-md text-xs sm:text-sm md:text-base leading-6 sm:leading-7 text-amber-100/80">
+              <p className="mx-auto mt-4 max-w-md text-xs sm:text-sm md:text-base leading-relaxed text-amber-100/80 px-2">
                 Your presence would mean the world to us. <br className="hidden sm:inline" />
                 Kindly let us know if you will be joining our celebration.
               </p>
             </div>
 
             {/* ROYAL GLASSMORPHISM CARD */}
-            <div className="mx-auto w-full max-w-xl rounded-2xl sm:rounded-3xl border border-[#b68d40]/40 bg-black/55 px-4 sm:px-8 md:px-10 py-7 sm:py-10 text-center shadow-[0_20px_50px_rgba(0,0,0,0.7)] backdrop-blur-md">
+            <div className="w-full rounded-2xl sm:rounded-3xl border border-[#b68d40]/40 bg-black/60 p-5 sm:p-8 md:p-10 text-center shadow-[0_20px_50px_rgba(0,0,0,0.8)] backdrop-blur-md">
               <form
                 onSubmit={handleSubmit}
                 className="flex w-full flex-col text-left space-y-4 sm:space-y-5"
@@ -148,7 +149,7 @@ export default function RSVP() {
                     type="text"
                     required
                     placeholder="Enter your name"
-                    className="w-full rounded-lg sm:rounded-xl border border-white/20 bg-white/10 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-lg sm:rounded-xl border border-white/20 bg-white/10 px-3 py-2.5 sm:px-4 sm:py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
                   />
                 </div>
 
@@ -168,7 +169,7 @@ export default function RSVP() {
                     name="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full rounded-lg sm:rounded-xl border border-white/20 bg-white/10 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-lg sm:rounded-xl border border-white/20 bg-white/10 px-3 py-2.5 sm:px-4 sm:py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
                   />
                 </div>
 
@@ -185,15 +186,15 @@ export default function RSVP() {
                     name="response"
                     defaultValue=""
                     required
-                    className="w-full rounded-lg sm:rounded-xl border border-white/20 bg-[#1e140b] px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-lg sm:rounded-xl border border-white/20 bg-[#180f07] px-3 py-2.5 sm:px-4 sm:py-3 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
                   >
-                    <option value="" disabled className="bg-[#1e140b] text-white/60">
+                    <option value="" disabled className="bg-[#180f07] text-white/60">
                       Will you attend?
                     </option>
-                    <option value="accept" className="bg-[#1e140b] text-white">
+                    <option value="accept" className="bg-[#180f07] text-white">
                       Joyfully accept
                     </option>
-                    <option value="decline" className="bg-[#1e140b] text-white">
+                    <option value="decline" className="bg-[#180f07] text-white">
                       Regretfully decline
                     </option>
                   </select>
@@ -212,17 +213,17 @@ export default function RSVP() {
                     name="guests"
                     defaultValue=""
                     required
-                    className="w-full rounded-lg sm:rounded-xl border border-white/20 bg-[#1e140b] px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-lg sm:rounded-xl border border-white/20 bg-[#180f07] px-3 py-2.5 sm:px-4 sm:py-3 text-sm text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
                   >
-                    <option value="" disabled className="bg-[#1e140b] text-white/60">
+                    <option value="" disabled className="bg-[#180f07] text-white/60">
                       Select number of members
                     </option>
                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-                      <option key={num} value={num} className="bg-[#1e140b] text-white">
+                      <option key={num} value={num} className="bg-[#180f07] text-white">
                         {num} {num === 1 ? "Member" : "Members"}
                       </option>
                     ))}
-                    <option value="10+" className="bg-[#1e140b] text-white">
+                    <option value="10+" className="bg-[#180f07] text-white">
                       10+ Members
                     </option>
                   </select>
@@ -241,7 +242,7 @@ export default function RSVP() {
                     name="message"
                     rows={3}
                     placeholder="Share your wishes and blessings..."
-                    className="w-full resize-none rounded-lg sm:rounded-xl border border-white/20 bg-white/10 px-3.5 sm:px-4 py-2.5 sm:py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full resize-none rounded-lg sm:rounded-xl border border-white/20 bg-white/10 px-3 py-2.5 sm:px-4 sm:py-3 text-sm text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
                   />
                 </div>
 
@@ -284,14 +285,14 @@ export default function RSVP() {
       {/* =====================================================
           BOTTOM DECORATIVE AMBER GOLD BORDER RIBBON
       ===================================================== */}
-      <div className="absolute inset-x-0 bottom-0 z-10 flex h-16 sm:h-20 items-center justify-center translate-y-[20px] sm:translate-y-[30px] pointer-events-none">
-        <div className="h-[1.5px] sm:h-[2px] w-[30%] sm:w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
+      <div className="absolute inset-x-0 bottom-0 z-10 flex h-14 sm:h-20 items-center justify-center translate-y-[15px] sm:translate-y-[25px] pointer-events-none">
+        <div className="h-[1.5px] sm:h-[2px] w-[28%] sm:w-[35%] bg-gradient-to-r from-transparent via-amber-400/80 to-amber-500" />
         <div className="mx-3 sm:mx-6 flex items-center gap-1.5 sm:gap-2.5 text-amber-300 drop-shadow-[0_0_10px_rgba(245,215,124,0.9)]">
-          <span className="text-base sm:text-xl">𑁍</span>
-          <span className="text-xs sm:text-sm">✦</span>
-          <span className="text-base sm:text-xl">𑁍</span>
+          <span className="text-sm sm:text-xl">𑁍</span>
+          <span className="text-[10px] sm:text-sm">✦</span>
+          <span className="text-sm sm:text-xl">𑁍</span>
         </div>
-        <div className="h-[1.5px] sm:h-[2px] w-[30%] sm:w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
+        <div className="h-[1.5px] sm:h-[2px] w-[28%] sm:w-[35%] bg-gradient-to-l from-transparent via-amber-400/80 to-amber-500" />
       </div>
     </section>
   );
