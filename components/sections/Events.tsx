@@ -14,7 +14,7 @@ const events = [
   },
   {
     title: "Dhol Night",
-    icon: "public/images/dhol.png",,
+    icon: "public/images/dhol.png",
     date: "Thursday, 28 January 2027",
     time: "Time to be announced",
     venue: "",
