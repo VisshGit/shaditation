@@ -7,56 +7,56 @@ import Container from "@/components/ui/Container";
 const events = [
   {
     title: "Vinayak",
-    icon: "public/images/Vinayak.png", // Apni vector/svg ya png ka path yahan dein
+    icon: "/images/Vinayak.png",
     date: "Monday, 25 January 2027",
     time: "Time to be announced",
     venue: "",
   },
   {
     title: "Dhol Night",
-    icon: "public/images/dhol.png",
+    icon: "/images/dhol.png",
     date: "Thursday, 28 January 2027",
     time: "Time to be announced",
     venue: "",
   },
   {
     title: "Kalash",
-    icon: "public/images/kalash.png",
+    icon: "/images/kalash.png",
     date: "Friday, 29 January 2027",
     time: "Morning",
     venue: "",
   },
   {
     title: "Bindoli",
-    icon: "public/images/bindoli.png",
+    icon: "/images/bindoli.png",
     date: "Friday, 29 January 2027",
     time: "Evening",
     venue: "",
   },
   {
     title: "Haldi Ceremony",
-    icon: "public/images/haldi.png",
+    icon: "/images/haldi.png",
     date: "Saturday, 30 January 2027",
     time: "Morning",
     venue: "Urmila Garden",
   },
   {
     title: "Cocktail Party",
-    icon: "public/images/sangeet.png",
+    icon: "/images/sangeet.png",
     date: "Saturday, 30 January 2027",
     time: "Evening",
     venue: "Urmila Garden",
   },
   {
     title: "Barat",
-    icon: "public/images/Baarat.png",
+    icon: "/images/Baarat.png",
     date: "Sunday, 31 January 2027",
     time: "Time to be announced",
     venue: "",
   },
   {
     title: "Reception",
-    icon: "public/images/reception.png",
+    icon: "/images/reception.png",
     date: "Wednesday, 3 February 2027",
     time: "Time to be announced",
     venue: "Urmila Garden",
@@ -184,12 +184,13 @@ export default function Events() {
 
                   {/* Vector Icon + Title */}
                   <div className="mb-4 flex items-center justify-center gap-3">
-                    <img
-                      src={event.icon}
-                      alt=""
-                      className="h-7 w-7 object-contain filter drop-shadow-[0_0_8px_rgba(245,215,124,0.6)]"
-                      // Agar SVG icons ka color golden karna ho toh CSS filter ya direct SVG use kar sakte ho
-                    />
+                    {event.icon && (
+                      <img
+                        src={event.icon}
+                        alt=""
+                        className="h-7 w-7 object-contain filter drop-shadow-[0_0_8px_rgba(245,215,124,0.6)]"
+                      />
+                    )}
                     <h3 className="font-serif text-2xl sm:text-[1.65rem] font-bold text-amber-100 leading-snug group-hover:text-white transition-colors duration-300">
                       {event.title}
                     </h3>
