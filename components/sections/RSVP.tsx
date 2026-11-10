@@ -118,34 +118,24 @@ export default function RSVP() {
         <Container>
           <div className="mx-auto flex flex-col items-center w-full max-w-3xl text-center">
             
-            {/* HEADING SECTION: Reference ke according precise vertical gaps */}
+            {/* HEADING SECTION: Bina arrows ke clean spacing */}
             <div className="flex w-full flex-col items-center mb-10 sm:mb-14">
-              <p className="text-xs sm:text-sm uppercase tracking-[5px] text-amber-200 font-semibold mb-4">
+              <p className="text-xs sm:text-sm uppercase tracking-[5px] text-amber-200 font-semibold mb-3">
                 We would love to hear from you
               </p>
 
-              {/* Arrow ke beech ka gap */}
-              <div className="my-2 text-amber-300/80 text-sm">
-                <span>↓</span>
-              </div>
-
-              <h2 className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal tracking-wider leading-none text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] my-3">
+              <h2 className="font-heading text-4xl sm:text-6xl md:text-7xl font-normal tracking-wider leading-none text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] my-4">
                 RSVP
               </h2>
 
-              {/* Neeche wala arrow aur "Your Presence" gap */}
-              <div className="my-2 text-amber-300/80 text-sm">
-                <span>↓</span>
-              </div>
-
-              <p className="mx-auto mt-3 max-w-xl text-sm sm:text-base leading-relaxed text-amber-100/80 font-serif italic">
+              <p className="mx-auto mt-2 max-w-xl text-sm sm:text-base leading-relaxed text-amber-100/80 font-serif italic">
                 Your presence would mean the world to us. <br className="hidden sm:inline" />
                 Kindly let us know if you will be joining our celebration.
               </p>
             </div>
 
-            {/* ROYAL GLASSMORPHISM CARD */}
-            <div className="w-full rounded-3xl border border-[#b68d40]/40 bg-black/50 p-8 sm:p-14 md:p-16 text-center shadow-[0_25px_60px_rgba(0,0,0,0.7)] backdrop-blur-md">
+            {/* ROYAL GLASSMORPHISM CARD: Adequate inner padding to avoid edge crowding */}
+            <div className="w-full rounded-3xl border border-[#b68d40]/40 bg-black/50 p-8 sm:p-12 md:p-14 text-center shadow-[0_25px_60px_rgba(0,0,0,0.7)] backdrop-blur-md">
               <form
                 onSubmit={handleSubmit}
                 className="flex w-full flex-col text-left space-y-7 sm:space-y-8"
