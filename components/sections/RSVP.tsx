@@ -110,14 +110,22 @@ export default function RSVP() {
               <p className="text-xs sm:text-sm uppercase tracking-[5px] sm:tracking-[7px] text-amber-200 font-semibold mb-5">
                 We Would Love To Hear From You
               </p>
+              
+                <br><br/>
 
               <div className="h-px w-20 sm:w-28 bg-amber-400/70 origin-center drop-shadow my-2" />
+                  <br><br/>
+                <br><br/>
 
               <h2 className="my-5 font-heading text-4xl sm:text-6xl md:text-7xl font-normal tracking-wider leading-none text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)]">
                 RSVP
               </h2>
+                  <br><br/>
+                <br><br/>
 
               <div className="h-px w-14 sm:w-16 bg-amber-400/50 origin-center my-2" />
+                  <br><br/>
+                <br><br/>
 
               <p className="mx-auto mt-6 max-w-lg text-sm sm:text-base leading-relaxed text-amber-100/85 px-4">
                 Your presence would mean the world to us. <br className="hidden sm:inline" />
@@ -131,6 +139,8 @@ export default function RSVP() {
                 onSubmit={handleSubmit}
                 className="flex w-full flex-col text-left space-y-7 sm:space-y-8"
               >
+                <br><br/>
+                <br><br/>
                 {/* NAME */}
                 <div className="w-full">
                   <label
@@ -139,6 +149,8 @@ export default function RSVP() {
                   >
                     Your Name <span className="text-rose-400">*</span>
                   </label>
+                  <br><br/>
+                <br><br/>
                   <input
                     id="name"
                     name="name"
@@ -148,7 +160,8 @@ export default function RSVP() {
                     className="w-full rounded-xl border border-amber-500/30 bg-black/40 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-400 focus:bg-black/60 focus:ring-1 focus:ring-amber-400/50"
                   />
                 </div>
-
+                    <br><br/>
+                <br><br/>
                 {/* EMAIL */}
                 <div className="w-full">
                   <label
@@ -160,6 +173,8 @@ export default function RSVP() {
                       (Optional)
                     </span>
                   </label>
+                  <br><br/>
+                <br><br/>
                   <input
                     id="email"
                     name="email"
@@ -168,7 +183,8 @@ export default function RSVP() {
                     className="w-full rounded-xl border border-amber-500/30 bg-black/40 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-400 focus:bg-black/60 focus:ring-1 focus:ring-amber-400/50"
                   />
                 </div>
-
+<br><br/>
+                <br><br/>
                 {/* RESPONSE */}
                 <div className="w-full">
                   <label
@@ -177,6 +193,8 @@ export default function RSVP() {
                   >
                     Your Response <span className="text-rose-400">*</span>
                   </label>
+                  <br><br/>
+                <br><br/>
                   <select
                     id="response"
                     name="response"
@@ -195,7 +213,8 @@ export default function RSVP() {
                     </option>
                   </select>
                 </div>
-
+<br><br/>
+                <br><br/>
                 {/* NUMBER OF MEMBERS */}
                 <div className="w-full">
                   <label
@@ -204,6 +223,8 @@ export default function RSVP() {
                   >
                     How Many Members Are Joining? <span className="text-rose-400">*</span>
                   </label>
+                  <br><br/>
+                <br><br/>
                   <select
                     id="guests"
                     name="guests"
@@ -224,7 +245,8 @@ export default function RSVP() {
                     </option>
                   </select>
                 </div>
-
+<br><br/>
+                <br><br/>
                 {/* MESSAGE */}
                 <div className="w-full">
                   <label
@@ -233,6 +255,8 @@ export default function RSVP() {
                   >
                     A Message for the Couple
                   </label>
+                  <br><br/>
+                <br><br/>
                   <textarea
                     id="message"
                     name="message"
@@ -241,7 +265,8 @@ export default function RSVP() {
                     className="w-full resize-none rounded-xl border border-amber-500/30 bg-black/40 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-400 focus:bg-black/60 focus:ring-1 focus:ring-amber-400/50"
                   />
                 </div>
-
+<br><br/>
+                <br><br/>
                 {/* STATUS MESSAGE */}
                 {statusMessage.text && (
                   <div
@@ -254,6 +279,8 @@ export default function RSVP() {
                     {statusMessage.text}
                   </div>
                 )}
+                  <br><br/>
+                <br><br/>
 
                 {/* SUBMIT BUTTON: Fully styled solid gold royal button */}
                 <div className="pt-4 flex w-full justify-center">
