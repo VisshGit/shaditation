@@ -71,7 +71,7 @@ export default function RSVP() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-screen w-full flex-col items-center justify-start overflow-hidden bg-[#0c0704] pt-24 pb-36 sm:pt-32 sm:pb-44 transform-gpu"
+      className="relative isolate flex min-h-screen w-full flex-col items-center justify-start overflow-hidden bg-[#0c0704] pt-28 pb-40 sm:pt-36 sm:pb-48 transform-gpu"
     >
       {/* =====================================================
           PARALLAX BACKGROUND LAYER
@@ -86,17 +86,17 @@ export default function RSVP() {
             backgroundImage: "url('/images/cdbg.PNG')",
           }}
         />
-        <div className="absolute inset-0 bg-[#0c0704]/70" />
+        <div className="absolute inset-0 bg-[#0c0704]/80" />
       </motion.div>
 
       {/* Atmospheric lighting & soft edge transitions */}
-      <div className="absolute inset-0 bg-[#0c0704]/25 z-[1]" />
+      <div className="absolute inset-0 bg-[#0c0704]/30 z-[1]" />
 
       {/* Top Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-32 sm:h-48 bg-gradient-to-b from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-44 bg-gradient-to-b from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
 
       {/* Bottom Golden Glow Gradient */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 sm:h-48 bg-gradient-to-t from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-44 bg-gradient-to-t from-[#b68d40]/40 via-[#b68d40]/10 to-transparent" />
 
       {/* =====================================================
           RSVP CONTENT
@@ -125,8 +125,8 @@ export default function RSVP() {
               </p>
             </div>
 
-            {/* ROYAL GLASSMORPHISM CARD: Perfect ample padding applied */}
-            <div className="w-full rounded-3xl border border-[#b68d40]/40 bg-black/60 p-8 sm:p-14 md:p-16 text-center shadow-[0_20px_50px_rgba(0,0,0,0.85)] backdrop-blur-md">
+            {/* ROYAL GLASSMORPHISM CARD: Fixed solid background so it pops out perfectly */}
+            <div className="w-full rounded-3xl border border-[#b68d40]/60 bg-[#0c0704]/90 p-8 sm:p-12 md:p-14 text-center shadow-[0_25px_60px_rgba(0,0,0,0.95)] backdrop-blur-xl">
               <form
                 onSubmit={handleSubmit}
                 className="flex w-full flex-col text-left space-y-7 sm:space-y-8"
@@ -145,7 +145,7 @@ export default function RSVP() {
                     type="text"
                     required
                     placeholder="Enter your name"
-                    className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-xl border border-amber-500/30 bg-black/40 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-400 focus:bg-black/60 focus:ring-1 focus:ring-amber-400/50"
                   />
                 </div>
 
@@ -165,7 +165,7 @@ export default function RSVP() {
                     name="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-xl border border-amber-500/30 bg-black/40 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-400 focus:bg-black/60 focus:ring-1 focus:ring-amber-400/50"
                   />
                 </div>
 
@@ -182,7 +182,7 @@ export default function RSVP() {
                     name="response"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-white/20 bg-[#160e06] px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-xl border border-amber-500/30 bg-[#160e06] px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-400 focus:ring-1 focus:ring-amber-400/50"
                   >
                     <option value="" disabled className="bg-[#160e06] text-white/60">
                       Will you attend?
@@ -209,7 +209,7 @@ export default function RSVP() {
                     name="guests"
                     defaultValue=""
                     required
-                    className="w-full rounded-xl border border-white/20 bg-[#160e06] px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full rounded-xl border border-amber-500/30 bg-[#160e06] px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white outline-none backdrop-blur-md transition duration-300 focus:border-amber-400 focus:ring-1 focus:ring-amber-400/50"
                   >
                     <option value="" disabled className="bg-[#160e06] text-white/60">
                       Select number of members
@@ -238,7 +238,7 @@ export default function RSVP() {
                     name="message"
                     rows={4}
                     placeholder="Share your wishes and blessings..."
-                    className="w-full resize-none rounded-xl border border-white/20 bg-white/10 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-300/70 focus:bg-white/15 focus:ring-1 focus:ring-amber-300/40"
+                    className="w-full resize-none rounded-xl border border-amber-500/30 bg-black/40 px-4 py-3.5 sm:px-5 sm:py-4 text-sm sm:text-base text-white placeholder:text-white/40 outline-none backdrop-blur-md transition duration-300 focus:border-amber-400 focus:bg-black/60 focus:ring-1 focus:ring-amber-400/50"
                   />
                 </div>
 
@@ -247,28 +247,25 @@ export default function RSVP() {
                   <div
                     className={`rounded-xl border p-4 text-center text-sm font-medium backdrop-blur-md ${
                       statusMessage.type === "success"
-                        ? "border-emerald-500/40 bg-emerald-950/60 text-emerald-300"
-                        : "border-rose-500/40 bg-rose-950/60 text-rose-300"
+                        ? "border-emerald-500/40 bg-emerald-950/80 text-emerald-300"
+                        : "border-rose-500/40 bg-rose-950/80 text-rose-300"
                     }`}
                   >
                     {statusMessage.text}
                   </div>
                 )}
 
-                {/* SUBMIT BUTTON */}
+                {/* SUBMIT BUTTON: Fully styled solid gold royal button */}
                 <div className="pt-4 flex w-full justify-center">
                   <button
                     type="submit"
                     disabled={loading}
-                    className="rsvp-luxury-button group w-full sm:w-auto px-10 py-3.5 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="relative group w-full sm:w-auto px-10 py-4 rounded-xl bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-black font-semibold uppercase tracking-[2px] text-sm shadow-[0_10px_25px_rgba(182,141,64,0.4)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_15px_35px_rgba(182,141,64,0.6)] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <span className="rsvp-button-glow" />
-                    <span className="rsvp-button-inner">
-                      <span className="rsvp-button-icon">✦</span>
-                      <span className="rsvp-button-text">
-                        {loading ? "Sending..." : "Send RSVP"}
-                      </span>
-                      <span className="rsvp-button-icon">✦</span>
+                    <span className="flex items-center justify-center gap-2 text-[#160e06] font-bold">
+                      <span>✦</span>
+                      <span>{loading ? "Sending..." : "Send RSVP"}</span>
+                      <span>✦</span>
                     </span>
                   </button>
                 </div>
